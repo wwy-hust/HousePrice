@@ -308,31 +308,43 @@ class HousePriceDataCollector:
             if table_info.get('table_name'):
                 table_elem.set('name', table_info['table_name'])
             
-            # 添加列名
-            columns_elem = ET.SubElement(table_elem, 'columns')
-            for col in table_info['columns']:
-                col_elem = ET.SubElement(columns_elem, 'column')
-                col_elem.text = str(col)
-            
-            # 添加数据行
-            data_elem = ET.SubElement(table_elem, 'data')
+            # 分离表头行和数据行
             df = table_info['data']
+            head_rows = []
+            data_rows = []
             
             for idx, row in df.iterrows():
                 # 判断是否为表头行：检查第一列是否包含城市名称
                 is_header_row = self._is_header_row(row)
                 
                 if is_header_row:
-                    row_elem = ET.SubElement(data_elem, 'head')
+                    head_rows.append((idx, row))
                 else:
+                    data_rows.append((idx, row))
+            
+            # 添加表头部分
+            if head_rows:
+                head_section = ET.SubElement(table_elem, 'head')
+                for idx, row in head_rows:
+                    head_row_elem = ET.SubElement(head_section, 'row')
+                    head_row_elem.set('index', str(idx))
+                    
+                    for col_name, value in row.items():
+                        cell_elem = ET.SubElement(head_row_elem, 'cell')
+                        cell_elem.set('column', str(col_name))
+                        cell_elem.text = str(value)
+            
+            # 添加数据部分
+            if data_rows:
+                data_elem = ET.SubElement(table_elem, 'data')
+                for idx, row in data_rows:
                     row_elem = ET.SubElement(data_elem, 'row')
-                
-                row_elem.set('index', str(idx))
-                
-                for col_name, value in row.items():
-                    cell_elem = ET.SubElement(row_elem, 'cell')
-                    cell_elem.set('column', str(col_name))
-                    cell_elem.text = str(value)
+                    row_elem.set('index', str(idx))
+                    
+                    for col_name, value in row.items():
+                        cell_elem = ET.SubElement(row_elem, 'cell')
+                        cell_elem.set('column', str(col_name))
+                        cell_elem.text = str(value)
         
         return root
     
@@ -424,8 +436,8 @@ def main():
     
     if len(url_df) > 0:
         # 测试第一个URL
-        for idx in range(len(url_df)):
-        # for idx in range(1):
+        # for idx in range(len(url_df)):
+        for idx in range(1):
             url_row = url_df.iloc[idx]
             print(url_row)
             url = url_row['标题链接']
