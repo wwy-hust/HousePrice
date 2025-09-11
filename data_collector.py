@@ -436,30 +436,96 @@ class HousePriceDataCollector:
         
         return merged_row
     
+    def _merge_multiple_head_rows(self, rows):
+        """
+        合并多行表头数据（用于表3和表4）
+        
+        Args:
+            rows (list): 多行pandas.Series数据
+            
+        Returns:
+            list: 合并后的表头内容
+        """
+        merged_row = []
+        
+        if not rows:
+            return merged_row
+        
+        # 获取所有行的值
+        all_rows_values = []
+        max_cols = 0
+        for row in rows:
+            row_values = [str(value).strip() for value in row.values]
+            all_rows_values.append(row_values)
+            max_cols = max(max_cols, len(row_values))
+        
+        # 按列合并
+        for col_index in range(max_cols):
+            col_values = []
+            for row_values in all_rows_values:
+                if col_index < len(row_values):
+                    col_values.append(row_values[col_index])
+                else:
+                    col_values.append("")
+            
+            # 去重并拼接
+            unique_values = []
+            for val in col_values:
+                if val and val not in unique_values:
+                    unique_values.append(val)
+            
+            # 合并同列的内容
+            if len(unique_values) == 1:
+                merged_row.append(unique_values[0])
+            elif len(unique_values) > 1:
+                # 按照逻辑顺序拼接：面积类型 + 指标类型 + 计算基准
+                merged_row.append("(".join(unique_values) + ")" * (len(unique_values) - 1))
+            else:
+                merged_row.append("")
+        
+        return merged_row
+    
     def _add_normal_table_structure(self, table_elem, head_rows, data_rows):
         """
-        为表3和表4添加普通的XML结构
+        为表3和表4添加优化的XML结构
+        - head合并多行为一行
+        - data行索引从0开始重新编号
         """
-        # 添加表头部分
+        # 添加表头部分（合并多行为一行）
         if head_rows:
             head_section = ET.SubElement(table_elem, 'head')
-            for idx, row in head_rows:
+            
+            # 合并多行表头
+            if len(head_rows) >= 3:
+                merged_head_row = self._merge_multiple_head_rows([row[1] for row in head_rows[:3]])
                 head_row_elem = ET.SubElement(head_section, 'row')
-                head_row_elem.set('index', str(idx))
+                head_row_elem.set('index', '0')
                 
-                col_index = 0
-                for col_name, value in row.items():
+                for col_index in range(len(merged_head_row)):
                     cell_elem = ET.SubElement(head_row_elem, 'cell')
                     cell_elem.set('column', str(col_index))
-                    cell_elem.text = str(value)
-                    col_index += 1
+                    cell_elem.text = merged_head_row[col_index]
+            else:
+                # 处理少于3行表头的情况
+                for idx, row in head_rows:
+                    head_row_elem = ET.SubElement(head_section, 'row')
+                    head_row_elem.set('index', str(idx))
+                    
+                    col_index = 0
+                    for col_name, value in row.items():
+                        cell_elem = ET.SubElement(head_row_elem, 'cell')
+                        cell_elem.set('column', str(col_index))
+                        cell_elem.text = str(value)
+                        col_index += 1
         
-        # 添加数据部分
+        # 添加数据部分（重新编号从0开始）
         if data_rows:
             data_elem = ET.SubElement(table_elem, 'data')
-            for idx, row in data_rows:
+            new_row_index = 0
+            
+            for original_idx, row in data_rows:
                 row_elem = ET.SubElement(data_elem, 'row')
-                row_elem.set('index', str(idx))
+                row_elem.set('index', str(new_row_index))
                 
                 col_index = 0
                 for col_name, value in row.items():
@@ -467,6 +533,8 @@ class HousePriceDataCollector:
                     cell_elem.set('column', str(col_index))
                     cell_elem.text = str(value)
                     col_index += 1
+                
+                new_row_index += 1
     
     def save_xml_data(self, xml_root, filename):
         """
@@ -556,8 +624,8 @@ def main():
     
     if len(url_df) > 0:
         # 测试第一个URL
-        # for idx in range(len(url_df)):
-        for idx in range(1):
+        for idx in range(len(url_df)):
+        # for idx in range(1):
             url_row = url_df.iloc[idx]
             print(url_row)
             url = url_row['标题链接']
