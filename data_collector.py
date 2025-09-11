@@ -322,31 +322,151 @@ class HousePriceDataCollector:
                 else:
                     data_rows.append((idx, row))
             
-            # 添加表头部分
-            if head_rows:
-                head_section = ET.SubElement(table_elem, 'head')
-                for idx, row in head_rows:
-                    head_row_elem = ET.SubElement(head_section, 'row')
-                    head_row_elem.set('index', str(idx))
-                    
-                    for col_name, value in row.items():
-                        cell_elem = ET.SubElement(head_row_elem, 'cell')
-                        cell_elem.set('column', str(col_name))
-                        cell_elem.text = str(value)
+            # 检查是否为表1或表2，需要特殊处理
+            table_name = table_info.get('table_name', '')
+            is_table_1_or_2 = ('新建商品住宅销售价格指数' in table_name and '分类' not in table_name) or \
+                              ('二手住宅销售价格指数' in table_name and '分类' not in table_name)
             
-            # 添加数据部分
-            if data_rows:
-                data_elem = ET.SubElement(table_elem, 'data')
-                for idx, row in data_rows:
-                    row_elem = ET.SubElement(data_elem, 'row')
-                    row_elem.set('index', str(idx))
-                    
-                    for col_name, value in row.items():
-                        cell_elem = ET.SubElement(row_elem, 'cell')
-                        cell_elem.set('column', str(col_name))
-                        cell_elem.text = str(value)
+            if is_table_1_or_2:
+                # 特殊处理表1和表2
+                self._add_table_1_2_structure(table_elem, head_rows, data_rows)
+            else:
+                # 普通处理表3和表4
+                self._add_normal_table_structure(table_elem, head_rows, data_rows)
         
         return root
+    
+    def _add_table_1_2_structure(self, table_elem, head_rows, data_rows):
+        """
+        为表1和表2添加特殊的XML结构
+        - head只保留前4个cell
+        - 数据行拆分：每行8个cell拆分为两行，每行4个cell
+        """
+        # 添加表头部分（合并row0和row1）
+        if head_rows:
+            head_section = ET.SubElement(table_elem, 'head')
+            
+            # 合并表头行
+            if len(head_rows) >= 2:
+                merged_head_row = self._merge_head_rows(head_rows[0][1], head_rows[1][1])
+                head_row_elem = ET.SubElement(head_section, 'row')
+                head_row_elem.set('index', '0')
+                
+                # 只保留前4个cell
+                for col_index in range(min(4, len(merged_head_row))):
+                    cell_elem = ET.SubElement(head_row_elem, 'cell')
+                    cell_elem.set('column', str(col_index))
+                    cell_elem.text = merged_head_row[col_index]
+            elif len(head_rows) == 1:
+                # 只有一行表头的情况
+                head_row_elem = ET.SubElement(head_section, 'row')
+                head_row_elem.set('index', '0')
+                
+                col_count = 0
+                for col_name, value in head_rows[0][1].items():
+                    if col_count >= 4:
+                        break
+                    cell_elem = ET.SubElement(head_row_elem, 'cell')
+                    cell_elem.set('column', str(col_count))
+                    cell_elem.text = str(value)
+                    col_count += 1
+        
+        # 添加数据部分（拆分每行）
+        if data_rows:
+            data_elem = ET.SubElement(table_elem, 'data')
+            new_row_index = 0
+            
+            for original_idx, row in data_rows:
+                row_values = [str(value) for value in row.values]
+                
+                # 确保有8个值
+                if len(row_values) >= 8:
+                    # 第一行：前4个cell（城市1 + 3个数据）
+                    row_elem_1 = ET.SubElement(data_elem, 'row')
+                    row_elem_1.set('index', str(new_row_index))
+                    
+                    for i in range(4):
+                        cell_elem = ET.SubElement(row_elem_1, 'cell')
+                        cell_elem.set('column', str(i))
+                        cell_elem.text = row_values[i]
+                    
+                    new_row_index += 1
+                    
+                    # 第二行：后4个cell（城市2 + 3个数据）
+                    row_elem_2 = ET.SubElement(data_elem, 'row')
+                    row_elem_2.set('index', str(new_row_index))
+                    
+                    for i in range(4):
+                        cell_elem = ET.SubElement(row_elem_2, 'cell')
+                        cell_elem.set('column', str(i))
+                        cell_elem.text = row_values[i + 4]
+                    
+                    new_row_index += 1
+    
+    def _merge_head_rows(self, row1, row2):
+        """
+        合并两行表头数据
+        
+        Args:
+            row1 (pandas.Series): 第一行数据
+            row2 (pandas.Series): 第二行数据
+            
+        Returns:
+            list: 合并后的表头内容
+        """
+        merged_row = []
+        row1_values = [str(value) for value in row1.values]
+        row2_values = [str(value) for value in row2.values]
+        
+        max_cols = min(len(row1_values), len(row2_values), 4)  # 只处理前4列
+        
+        for i in range(max_cols):
+            val1 = row1_values[i].strip()
+            val2 = row2_values[i].strip()
+            
+            if val1 == val2:
+                # 内容相同，只保留一份
+                merged_row.append(val1)
+            else:
+                # 内容不同，拼接（用括号分隔）
+                if val2:
+                    merged_row.append(f"{val1}({val2})")
+                else:
+                    merged_row.append(val1)
+        
+        return merged_row
+    
+    def _add_normal_table_structure(self, table_elem, head_rows, data_rows):
+        """
+        为表3和表4添加普通的XML结构
+        """
+        # 添加表头部分
+        if head_rows:
+            head_section = ET.SubElement(table_elem, 'head')
+            for idx, row in head_rows:
+                head_row_elem = ET.SubElement(head_section, 'row')
+                head_row_elem.set('index', str(idx))
+                
+                col_index = 0
+                for col_name, value in row.items():
+                    cell_elem = ET.SubElement(head_row_elem, 'cell')
+                    cell_elem.set('column', str(col_index))
+                    cell_elem.text = str(value)
+                    col_index += 1
+        
+        # 添加数据部分
+        if data_rows:
+            data_elem = ET.SubElement(table_elem, 'data')
+            for idx, row in data_rows:
+                row_elem = ET.SubElement(data_elem, 'row')
+                row_elem.set('index', str(idx))
+                
+                col_index = 0
+                for col_name, value in row.items():
+                    cell_elem = ET.SubElement(row_elem, 'cell')
+                    cell_elem.set('column', str(col_index))
+                    cell_elem.text = str(value)
+                    col_index += 1
     
     def save_xml_data(self, xml_root, filename):
         """
