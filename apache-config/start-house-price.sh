@@ -5,7 +5,8 @@ set -e
 
 # 配置变量
 PROJECT_DIR="/Users/wangwenye/Github/HousePrice"
-PYTHON_BIN="python3"
+VENV_DIR="$PROJECT_DIR/venv"
+PYTHON_BIN="python3"  # 默认Python，会被venv中的Python覆盖
 SERVER_HOST="127.0.0.1"
 SERVER_PORT="8000"
 PID_FILE="/var/run/house-price.pid"
@@ -62,19 +63,73 @@ check_project() {
     fi
 }
 
+# 检查并设置venv环境
+setup_venv() {
+    log "检查Python虚拟环境..."
+    
+    if [ -d "$VENV_DIR" ]; then
+        log "发现虚拟环境: $VENV_DIR"
+        
+        # 检查venv中的Python是否存在
+        local venv_python="$VENV_DIR/bin/python"
+        if [ -f "$venv_python" ]; then
+            PYTHON_BIN="$venv_python"
+            log "使用虚拟环境中的Python: $PYTHON_BIN"
+            
+            # 检查Python版本
+            local python_version=$($PYTHON_BIN --version 2>&1)
+            log "Python版本: $python_version"
+            
+            return 0
+        else
+            warn "虚拟环境目录存在但Python可执行文件不存在"
+            warn "将使用系统默认Python"
+        fi
+    else
+        warn "虚拟环境目录不存在: $VENV_DIR"
+        warn "将使用系统默认Python"
+        
+        # 提示用户创建虚拟环境
+        info "建议创建虚拟环境:"
+        info "  cd $PROJECT_DIR"
+        info "  python3 -m venv venv"
+        info "  source venv/bin/activate"
+        info "  pip install -r requirements.txt"
+    fi
+    
+    # 使用系统默认Python
+    if ! command -v $PYTHON_BIN &> /dev/null; then
+        error "Python3未安装"
+        exit 1
+    fi
+    
+    local python_version=$($PYTHON_BIN --version 2>&1)
+    log "使用系统Python: $python_version"
+}
+
 # 检查Python依赖
 check_dependencies() {
     log "检查Python依赖..."
     
     if ! command -v $PYTHON_BIN &> /dev/null; then
-        error "Python3未安装"
+        error "Python未安装或路径不正确: $PYTHON_BIN"
         exit 1
     fi
     
     if [ -f "$PROJECT_DIR/requirements.txt" ]; then
         log "安装Python依赖..."
         cd "$PROJECT_DIR"
-        $PYTHON_BIN -m pip install -r requirements.txt
+        
+        # 如果在venv环境中，直接使用pip
+        if [[ "$PYTHON_BIN" == *"$VENV_DIR"* ]]; then
+            log "在虚拟环境中安装依赖..."
+            $PYTHON_BIN -m pip install -r requirements.txt
+        else
+            log "在系统环境中安装依赖..."
+            $PYTHON_BIN -m pip install --user -r requirements.txt
+        fi
+    else
+        warn "requirements.txt文件不存在，跳过依赖安装"
     fi
 }
 
@@ -207,12 +262,62 @@ view_logs() {
     fi
 }
 
+# 创建虚拟环境
+create_venv() {
+    log "创建Python虚拟环境..."
+    
+    if [ -d "$VENV_DIR" ]; then
+        warn "虚拟环境已存在: $VENV_DIR"
+        read -p "是否重新创建? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            log "删除现有虚拟环境..."
+            rm -rf "$VENV_DIR"
+        else
+            log "使用现有虚拟环境"
+            return 0
+        fi
+    fi
+    
+    cd "$PROJECT_DIR"
+    
+    # 检查系统Python
+    if ! command -v python3 &> /dev/null; then
+        error "系统Python3未安装，无法创建虚拟环境"
+        exit 1
+    fi
+    
+    # 创建虚拟环境
+    log "创建虚拟环境: $VENV_DIR"
+    python3 -m venv "$VENV_DIR"
+    
+    if [ $? -eq 0 ]; then
+        log "虚拟环境创建成功"
+        
+        # 激活虚拟环境并安装依赖
+        log "激活虚拟环境并安装依赖..."
+        source "$VENV_DIR/bin/activate"
+        
+        if [ -f "$PROJECT_DIR/requirements.txt" ]; then
+            log "安装Python依赖..."
+            pip install -r requirements.txt
+        fi
+        
+        log "虚拟环境设置完成"
+        log "Python路径: $VENV_DIR/bin/python"
+    else
+        error "虚拟环境创建失败"
+        exit 1
+    fi
+}
+
 # 主函数
 main() {
     case "${1:-}" in
         start)
             check_root
             check_project
+            setup_venv
             check_dependencies
             check_port
             start_service
@@ -231,15 +336,26 @@ main() {
         logs)
             view_logs
             ;;
+        create-venv)
+            check_root
+            check_project
+            create_venv
+            ;;
         *)
-            echo "用法: $0 {start|stop|restart|status|logs}"
+            echo "用法: $0 {start|stop|restart|status|logs|create-venv}"
             echo ""
             echo "命令说明:"
-            echo "  start   - 启动服务"
-            echo "  stop    - 停止服务"
-            echo "  restart - 重启服务"
-            echo "  status  - 检查服务状态"
-            echo "  logs    - 查看实时日志"
+            echo "  start       - 启动服务"
+            echo "  stop        - 停止服务"
+            echo "  restart     - 重启服务"
+            echo "  status      - 检查服务状态"
+            echo "  logs        - 查看实时日志"
+            echo "  create-venv - 创建Python虚拟环境"
+            echo ""
+            echo "注意:"
+            echo "  - 脚本会自动检测并使用项目目录下的venv虚拟环境"
+            echo "  - 如果venv不存在，将使用系统默认Python"
+            echo "  - 建议先运行 'create-venv' 创建虚拟环境"
             exit 1
             ;;
     esac
