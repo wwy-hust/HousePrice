@@ -109,6 +109,39 @@ install_proxy_config() {
     return 0
 }
 
+# 安装HTTP-only反向代理配置
+install_http_only_config() {
+    log "安装Apache HTTP-only反向代理配置..."
+    
+    local config_file="house-price-http-only.conf"
+    local source_file="$PROJECT_DIR/apache-config/$config_file"
+    local target_file="$APACHE_SITES_DIR/$config_file"
+    
+    if [ ! -f "$source_file" ]; then
+        error "配置文件不存在: $source_file"
+        return 1
+    fi
+    
+    # 复制配置文件
+    cp "$source_file" "$target_file"
+    log "HTTP-only配置文件已复制到: $target_file"
+    
+    # 提示用户修改配置
+    warn "请编辑 $target_file 并修改以下内容:"
+    echo "  - ServerName wenye.wang (已设置为您的域名)"
+    echo "  - 项目路径 (如果不是默认路径)"
+    
+    # 启用站点
+    if a2ensite "$config_file" >/dev/null 2>&1; then
+        log "站点 $config_file 已启用"
+    else
+        error "站点启用失败"
+        return 1
+    fi
+    
+    return 0
+}
+
 # 安装WSGI配置
 install_wsgi_config() {
     log "安装Apache WSGI配置..."
@@ -224,12 +257,13 @@ show_menu() {
     echo "  房价数据可视化系统 - Apache配置安装"
     echo "========================================"
     echo ""
-    echo "1. 安装反向代理配置 (推荐)"
-    echo "2. 安装WSGI配置"
-    echo "3. 安装systemd服务"
-    echo "4. 完整安装 (反向代理 + systemd)"
-    echo "5. 测试Apache配置"
-    echo "6. 重启Apache服务"
+    echo "1. 安装反向代理配置 (包含HTTPS)"
+    echo "2. 安装HTTP-only反向代理配置 (推荐)"
+    echo "3. 安装WSGI配置"
+    echo "4. 安装systemd服务"
+    echo "5. 完整安装 (HTTP-only + systemd)"
+    echo "6. 测试Apache配置"
+    echo "7. 重启Apache服务"
     echo "0. 退出"
     echo ""
 }
@@ -244,7 +278,7 @@ main() {
         # 交互模式
         while true; do
             show_menu
-            read -p "请选择操作 [0-6]: " choice
+            read -p "请选择操作 [0-7]: " choice
             
             case $choice in
                 1)
@@ -253,23 +287,28 @@ main() {
                     test_apache_config
                     ;;
                 2)
-                    install_wsgi_config
+                    install_http_only_config
                     setup_permissions
                     test_apache_config
                     ;;
                 3)
-                    install_systemd_service
+                    install_wsgi_config
+                    setup_permissions
+                    test_apache_config
                     ;;
                 4)
-                    install_proxy_config
+                    install_systemd_service
+                    ;;
+                5)
+                    install_http_only_config
                     install_systemd_service
                     setup_permissions
                     test_apache_config
                     ;;
-                5)
+                6)
                     test_apache_config
                     ;;
-                6)
+                7)
                     log "重启Apache服务..."
                     systemctl restart apache2
                     log "Apache服务已重启"
@@ -294,6 +333,11 @@ main() {
                 setup_permissions
                 test_apache_config
                 ;;
+            http-only)
+                install_http_only_config
+                setup_permissions
+                test_apache_config
+                ;;
             wsgi)
                 install_wsgi_config
                 setup_permissions
@@ -303,7 +347,7 @@ main() {
                 install_systemd_service
                 ;;
             full)
-                install_proxy_config
+                install_http_only_config
                 install_systemd_service
                 setup_permissions
                 test_apache_config
@@ -312,14 +356,15 @@ main() {
                 test_apache_config
                 ;;
             *)
-                echo "用法: $0 [proxy|wsgi|service|full|test]"
+                echo "用法: $0 [proxy|http-only|wsgi|service|full|test]"
                 echo ""
                 echo "选项说明:"
-                echo "  proxy   - 安装反向代理配置"
-                echo "  wsgi    - 安装WSGI配置"
-                echo "  service - 安装systemd服务"
-                echo "  full    - 完整安装"
-                echo "  test    - 测试Apache配置"
+                echo "  proxy     - 安装反向代理配置 (包含HTTPS)"
+                echo "  http-only - 安装HTTP-only反向代理配置 (推荐)"
+                echo "  wsgi      - 安装WSGI配置"
+                echo "  service   - 安装systemd服务"
+                echo "  full      - 完整安装 (HTTP-only + systemd)"
+                echo "  test      - 测试Apache配置"
                 exit 1
                 ;;
         esac
