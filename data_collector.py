@@ -553,6 +553,35 @@ class HousePriceDataCollector:
                 
                 new_row_index += 1
     
+    def _format_date_for_filename(self, date_str):
+        """
+        格式化日期字符串用于文件名，确保月份是两位数
+        
+        Args:
+            date_str (str): 原始日期字符串，格式如 "2024/2/23" 或 "2024-2-23"
+            
+        Returns:
+            str: 格式化后的日期字符串，格式如 "2024_02_23"
+        """
+        import re
+        
+        # 处理不同的日期分隔符
+        date_str = date_str.replace('/', '_').replace('-', '_')
+        
+        # 使用正则表达式匹配日期格式 YYYY_M_DD 或 YYYY_MM_DD
+        pattern = r'(\d{4})_(\d{1,2})_(\d{1,2})'
+        match = re.match(pattern, date_str)
+        
+        if match:
+            year, month, day = match.groups()
+            # 确保月份和日期都是两位数
+            month = month.zfill(2)
+            day = day.zfill(2)
+            return f"{year}_{month}_{day}"
+        else:
+            # 如果格式不匹配，直接返回处理过分隔符的字符串
+            return date_str
+    
     def save_xml_data(self, xml_root, filename):
         """
         保存XML数据到文件
@@ -599,9 +628,8 @@ class HousePriceDataCollector:
             # 创建XML结构
             xml_root = self.create_xml_structure(url, description, date, tables)
             
-            # 生成文件名
-            safe_date = date.replace('-', '_')
-            safe_date = date.replace('/', '_')
+            # 生成文件名，确保月份是两位数格式
+            safe_date = self._format_date_for_filename(date)
             filename = f"house_price_data_{safe_date}.xml"
             
             # 保存XML数据

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<house_price_data source_url="https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901302.html" description="2021年11月份70个大中城市商品住宅销售价格变动情况" date="2021/12/15" collected_at="2025-09-12T20:15:27.292737">
+<house_price_data source_url="https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901302.html" description="2021年11月份70个大中城市商品住宅销售价格变动情况" date="2021/12/15" collected_at="2025-09-12T20:48:34.555141">
   <table index="1" rows="72" columns="8" title="表1：2021年11月70个大中城市新建商品住宅销售价格指数" name="2021年11月70个大中城市新建商品住宅销售价格指数">
     <head>
       <row index="0">
