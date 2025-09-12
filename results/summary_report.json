@@ -1,0 +1,71 @@
+{
+  "generated_at": "2025-09-12T11:36:20.586796",
+  "total_index_types": 8,
+  "output_directory": "results",
+  "files": [
+    {
+      "filename": "new_house_basic_index.json",
+      "index_type": "新建商品住宅销售价格指数",
+      "house_type": "新建商品住宅",
+      "area_type": null,
+      "file_exists": true,
+      "file_size": 3935189
+    },
+    {
+      "filename": "used_house_basic_index.json",
+      "index_type": "二手住宅销售价格指数",
+      "house_type": "二手住宅",
+      "area_type": null,
+      "file_exists": true,
+      "file_size": 3931166
+    },
+    {
+      "filename": "new_house_classified_90_below.json",
+      "index_type": "新建商品住宅销售价格分类指数 - 90m2及以下",
+      "house_type": "新建商品住宅",
+      "area_type": "90m2及以下",
+      "file_exists": true,
+      "file_size": 3563216
+    },
+    {
+      "filename": "new_house_classified_90_144.json",
+      "index_type": "新建商品住宅销售价格分类指数 - 90-144m2",
+      "house_type": "新建商品住宅",
+      "area_type": "90-144m2",
+      "file_exists": true,
+      "file_size": 3567325
+    },
+    {
+      "filename": "new_house_classified_144_above.json",
+      "index_type": "新建商品住宅销售价格分类指数 - 144m2以上",
+      "house_type": "新建商品住宅",
+      "area_type": "144m2以上",
+      "file_exists": true,
+      "file_size": 3561851
+    },
+    {
+      "filename": "used_house_classified_90_below.json",
+      "index_type": "二手住宅销售价格分类指数 - 90m2及以下",
+      "house_type": "二手住宅",
+      "area_type": "90m2及以下",
+      "file_exists": true,
+      "file_size": 3560578
+    },
+    {
+      "filename": "used_house_classified_90_144.json",
+      "index_type": "二手住宅销售价格分类指数 - 90-144m2",
+      "house_type": "二手住宅",
+      "area_type": "90-144m2",
+      "file_exists": true,
+      "file_size": 3560015
+    },
+    {
+      "filename": "used_house_classified_144_above.json",
+      "index_type": "二手住宅销售价格分类指数 - 144m2以上",
+      "house_type": "二手住宅",
+      "area_type": "144m2以上",
+      "file_exists": true,
+      "file_size": 3558837
+    }
+  ]
+}
