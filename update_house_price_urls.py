@@ -12,6 +12,7 @@ import re
 from datetime import datetime
 import time
 import sys
+import subprocess
 from urllib.parse import urljoin, urlparse
 
 class HousePriceURLUpdater:
@@ -306,6 +307,80 @@ class HousePriceURLUpdater:
         except Exception as e:
             print(f"写入CSV文件时出错: {e}")
     
+    def collect_new_data(self, new_records):
+        """为新记录采集数据"""
+        if not new_records:
+            return True
+            
+        print("\n" + "=" * 50)
+        print("开始采集新数据...")
+        print("=" * 50)
+        
+        try:
+            # 导入数据采集器
+            from data_collector import HousePriceDataCollector
+            collector = HousePriceDataCollector()
+            
+            success_count = 0
+            total_count = len(new_records)
+            
+            for i, record in enumerate(new_records, 1):
+                print(f"\n正在采集第 {i}/{total_count} 个数据:")
+                print(f"标题: {record['title']}")
+                print(f"URL: {record['url']}")
+                print(f"日期: {record['date']}")
+                
+                # 采集单个URL的数据
+                success = collector.collect_single_url_data(
+                    record['url'], 
+                    record['title'], 
+                    record['date']
+                )
+                
+                if success:
+                    success_count += 1
+                    print(f"✅ 采集成功 ({success_count}/{total_count})")
+                else:
+                    print(f"❌ 采集失败")
+                
+                # 添加延迟避免请求过快
+                if i < total_count:
+                    time.sleep(2)
+            
+            print(f"\n数据采集完成: 成功 {success_count}/{total_count}")
+            return success_count > 0
+            
+        except ImportError as e:
+            print(f"无法导入数据采集器: {e}")
+            return False
+        except Exception as e:
+            print(f"数据采集过程中出错: {e}")
+            return False
+    
+    def process_data_to_json(self):
+        """处理XML数据为JSON格式"""
+        print("\n" + "=" * 50)
+        print("开始处理数据为JSON格式...")
+        print("=" * 50)
+        
+        try:
+            # 导入批量处理器
+            from batch_process_all_cities import BatchProcessor
+            
+            # 创建批量处理器并开始处理
+            processor = BatchProcessor()
+            processor.process_all()
+            
+            print("✅ 数据处理完成！JSON文件已更新。")
+            return True
+            
+        except ImportError as e:
+            print(f"无法导入批量处理器: {e}")
+            return False
+        except Exception as e:
+            print(f"数据处理过程中出错: {e}")
+            return False
+    
     def run(self):
         """运行更新程序"""
         print("开始更新房价数据URL...")
@@ -319,6 +394,32 @@ class HousePriceURLUpdater:
         
         # 3. 更新CSV文件
         self.update_csv_file(new_records)
+        
+        # 4. 如果有新记录，则进行数据采集和处理
+        if new_records:
+            print(f"\n发现 {len(new_records)} 个新记录，开始自动处理...")
+            
+            # 4.1 采集新数据
+            collect_success = self.collect_new_data(new_records)
+            
+            if collect_success:
+                # 4.2 处理数据为JSON格式
+                process_success = self.process_data_to_json()
+                
+                if process_success:
+                    print("\n🎉 完整流程执行成功！")
+                    print("- ✅ URL更新完成")
+                    print("- ✅ 数据采集完成") 
+                    print("- ✅ JSON文件更新完成")
+                else:
+                    print("\n⚠️  部分流程完成:")
+                    print("- ✅ URL更新完成")
+                    print("- ✅ 数据采集完成")
+                    print("- ❌ JSON处理失败")
+            else:
+                print("\n⚠️  数据采集失败，跳过JSON处理")
+        else:
+            print("\n✅ 无新数据，流程完成")
         
         print("=" * 50)
         print("更新完成!")

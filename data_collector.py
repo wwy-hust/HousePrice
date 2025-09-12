@@ -601,6 +601,7 @@ class HousePriceDataCollector:
             
             # 生成文件名
             safe_date = date.replace('-', '_')
+            safe_date = date.replace('/', '_')
             filename = f"house_price_data_{safe_date}.xml"
             
             # 保存XML数据
