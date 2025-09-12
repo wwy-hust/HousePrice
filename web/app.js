@@ -3,16 +3,19 @@ let chart = null;
 let allCities = [];
 let currentData = null;
 
-// 城市列表 - 70个大中城市
-const CITIES = [
-    "三亚", "上海", "东莞", "中山", "丹东", "乌鲁木齐", "兰州", "北京", "南京", "南宁",
-    "南昌", "南通", "厦门", "唐山", "哈尔滨", "呼和浩特", "大理", "大连", "天津", "太原",
-    "宁波", "安庆", "宜昌", "常德", "广州", "廊坊", "徐州", "惠州", "成都", "扬州",
-    "无锡", "昆明", "杭州", "桂林", "武汉", "泉州", "济南", "济宁", "海口", "深圳",
-    "温州", "湖州", "湘潭", "烟台", "牡丹江", "珠海", "福州", "秦皇岛", "绵阳", "肇庆",
-    "西宁", "西安", "贵阳", "赣州", "遵义", "郑州", "重庆", "金华", "锦州", "长春",
-    "长沙", "韶关", "青岛", "韩城", "包头", "北海", "平顶山", "银川", "丽水", "石家庄"
-];
+// 城市按地区分类 - 70个大中城市
+const CITIES_BY_REGION = {
+    "华北": ["北京", "天津", "石家庄", "太原", "呼和浩特", "唐山", "廊坊", "秦皇岛", "包头", "锦州", "丹东"],
+    "东北": ["哈尔滨", "长春", "大连", "牡丹江"],
+    "华东": ["上海", "南京", "杭州", "宁波", "无锡", "南通", "扬州", "徐州", "温州", "湖州", "金华", "丽水", "济南", "青岛", "烟台", "济宁", "福州", "厦门", "泉州", "南昌", "赣州", "安庆"],
+    "华中": ["武汉", "长沙", "郑州", "宜昌", "湘潭", "平顶山", "常德"],
+    "华南": ["广州", "深圳", "珠海", "东莞", "中山", "惠州", "肇庆", "韶关", "南宁", "桂林", "北海", "海口", "三亚"],
+    "西南": ["重庆", "成都", "昆明", "贵阳", "绵阳", "大理", "遵义"],
+    "西北": ["西安", "兰州", "西宁", "乌鲁木齐", "银川", "韩城"]
+};
+
+// 生成扁平化的城市列表（用于兼容性）
+const CITIES = Object.values(CITIES_BY_REGION).flat();
 
 // 数据文件映射
 const DATA_FILES = {
@@ -31,7 +34,7 @@ const DATA_FILES = {
 };
 
 // DOM元素变量
-let cityGrid, classificationOptions, updateBtn, loading, noData, statsSection;
+let cityGrid, classificationOptions, loading, noData, statsSection;
 
 // 全局错误处理
 window.addEventListener('error', function(e) {
@@ -66,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // 获取DOM元素
         cityGrid = document.getElementById('cityGrid');
         classificationOptions = document.getElementById('classificationOptions');
-        updateBtn = document.getElementById('updateChart');
         loading = document.getElementById('loading');
         noData = document.getElementById('noData');
         statsSection = document.getElementById('statsSection');
@@ -93,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('DOM元素获取结果:', {
             cityGrid: !!cityGrid,
             classificationOptions: !!classificationOptions,
-            updateBtn: !!updateBtn,
             loading: !!loading,
             noData: !!noData,
             statsSection: !!statsSection
@@ -128,8 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeCitySelect() {
     console.log('initializeCitySelect 被调用');
     console.log('cityGrid 元素:', cityGrid);
-    console.log('CITIES 数组长度:', CITIES.length);
-    console.log('CITIES 前5个城市:', CITIES.slice(0, 5));
+    console.log('CITIES_BY_REGION 结构:', Object.keys(CITIES_BY_REGION));
     
     if (!cityGrid) {
         console.error('cityGrid 元素未找到！无法初始化城市选择器');
@@ -137,43 +137,58 @@ function initializeCitySelect() {
         return;
     }
     
-    // 按拼音首字母排序城市
-    const sortedCities = CITIES.sort((a, b) => a.localeCompare(b, 'zh-CN'));
-    
-    sortedCities.forEach(city => {
-        const cityOption = document.createElement('label');
-        cityOption.className = 'city-option';
+    // 按地区分组显示城市
+    Object.keys(CITIES_BY_REGION).forEach(region => {
+        // 创建地区标题
+        const regionTitle = document.createElement('div');
+        regionTitle.className = 'region-title';
+        regionTitle.textContent = region;
+        cityGrid.appendChild(regionTitle);
         
-        const radio = document.createElement('input');
-        radio.type = 'radio';
-        radio.name = 'city';
-        radio.value = city;
+        // 创建该地区的城市容器
+        const regionCities = document.createElement('div');
+        regionCities.className = 'region-cities';
         
-        const span = document.createElement('span');
-        span.textContent = city;
+        // 按拼音排序该地区的城市
+        const sortedCities = CITIES_BY_REGION[region].sort((a, b) => a.localeCompare(b, 'zh-CN'));
         
-        cityOption.appendChild(radio);
-        cityOption.appendChild(span);
-        
-        // 添加点击事件
-        cityOption.addEventListener('click', function() {
-            console.log(`🎯 用户点击城市: ${city}`);
+        sortedCities.forEach(city => {
+            const cityOption = document.createElement('label');
+            cityOption.className = 'city-option';
             
-            // 移除所有选中状态
-            document.querySelectorAll('.city-option').forEach(opt => {
-                opt.classList.remove('selected');
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'city';
+            radio.value = city;
+            
+            const span = document.createElement('span');
+            span.textContent = city;
+            
+            cityOption.appendChild(radio);
+            cityOption.appendChild(span);
+            
+            // 添加点击事件
+            cityOption.addEventListener('click', function() {
+                console.log(`🎯 用户点击城市: ${city}`);
+                
+                // 移除所有选中状态
+                document.querySelectorAll('.city-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                // 添加选中状态
+                this.classList.add('selected');
+                radio.checked = true;
+                
+                console.log(`✅ 城市选择已更新: ${city}`);
+                
+                // 自动更新图表
+                updateChart();
             });
-            // 添加选中状态
-            this.classList.add('selected');
-            radio.checked = true;
             
-            console.log(`✅ 城市选择已更新: ${city}`);
-            
-            // 自动更新图表
-            updateChart();
+            regionCities.appendChild(cityOption);
         });
         
-        cityGrid.appendChild(cityOption);
+        cityGrid.appendChild(regionCities);
     });
 }
 
@@ -202,8 +217,6 @@ function initializeEventListeners() {
         });
     });
 
-    // 更新图表按钮
-    updateBtn.addEventListener('click', updateChart);
 }
 
 // 初始化图表
