@@ -1,0 +1,43 @@
+[Unit]
+Description=房价数据可视化Web服务
+Documentation=https://github.com/your-username/HousePrice
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/Users/wangwenye/Github/HousePrice
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=PYTHONPATH=/Users/wangwenye/Github/HousePrice
+ExecStart=/usr/bin/python3 /Users/wangwenye/Github/HousePrice/web_server.py --host 127.0.0.1 --port 8000
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=house-price
+
+# 安全设置
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/Users/wangwenye/Github/HousePrice/results
+ReadWritePaths=/var/log
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+# 资源限制
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# 进程管理
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

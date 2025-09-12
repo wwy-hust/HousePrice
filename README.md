@@ -225,6 +225,250 @@ for index, row in url_df.iterrows():
 python url_collector_api.py "URL" -d "描述" -t "日期"
 ```
 
+## Apache部署配置
+
+### 概述
+
+本项目支持在Apache Web服务器中部署，提供两种主要的配置方式：
+1. **反向代理配置（推荐）**：Apache作为反向代理，Python服务作为后端
+2. **WSGI配置**：直接通过Apache的mod_wsgi运行Python应用
+
+### 配置文件结构
+
+```
+apache-config/
+├── house-price-proxy.conf      # Apache反向代理配置
+├── house-price-vhost.conf      # Apache虚拟主机配置
+├── house-price.wsgi           # WSGI应用文件
+├── house-price.service        # systemd服务文件
+├── start-house-price.sh       # 启动脚本
+└── install-apache-config.sh   # 自动安装脚本
+```
+
+### 快速部署
+
+#### 方式1：使用自动安装脚本（推荐）
+
+```bash
+# 以root身份运行安装脚本
+sudo ./apache-config/install-apache-config.sh
+
+# 或使用命令行参数直接安装
+sudo ./apache-config/install-apache-config.sh full
+```
+
+安装脚本会自动：
+- 检查Apache是否安装并启用必要模块
+- 安装反向代理配置和systemd服务
+- 设置正确的文件权限
+- 测试Apache配置
+
+#### 方式2：手动配置
+
+**1. 反向代理配置（推荐）**
+
+```bash
+# 复制配置文件
+sudo cp apache-config/house-price-proxy.conf /etc/apache2/sites-available/
+
+# 启用必要的Apache模块
+sudo a2enmod proxy proxy_http headers expires deflate ssl rewrite
+
+# 启用站点
+sudo a2ensite house-price-proxy.conf
+
+# 测试配置
+sudo apache2ctl configtest
+
+# 重启Apache
+sudo systemctl restart apache2
+```
+
+**2. 安装systemd服务**
+
+```bash
+# 复制服务文件
+sudo cp apache-config/house-price.service /etc/systemd/system/
+
+# 重载systemd
+sudo systemctl daemon-reload
+
+# 启用并启动服务
+sudo systemctl enable house-price.service
+sudo systemctl start house-price.service
+```
+
+### 配置说明
+
+#### 反向代理配置特点
+
+- **静态文件优化**：静态资源直接由Apache提供，性能更佳
+- **API代理**：所有`/api/`请求转发到Python后端（默认8000端口）
+- **缓存策略**：静态资源缓存1个月，HTML缓存1小时
+- **安全头**：自动添加安全相关HTTP头
+- **GZIP压缩**：自动压缩文本文件减少传输大小
+- **SSL支持**：包含完整的HTTPS配置模板
+
+#### WSGI配置特点
+
+- **直接集成**：Python应用直接运行在Apache中
+- **mod_wsgi支持**：使用Apache的WSGI模块
+- **进程管理**：Apache负责进程管理和重启
+- **资源保护**：自动保护Python源码和数据文件
+
+#### systemd服务特点
+
+- **自动启动**：系统启动时自动运行
+- **进程监控**：自动重启异常退出的进程
+- **资源限制**：设置合理的资源限制
+- **安全沙盒**：启用多种安全限制
+- **日志管理**：集成systemd日志系统
+
+### 使用启动脚本
+
+```bash
+# 启动服务
+sudo ./apache-config/start-house-price.sh start
+
+# 停止服务
+sudo ./apache-config/start-house-price.sh stop
+
+# 重启服务
+sudo ./apache-config/start-house-price.sh restart
+
+# 查看状态
+./apache-config/start-house-price.sh status
+
+# 查看实时日志
+./apache-config/start-house-price.sh logs
+```
+
+### 配置自定义
+
+在使用配置文件之前，需要修改以下内容：
+
+**1. 域名配置**
+```apache
+# 修改为您的域名
+ServerName your-domain.com
+# ServerAlias www.your-domain.com
+```
+
+**2. SSL证书路径（如果使用HTTPS）**
+```apache
+SSLCertificateFile /path/to/your/certificate.crt
+SSLCertificateKeyFile /path/to/your/private.key
+```
+
+**3. 项目路径**
+```apache
+# 确保路径正确
+DocumentRoot /Users/wangwenye/Github/HousePrice/web
+<Directory "/Users/wangwenye/Github/HousePrice/web">
+```
+
+**4. 用户权限**
+```ini
+# 根据系统调整用户和组
+User=www-data
+Group=www-data
+```
+
+### 验证部署
+
+1. **检查Apache配置**
+```bash
+sudo apache2ctl configtest
+```
+
+2. **检查服务状态**
+```bash
+sudo systemctl status house-price.service
+sudo systemctl status apache2
+```
+
+3. **测试网站访问**
+```bash
+curl http://your-domain.com/
+curl http://your-domain.com/api/cities
+```
+
+4. **查看日志**
+```bash
+sudo tail -f /var/log/apache2/house-price-access.log
+sudo journalctl -u house-price.service -f
+```
+
+### 故障排除
+
+**常见问题：**
+
+1. **Apache配置错误**
+   - 运行 `sudo apache2ctl configtest` 检查语法
+   - 检查文件路径是否正确
+   - 确认必要模块已启用
+
+2. **Python服务无法启动**
+   - 检查Python环境和依赖
+   - 确认端口8000未被占用
+   - 查看systemd日志：`sudo journalctl -u house-price.service`
+
+3. **权限问题**
+   - 确保web目录可读：`chmod -R 755 web/`
+   - 确保results目录可读写：`chown -R www-data:www-data results/`
+
+4. **SSL证书问题**
+   - 检查证书文件路径和权限
+   - 确认证书有效期
+   - 使用 `openssl` 命令验证证书
+
+### 性能优化建议
+
+1. **启用缓存模块**
+```bash
+sudo a2enmod cache cache_disk
+```
+
+2. **配置文件缓存**
+```apache
+<Location />
+    CacheEnable disk
+    CacheRoot /var/cache/apache2/mod_cache_disk
+</Location>
+```
+
+3. **优化Worker进程**
+```apache
+# 在虚拟主机配置中
+WSGIDaemonProcess house-price processes=2 threads=15
+```
+
+4. **启用HTTP/2**
+```bash
+sudo a2enmod http2
+```
+
+### 监控和维护
+
+1. **设置日志轮转**
+```bash
+sudo logrotate -d /etc/logrotate.d/apache2
+```
+
+2. **定期检查服务状态**
+```bash
+# 创建监控脚本
+#!/bin/bash
+systemctl is-active house-price.service || systemctl restart house-price.service
+```
+
+3. **性能监控**
+```bash
+# 查看Apache状态
+sudo a2enmod status
+# 访问 http://your-domain.com/server-status
+```
+
 ## 开发进度
 
 - [x] 项目基础结构
@@ -246,6 +490,7 @@ python url_collector_api.py "URL" -d "描述" -t "日期"
 - [x] 全表数据行索引规范化（所有表格数据行从0开始编号）
 - [x] Web界面开发
 - [x] 数据可视化
+- [x] Apache部署配置
 
 ## Web可视化界面
 
