@@ -46,9 +46,7 @@ HousePrice/
 ├── web/                     # Web界面文件
 │   ├── index.html          # Web界面主页
 │   ├── style.css           # 界面样式文件
-│   ├── app.js              # 前端JavaScript代码
-│   ├── debug.html          # 调试页面
-│   └── diagnosis.html      # 诊断工具页面
+│   └── app.js              # 前端JavaScript代码
 ├── results/                 # 处理后的数据文件
 │   ├── new_house_basic_index.json
 │   ├── used_house_basic_index.json
@@ -59,9 +57,6 @@ HousePrice/
 ├── city_price_processor.py  # 城市房价指数处理脚本
 ├── batch_process_all_cities.py # 批量处理所有城市数据
 ├── url_collector_api.py     # URL采集API
-├── example_usage.py         # 使用示例
-├── test_xml_structure.py    # XML结构验证
-├── test_single_url.py       # 单URL测试
 ├── HousePriceURL.csv        # 数据源URL列表
 └── collected_data/          # 采集的数据存储目录
     ├── house_price_data_2020_11_16.xml
@@ -212,18 +207,13 @@ for index, row in url_df.iterrows():
 
 ### 验证数据
 
-使用验证脚本检查XML数据结构：
-```bash
-python test_xml_structure.py
-```
+数据采集完成后，可以通过查看生成的XML文件来验证数据结构和内容的正确性。
 
 ## 项目文件说明
 
 ### 核心文件
 - `data_collector.py` - 主要的数据采集器类
 - `url_collector_api.py` - 命令行接口，用于单个URL数据采集
-- `test_xml_structure.py` - XML数据结构验证工具
-- `example_usage.py` - 使用示例和演示代码
 
 ### 数据文件
 - `HousePriceURL.csv` - 包含58个统计局URL的CSV文件
@@ -231,12 +221,6 @@ python test_xml_structure.py
 
 ### 运行示例
 ```bash
-# 运行使用示例
-python example_usage.py
-
-# 验证XML数据结构
-python test_xml_structure.py
-
 # 采集单个URL
 python url_collector_api.py "URL" -d "描述" -t "日期"
 ```
@@ -679,32 +663,7 @@ python batch_process_all_cities.py
 **修复文件：**
 - `web/index.html`: 添加时间适配器CDN引用
 - `web/app.js`: 修复图表配置和数据格式，优化坐标轴显示
-- `web/debug.html`: 新增调试页面
-- `web/diagnosis.html`: 新增综合诊断工具
 
-### 问题诊断工具
-
-#### 1. 综合诊断页面（推荐）
-```
-http://localhost:8000/diagnosis.html
-```
-
-功能特性：
-- ✅ **自动系统检查**：Chart.js、时间适配器、API状态
-- 🧪 **交互式测试**：选择城市进行完整的图表测试
-- 📊 **实时图表展示**：在诊断页面直接查看图表效果  
-- 📝 **详细日志记录**：记录每个测试步骤的详细信息
-- 💡 **智能错误诊断**：提供针对性的解决建议
-
-#### 2. 调试页面
-```
-http://localhost:8000/debug.html
-```
-
-提供：
-- API连接测试
-- 基础图表功能测试
-- 控制台日志输出
 
 ### 常见问题和解决方案
 
@@ -734,16 +693,14 @@ http://localhost:8000/debug.html
 1. **更新Chart.js版本**：使用稳定版本 3.9.1
 2. **添加错误处理**：增加全局错误监听和详细日志
 3. **优化图表初始化**：添加环境检查和错误提示
-4. **创建诊断工具**：提供完整的诊断和测试页面
-5. **改进用户体验**：添加友好的错误提示和加载状态
+4. **改进用户体验**：添加友好的错误提示和加载状态
 
 ### 调试步骤
 
 1. 启动服务器：`python web_server.py`
-2. 访问诊断页面：`http://localhost:8000/diagnosis.html`
-3. 点击"运行完整诊断"按钮
-4. 查看诊断结果，根据提示解决问题
-5. 如果诊断正常，返回主页面：`http://localhost:8000`
+2. 访问主页面：`http://localhost:8000`
+3. 如果遇到问题，检查浏览器控制台的错误信息
+4. 确认选择了有效城市并检查网络连接
 
 ### 技术细节
 
