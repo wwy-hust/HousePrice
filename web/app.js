@@ -287,13 +287,15 @@ function initializeChart() {
                                 const dateStr = dataPoint.raw.rawData.date;
                                 if (dateStr) {
                                     const [year, month] = dateStr.split('-');
-                                    return `${year}年${month.padStart(2, '0')}月`;
+                                    if (year && month && !isNaN(year) && !isNaN(month)) {
+                                        return `${year}年${month.padStart(2, '0')}月`;
+                                    }
                                 }
                             }
-                            // 备用方案：从label解析
-                            const dateStr = tooltipItems[0].label;
-                            if (dateStr) {
-                                const date = new Date(dateStr);
+                            // 备用方案：从x值（时间戳）解析
+                            const timestamp = dataPoint.parsed.x;
+                            if (timestamp && !isNaN(timestamp)) {
+                                const date = new Date(timestamp);
                                 if (!isNaN(date.getTime())) {
                                     return `${date.getFullYear()}年${(date.getMonth() + 1).toString().padStart(2, '0')}月`;
                                 }
@@ -342,24 +344,19 @@ function initializeChart() {
             },
             scales: {
                 x: {
-                    type: 'time',
-                    time: {
-                        unit: 'month',
-                        parser: 'yyyy-MM',
-                        displayFormats: {
-                            month: 'yyyy年MM月'
-                        },
-                        tooltipFormat: 'yyyy年MM月'
-                    },
+                    type: 'linear',
                     title: {
                         display: true,
                         text: '时间'
                     },
                     ticks: {
                         maxTicksLimit: 12,
-                        source: 'data',
                         callback: function(value, index, values) {
+                            // value是时间戳，转换为日期显示
                             const date = new Date(value);
+                            if (isNaN(date.getTime())) {
+                                return '';
+                            }
                             return `${date.getFullYear()}年${(date.getMonth() + 1).toString().padStart(2, '0')}月`;
                         }
                     }
