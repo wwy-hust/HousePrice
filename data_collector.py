@@ -14,6 +14,7 @@ import os
 import time
 from datetime import datetime
 import logging
+from io import StringIO
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -96,7 +97,7 @@ class HousePriceDataCollector:
                     if current and hasattr(current, 'get_text'):
                         text = current.get_text()
                         # 匹配"表X：XXXXX指数"格式
-                        match = re.search(r'表(\d+)：(.+?指数)', text)
+                        match = re.search(r'表(\d+)[:：](.+?指数)', text)
                         if match:
                             table_number = match.group(1)
                             table_content = match.group(2)
@@ -106,7 +107,7 @@ class HousePriceDataCollector:
                             break
                 
                 # 使用pandas解析表格
-                df = pd.read_html(str(table), encoding='utf-8')[0]
+                df = pd.read_html(StringIO(str(table)), encoding='utf-8')[0]
                 
                 # 清理数据
                 df = df.dropna(how='all')  # 删除全空行
@@ -180,11 +181,12 @@ class HousePriceDataCollector:
             '红河', '文山', '西双版纳', '大理', '德宏', '怒江', '迪庆'
         ]
         
-        # 检查第一列是否包含城市名称
+        # 检查第一列是否包含城市名称（处理空格问题）
         first_value = str(row.iloc[0]).strip()
+        first_value_no_space = first_value.replace(' ', '')  # 去除空格后再匹配
         
-        # 如果第一列的值是城市名称，则不是表头行
-        if first_value in cities:
+        # 如果第一列的值是城市名称（去除空格后匹配），则不是表头行
+        if first_value_no_space in cities:
             return False
             
         # 如果第一列包含"城市"、"环比"、"同比"等表头关键词，则是表头行
@@ -193,7 +195,7 @@ class HousePriceDataCollector:
             return True
             
         # 默认情况：如果不包含任何中文城市名，可能是表头行
-        return not any(city in first_value for city in cities)
+        return not any(city in first_value_no_space for city in cities)
     
     def _merge_tables_by_name(self, tables):
         """
@@ -339,21 +341,34 @@ class HousePriceDataCollector:
     def _add_table_1_2_structure(self, table_elem, head_rows, data_rows):
         """
         为表1和表2添加特殊的XML结构
-        - head只保留前4个cell
-        - 数据行拆分：每行8个cell拆分为两行，每行4个cell
+        - 自适应处理6列或8列数据
+        - 6列：城市1,环比1,同比1,城市2,环比2,同比2 → 拆分为两行，每行3列
+        - 8列：城市1,环比1,同比1,定基1,城市2,环比2,同比2,定基2 → 拆分为两行，每行4列
         """
+        # 检测数据列数以确定拆分方式
+        cols_per_city = 3  # 默认3列（城市、环比、同比）
+        if data_rows:
+            first_data_row = data_rows[0][1]
+            total_cols = len(first_data_row)
+            if total_cols >= 8:
+                cols_per_city = 4  # 8列：每个城市4列（城市、环比、同比、定基）
+            elif total_cols >= 6:
+                cols_per_city = 3  # 6列：每个城市3列（城市、环比、同比）
+            else:
+                cols_per_city = total_cols // 2  # 其他情况平均分配
+        
         # 添加表头部分（合并row0和row1）
         if head_rows:
             head_section = ET.SubElement(table_elem, 'head')
             
             # 合并表头行
             if len(head_rows) >= 2:
-                merged_head_row = self._merge_head_rows(head_rows[0][1], head_rows[1][1])
+                merged_head_row = self._merge_head_rows(head_rows[0][1], head_rows[1][1], cols_per_city)
                 head_row_elem = ET.SubElement(head_section, 'row')
                 head_row_elem.set('index', '0')
                 
-                # 只保留前4个cell
-                for col_index in range(min(4, len(merged_head_row))):
+                # 根据检测到的列数保留相应的cell
+                for col_index in range(min(cols_per_city, len(merged_head_row))):
                     cell_elem = ET.SubElement(head_row_elem, 'cell')
                     cell_elem.set('column', str(col_index))
                     cell_elem.text = merged_head_row[col_index]
@@ -364,52 +379,54 @@ class HousePriceDataCollector:
                 
                 col_count = 0
                 for col_name, value in head_rows[0][1].items():
-                    if col_count >= 4:
+                    if col_count >= cols_per_city:
                         break
                     cell_elem = ET.SubElement(head_row_elem, 'cell')
                     cell_elem.set('column', str(col_count))
                     cell_elem.text = str(value)
                     col_count += 1
         
-        # 添加数据部分（拆分每行）
+        # 添加数据部分（自适应拆分每行）
         if data_rows:
             data_elem = ET.SubElement(table_elem, 'data')
             new_row_index = 0
             
             for original_idx, row in data_rows:
                 row_values = [str(value) for value in row.values]
+                total_cols = len(row_values)
                 
-                # 确保有8个值
-                if len(row_values) >= 8:
-                    # 第一行：前4个cell（城市1 + 3个数据）
+                # 根据总列数判断每个城市的列数，并确保能整除2（因为有两个城市）
+                if total_cols >= cols_per_city * 2:
+                    # 第一行：前cols_per_city个cell（城市1的数据）
                     row_elem_1 = ET.SubElement(data_elem, 'row')
                     row_elem_1.set('index', str(new_row_index))
                     
-                    for i in range(4):
+                    for i in range(cols_per_city):
                         cell_elem = ET.SubElement(row_elem_1, 'cell')
                         cell_elem.set('column', str(i))
                         cell_elem.text = row_values[i]
                     
                     new_row_index += 1
                     
-                    # 第二行：后4个cell（城市2 + 3个数据）
+                    # 第二行：后cols_per_city个cell（城市2的数据）
                     row_elem_2 = ET.SubElement(data_elem, 'row')
                     row_elem_2.set('index', str(new_row_index))
                     
-                    for i in range(4):
+                    for i in range(cols_per_city):
                         cell_elem = ET.SubElement(row_elem_2, 'cell')
                         cell_elem.set('column', str(i))
-                        cell_elem.text = row_values[i + 4]
+                        cell_elem.text = row_values[i + cols_per_city]
                     
                     new_row_index += 1
     
-    def _merge_head_rows(self, row1, row2):
+    def _merge_head_rows(self, row1, row2, cols_per_city=3):
         """
         合并两行表头数据
         
         Args:
             row1 (pandas.Series): 第一行数据
             row2 (pandas.Series): 第二行数据
+            cols_per_city (int): 每个城市的列数
             
         Returns:
             list: 合并后的表头内容
@@ -418,7 +435,7 @@ class HousePriceDataCollector:
         row1_values = [str(value) for value in row1.values]
         row2_values = [str(value) for value in row2.values]
         
-        max_cols = min(len(row1_values), len(row2_values), 4)  # 只处理前4列
+        max_cols = min(len(row1_values), len(row2_values), cols_per_city)
         
         for i in range(max_cols):
             val1 = row1_values[i].strip()
@@ -645,4 +662,9 @@ def main():
                 print("❌ 数据采集失败！")
 
 if __name__ == "__main__":
+    # collector = HousePriceDataCollector()
+    # url = "https://www.stats.gov.cn/sj/zxfb/202402/t20240223_1947806.html"
+    # description = "2024年1月份70个大中城市商品住宅销售价格变动情况"
+    # date = "2024/2/23"
+    # success = collector.collect_single_url_data(url, description, date)
     main()

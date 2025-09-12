@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>房价数据可视化平台</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 标题 -->
+        <header class="header">
+            <h1>中国70个大中城市房价指数可视化</h1>
+        </header>
+
+        <!-- 控制面板 -->
+        <div class="control-panel">
+            <!-- 展示内容选择 -->
+            <div class="content-section">
+                <h3>展示内容</h3>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="content-type" value="new_house_basic" checked>
+                        <span>新建商品住宅销售价格指数</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="content-type" value="used_house_basic">
+                        <span>二手住宅销售价格指数</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="content-type" value="new_house_classified">
+                        <span>新建商品住宅销售价格分类指数</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="content-type" value="used_house_classified">
+                        <span>二手住宅销售价格分类指数</span>
+                    </label>
+                </div>
+
+                <!-- 分类指数子选项 -->
+                <div class="classification-options" id="classificationOptions" style="display: none;">
+                    <h4>面积分类</h4>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="area-type" value="90_below" checked>
+                            <span>90平米以下</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="area-type" value="90_144">
+                            <span>90-144平米</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="area-type" value="144_above">
+                            <span>144平米以上</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 城市选择 -->
+            <div class="city-section">
+                <h3>选择城市</h3>
+                <div class="city-grid" id="cityGrid">
+                    <!-- 城市单选按钮将由JavaScript动态生成 -->
+                </div>
+            </div>
+
+
+            <!-- 更新按钮 -->
+            <div class="action-section">
+                <button id="updateChart" class="update-btn">更新图表</button>
+            </div>
+        </div>
+
+        <!-- 图表展示区域 -->
+        <div class="chart-section">
+            <div class="chart-description">
+                <p style="color: #666; font-size: 14px; margin-bottom: 15px; line-height: 1.5;">
+                    📈 <strong>主要显示：</strong>实际价格指数（基于累积增长率计算的绝对价格水平）<br>
+                    🖱️ <strong>鼠标悬停：</strong>查看详细的环比、同比指数和增长率信息<br>
+                    🔧 <strong>数据来源：</strong>优先使用矫正后数据，确保更高的准确性<br>
+                    💡 <strong>基准说明：</strong>以100为基准，显示相对于基期的价格变化水平
+                </p>
+            </div>
+            <div class="chart-container">
+                <canvas id="priceChart"></canvas>
+            </div>
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>正在加载数据...</p>
+            </div>
+            <div class="no-data" id="noData" style="display: none;">
+                <p>请选择城市以查看数据</p>
+            </div>
+        </div>
+
+        <!-- 数据统计信息 -->
+        <div class="stats-section" id="statsSection" style="display: none;">
+            <h3>数据统计</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-label">数据点数量:</span>
+                    <span class="stat-value" id="dataCount">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">时间范围:</span>
+                    <span class="stat-value" id="timeRange">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">环比最高:</span>
+                    <span class="stat-value" id="monthMax">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">环比最低:</span>
+                    <span class="stat-value" id="monthMin">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">同比最高:</span>
+                    <span class="stat-value" id="yearMax">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">同比最低:</span>
+                    <span class="stat-value" id="yearMin">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=20250912"></script>
+</body>
+</html>

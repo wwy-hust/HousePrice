@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-09-12T11:36:20.586796",
+  "generated_at": "2025-09-12T16:55:48.506908",
   "total_index_types": 8,
   "output_directory": "results",
   "files": [
@@ -9,7 +9,7 @@
       "house_type": "新建商品住宅",
       "area_type": null,
       "file_exists": true,
-      "file_size": 3935189
+      "file_size": 4081680
     },
     {
       "filename": "used_house_basic_index.json",
@@ -17,7 +17,7 @@
       "house_type": "二手住宅",
       "area_type": null,
       "file_exists": true,
-      "file_size": 3931166
+      "file_size": 4076759
     },
     {
       "filename": "new_house_classified_90_below.json",

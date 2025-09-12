@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>房价图表诊断页面</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #4a5568;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .status.warning { background: #fff3cd; color: #856404; }
+        .check-item {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #667eea;
+            background: white;
+            border-radius: 5px;
+        }
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+            position: relative;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #5a67d8;
+        }
+        button:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+        }
+        select {
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .log {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #c3e6cb;
+        }
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔧 房价图表诊断工具</h1>
+            <p>帮助诊断和解决图表显示问题</p>
+        </div>
+
+        <!-- 系统检查 -->
+        <div class="section">
+            <h2>📋 系统检查</h2>
+            <div class="check-item">
+                <strong>Chart.js 加载状态:</strong>
+                <span id="chartjsStatus" class="status">检查中...</span>
+            </div>
+            <div class="check-item">
+                <strong>时间适配器状态:</strong>
+                <span id="timeAdapterStatus" class="status">检查中...</span>
+            </div>
+            <div class="check-item">
+                <strong>API 连接状态:</strong>
+                <span id="apiStatus" class="status">检查中...</span>
+                <button onclick="checkAPI()">重新检查</button>
+            </div>
+        </div>
+
+        <!-- 图表测试 -->
+        <div class="section">
+            <h2>📊 图表测试</h2>
+            <div style="margin-bottom: 20px;">
+                <select id="testCitySelect">
+                    <option value="">选择测试城市...</option>
+                    <option value="北京">北京</option>
+                    <option value="上海">上海</option>
+                    <option value="深圳">深圳</option>
+                    <option value="广州">广州</option>
+                    <option value="杭州">杭州</option>
+                </select>
+                <button onclick="runChartTest()" id="testButton">开始测试</button>
+                <button onclick="clearResults()">清空结果</button>
+            </div>
+            
+            <div id="testResults"></div>
+            
+            <div class="chart-container">
+                <canvas id="testChart"></canvas>
+            </div>
+        </div>
+
+        <!-- 详细日志 -->
+        <div class="section">
+            <h2>📝 详细日志</h2>
+            <div class="log" id="detailLog">等待测试开始...</div>
+        </div>
+
+        <!-- 修复建议 -->
+        <div class="section">
+            <h2>💡 常见问题和解决方案</h2>
+            <div class="check-item">
+                <strong>问题1: 图表完全不显示</strong>
+                <ul>
+                    <li>检查 Chart.js 是否正确加载</li>
+                    <li>检查时间适配器是否加载</li>
+                    <li>确认选择了有效城市</li>
+                </ul>
+            </div>
+            <div class="check-item">
+                <strong>问题2: 数据加载失败</strong>
+                <ul>
+                    <li>检查网络连接</li>
+                    <li>确认API服务器正在运行</li>
+                    <li>检查浏览器控制台错误</li>
+                </ul>
+            </div>
+            <div class="check-item">
+                <strong>问题3: 图表显示异常</strong>
+                <ul>
+                    <li>检查数据格式是否正确</li>
+                    <li>确认时间轴配置</li>
+                    <li>检查数据范围是否合理</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let testChart = null;
+        let logElement = null;
+
+        function log(message, level = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const prefix = level === 'error' ? '❌' : level === 'warning' ? '⚠️' : '✅';
+            const logMessage = `[${timestamp}] ${prefix} ${message}`;
+            
+            if (!logElement) {
+                logElement = document.getElementById('detailLog');
+            }
+            
+            logElement.textContent += logMessage + '\n';
+            logElement.scrollTop = logElement.scrollHeight;
+            
+            console.log(logMessage);
+        }
+
+        function updateStatus(elementId, status, text) {
+            const element = document.getElementById(elementId);
+            element.className = `status ${status}`;
+            element.textContent = text;
+        }
+
+        function showResult(message, isError = false) {
+            const resultsDiv = document.getElementById('testResults');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = isError ? 'error-message' : 'success-message';
+            messageDiv.textContent = message;
+            resultsDiv.appendChild(messageDiv);
+        }
+
+        function clearResults() {
+            document.getElementById('testResults').innerHTML = '';
+            document.getElementById('detailLog').textContent = '日志已清空...\n';
+        }
+
+        // 系统检查
+        function checkSystem() {
+            log('开始系统检查...');
+            
+            // 检查Chart.js
+            if (typeof Chart !== 'undefined') {
+                updateStatus('chartjsStatus', 'success', `已加载 (v${Chart.version || 'unknown'})`);
+                log('Chart.js 加载成功');
+            } else {
+                updateStatus('chartjsStatus', 'error', '未加载');
+                log('Chart.js 未加载!', 'error');
+            }
+
+            // 检查时间适配器
+            try {
+                const testCanvas = document.createElement('canvas');
+                const testCtx = testCanvas.getContext('2d');
+                const testChart = new Chart(testCtx, {
+                    type: 'line',
+                    data: { datasets: [] },
+                    options: {
+                        scales: {
+                            x: { type: 'time' }
+                        }
+                    }
+                });
+                testChart.destroy();
+                updateStatus('timeAdapterStatus', 'success', '已加载');
+                log('时间适配器工作正常');
+            } catch (e) {
+                updateStatus('timeAdapterStatus', 'error', '未加载或有错误');
+                log('时间适配器错误: ' + e.message, 'error');
+            }
+
+            checkAPI();
+        }
+
+        async function checkAPI() {
+            log('检查API连接...');
+            try {
+                const response = await fetch('/api/cities');
+                if (response.ok) {
+                    const data = await response.json();
+                    updateStatus('apiStatus', 'success', `正常 (${data.total}个城市)`);
+                    log(`API连接正常，共有 ${data.total} 个城市`);
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                updateStatus('apiStatus', 'error', '连接失败');
+                log('API连接失败: ' + error.message, 'error');
+            }
+        }
+
+        async function runChartTest() {
+            const citySelect = document.getElementById('testCitySelect');
+            const testButton = document.getElementById('testButton');
+            const city = citySelect.value;
+
+            if (!city) {
+                showResult('请选择一个城市进行测试', true);
+                return;
+            }
+
+            testButton.disabled = true;
+            testButton.textContent = '测试中...';
+            clearResults();
+
+            log(`开始测试城市: ${city}`);
+
+            try {
+                // 1. 测试数据获取
+                log('步骤1: 获取城市数据...');
+                const response = await fetch(`/api/city/${encodeURIComponent(city)}/new_house_basic`);
+                
+                if (!response.ok) {
+                    throw new Error(`API请求失败: ${response.status} ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                log('数据获取成功');
+
+                if (!data.city_data || data.city_data.status !== 'success') {
+                    throw new Error('城市数据状态异常');
+                }
+
+                const cityData = data.city_data;
+                log(`城市数据验证通过: ${cityData.data_count} 个数据点`);
+
+                // 2. 测试数据处理
+                log('步骤2: 处理数据...');
+                const sourceData = cityData.corrected_result || cityData.raw_data;
+                
+                if (!sourceData || sourceData.length === 0) {
+                    throw new Error('没有可用的数据');
+                }
+
+                const sortedData = sourceData.sort((a, b) => {
+                    return new Date(a.date + '-01') - new Date(b.date + '-01');
+                });
+
+                const chartData = sortedData.map(item => ({
+                    x: item.date + '-01',
+                    y: item.actual_value || item.month_on_month || 100
+                }));
+
+                log(`数据处理完成: ${chartData.length} 个数据点`);
+                log(`时间范围: ${sortedData[0].date} 到 ${sortedData[sortedData.length-1].date}`);
+                log(`数值范围: ${Math.min(...chartData.map(d => d.y)).toFixed(2)} - ${Math.max(...chartData.map(d => d.y)).toFixed(2)}`);
+
+                // 3. 测试图表创建
+                log('步骤3: 创建图表...');
+                
+                if (testChart) {
+                    testChart.destroy();
+                }
+
+                const canvas = document.getElementById('testChart');
+                const ctx = canvas.getContext('2d');
+
+                testChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            label: '房价指数',
+                            data: chartData,
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            fill: false,
+                            tension: 0.1,
+                            borderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: `${city} 房价指数测试`,
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: {
+                                    unit: 'month',
+                                    displayFormats: {
+                                        month: 'yyyy年M月'
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: '时间'
+                                },
+                                ticks: {
+                                    maxTicksLimit: 12,
+                                    callback: function(value, index, values) {
+                                        const date = new Date(value);
+                                        return `${date.getFullYear()}年${date.getMonth() + 1}月`;
+                                    }
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: '指数'
+                                }
+                            }
+                        }
+                    }
+                });
+
+                log('图表创建成功!');
+                showResult(`✅ 测试成功! ${city} 的房价数据图表已正常显示`);
+
+            } catch (error) {
+                log('测试失败: ' + error.message, 'error');
+                showResult(`❌ 测试失败: ${error.message}`, true);
+            } finally {
+                testButton.disabled = false;
+                testButton.textContent = '开始测试';
+            }
+        }
+
+        // 页面加载时运行系统检查
+        document.addEventListener('DOMContentLoaded', function() {
+            log('诊断页面加载完成');
+            setTimeout(checkSystem, 100);
+        });
+    </script>
+</body>
+</html>
