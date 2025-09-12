@@ -73,6 +73,14 @@ setup_venv() {
         # 检查venv中的Python是否存在
         local venv_python="$VENV_DIR/bin/python"
         if [ -f "$venv_python" ]; then
+            # 设置venv目录的权限，确保www-data用户可以访问
+            log "设置虚拟环境权限..."
+            chmod -R 755 "$VENV_DIR"
+            chown -R $USER:$USER "$VENV_DIR" 2>/dev/null || warn "无法设置venv目录所有者"
+            
+            # 确保Python可执行文件有执行权限
+            chmod +x "$venv_python" 2>/dev/null || warn "无法设置Python执行权限"
+            
             PYTHON_BIN="$venv_python"
             log "使用虚拟环境中的Python: $PYTHON_BIN"
             
@@ -262,6 +270,36 @@ view_logs() {
     fi
 }
 
+# 修复venv权限
+fix_venv_permissions() {
+    log "修复虚拟环境权限..."
+    
+    if [ ! -d "$VENV_DIR" ]; then
+        error "虚拟环境目录不存在: $VENV_DIR"
+        exit 1
+    fi
+    
+    # 设置venv目录权限
+    log "设置虚拟环境权限..."
+    chmod -R 755 "$VENV_DIR"
+    chown -R $USER:$USER "$VENV_DIR" 2>/dev/null || warn "无法设置venv目录所有者"
+    
+    # 确保Python可执行文件有执行权限
+    local venv_python="$VENV_DIR/bin/python"
+    if [ -f "$venv_python" ]; then
+        chmod +x "$venv_python" 2>/dev/null || warn "无法设置Python执行权限"
+        log "Python权限修复完成: $venv_python"
+    else
+        error "Python可执行文件不存在: $venv_python"
+        exit 1
+    fi
+    
+    # 修复其他可执行文件权限
+    find "$VENV_DIR/bin" -type f -name "*" -exec chmod +x {} \; 2>/dev/null || warn "无法设置bin目录文件权限"
+    
+    log "虚拟环境权限修复完成"
+}
+
 # 创建虚拟环境
 create_venv() {
     log "创建Python虚拟环境..."
@@ -293,6 +331,14 @@ create_venv() {
     
     if [ $? -eq 0 ]; then
         log "虚拟环境创建成功"
+        
+        # 设置虚拟环境权限
+        log "设置虚拟环境权限..."
+        chmod -R 755 "$VENV_DIR"
+        chown -R $USER:$USER "$VENV_DIR" 2>/dev/null || warn "无法设置venv目录所有者"
+        
+        # 确保Python可执行文件有执行权限
+        chmod +x "$VENV_DIR/bin/python" 2>/dev/null || warn "无法设置Python执行权限"
         
         # 激活虚拟环境并安装依赖
         log "激活虚拟环境并安装依赖..."
@@ -341,21 +387,28 @@ main() {
             check_project
             create_venv
             ;;
+        fix-permissions)
+            check_root
+            check_project
+            fix_venv_permissions
+            ;;
         *)
-            echo "用法: $0 {start|stop|restart|status|logs|create-venv}"
+            echo "用法: $0 {start|stop|restart|status|logs|create-venv|fix-permissions}"
             echo ""
             echo "命令说明:"
-            echo "  start       - 启动服务"
-            echo "  stop        - 停止服务"
-            echo "  restart     - 重启服务"
-            echo "  status      - 检查服务状态"
-            echo "  logs        - 查看实时日志"
-            echo "  create-venv - 创建Python虚拟环境"
+            echo "  start          - 启动服务"
+            echo "  stop           - 停止服务"
+            echo "  restart        - 重启服务"
+            echo "  status         - 检查服务状态"
+            echo "  logs           - 查看实时日志"
+            echo "  create-venv    - 创建Python虚拟环境"
+            echo "  fix-permissions - 修复venv权限问题"
             echo ""
             echo "注意:"
             echo "  - 脚本会自动检测并使用项目目录下的venv虚拟环境"
             echo "  - 如果venv不存在，将使用系统默认Python"
             echo "  - 建议先运行 'create-venv' 创建虚拟环境"
+            echo "  - 如果遇到权限问题，运行 'fix-permissions' 修复"
             exit 1
             ;;
     esac
