@@ -158,13 +158,13 @@ python city_price_processor.py
 ### Docker开发
 ```bash
 # 构建镜像
-docker-compose build
+docker compose build
 
 # 启动服务
-docker-compose up -d
+docker compose up -d
 
 # 查看日志
-docker-compose logs -f
+docker compose logs -f
 ```
 
 ## 🔍 故障排除

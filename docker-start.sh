@@ -31,30 +31,30 @@ log "开始启动房价数据可视化系统..."
 
 # 构建并启动服务
 log "构建Docker镜像..."
-docker-compose build
+docker compose build
 
 log "启动Web服务..."
-docker-compose up -d house-price-web
+docker compose up -d house-price-web
 
 # 等待服务启动
 log "等待服务启动..."
 sleep 10
 
 # 检查服务状态
-if docker-compose ps house-price-web | grep -q "Up"; then
+if docker compose ps house-price-web | grep -q "Up"; then
     log "✅ 服务启动成功！"
     log "🌐 访问地址: http://localhost:8000"
     log "📊 房价数据可视化系统已就绪"
     echo ""
     log "常用命令:"
-    echo "  查看状态: docker-compose ps"
-    echo "  查看日志: docker-compose logs -f house-price-web"
-    echo "  停止服务: docker-compose down"
-    echo "  数据采集: docker-compose run --rm house-price-collector"
-    echo "  数据处理: docker-compose run --rm house-price-processor"
+    echo "  查看状态: docker compose ps"
+    echo "  查看日志: docker compose logs -f house-price-web"
+    echo "  停止服务: docker compose down"
+    echo "  数据采集: docker compose run --rm house-price-collector"
+    echo "  数据处理: docker compose run --rm house-price-processor"
 else
     warn "❌ 服务启动失败"
     echo "查看错误日志:"
-    docker-compose logs house-price-web
+    docker compose logs house-price-web
     exit 1
 fi

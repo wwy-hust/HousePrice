@@ -42,7 +42,7 @@ check_docker() {
         exit 1
     fi
 
-    if ! command -v docker-compose &> /dev/null && ! docker compose version &> /dev/null; then
+    if ! docker compose version &> /dev/null; then
         error "Docker Compose未安装，请先安装Docker Compose"
         exit 1
     fi
@@ -79,25 +79,25 @@ check_project() {
 # 构建镜像
 build_images() {
     log "构建Docker镜像..."
-    docker-compose build --no-cache
+    docker compose build --no-cache
     log "镜像构建完成"
 }
 
 # 启动Web服务
 start_web() {
     log "启动房价数据可视化Web服务..."
-    docker-compose up -d $WEB_SERVICE
+    docker compose up -d $WEB_SERVICE
     
     # 等待服务启动
     sleep 5
     
-    if docker-compose ps $WEB_SERVICE | grep -q "Up"; then
+    if docker compose ps $WEB_SERVICE | grep -q "Up"; then
         log "Web服务启动成功"
         log "访问地址: http://localhost:8000"
         return 0
     else
         error "Web服务启动失败"
-        docker-compose logs $WEB_SERVICE
+        docker compose logs $WEB_SERVICE
         return 1
     fi
 }
@@ -105,46 +105,46 @@ start_web() {
 # 停止Web服务
 stop_web() {
     log "停止Web服务..."
-    docker-compose stop $WEB_SERVICE
+    docker compose stop $WEB_SERVICE
     log "Web服务已停止"
 }
 
 # 重启Web服务
 restart_web() {
     log "重启Web服务..."
-    docker-compose restart $WEB_SERVICE
+    docker compose restart $WEB_SERVICE
     log "Web服务已重启"
 }
 
 # 启动所有服务
 start_all() {
     log "启动所有服务..."
-    docker-compose up -d
+    docker compose up -d
     log "所有服务启动完成"
 }
 
 # 停止所有服务
 stop_all() {
     log "停止所有服务..."
-    docker-compose down
+    docker compose down
     log "所有服务已停止"
 }
 
 # 重启所有服务
 restart_all() {
     log "重启所有服务..."
-    docker-compose restart
+    docker compose restart
     log "所有服务已重启"
 }
 
 # 查看服务状态
 status() {
     log "服务状态:"
-    docker-compose ps
+    docker compose ps
     echo ""
     
     # 检查Web服务健康状态
-    if docker-compose ps $WEB_SERVICE | grep -q "Up"; then
+    if docker compose ps $WEB_SERVICE | grep -q "Up"; then
         log "Web服务运行正常"
         info "访问地址: http://localhost:8000"
     else
@@ -156,34 +156,34 @@ status() {
 logs() {
     local service=${1:-$WEB_SERVICE}
     log "查看 $service 服务日志..."
-    docker-compose logs -f $service
+    docker compose logs -f $service
 }
 
 # 进入容器
 exec_container() {
     local service=${1:-$WEB_SERVICE}
     log "进入 $service 容器..."
-    docker-compose exec $service /bin/bash
+    docker compose exec $service /bin/bash
 }
 
 # 数据采集
 collect_data() {
     log "开始数据采集..."
-    docker-compose run --rm $COLLECTOR_SERVICE
+    docker compose run --rm $COLLECTOR_SERVICE
     log "数据采集完成"
 }
 
 # 数据处理
 process_data() {
     log "开始数据处理..."
-    docker-compose run --rm $PROCESSOR_SERVICE
+    docker compose run --rm $PROCESSOR_SERVICE
     log "数据处理完成"
 }
 
 # 批量处理
 batch_process() {
     log "开始批量处理..."
-    docker-compose run --rm $BATCH_SERVICE
+    docker compose run --rm $BATCH_SERVICE
     log "批量处理完成"
 }
 
@@ -211,7 +211,7 @@ cleanup() {
     log "清理Docker资源..."
     
     # 停止并删除容器
-    docker-compose down
+    docker compose down
     
     # 删除未使用的镜像
     docker image prune -f

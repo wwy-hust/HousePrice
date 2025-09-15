@@ -29,7 +29,7 @@ if ! command -v docker &> /dev/null; then
     exit 1
 fi
 
-if ! command -v docker-compose &> /dev/null && ! docker compose version &> /dev/null; then
+if ! docker compose version &> /dev/null; then
     error "Docker Compose未安装，请先安装Docker Compose"
     exit 1
 fi
@@ -65,7 +65,7 @@ fi
 
 # 检查docker-compose.yml语法
 log "检查docker-compose.yml语法..."
-if docker-compose config > /dev/null 2>&1; then
+if docker compose config > /dev/null 2>&1; then
     log "✓ docker-compose.yml语法正确"
 else
     error "docker-compose.yml语法错误"
