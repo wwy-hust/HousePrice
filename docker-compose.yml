@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  # 房价数据可视化Web服务
+  house-price-web:
+    build: .
+    container_name: house-price-web
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./collected_data:/app/collected_data
+      - ./results:/app/results
+      - ./logs:/app/logs
+      - ./HousePriceURL.csv:/app/HousePriceURL.csv
+    environment:
+      - TZ=Asia/Shanghai
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - house-price-network
+
+  # 数据采集服务（定时任务）
+  house-price-collector:
+    build: .
+    container_name: house-price-collector
+    command: python data_collector.py
+    volumes:
+      - ./collected_data:/app/collected_data
+      - ./results:/app/results
+      - ./logs:/app/logs
+      - ./HousePriceURL.csv:/app/HousePriceURL.csv
+    environment:
+      - TZ=Asia/Shanghai
+    restart: "no"  # 手动触发，不自动重启
+    depends_on:
+      - house-price-web
+    networks:
+      - house-price-network
+
+  # 数据处理服务（定时任务）
+  house-price-processor:
+    build: .
+    container_name: house-price-processor
+    command: python city_price_processor.py
+    volumes:
+      - ./collected_data:/app/collected_data
+      - ./results:/app/results
+      - ./logs:/app/logs
+    environment:
+      - TZ=Asia/Shanghai
+    restart: "no"  # 手动触发，不自动重启
+    depends_on:
+      - house-price-web
+    networks:
+      - house-price-network
+
+  # 批量处理服务（定时任务）
+  house-price-batch:
+    build: .
+    container_name: house-price-batch
+    command: python batch_process_all_cities.py
+    volumes:
+      - ./collected_data:/app/collected_data
+      - ./results:/app/results
+      - ./logs:/app/logs
+    environment:
+      - TZ=Asia/Shanghai
+    restart: "no"  # 手动触发，不自动重启
+    depends_on:
+      - house-price-web
+    networks:
+      - house-price-network
+
+networks:
+  house-price-network:
+    driver: bridge
+
+volumes:
+  collected_data:
+  results:
+  logs:
