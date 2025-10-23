@@ -226,6 +226,102 @@ class HousePriceURLUpdater:
         print(f"翻页完成，共检查了 {page_num} 页，找到 {len(all_new_records)} 个新记录")
         return all_new_records
     
+    def extract_house_price_data_enhanced(self):
+        """增强版数据提取，专门处理国家统计局网站结构"""
+        all_new_records = []
+        seen_urls = set()
+        
+        print("使用增强版数据提取方法...")
+        
+        # 首先尝试主页面
+        html_content = self.get_page_content(self.data_url)
+        if html_content:
+            print("正在分析主页面结构...")
+            
+            # 使用更灵活的解析方法
+            soup = BeautifulSoup(html_content, 'html.parser')
+            
+            # 查找所有包含房价关键词的链接
+            all_links = soup.find_all('a', href=True)
+            print(f"页面中找到 {len(all_links)} 个链接")
+            
+            for link in all_links:
+                link_text = link.get_text(strip=True)
+                href = link.get('href')
+                
+                # 更宽松的匹配条件
+                if any(keyword in link_text for keyword in [
+                    "70个大中城市", "商品住宅销售价格", "房价变动", "住宅销售价格"
+                ]):
+                    print(f"找到相关链接: {link_text}")
+                    
+                    # 构建完整URL
+                    if href.startswith('http'):
+                        full_url = href
+                    elif href.startswith('./'):
+                        full_url = urljoin(self.data_url, href[2:])
+                    else:
+                        full_url = urljoin(self.base_url, href)
+                    
+                    # 检查是否已存在
+                    if full_url in self.existing_urls:
+                        print(f"URL已存在，跳过: {link_text}")
+                        continue
+                    
+                    if full_url in seen_urls:
+                        continue
+                    
+                    seen_urls.add(full_url)
+                    
+                    # 提取日期
+                    date_str = self.extract_date_from_link_context(link, soup)
+                    
+                    record = {
+                        'title': link_text,
+                        'url': full_url,
+                        'date': date_str
+                    }
+                    all_new_records.append(record)
+                    print(f"添加新记录: {link_text} -> {full_url}")
+        
+        print(f"增强版提取完成，找到 {len(all_new_records)} 个新记录")
+        return all_new_records
+    
+    def extract_date_from_link_context(self, link, soup):
+        """从链接上下文提取日期"""
+        # 尝试从父元素获取日期
+        parent = link.parent
+        while parent and parent.name != 'body':
+            parent_text = parent.get_text()
+            
+            # 查找日期模式
+            date_patterns = [
+                r'(\d{4})-(\d{1,2})-(\d{1,2})',  # 2025-10-20
+                r'(\d{4})年(\d{1,2})月(\d{1,2})日',  # 2025年10月20日
+                r'(\d{4})/(\d{1,2})/(\d{1,2})',  # 2025/10/20
+            ]
+            
+            for pattern in date_patterns:
+                match = re.search(pattern, parent_text)
+                if match:
+                    year, month, day = match.groups()
+                    return f"{year}/{int(month)}/{int(day)}"
+            
+            parent = parent.parent
+        
+        # 如果没找到，从链接文本推断
+        date_match = re.search(r'(\d{4})年(\d{1,2})月', link.get_text())
+        if date_match:
+            year, month = date_match.groups()
+            # 根据历史数据，房价数据通常在次月中旬发布
+            if int(month) == 12:
+                return f"{int(year)+1}/1/15"
+            else:
+                return f"{year}/{int(month)+1}/15"
+        
+        # 默认使用当前日期
+        return datetime.now().strftime("%Y/%m/%d")
+    
     def get_accurate_date_from_detail_page(self, url):
         """从详情页面获取准确的发布日期"""
         try:
@@ -389,10 +485,16 @@ class HousePriceURLUpdater:
         # 1. 读取现有数据
         self.load_existing_data()
         
-        # 2. 从多页中提取新数据（包含翻页逻辑）
-        new_records = self.extract_house_price_data()
+        # 2. 首先尝试增强版数据提取
+        print("尝试增强版数据提取...")
+        new_records = self.extract_house_price_data_enhanced()
         
-        # 3. 更新CSV文件
+        # 3. 如果增强版没有找到新数据，使用原始方法
+        if not new_records:
+            print("增强版未找到新数据，尝试原始翻页方法...")
+            new_records = self.extract_house_price_data()
+        
+        # 4. 更新CSV文件
         self.update_csv_file(new_records)
         
         # 4. 如果有新记录，则进行数据采集和处理
