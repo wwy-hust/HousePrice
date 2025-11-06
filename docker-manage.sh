@@ -166,11 +166,106 @@ exec_container() {
     docker compose exec $service /bin/bash
 }
 
+# 更新URL列表（不执行数据采集）
+update_urls() {
+    log "更新房价数据URL列表..."
+    
+    # 检查 update_house_price_urls.py 是否存在
+    if [ ! -f "update_house_price_urls.py" ]; then
+        error "update_house_price_urls.py 文件不存在"
+        return 1
+    fi
+    
+    # 记录CSV文件的修改时间和行数（用于判断是否有更新）
+    local csv_file="HousePriceURL.csv"
+    local csv_backup=""
+    local csv_line_count_before=0
+    local csv_line_count_after=0
+    
+    if [ -f "$csv_file" ]; then
+        csv_backup="${csv_file}.backup.$$"
+        cp "$csv_file" "$csv_backup"
+        csv_line_count_before=$(wc -l < "$csv_file" 2>/dev/null || echo "0")
+        log "CSV文件当前行数: $csv_line_count_before"
+    else
+        warn "CSV文件不存在，将创建新文件"
+    fi
+    
+    # 在容器中运行URL更新脚本
+    log "正在检查并更新URL列表..."
+    if docker compose run --rm $COLLECTOR_SERVICE python update_house_price_urls.py 2>&1 | tee /tmp/url_update.log; then
+        # 检查CSV文件是否有更新
+        if [ -f "$csv_file" ]; then
+            csv_line_count_after=$(wc -l < "$csv_file" 2>/dev/null || echo "0")
+            
+            # 比较文件是否有变化
+            if [ -f "$csv_backup" ]; then
+                if ! diff -q "$csv_backup" "$csv_file" > /dev/null 2>&1; then
+                    log "检测到CSV文件已更新 (行数: $csv_line_count_before -> $csv_line_count_after)"
+                    rm -f "$csv_backup"
+                    return 0  # 有更新，返回0表示成功且有更新
+                else
+                    log "CSV文件未发生变化，无新数据"
+                    rm -f "$csv_backup"
+                    return 2  # 无更新，返回2表示无新数据
+                fi
+            else
+                # 如果没有备份文件，说明是新文件
+                if [ "$csv_line_count_after" -gt 1 ]; then
+                    log "检测到新CSV文件 (行数: $csv_line_count_after)"
+                    return 0  # 有新文件，返回0
+                else
+                    log "CSV文件为空或无效"
+                    return 2  # 无有效数据
+                fi
+            fi
+        else
+            error "CSV文件更新后不存在"
+            rm -f "$csv_backup"
+            return 1
+        fi
+    else
+        error "URL更新脚本执行失败"
+        # 如果失败，恢复备份
+        if [ -f "$csv_backup" ]; then
+            mv "$csv_backup" "$csv_file"
+            log "已恢复CSV文件备份"
+        fi
+        return 1
+    fi
+}
+
 # 数据采集
 collect_data() {
-    log "开始数据采集..."
-    docker compose run --rm $COLLECTOR_SERVICE
-    log "数据采集完成"
+    log "开始数据采集流程..."
+    
+    # 1. 先更新URL列表
+    info "步骤1: 更新URL列表"
+    update_urls
+    local update_result=$?
+    
+    # 2. 根据更新结果决定是否执行数据采集
+    if [ $update_result -eq 0 ]; then
+        # 有更新，执行数据采集
+        log "检测到URL更新，开始执行数据采集..."
+        info "步骤2: 执行数据采集"
+        docker compose run --rm $COLLECTOR_SERVICE
+        if [ $? -eq 0 ]; then
+            log "数据采集完成"
+            return 0
+        else
+            error "数据采集失败"
+            return 1
+        fi
+    elif [ $update_result -eq 2 ]; then
+        # 无更新，跳过数据采集
+        info "无新URL，跳过数据采集"
+        return 0
+    else
+        # 更新失败
+        error "URL更新失败，跳过数据采集"
+        return 1
+    fi
 }
 
 # 数据处理

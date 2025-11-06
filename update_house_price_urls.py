@@ -22,6 +22,7 @@ class HousePriceURLUpdater:
         self.data_url = "https://www.stats.gov.cn/sj/zxfb/"
         self.existing_urls = set()
         self.existing_data = []
+        self.latest_url = None  # CSV文件中第一条记录（最新记录）的URL
         
         # 请求头，模拟浏览器访问
         self.headers = {
@@ -46,12 +47,18 @@ class HousePriceURLUpdater:
                     for row in rows[1:]:  # 跳过标题行
                         if len(row) >= 2:
                             self.existing_urls.add(row[1])  # URL列
+                    
+                    # 获取第一条记录（最新记录）的URL，作为停止翻页的标记
+                    if len(rows) > 1 and len(rows[1]) >= 2:
+                        self.latest_url = rows[1][1]  # 第一条数据行的URL列
+                        print(f"最新记录URL（停止标记）: {self.latest_url}")
                             
             print(f"已读取现有数据: {len(self.existing_urls)} 条记录")
             
         except FileNotFoundError:
             print("CSV文件不存在，将创建新文件")
             self.existing_data = [["标题", "标题链接", "时间"]]
+            self.latest_url = None
         except Exception as e:
             print(f"读取CSV文件时出错: {e}")
             sys.exit(1)
@@ -150,62 +157,67 @@ class HousePriceURLUpdater:
         return page_records
     
     def extract_house_price_data(self):
-        """从多页中提取房价数据，直到遇到已存在的条目"""
+        """从多页中提取房价数据，直到遇到已存在的条目（改进版，支持智能翻页）"""
         all_new_records = []
         seen_urls = set()  # 用于去重
+        visited_urls = set()  # 记录已访问的页面URL，避免重复访问
         page_num = 1
-        max_pages = 10  # 最多检查10页，避免无限循环
+        max_pages = 100  # 增加最大页数，确保能找到最新记录（最多检查100页）
         
-        while page_num <= max_pages:
-            # 构建页面URL
-            if page_num == 1:
-                page_url = self.data_url
-            else:
-                # 尝试不同的分页URL模式
-                page_patterns = [
-                    f"{self.data_url}index_{page_num}.html",
-                    f"{self.data_url}?page={page_num}",
-                    f"{self.base_url}/sj/zxfb/index_{page_num}.html"
-                ]
-                
-                page_url = None
-                for pattern in page_patterns:
-                    test_content = self.get_page_content(pattern)
-                    if test_content and len(test_content) > 1000:  # 简单检查页面是否有效
-                        page_url = pattern
-                        break
-                
-                if not page_url:
-                    print(f"无法访问第{page_num}页，停止翻页")
-                    break
+        # 从第一页开始（使用 index.html 格式）
+        current_url = f"{self.data_url}index.html"
+        
+        while current_url and page_num <= max_pages:
+            # 避免重复访问
+            if current_url in visited_urls:
+                print(f"页面已访问过，跳过: {current_url}")
+                break
             
-            print(f"正在检查第{page_num}页: {page_url}")
+            visited_urls.add(current_url)
+            print(f"\n正在检查第 {page_num} 页: {current_url}")
             
             # 获取页面内容
-            html_content = self.get_page_content(page_url)
+            html_content = self.get_page_content(current_url)
             if not html_content:
-                print(f"无法获取第{page_num}页内容，停止翻页")
+                print(f"无法获取第 {page_num} 页内容，停止翻页")
                 break
+            
+            # 解析页面
+            soup = BeautifulSoup(html_content, 'html.parser')
             
             # 提取当前页的房价数据
             page_records = self.extract_house_price_data_from_page(html_content)
             
             if not page_records:
-                print(f"第{page_num}页未找到房价数据，停止翻页")
-                break
+                print(f"第 {page_num} 页未找到房价数据，尝试查找下一页...")
+                # 即使没找到数据，也尝试查找下一页（可能数据在后面的页面）
+                next_url = self.find_next_page_url(soup, current_url)
+                if next_url:
+                    current_url = next_url
+                    page_num += 1
+                    time.sleep(1)
+                    continue
+                else:
+                    print(f"未找到下一页链接，停止翻页")
+                    break
             
-            print(f"第{page_num}页找到 {len(page_records)} 个房价数据条目")
+            print(f"第 {page_num} 页找到 {len(page_records)} 个房价数据条目")
             
-            # 检查是否有新数据，以及是否遇到已存在的条目
-            found_existing = False
+            # 检查是否有新数据，以及是否遇到CSV中的第一条记录（最新记录）
+            found_latest_record = False  # 是否遇到CSV中的第一条记录（最新记录）
             page_new_records = []
             
             for record in page_records:
-                # 检查URL是否已存在
-                if record['url'] in self.existing_urls:
-                    print(f"遇到已存在条目，停止翻页: {record['title']}")
-                    found_existing = True
+                # 检查是否遇到CSV中的第一条记录（最新记录）
+                if self.latest_url and record['url'] == self.latest_url:
+                    print(f"遇到CSV中的最新记录，停止翻页: {record['title']}")
+                    found_latest_record = True
                     break
+                
+                # 如果URL已存在但不是最新记录，跳过但继续翻页
+                if record['url'] in self.existing_urls:
+                    print(f"遇到已存在条目（非最新），跳过但继续翻页: {record['title']}")
+                    continue
                 
                 # 检查是否在当前批次中重复
                 if record['url'] not in seen_urls:
@@ -215,35 +227,204 @@ class HousePriceURLUpdater:
             
             # 添加新记录
             all_new_records.extend(page_new_records)
+            print(f"第 {page_num} 页找到 {len(page_new_records)} 个新记录")
             
-            # 如果遇到已存在的条目，停止翻页
-            if found_existing:
+            # 如果遇到CSV中的第一条记录（最新记录），停止翻页
+            if found_latest_record:
                 break
             
-            page_num += 1
-            time.sleep(1)  # 避免请求过快
+            # 查找下一页URL
+            next_url = self.find_next_page_url(soup, current_url)
+            if next_url:
+                current_url = next_url
+                page_num += 1
+                time.sleep(1)  # 避免请求过快
+            else:
+                # 如果找不到下一页链接，尝试使用传统方法构建URL
+                # 基于当前URL构建下一页
+                if current_url.endswith('index.html'):
+                    # 从 index.html 到 index_1.html
+                    next_url = current_url.replace('index.html', 'index_1.html')
+                    page_patterns = [next_url]
+                elif 'index_' in current_url:
+                    # 如果URL包含 index_，提取当前页码并加1
+                    match = re.search(r'index_(\d+)\.html', current_url)
+                    if match:
+                        current_page = int(match.group(1))
+                        next_page = current_page + 1
+                        next_url = re.sub(r'index_\d+\.html', f'index_{next_page}.html', current_url)
+                        page_patterns = [next_url]
+                    else:
+                        page_patterns = [f"{self.data_url}index_1.html"]
+                else:
+                    # 如果URL不包含 index_，构建 index_1.html（第二页）
+                    page_patterns = [
+                        f"{self.data_url}index_1.html",
+                        f"{self.data_url}?page=2",
+                        f"{self.base_url}/sj/zxfb/index_1.html"
+                    ]
+                
+                next_url = None
+                for pattern in page_patterns:
+                    # 简单检查URL是否有效（不实际访问，只检查格式）
+                    if pattern not in visited_urls:
+                        next_url = pattern
+                        break
+                
+                if next_url:
+                    current_url = next_url
+                    page_num += 1
+                    time.sleep(1)
+                else:
+                    print(f"无法找到或构建下一页URL，停止翻页")
+                    break
         
-        print(f"翻页完成，共检查了 {page_num} 页，找到 {len(all_new_records)} 个新记录")
+        print(f"\n翻页完成，共检查了 {page_num} 页，找到 {len(all_new_records)} 个新记录")
         return all_new_records
     
+    def find_next_page_url(self, soup, current_url):
+        """从页面中查找下一页的URL"""
+        # 查找常见的分页链接模式
+        next_page_keywords = ['下一页', '下页', 'next', '>', '»']
+        
+        # 方法1: 查找包含"下一页"文本的链接
+        for keyword in next_page_keywords:
+            next_links = soup.find_all('a', href=True, string=re.compile(keyword, re.I))
+            for link in next_links:
+                href = link.get('href')
+                if href:
+                    if href.startswith('http'):
+                        return href
+                    elif href.startswith('./'):
+                        return urljoin(self.data_url, href[2:])
+                    else:
+                        return urljoin(self.base_url, href)
+        
+        # 方法2: 查找包含"下一页"文本的父元素中的链接
+        for keyword in next_page_keywords:
+            elements = soup.find_all(string=re.compile(keyword, re.I))
+            for elem in elements:
+                parent = elem.parent
+                while parent:
+                    if parent.name == 'a' and parent.get('href'):
+                        href = parent.get('href')
+                        if href.startswith('http'):
+                            return href
+                        elif href.startswith('./'):
+                            return urljoin(self.data_url, href[2:])
+                        else:
+                            return urljoin(self.base_url, href)
+                    parent = parent.parent
+        
+        # 方法3: 处理特殊的分页模式
+        # 如果当前是 index.html，下一页是 index_1.html
+        if current_url.endswith('index.html') or current_url == f"{self.data_url}index.html":
+            return f"{self.data_url}index_1.html"
+        
+        # 如果当前是 index_N.html，下一页是 index_(N+1).html
+        page_num_match = re.search(r'index_(\d+)\.html', current_url)
+        if page_num_match:
+            current_page = int(page_num_match.group(1))
+            next_page = current_page + 1
+            # 尝试构建下一页URL
+            next_url = current_url.replace(f'index_{current_page}.html', f'index_{next_page}.html')
+            return next_url
+        
+        # 方法4: 查找所有数字链接，尝试找到下一页
+        page_links = soup.find_all('a', href=re.compile(r'index_\d+\.html'))
+        if page_links:
+            page_numbers = []
+            for link in page_links:
+                href = link.get('href', '')
+                match = re.search(r'index_(\d+)\.html', href)
+                if match:
+                    page_numbers.append(int(match.group(1)))
+            
+            if page_numbers:
+                # 从当前URL提取页码
+                current_page = 0  # 0表示index.html（第一页）
+                match = re.search(r'index_(\d+)\.html', current_url)
+                if match:
+                    current_page = int(match.group(1))
+                elif current_url.endswith('index.html'):
+                    current_page = 0  # index.html 是第一页
+                
+                # 找到下一页
+                next_page = current_page + 1
+                max_page = max(page_numbers)
+                # 如果下一页在页面链接中，或者下一页不超过最大页码（允许尝试）
+                if next_page in page_numbers or (next_page <= max_page + 2):  # 允许尝试超出2页
+                    # 构建下一页URL
+                    if current_url.endswith('/'):
+                        if next_page == 1:
+                            next_url = f"{current_url}index_1.html"
+                        else:
+                            next_url = f"{current_url}index_{next_page}.html"
+                    elif 'index_' in current_url:
+                        next_url = re.sub(r'index_\d+\.html', f'index_{next_page}.html', current_url)
+                    elif current_url.endswith('index.html'):
+                        # 从 index.html 到 index_1.html
+                        next_url = current_url.replace('index.html', 'index_1.html')
+                    else:
+                        next_url = urljoin(current_url, f'index_{next_page}.html')
+                    return next_url
+        
+        # 方法5: 如果当前URL是 index.html（第一页），构建 index_1.html（第二页）
+        if current_url.endswith('index.html') or current_url == f"{self.data_url}index.html":
+            return f"{self.data_url}index_1.html"
+        
+        # 方法6: 如果当前URL是第一页（没有index_），尝试构建第二页URL
+        if not re.search(r'index_\d+\.html', current_url) and not current_url.endswith('index.html'):
+            # 当前URL是第一页，尝试构建第二页
+            if current_url.endswith('/'):
+                next_url = f"{current_url}index_1.html"
+            else:
+                # 如果URL是 https://www.stats.gov.cn/sj/zxfb/，构建 index_1.html
+                if current_url == self.data_url:
+                    next_url = f"{self.data_url}index_1.html"
+                else:
+                    next_url = f"{current_url}/index_1.html"
+            return next_url
+        
+        return None
+    
     def extract_house_price_data_enhanced(self):
-        """增强版数据提取，专门处理国家统计局网站结构"""
+        """增强版数据提取，专门处理国家统计局网站结构，支持翻页"""
         all_new_records = []
         seen_urls = set()
+        visited_urls = set()  # 记录已访问的页面URL，避免重复访问
         
-        print("使用增强版数据提取方法...")
+        print("使用增强版数据提取方法（支持翻页）...")
         
-        # 首先尝试主页面
-        html_content = self.get_page_content(self.data_url)
-        if html_content:
-            print("正在分析主页面结构...")
+        # 从第一页开始（使用 index.html 格式）
+        current_url = f"{self.data_url}index.html"
+        page_num = 1
+        max_pages = 100  # 增加最大页数，确保能找到最新记录（最多检查100页）
+        
+        while current_url and page_num <= max_pages:
+            # 避免重复访问
+            if current_url in visited_urls:
+                print(f"页面已访问过，跳过: {current_url}")
+                break
             
-            # 使用更灵活的解析方法
+            visited_urls.add(current_url)
+            print(f"\n正在检查第 {page_num} 页: {current_url}")
+            
+            # 获取页面内容
+            html_content = self.get_page_content(current_url)
+            if not html_content:
+                print(f"无法获取第 {page_num} 页内容，停止翻页")
+                break
+            
+            # 解析页面
             soup = BeautifulSoup(html_content, 'html.parser')
             
             # 查找所有包含房价关键词的链接
             all_links = soup.find_all('a', href=True)
             print(f"页面中找到 {len(all_links)} 个链接")
+            
+            page_new_records = []
+            found_latest_record = False  # 是否遇到CSV中的第一条记录（最新记录）
             
             for link in all_links:
                 link_text = link.get_text(strip=True)
@@ -253,8 +434,6 @@ class HousePriceURLUpdater:
                 if any(keyword in link_text for keyword in [
                     "70个大中城市", "商品住宅销售价格", "房价变动", "住宅销售价格"
                 ]):
-                    print(f"找到相关链接: {link_text}")
-                    
                     # 构建完整URL
                     if href.startswith('http'):
                         full_url = href
@@ -263,9 +442,15 @@ class HousePriceURLUpdater:
                     else:
                         full_url = urljoin(self.base_url, href)
                     
-                    # 检查是否已存在
+                    # 检查是否遇到CSV中的第一条记录（最新记录）
+                    if self.latest_url and full_url == self.latest_url:
+                        print(f"遇到CSV中的最新记录，停止翻页: {link_text}")
+                        found_latest_record = True
+                        break
+                    
+                    # 如果URL已存在但不是最新记录，跳过但继续翻页
                     if full_url in self.existing_urls:
-                        print(f"URL已存在，跳过: {link_text}")
+                        print(f"遇到已存在条目（非最新），跳过但继续翻页: {link_text}")
                         continue
                     
                     if full_url in seen_urls:
@@ -281,10 +466,28 @@ class HousePriceURLUpdater:
                         'url': full_url,
                         'date': date_str
                     }
-                    all_new_records.append(record)
-                    print(f"添加新记录: {link_text} -> {full_url}")
+                    page_new_records.append(record)
+                    print(f"发现新记录: {link_text} -> {full_url}")
+            
+            # 添加新记录
+            all_new_records.extend(page_new_records)
+            print(f"第 {page_num} 页找到 {len(page_new_records)} 个新记录")
+            
+            # 如果遇到CSV中的第一条记录（最新记录），停止翻页
+            if found_latest_record:
+                break
+            
+            # 查找下一页URL
+            next_url = self.find_next_page_url(soup, current_url)
+            if next_url:
+                current_url = next_url
+                page_num += 1
+                time.sleep(1)  # 避免请求过快
+            else:
+                print(f"未找到下一页链接，停止翻页")
+                break
         
-        print(f"增强版提取完成，找到 {len(all_new_records)} 个新记录")
+        print(f"\n增强版提取完成，共检查了 {page_num} 页，找到 {len(all_new_records)} 个新记录")
         return all_new_records
     
     def extract_date_from_link_context(self, link, soup):
@@ -477,8 +680,13 @@ class HousePriceURLUpdater:
             print(f"数据处理过程中出错: {e}")
             return False
     
-    def run(self):
-        """运行更新程序"""
+    def run(self, auto_collect=False):
+        """
+        运行更新程序
+        
+        Args:
+            auto_collect (bool): 是否自动执行数据采集和处理，默认为False
+        """
         print("开始更新房价数据URL...")
         print("=" * 50)
         
@@ -497,15 +705,15 @@ class HousePriceURLUpdater:
         # 4. 更新CSV文件
         self.update_csv_file(new_records)
         
-        # 4. 如果有新记录，则进行数据采集和处理
-        if new_records:
+        # 5. 根据参数决定是否自动执行数据采集和处理
+        if new_records and auto_collect:
             print(f"\n发现 {len(new_records)} 个新记录，开始自动处理...")
             
-            # 4.1 采集新数据
+            # 5.1 采集新数据
             collect_success = self.collect_new_data(new_records)
             
             if collect_success:
-                # 4.2 处理数据为JSON格式
+                # 5.2 处理数据为JSON格式
                 process_success = self.process_data_to_json()
                 
                 if process_success:
@@ -520,6 +728,9 @@ class HousePriceURLUpdater:
                     print("- ❌ JSON处理失败")
             else:
                 print("\n⚠️  数据采集失败，跳过JSON处理")
+        elif new_records:
+            print(f"\n✅ 发现 {len(new_records)} 个新记录，已更新到CSV文件")
+            print("提示: 使用 --auto-collect 参数可自动执行数据采集")
         else:
             print("\n✅ 无新数据，流程完成")
         
@@ -527,8 +738,12 @@ class HousePriceURLUpdater:
         print("更新完成!")
 
 def main():
+    import sys
+    # 检查是否有 --auto-collect 参数
+    auto_collect = '--auto-collect' in sys.argv or '-a' in sys.argv
+    
     updater = HousePriceURLUpdater()
-    updater.run()
+    updater.run(auto_collect=auto_collect)
 
 if __name__ == "__main__":
     main()
