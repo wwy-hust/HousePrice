@@ -8,6 +8,9 @@
 import os
 import json
 import mimetypes
+import threading
+import subprocess
+import time
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 import logging
@@ -18,6 +21,83 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# 全局更新任务状态
+update_status = {
+    'running': False,
+    'logs': [],        # 完整日志列表，每行一条
+    'step': '',
+    'success': None,
+    'error': '',
+    'start_time': None,
+    'end_time': None,
+}
+update_lock = threading.Lock()
+
+def _push_log(line):
+    with update_lock:
+        update_status['logs'].append(line)
+
+def run_update_task():
+    """在后台线程中执行数据更新"""
+    global update_status
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    script = os.path.join(base_path, 'update_house_price_urls.py')
+
+    with update_lock:
+        update_status.update({
+            'running': True,
+            'logs': ['正在启动更新任务...'],
+            'step': 'starting',
+            'success': None,
+            'error': '',
+            'start_time': time.time(),
+            'end_time': None,
+        })
+
+    try:
+        import sys
+        proc = subprocess.Popen(
+            [sys.executable, script, '--auto-collect'],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            cwd=base_path,
+        )
+
+        last_line = ''
+        for line in proc.stdout:
+            line = line.rstrip()
+            if line:
+                last_line = line
+                _push_log(line)
+                logger.info(f'[update] {line}')
+
+        proc.wait()
+        success = proc.returncode == 0
+
+        with update_lock:
+            update_status['running'] = False
+            update_status['success'] = success
+            update_status['end_time'] = time.time()
+            if success:
+                update_status['step'] = 'done'
+                update_status['logs'].append('数据更新完成！')
+            else:
+                update_status['step'] = 'error'
+                update_status['error'] = f'脚本退出码: {proc.returncode}，最后输出: {last_line}'
+                update_status['logs'].append(f'更新失败：{update_status["error"]}')
+
+    except Exception as e:
+        with update_lock:
+            update_status['running'] = False
+            update_status['success'] = False
+            update_status['step'] = 'error'
+            update_status['error'] = str(e)
+            update_status['logs'].append(f'出错: {e}')
+            update_status['end_time'] = time.time()
+        logger.error(f'更新任务异常: {e}')
+
 
 class HousePriceHandler(BaseHTTPRequestHandler):
     """房价数据HTTP请求处理器"""
@@ -65,6 +145,10 @@ class HousePriceHandler(BaseHTTPRequestHandler):
                 self.serve_city_data(city_name, data_type)
             else:
                 self.send_error(400, "Invalid City Request Format")
+        elif path == '/api/update':
+            self.handle_update_trigger()
+        elif path == '/api/update/status':
+            self.handle_update_status()
         else:
             self.send_error(404, "API Not Found")
     
@@ -125,6 +209,50 @@ class HousePriceHandler(BaseHTTPRequestHandler):
             logger.error(f"读取文件错误 {filename}: {e}")
             self.send_error(500, "File Read Error")
     
+    def handle_update_trigger(self):
+        """触发数据更新任务"""
+        with update_lock:
+            if update_status['running']:
+                resp = {'ok': False, 'message': '已有更新任务正在执行，请稍候'}
+            else:
+                t = threading.Thread(target=run_update_task, daemon=True)
+                t.start()
+                resp = {'ok': True, 'message': '更新任务已启动'}
+
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.end_headers()
+        self.wfile.write(json.dumps(resp, ensure_ascii=False).encode('utf-8'))
+
+    def handle_update_status(self):
+        """返回当前更新状态，支持 ?offset=N 只返回新增日志"""
+        parsed = urlparse(self.path)
+        params = parse_qs(parsed.query)
+        try:
+            offset = int(params.get('offset', ['0'])[0])
+        except (ValueError, IndexError):
+            offset = 0
+
+        with update_lock:
+            logs = update_status['logs']
+            new_logs = logs[offset:]
+            snap = {
+                'running': update_status['running'],
+                'step': update_status['step'],
+                'success': update_status['success'],
+                'error': update_status['error'],
+                'total_logs': len(logs),
+                'new_logs': new_logs,
+            }
+
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Cache-Control', 'no-cache')
+        self.end_headers()
+        self.wfile.write(json.dumps(snap, ensure_ascii=False).encode('utf-8'))
+
     def serve_cities_list(self):
         """提供城市列表"""
         cities = [

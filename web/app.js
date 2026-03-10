@@ -823,3 +823,111 @@ function exportChart() {
 
 // 添加导出按钮事件（如果需要的话）
 // document.getElementById('exportBtn')?.addEventListener('click', exportChart);
+
+// ===== 数据更新功能 =====
+
+let updatePollTimer = null;
+
+function triggerDataUpdate() {
+    const btn = document.getElementById('updateDataBtn');
+    const overlay = document.getElementById('updateModalOverlay');
+    const logEl = document.getElementById('updateLog');
+    const progressBar = document.getElementById('updateProgressBar');
+    const titleEl = document.getElementById('updateModalTitle');
+    const footerEl = document.getElementById('updateModalFooter');
+
+    // 重置弹窗
+    logEl.innerHTML = '';
+    progressBar.className = 'update-progress-bar indeterminate';
+    titleEl.textContent = '正在更新数据';
+    footerEl.style.display = 'none';
+    overlay.classList.add('visible');
+
+    btn.disabled = true;
+    btn.classList.add('spinning');
+
+    fetch('/api/update')
+        .then(r => r.json())
+        .then(data => {
+            appendLog(logEl, data.message);
+            if (data.ok) {
+                startPollingStatus(logEl, progressBar, titleEl, footerEl, btn);
+            } else {
+                finishUpdate(false, data.message, logEl, progressBar, titleEl, footerEl, btn);
+            }
+        })
+        .catch(err => {
+            finishUpdate(false, `请求失败: ${err}`, logEl, progressBar, titleEl, footerEl, btn);
+        });
+}
+
+function startPollingStatus(logEl, progressBar, titleEl, footerEl, btn) {
+    let offset = 0;
+
+    updatePollTimer = setInterval(() => {
+        fetch(`/api/update/status?offset=${offset}`)
+            .then(r => r.json())
+            .then(status => {
+                // 追加所有新日志行
+                if (status.new_logs && status.new_logs.length > 0) {
+                    status.new_logs.forEach(line => appendLog(logEl, line));
+                    offset = status.total_logs;
+                }
+
+                if (!status.running && status.success !== null) {
+                    clearInterval(updatePollTimer);
+                    updatePollTimer = null;
+                    if (status.success) {
+                        finishUpdate(true, '✅ 数据更新完成！页面数据将自动刷新。', logEl, progressBar, titleEl, footerEl, btn);
+                        setTimeout(() => refreshCurrentData(), 1500);
+                    } else {
+                        finishUpdate(false, `❌ 更新失败：${status.error || '未知错误'}`, logEl, progressBar, titleEl, footerEl, btn);
+                    }
+                }
+            })
+            .catch(() => {});
+    }, 800);
+}
+
+function finishUpdate(success, message, logEl, progressBar, titleEl, footerEl, btn) {
+    appendLog(logEl, message, success ? 'success' : 'error');
+    progressBar.className = 'update-progress-bar';
+    progressBar.style.width = '100%';
+    progressBar.style.background = success
+        ? 'linear-gradient(90deg, #38a169, #48bb78)'
+        : 'linear-gradient(90deg, #e53e3e, #fc8181)';
+    titleEl.textContent = success ? '更新完成' : '更新失败';
+    footerEl.style.display = 'block';
+    btn.disabled = false;
+    btn.classList.remove('spinning');
+}
+
+function appendLog(logEl, text, type) {
+    if (!text) return;
+    const line = document.createElement('div');
+    if (type === 'success') line.className = 'log-success';
+    if (type === 'error') line.className = 'log-error';
+    line.textContent = text;
+    logEl.appendChild(line);
+    logEl.scrollTop = logEl.scrollHeight;
+}
+
+function closeUpdateModal() {
+    document.getElementById('updateModalOverlay').classList.remove('visible');
+    if (updatePollTimer) {
+        clearInterval(updatePollTimer);
+        updatePollTimer = null;
+    }
+}
+
+function refreshCurrentData() {
+    // 清除缓存并重新加载当前选中城市的数据
+    if (typeof dataCache !== 'undefined') {
+        Object.keys(dataCache).forEach(k => delete dataCache[k]);
+    }
+    // 重新触发一次城市数据加载
+    const selectedCity = document.querySelector('.city-option.selected input');
+    if (selectedCity) {
+        selectedCity.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+}

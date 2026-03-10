@@ -13,7 +13,28 @@
         <!-- 标题 -->
         <header class="header">
             <h1>中国70个大中城市房价指数可视化</h1>
+            <button class="update-data-btn" id="updateDataBtn" onclick="triggerDataUpdate()">
+                <span class="update-icon">↻</span> 更新数据
+            </button>
         </header>
+
+        <!-- 更新进度弹窗 -->
+        <div class="update-modal-overlay" id="updateModalOverlay">
+            <div class="update-modal">
+                <div class="update-modal-header">
+                    <span class="update-modal-title" id="updateModalTitle">正在更新数据</span>
+                </div>
+                <div class="update-modal-body">
+                    <div class="update-progress-bar-wrap">
+                        <div class="update-progress-bar" id="updateProgressBar"></div>
+                    </div>
+                    <div class="update-log" id="updateLog"></div>
+                </div>
+                <div class="update-modal-footer" id="updateModalFooter" style="display:none;">
+                    <button class="update-modal-close-btn" onclick="closeUpdateModal()">关闭</button>
+                </div>
+            </div>
+        </div>
 
         <!-- 控制面板 -->
         <div class="control-panel">
