@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-10T16:03:35.454829",
+  "generated_at": "2026-04-24T14:35:45.853993",
   "total_index_types": 8,
   "output_directory": "results",
   "files": [
@@ -9,7 +9,7 @@
       "house_type": "新建商品住宅",
       "area_type": null,
       "file_exists": true,
-      "file_size": 4501758
+      "file_size": 4642431
     },
     {
       "filename": "used_house_basic_index.json",
@@ -17,7 +17,7 @@
       "house_type": "二手住宅",
       "area_type": null,
       "file_exists": true,
-      "file_size": 4496171
+      "file_size": 4635703
     },
     {
       "filename": "new_house_classified_90_below.json",
@@ -25,7 +25,7 @@
       "house_type": "新建商品住宅",
       "area_type": "90m2及以下",
       "file_exists": true,
-      "file_size": 3928262
+      "file_size": 4050366
     },
     {
       "filename": "new_house_classified_90_144.json",
@@ -33,7 +33,7 @@
       "house_type": "新建商品住宅",
       "area_type": "90-144m2",
       "file_exists": true,
-      "file_size": 3933338
+      "file_size": 4055609
     },
     {
       "filename": "new_house_classified_144_above.json",
@@ -41,7 +41,7 @@
       "house_type": "新建商品住宅",
       "area_type": "144m2以上",
       "file_exists": true,
-      "file_size": 3927575
+      "file_size": 4049660
     },
     {
       "filename": "used_house_classified_90_below.json",
@@ -49,7 +49,7 @@
       "house_type": "二手住宅",
       "area_type": "90m2及以下",
       "file_exists": true,
-      "file_size": 3925560
+      "file_size": 4047647
     },
     {
       "filename": "used_house_classified_90_144.json",
@@ -57,7 +57,7 @@
       "house_type": "二手住宅",
       "area_type": "90-144m2",
       "file_exists": true,
-      "file_size": 3925482
+      "file_size": 4047579
     },
     {
       "filename": "used_house_classified_144_above.json",
@@ -65,7 +65,7 @@
       "house_type": "二手住宅",
       "area_type": "144m2以上",
       "file_exists": true,
-      "file_size": 3925535
+      "file_size": 4047949
     }
   ]
 }
