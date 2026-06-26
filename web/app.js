@@ -14,8 +14,38 @@ const CITIES_BY_REGION = {
     "西北": ["西安", "兰州", "西宁", "乌鲁木齐", "银川", "韩城"]
 };
 
-// 生成扁平化的城市列表（用于兼容性）
-const CITIES = Object.values(CITIES_BY_REGION).flat();
+// 城市GDP数据（2024年，单位：亿元）— 用于按经济重要程度排序
+const CITY_GDP = {
+    "上海": 53926, "北京": 49843, "深圳": 36828, "重庆": 32193, "广州": 31033,
+    "成都": 23511, "杭州": 21860, "武汉": 21106, "南京": 18500, "天津": 18024,
+    "宁波": 18147, "青岛": 16785, "无锡": 16256, "长沙": 15269, "郑州": 14533,
+    "济南": 13579, "福州": 13900, "合肥": 13500, "泉州": 13095, "西安": 13294,
+    "南通": 12400, "东莞": 12282, "烟台": 10800, "唐山": 10004, "徐州": 9500,
+    "大连": 9351, "温州": 9220, "沈阳": 9048, "厦门": 8500, "昆明": 8260,
+    "石家庄": 7903, "南昌": 7850, "长春": 7598, "扬州": 7800, "哈尔滨": 6013,
+    "贵阳": 5560, "太原": 5500, "南宁": 5400, "乌鲁木齐": 4500, "呼和浩特": 3900,
+    "兰州": 3700, "海口": 2360, "银川": 2800, "西宁": 2300, "珠海": 4500,
+    "惠州": 5800, "中山": 4200, "廊坊": 3850, "包头": 4500, "金华": 6800,
+    "宜昌": 6200, "襄阳": 6100, "岳阳": 5000, "常德": 4600, "九江": 4200,
+    "赣州": 4800, "湛江": 3800, "桂林": 2600, "北海": 1800, "三亚": 900,
+    "秦皇岛": 2200, "丹东": 900, "锦州": 1300, "牡丹江": 1000,
+    "湖州": 4300, "丽水": 2100, "济宁": 5800, "安庆": 3400,
+    "韶关": 1600, "肇庆": 2900, "湘潭": 3000, "平顶山": 2800,
+    "绵阳": 4300, "大理": 1800, "遵义": 4800, "韩城": 400
+};
+
+// 获取城市GDP（未知城市返回0排在最后）
+function getCityGDP(city) {
+    return CITY_GDP[city] || 0;
+}
+
+// 按GDP降序排列城市
+function sortCitiesByGDP(cities) {
+    return cities.sort((a, b) => getCityGDP(b) - getCityGDP(a));
+}
+
+// 生成扁平化的城市列表（按GDP排序）
+const CITIES = sortCitiesByGDP(Object.values(CITIES_BY_REGION).flat());
 
 // 数据文件映射
 const DATA_FILES = {
@@ -137,8 +167,15 @@ function initializeCitySelect() {
         return;
     }
     
-    // 按地区分组显示城市
-    Object.keys(CITIES_BY_REGION).forEach(region => {
+    // 获取按GDP排序的地区顺序
+    const regionOrder = Object.keys(CITIES_BY_REGION).sort((a, b) => {
+        const maxA = Math.max(...CITIES_BY_REGION[a].map(c => getCityGDP(c)));
+        const maxB = Math.max(...CITIES_BY_REGION[b].map(c => getCityGDP(c)));
+        return maxB - maxA;
+    });
+    
+    // 按地区分组显示城市（地区按最高GDP城市排序，地区内按GDP排序）
+    regionOrder.forEach(region => {
         // 创建地区标题
         const regionTitle = document.createElement('div');
         regionTitle.className = 'region-title';
@@ -149,8 +186,8 @@ function initializeCitySelect() {
         const regionCities = document.createElement('div');
         regionCities.className = 'region-cities';
         
-        // 按拼音排序该地区的城市
-        const sortedCities = CITIES_BY_REGION[region].sort((a, b) => a.localeCompare(b, 'zh-CN'));
+        // 按GDP降序排列该地区的城市
+        const sortedCities = sortCitiesByGDP([...CITIES_BY_REGION[region]]);
         
         sortedCities.forEach(city => {
             const cityOption = document.createElement('label');

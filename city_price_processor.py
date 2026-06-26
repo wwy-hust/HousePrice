@@ -500,7 +500,7 @@ class CityPriceProcessor:
                 for row in data_rows.findall('row'):
                     cells = row.findall('cell')
                     if len(cells) >= 3:
-                        city = cells[0].text.strip() if cells[0].text else ""
+                        city = cells[0].text.strip().replace(' ', '') if cells[0].text else ""
                         month_on_month = cells[1].text.strip() if cells[1].text else ""
                         year_on_year = cells[2].text.strip() if cells[2].text else ""
                         
@@ -582,7 +582,7 @@ class CityPriceProcessor:
                 for row in data_rows.findall('row'):
                     cells = row.findall('cell')
                     if len(cells) > max(mom_col_index, yoy_col_index):
-                        city = cells[0].text.strip() if cells[0].text else ""
+                        city = cells[0].text.strip().replace(' ', '') if cells[0].text else ""
                         month_on_month_text = cells[mom_col_index].text.strip() if cells[mom_col_index].text else ""
                         year_on_year_text = cells[yoy_col_index].text.strip() if cells[yoy_col_index].text else ""
                         

@@ -121,7 +121,7 @@ class BatchProcessor:
                         for row in data_rows.findall('row'):
                             cells = row.findall('cell')
                             if len(cells) > 0 and cells[0].text:
-                                city = cells[0].text.strip()
+                                city = cells[0].text.strip().replace(' ', '')
                                 if city and city != '城市':
                                     cities.add(city)
             except Exception as e:
