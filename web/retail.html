@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社会消费品零售总额 - 数据可视化</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <style>
+        html, body { overflow: auto !important; height: auto !important; background: #f5f6fa; }
+        .rc { max-width: 1500px; margin: 0 auto; padding: 20px; }
+        .rh { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .rh h1 { font-size: 22px; color: #1a1a2e; margin: 0; }
+        .rh a { color: #667eea; text-decoration: none; font-size: 14px; }
+        .rh a:hover { text-decoration: underline; }
+
+        /* 统计卡片 */
+        .sc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
+        .scd { background: #fff; border-radius: 10px; padding: 18px; box-shadow: 0 1px 8px rgba(0,0,0,0.05); text-align: center; }
+        .scd .l { font-size: 12px; color: #999; margin-bottom: 6px; }
+        .scd .v { font-size: 26px; font-weight: 700; }
+        .scd .v.r { color: #e74c3c; } .scd .v.g { color: #27ae60; }
+        .scd .d { font-size: 11px; color: #bbb; margin-top: 4px; }
+
+        /* 区块 */
+        .sec { background: #fff; border-radius: 12px; padding: 20px 24px; box-shadow: 0 1px 8px rgba(0,0,0,0.05); margin-bottom: 18px; }
+        .sec h2 { font-size: 15px; color: #1a1a2e; margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid #f0f0f0; }
+        .cw { position: relative; height: 360px; }
+
+        /* Tab 组件 — 多选 */
+        .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; align-items: center; }
+        .tab { display: inline-flex; align-items: center; gap: 5px; padding: 5px 14px; border-radius: 18px; border: 1.5px solid #dde; background: #fff; cursor: pointer; font-size: 13px; color: #666; transition: all .15s; user-select: none; white-space: nowrap; }
+        .tab:hover { border-color: #667eea; color: #667eea; }
+        .tab.on { background: #667eea; color: #fff; border-color: #667eea; }
+        .tab .dot { width: 8px; height: 8px; border-radius: 50%; display: none; }
+        .tab.on .dot { display: inline-block; }
+        .tab-all { font-weight: 600; margin-left: 6px; border-style: dashed; }
+
+        /* 分项色板 */
+        .palette { display: flex; flex-wrap: wrap; gap: 6px; font-size: 11px; color: #888; margin-top: 8px; }
+        .palette span { display: flex; align-items: center; gap: 4px; }
+        .palette .sw { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+        /* 时间轴 brush 拖拽控件 */
+        .brush { position: relative; height: 64px; margin-top: 14px; user-select: none; touch-action: none; }
+        .brush-cur { position: absolute; top: 0; left: 0; right: 0; height: 14px; pointer-events: none; }
+        .brush-cur b { position: absolute; top: 0; font-size: 11px; color: #667eea; font-weight: 600; white-space: nowrap; }
+        .brush-track { position: absolute; top: 16px; left: 0; right: 0; height: 30px; background: #f3f4fa; border-radius: 6px; overflow: hidden; }
+        .brush-spark { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .brush-window { position: absolute; top: 0; height: 100%; background: rgba(102,126,234,0.14); border: 1.5px solid #667eea; border-radius: 4px; cursor: grab; box-sizing: border-box; }
+        .brush-window:active { cursor: grabbing; }
+        .brush-handle { position: absolute; top: 0; width: 9px; height: 100%; background: #667eea; cursor: ew-resize; display: flex; align-items: center; justify-content: center; }
+        .brush-handle::after { content: ''; width: 1px; height: 12px; background: rgba(255,255,255,0.85); box-shadow: 2px 0 0 rgba(255,255,255,0.85), -2px 0 0 rgba(255,255,255,0.85); }
+        .brush-handle.l { left: -1px; border-radius: 4px 0 0 4px; }
+        .brush-handle.r { right: -1px; border-radius: 0 4px 4px 0; }
+        .brush-ticks { position: absolute; bottom: 0; left: 0; right: 0; height: 16px; }
+        .brush-tick { position: absolute; top: 0; font-size: 10px; color: #aaa; white-space: nowrap; }
+        .brush-tick::before { content: ''; position: absolute; top: -5px; left: 50%; width: 1px; height: 4px; background: #ccd; }
+
+        @media (max-width: 900px) {
+            .sc { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+<div class="rc">
+    <div class="rh">
+        <h1>📊 社会消费品零售总额</h1>
+        <a href="/">← 返回房价数据</a>
+    </div>
+
+    <!-- 统计卡片 -->
+    <div class="sc" id="sc"></div>
+
+    <!-- ====== 总量视图 ====== -->
+    <div class="sec">
+        <h2>总量视图</h2>
+        <div class="tabs" id="tabsMain"></div>
+        <div class="cw"><canvas id="chartMain"></canvas></div>
+        <div class="brush" id="brushMain"></div>
+    </div>
+
+    <!-- ====== 分项视图 ====== -->
+    <div class="sec">
+        <h2>限额以上分品类 同比增速 (%)</h2>
+        <div class="tabs" id="tabsCat"></div>
+        <div class="cw"><canvas id="chartCat"></canvas></div>
+        <div class="brush" id="brushCat"></div>
+        <div class="palette" id="catLegend"></div>
+        <div class="sources" id="catSources" style="margin-top:12px;font-size:12px;color:#999;border-top:1px solid #f0f0f0;padding-top:10px;">
+            📎 数据来源：<span id="catSourceLinks"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+// ============ 多选Tab组件 ============
+function createMultiTabs(containerId, tabs, onChange) {
+    const ct = document.getElementById(containerId);
+    ct.innerHTML = '';
+    let selected = new Set();
+    const tabEls = [];
+
+    tabs.forEach((t, i) => {
+        const el = document.createElement('span');
+        el.className = 'tab' + (t.selected ? ' on' : '');
+        el.innerHTML = t.dotColor ? `<span class="dot" style="background:${t.dotColor}"></span>${t.label}` : t.label;
+        // __all__ 不进入 selected 集合，它只是一个快捷按钮
+        if (t.selected && t.key !== '__all__') selected.add(t.key);
+        el.onclick = () => {
+            if (t.key === '__all__') {
+                // 全选 / 全不选（保留至少一个）
+                const allKeys = tabs.filter(x => x.key !== '__all__').map(x => x.key);
+                if (selected.size === allKeys.length) {
+                    // 全不选：清空
+                    selected.clear();
+                    tabEls.forEach(e => e.classList.remove('on'));
+                } else {
+                    allKeys.forEach(x => selected.add(x));
+                    tabEls.forEach(e => e.classList.add('on'));
+                }
+            } else {
+                if (selected.has(t.key)) {
+                    if (selected.size > 1) { selected.delete(t.key); el.classList.remove('on'); }
+                } else {
+                    selected.add(t.key);
+                    el.classList.add('on');
+                }
+            }
+            // 更新全部按钮状态，同步 selected
+            const allTab = tabEls.find(e => e._key === '__all__');
+            if (allTab) {
+                const total = tabs.filter(x => x.key !== '__all__').length;
+                const isAll = selected.size === total;
+                allTab.classList.toggle('on', isAll);
+                if (!isAll) selected.delete('__all__');
+                else selected.add('__all__');
+            }
+            onChange(Array.from(selected));
+            // 保存选中状态以便时间范围更新时重新渲染
+            ct.dataset.keys = JSON.stringify(Array.from(selected));
+        };
+        el._key = t.key;
+        tabEls.push(el);
+        ct.appendChild(el);
+    });
+    return tabEls;
+}
+
+// ============ 图表工具 ============
+const COLORS16 = ['#e74c3c','#3498db','#27ae60','#f39c12','#9b59b6','#1abc9c','#e67e22','#2ecc71',
+    '#e91e63','#00bcd4','#8bc34a','#ff5722','#3f51b5','#ff9800','#009688','#cddc39'];
+
+function parseDate(s) { const [y,m] = s.split('-').map(Number); return new Date(y,m-1,1); }
+
+let chartMain = null, chartCat = null;
+let RD = null;
+// 每个图表独立的时间范围
+let mainRange = { start: '2023-07', end: '2026-12' };
+let catRange = { start: '2023-07', end: '2026-12' };
+const brushes = [];
+
+// ============ 时间轴 brush 拖拽控件 ============
+function idxGte(dates, d) { for (let i = 0; i < dates.length; i++) if (dates[i] >= d) return i; return dates.length - 1; }
+function idxLte(dates, d) { for (let i = dates.length - 1; i >= 0; i--) if (dates[i] <= d) return i; return 0; }
+function monthsAgo(dates, yrs) {
+    const last = dates[dates.length - 1];
+    let [y, m] = last.split('-').map(Number);
+    y -= yrs; m += 1; if (m > 12) { m -= 12; y++; }
+    const target = `${y}-${String(m).padStart(2, '0')}`;
+    return dates[idxGte(dates, target)];
+}
+
+function createBrush(containerId, dates, values, defStart, defEnd, onChange) {
+    const ct = document.getElementById(containerId);
+    ct.innerHTML = '';
+    const track = document.createElement('div'); track.className = 'brush-track';
+    const spark = document.createElement('canvas'); spark.className = 'brush-spark';
+    const win = document.createElement('div'); win.className = 'brush-window';
+    const hl = document.createElement('div'); hl.className = 'brush-handle l';
+    const hr = document.createElement('div'); hr.className = 'brush-handle r';
+    win.appendChild(hl); win.appendChild(hr);
+    track.appendChild(spark); track.appendChild(win);
+    const cur = document.createElement('div'); cur.className = 'brush-cur';
+    const lblL = document.createElement('b'); const lblR = document.createElement('b');
+    cur.appendChild(lblL); cur.appendChild(lblR);
+    const ticks = document.createElement('div'); ticks.className = 'brush-ticks';
+    ct.appendChild(cur); ct.appendChild(track); ct.appendChild(ticks);
+
+    const n = dates.length;
+    let i0 = idxGte(dates, defStart), i1 = idxLte(dates, defEnd);
+    if (i1 <= i0) { i0 = 0; i1 = n - 1; }
+
+    // 根据比例定位标签，避免两端溢出
+    const place = (el, frac) => {
+        el.style.left = (frac * 100) + '%';
+        el.style.transform = frac < 0.035 ? 'translateX(0)' : frac > 0.965 ? 'translateX(-100%)' : 'translateX(-50%)';
+    };
+
+    // 年度刻度
+    const y0 = parseInt(dates[0]), y1 = parseInt(dates[n - 1]);
+    for (let y = y0; y <= y1; y++) {
+        const idx = idxGte(dates, `${y}-01`);
+        const t = document.createElement('span'); t.className = 'brush-tick'; t.textContent = y;
+        ticks.appendChild(t); place(t, n > 1 ? idx / (n - 1) : 0);
+    }
+
+    function drawSpark() {
+        const w = track.clientWidth, h = track.clientHeight;
+        if (!w) return;
+        spark.width = w; spark.height = h;
+        const c = spark.getContext('2d');
+        c.clearRect(0, 0, w, h);
+        if (!values || !values.length) return;
+        const vv = values.filter(v => v != null);
+        if (!vv.length) return;
+        const mn = Math.min(...vv), mx = Math.max(...vv), rng = (mx - mn) || 1;
+        c.beginPath();
+        let started = false;
+        values.forEach((v, i) => {
+            if (v == null) return;
+            const x = (i / (n - 1)) * w;
+            const y = h - ((v - mn) / rng) * (h * 0.7) - h * 0.15;
+            if (!started) { c.moveTo(x, y); started = true; } else c.lineTo(x, y);
+        });
+        c.strokeStyle = '#b9c0e8'; c.lineWidth = 1.5; c.stroke();
+        c.lineTo(w, h); c.lineTo(0, h); c.closePath();
+        c.fillStyle = 'rgba(102,126,234,0.06)'; c.fill();
+    }
+
+    function apply(fire) {
+        const w = track.clientWidth || 1;
+        const f0 = i0 / (n - 1), f1 = i1 / (n - 1);
+        win.style.left = f0 * w + 'px';
+        win.style.width = Math.max((f1 - f0) * w, 8) + 'px';
+        lblL.textContent = dates[i0]; place(lblL, f0);
+        lblR.textContent = dates[i1]; place(lblR, f1);
+        if (fire !== false) onChange(dates[i0], dates[i1]);
+    }
+
+    let mode = null, startX = 0, s0 = 0, s1 = 0;
+    function getX(e) { const r = track.getBoundingClientRect(); const cx = e.touches ? e.touches[0].clientX : e.clientX; return cx - r.left; }
+    function down(e, m) {
+        mode = m; startX = getX(e); s0 = i0; s1 = i1;
+        e.preventDefault(); e.stopPropagation();
+        document.addEventListener('mousemove', move); document.addEventListener('mouseup', up);
+        document.addEventListener('touchmove', move, { passive: false }); document.addEventListener('touchend', up);
+    }
+    function move(e) {
+        if (!mode) return; e.preventDefault();
+        const w = track.clientWidth || 1;
+        const dIdx = Math.round(((getX(e) - startX) / w) * (n - 1));
+        if (mode === 'move') {
+            const span = s1 - s0; let n0 = s0 + dIdx, n1 = s1 + dIdx;
+            if (n0 < 0) { n0 = 0; n1 = span; }
+            if (n1 > n - 1) { n1 = n - 1; n0 = n - 1 - span; }
+            i0 = n0; i1 = n1;
+        } else if (mode === 'l') {
+            i0 = Math.min(Math.max(0, s0 + dIdx), i1 - 1);
+        } else if (mode === 'r') {
+            i1 = Math.max(Math.min(n - 1, s1 + dIdx), i0 + 1);
+        }
+        apply();
+    }
+    function up() {
+        mode = null;
+        document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', up);
+        document.removeEventListener('touchmove', move); document.removeEventListener('touchend', up);
+    }
+    win.addEventListener('mousedown', e => down(e, 'move'));
+    win.addEventListener('touchstart', e => down(e, 'move'), { passive: false });
+    hl.addEventListener('mousedown', e => down(e, 'l'));
+    hl.addEventListener('touchstart', e => down(e, 'l'), { passive: false });
+    hr.addEventListener('mousedown', e => down(e, 'r'));
+    hr.addEventListener('touchstart', e => down(e, 'r'), { passive: false });
+
+    const b = { redraw() { drawSpark(); apply(false); } };
+    brushes.push(b);
+    // 初次布局后绘制
+    requestAnimationFrame(() => { drawSpark(); apply(true); });
+    return b;
+}
+
+async function init() {
+    try {
+        const r = await fetch('/api/data/retail_data.json');
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        RD = await r.json();
+        buildCatColorMap();
+        renderStats();
+
+        const mainDates = RD.total_retail.map(d => d.date);
+        const mainVals = RD.total_retail.map(d => d.value != null ? d.value / 10000 : null);
+        const catDates = [...new Set((RD.category_detail || []).map(x => x.date))].sort();
+
+        // 默认范围：总量近3年，分项全部
+        mainRange = { start: monthsAgo(mainDates, 3), end: mainDates[mainDates.length - 1] };
+        catRange = { start: catDates[0] || mainRange.start, end: catDates[catDates.length - 1] || mainRange.end };
+
+        initMainTabs();
+        initCatTabs();
+
+        // 图表下方的拖拽时间控件
+        createBrush('brushMain', mainDates, mainVals, mainRange.start, mainRange.end, (s, e) => {
+            mainRange.start = s; mainRange.end = e;
+            const k = document.getElementById('tabsMain').dataset.keys;
+            renderMainChart(k ? JSON.parse(k) : ['total', 'yoy']);
+        });
+        if (catDates.length) {
+            createBrush('brushCat', catDates, null, catRange.start, catRange.end, (s, e) => {
+                catRange.start = s; catRange.end = e;
+                const k = document.getElementById('tabsCat').dataset.keys;
+                renderCatChart(k ? JSON.parse(k) : Object.keys(RD.categories_groups || {}));
+            });
+        }
+
+        window.addEventListener('resize', () => brushes.forEach(b => b.redraw()));
+    } catch(e) { document.body.innerHTML = '<div style="text-align:center;padding:60px;color:#e74c3c;">加载失败: '+e.message+'</div>'; }
+}
+
+// ============ 统计卡片 ============
+function renderStats() {
+    const d = RD.total_retail, latest = d[d.length-1];
+    const sc = document.getElementById('sc');
+    sc.innerHTML = `
+        <div class="scd"><div class="l">社零总额 (当月)</div><div class="v">${(latest.value/10000).toFixed(2)} 万亿</div><div class="d">${latest.date}</div></div>
+        <div class="scd"><div class="l">同比增速</div><div class="v ${latest.yoy>=0?'r':'g'}">${(latest.yoy>=0?'+':'')+latest.yoy.toFixed(1)}%</div><div class="d">YoY</div></div>
+        <div class="scd"><div class="l">环比增速</div><div class="v ${latest.mom>=0?'r':'g'}">${(latest.mom>=0?'+':'')+latest.mom.toFixed(1)}%</div><div class="d">MoM</div></div>
+        <div class="scd"><div class="l">数据来源</div><div class="v" style="font-size:14px;color:#667eea;">国家统计局</div><div class="d">AKShare 采集</div></div>
+    `;
+}
+
+// ============ 总量视图 Tab ============
+function initMainTabs() {
+    const tabs = [
+        { key: 'total', label: '社零总额趋势', selected: true, dotColor: '#667eea' },
+        { key: 'yoy', label: '同比增速', selected: true, dotColor: '#e74c3c' },
+        { key: 'urban', label: '城镇 vs 乡村', selected: false },
+        { key: 'type', label: '商品零售 vs 餐饮', selected: false },
+        { key: '__all__', label: '全部', selected: false },
+    ];
+    createMultiTabs('tabsMain', tabs, keys => renderMainChart(keys));
+    renderMainChart(['total', 'yoy']);
+}
+
+function renderMainChart(keys) {
+    if (chartMain) chartMain.destroy();
+
+    // 过滤数据范围
+    const data = RD.total_retail.filter(d => d.date >= mainRange.start && d.date <= mainRange.end);
+    const datasets = [];
+    const yAxes = {};
+    let yIdx = 0;
+
+    if (keys.includes('total')) {
+        const pts = data.filter(d=>d.value!=null).map(d=>({x:parseDate(d.date).getTime(), y:d.value/10000}));
+        datasets.push({ label:'社零总额 (万亿元)', data:pts, type:'bar', backgroundColor:'rgba(102,126,234,0.65)', borderRadius:3, yAxisID:'y', order:2 });
+    }
+    if (keys.includes('yoy')) {
+        const pts = data.filter(d=>d.yoy!=null).map(d=>({x:parseDate(d.date).getTime(), y:d.yoy}));
+        datasets.push({ label:'同比增速 (%)', data:pts, borderColor:'#e74c3c', backgroundColor:'rgba(231,76,60,0.06)', fill:false, tension:.2, borderWidth:2.5, pointRadius:0, pointHoverRadius:5, yAxisID:'y', order:1 });
+    }
+    if (keys.includes('urban')) {
+        const ur = RD.urban_rural || [];
+        ['城镇','乡村'].forEach((cat,i) => {
+            const pts = ur.filter(d=>d.category===cat&&d.date>=mainRange.start&&d.date<=mainRange.end).map(d=>({x:parseDate(d.date).getTime(), y:d.yoy}));
+            datasets.push({ label:cat, data:pts, borderColor:COLORS16[i+2], tension:.2, borderWidth:2, pointRadius:0, fill:false });
+        });
+    }
+
+    const ctx = document.getElementById('chartMain').getContext('2d');
+    chartMain = new Chart(ctx, {
+        type: 'line',
+        data: { datasets },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: { position: 'top', labels: { usePointStyle: true, padding: 16, font: { size: 12 } } },
+                tooltip: { callbacks: { label: c => c.dataset.label + ': ' + (c.raw.y != null ? c.raw.y.toFixed(1) : '-') } }
+            },
+            scales: {
+                x: { type: 'time', time: { unit: 'month', displayFormats: { month: 'yyyy-MM' } }, grid: { display: false } },
+                y: { title: { display: true, text: keys.includes('total') ? '万亿元 / %' : '%' } }
+            }
+        }
+    });
+}
+
+// ============ 分项视图 Tab ============
+// 给每个子品类分配固定颜色
+let catColorMap = {};
+function buildCatColorMap() {
+    const groups = RD.categories_groups || {};
+    let ci = 0;
+    for (const cats of Object.values(groups)) {
+        for (const cat of cats) {
+            if (!catColorMap[cat]) catColorMap[cat] = COLORS16[ci % 16];
+            ci++;
+        }
+    }
+}
+
+function initCatTabs() {
+    buildCatColorMap();
+    const groups = RD.categories_groups || {};
+    const tabs = Object.keys(groups).map((g, i) => {
+        const cats = groups[g];
+        // 组颜色用第一个品类的颜色
+        return { key: g, label: g + ' (' + cats.length + ')', selected: true, dotColor: catColorMap[cats[0]] };
+    });
+    tabs.push({ key: '__all__', label: '全部 (' + Object.values(groups).flat().length + ')', selected: true });
+    createMultiTabs('tabsCat', tabs, keys => renderCatChart(keys));
+    renderCatChart(Object.keys(groups));
+}
+
+function renderCatChart(groupKeys) {
+    if (chartCat) chartCat.destroy();
+
+    const groups = RD.categories_groups || {};
+    const cd = RD.category_detail || [];
+    
+    // 收集所有选中的子品类
+    let visibleCats = new Set();
+    if (groupKeys.includes('__all__')) {
+        // 全选
+        for (const cats of Object.values(groups)) cats.forEach(c => visibleCats.add(c));
+    } else {
+        for (const gk of groupKeys) {
+            if (groups[gk]) groups[gk].forEach(c => visibleCats.add(c));
+        }
+    }
+
+    // 为每个可见的子品类创建一条折线
+    const datasets = [];
+    [...visibleCats].forEach(cat => {
+        const pts = cd.filter(x => x.category === cat && x.date >= catRange.start && x.date <= catRange.end).sort((a, b) => a.date.localeCompare(b.date)).map(d => ({ x: parseDate(d.date).getTime(), y: d.yoy }));
+        if (pts.length) {
+            datasets.push({
+                label: cat,
+                data: pts,
+                borderColor: catColorMap[cat] || '#999',
+                backgroundColor: 'transparent',
+                tension: 0,
+                borderWidth: 2,
+                spanGaps: false,       // 断开无数据区间
+                pointRadius: 5,         // 始终显示数据点
+                pointHoverRadius: 7,
+                fill: false,
+            });
+        }
+    });
+
+    // 更新色板图例
+    const legend = document.getElementById('catLegend');
+    legend.innerHTML = datasets.map(d => `<span><span class="sw" style="background:${d.borderColor}"></span>${d.label}</span>`).join('');
+
+    // 更新源URL链接
+    updateSourceLinks(groupKeys);
+
+    const ctx = document.getElementById('chartCat').getContext('2d');
+    chartCat = new Chart(ctx, {
+        type: 'line',
+        data: { datasets },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: { position: 'top', labels: { usePointStyle: true, padding: 14, font: { size: 11 }, boxWidth: 10 } },
+                tooltip: { callbacks: { label: c => c.dataset.label + ': ' + (c.raw.y != null ? (c.raw.y>=0?'+':'')+c.raw.y.toFixed(1)+'%' : '-') } }
+            },
+            scales: {
+                x: { type: 'time', time: { unit: 'month', displayFormats: { month: 'yyyy-MM' } }, grid: { display: false } },
+                y: { title: { display: true, text: '%' }, grid: { color: '#f0f0f0' } }
+            }
+        }
+    });
+}
+
+// ============ 源URL链接 ============
+function updateSourceLinks(groupKeys) {
+    const srcUrls = RD.source_urls || {};
+    const cd = RD.category_detail || [];
+    // 获取当前选中数据中涉及的月份
+    const dates = [...new Set(cd.map(x => x.date))].sort().reverse();
+    const links = dates.map(d => {
+        const url = srcUrls[d];
+        if (url) return `<a href="${url}" target="_blank" style="color:#667eea;margin:0 4px;">${d}</a>`;
+        return `<span style="color:#ccc;margin:0 4px;">${d}</span>`;
+    });
+    document.getElementById('catSourceLinks').innerHTML = links.join(' · ') || '暂无源链接';
+}
+
+init();
+</script>
+</body>
+</html>

@@ -164,7 +164,8 @@ class HousePriceHandler(BaseHTTPRequestHandler):
             'used_house_classified_90_below.json',
             'used_house_classified_90_144.json',
             'used_house_classified_144_above.json',
-            'summary_report.json'
+            'summary_report.json',
+            'retail_data.json'
         ]
         
         if filename not in allowed_files:

@@ -13,9 +13,14 @@
         <!-- 标题栏 -->
         <header class="header">
             <h1>中国70个大中城市房价指数</h1>
-            <button class="update-data-btn" id="updateDataBtn" onclick="triggerDataUpdate()">
-                <span class="update-icon">↻</span> 更新数据
-            </button>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <a href="/retail.html" class="update-data-btn" style="text-decoration:none; background:#27ae60;">
+                    社零数据
+                </a>
+                <button class="update-data-btn" id="updateDataBtn" onclick="triggerDataUpdate()">
+                    <span class="update-icon">↻</span> 更新数据
+                </button>
+            </div>
         </header>
 
         <!-- 更新进度弹窗 -->

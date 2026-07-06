@@ -1,0 +1,9019 @@
+{
+  "data_type": "社会消费品零售总额",
+  "generated_at": "2026-06-29T17:07:47.221402",
+  "data_source": "国家统计局 / AKShare",
+  "categories_groups": {
+    "必选消费": [
+      "粮油食品",
+      "饮料",
+      "烟酒",
+      "日用品",
+      "中西药品"
+    ],
+    "可选消费": [
+      "服装鞋帽",
+      "化妆品",
+      "金银珠宝",
+      "体育娱乐",
+      "文化办公",
+      "通讯器材"
+    ],
+    "居住相关": [
+      "家用电器",
+      "家具",
+      "建筑装潢"
+    ],
+    "交通能源": [
+      "汽车",
+      "石油制品"
+    ]
+  },
+  "total_retail": [
+    {
+      "date": "2008-01",
+      "value": 9077.3,
+      "yoy": 21.2,
+      "mom": 0.68771977,
+      "cumulative": 9077.3,
+      "cumulative_yoy": 21.2
+    },
+    {
+      "date": "2008-02",
+      "value": 8354.7,
+      "yoy": 19.1,
+      "mom": -7.96051689,
+      "cumulative": 17432.0,
+      "cumulative_yoy": 20.2
+    },
+    {
+      "date": "2008-03",
+      "value": 8123.2,
+      "yoy": 21.5,
+      "mom": -2.77089542,
+      "cumulative": 25555.2,
+      "cumulative_yoy": 20.6
+    },
+    {
+      "date": "2008-04",
+      "value": 8142.0,
+      "yoy": 22.0,
+      "mom": 0.23143589,
+      "cumulative": 33697.2,
+      "cumulative_yoy": 21.0
+    },
+    {
+      "date": "2008-05",
+      "value": 8703.5,
+      "yoy": 21.6,
+      "mom": 6.89633997,
+      "cumulative": 42400.7,
+      "cumulative_yoy": 21.1
+    },
+    {
+      "date": "2008-06",
+      "value": 8642.0,
+      "yoy": 23.0,
+      "mom": -0.70661228,
+      "cumulative": 51042.7,
+      "cumulative_yoy": 21.4
+    },
+    {
+      "date": "2008-07",
+      "value": 8628.8,
+      "yoy": 23.3,
+      "mom": -0.15274242,
+      "cumulative": 59671.5,
+      "cumulative_yoy": 21.7
+    },
+    {
+      "date": "2008-08",
+      "value": 8767.7,
+      "yoy": 23.2,
+      "mom": 1.60972557,
+      "cumulative": 68439.2,
+      "cumulative_yoy": 21.9
+    },
+    {
+      "date": "2008-09",
+      "value": 9446.5,
+      "yoy": 23.2,
+      "mom": 7.74205322,
+      "cumulative": 77885.7,
+      "cumulative_yoy": 22.0
+    },
+    {
+      "date": "2008-10",
+      "value": 10082.7,
+      "yoy": 22.0,
+      "mom": 6.73476949,
+      "cumulative": 87968.4,
+      "cumulative_yoy": 22.0
+    },
+    {
+      "date": "2008-11",
+      "value": 9790.8,
+      "yoy": 20.8,
+      "mom": -2.89505787,
+      "cumulative": 97759.2,
+      "cumulative_yoy": 21.9
+    },
+    {
+      "date": "2008-12",
+      "value": 10728.5,
+      "yoy": 19.0,
+      "mom": 9.57735834,
+      "cumulative": 108487.7,
+      "cumulative_yoy": 21.6
+    },
+    {
+      "date": "2009-01",
+      "value": 10756.6,
+      "yoy": 18.5,
+      "mom": 0.26191919,
+      "cumulative": 10756.6,
+      "cumulative_yoy": 18.5
+    },
+    {
+      "date": "2009-02",
+      "value": 9323.8,
+      "yoy": 11.6,
+      "mom": -13.32019411,
+      "cumulative": 20080.4,
+      "cumulative_yoy": 15.2
+    },
+    {
+      "date": "2009-03",
+      "value": 9317.6,
+      "yoy": 14.7,
+      "mom": -0.06649649,
+      "cumulative": 29398.0,
+      "cumulative_yoy": 15.0
+    },
+    {
+      "date": "2009-04",
+      "value": 9343.2,
+      "yoy": 14.8,
+      "mom": 0.27474886,
+      "cumulative": 38741.2,
+      "cumulative_yoy": 15.0
+    },
+    {
+      "date": "2009-05",
+      "value": 10028.4,
+      "yoy": 15.2,
+      "mom": 7.33367583,
+      "cumulative": 48769.6,
+      "cumulative_yoy": 15.0
+    },
+    {
+      "date": "2009-06",
+      "value": 9941.6,
+      "yoy": 15.0,
+      "mom": -0.86554186,
+      "cumulative": 58711.2,
+      "cumulative_yoy": 15.0
+    },
+    {
+      "date": "2009-07",
+      "value": 9936.5,
+      "yoy": 15.2,
+      "mom": -0.05129959,
+      "cumulative": 68647.7,
+      "cumulative_yoy": 15.0
+    },
+    {
+      "date": "2009-08",
+      "value": 10115.6,
+      "yoy": 15.4,
+      "mom": 1.80244553,
+      "cumulative": 78763.3,
+      "cumulative_yoy": 15.1
+    },
+    {
+      "date": "2009-09",
+      "value": 10912.8,
+      "yoy": 15.5,
+      "mom": 7.88089683,
+      "cumulative": 89676.1,
+      "cumulative_yoy": 15.1
+    },
+    {
+      "date": "2009-10",
+      "value": 11717.6,
+      "yoy": 16.2,
+      "mom": 7.37482589,
+      "cumulative": 101393.7,
+      "cumulative_yoy": 15.3
+    },
+    {
+      "date": "2009-11",
+      "value": 11339.0,
+      "yoy": 15.8,
+      "mom": -3.23103707,
+      "cumulative": 112732.7,
+      "cumulative_yoy": 15.3
+    },
+    {
+      "date": "2009-12",
+      "value": 12610.0,
+      "yoy": 17.5,
+      "mom": 11.20910133,
+      "cumulative": 125342.7,
+      "cumulative_yoy": 15.5
+    },
+    {
+      "date": "2010-01",
+      "value": 12718.1,
+      "yoy": 14.0,
+      "mom": 0.85725615,
+      "cumulative": 12718.1,
+      "cumulative_yoy": 14.0
+    },
+    {
+      "date": "2010-02",
+      "value": 12334.2,
+      "yoy": 22.1,
+      "mom": -3.01853264,
+      "cumulative": 25052.3,
+      "cumulative_yoy": 17.9
+    },
+    {
+      "date": "2010-03",
+      "value": 11321.7,
+      "yoy": 18.0,
+      "mom": -8.20888262,
+      "cumulative": 36374.0,
+      "cumulative_yoy": 17.9
+    },
+    {
+      "date": "2010-04",
+      "value": 11510.4,
+      "yoy": 18.5,
+      "mom": 1.66671083,
+      "cumulative": 47884.4,
+      "cumulative_yoy": 18.1
+    },
+    {
+      "date": "2010-05",
+      "value": 12455.1,
+      "yoy": 18.7,
+      "mom": 8.2073603,
+      "cumulative": 60339.5,
+      "cumulative_yoy": 18.2
+    },
+    {
+      "date": "2010-06",
+      "value": 12329.9,
+      "yoy": 18.3,
+      "mom": -1.00521072,
+      "cumulative": 72669.4,
+      "cumulative_yoy": 18.2
+    },
+    {
+      "date": "2010-07",
+      "value": 12252.8,
+      "yoy": 17.9,
+      "mom": -0.62530921,
+      "cumulative": 84922.2,
+      "cumulative_yoy": 18.2
+    },
+    {
+      "date": "2010-08",
+      "value": 12569.8,
+      "yoy": 18.4,
+      "mom": 2.58716375,
+      "cumulative": 97492.0,
+      "cumulative_yoy": 18.2
+    },
+    {
+      "date": "2010-09",
+      "value": 13536.5,
+      "yoy": 18.8,
+      "mom": 7.69065538,
+      "cumulative": 111028.5,
+      "cumulative_yoy": 18.3
+    },
+    {
+      "date": "2010-10",
+      "value": 14284.8,
+      "yoy": 18.6,
+      "mom": 5.52801684,
+      "cumulative": 125313.3,
+      "cumulative_yoy": 18.3
+    },
+    {
+      "date": "2010-11",
+      "value": 13910.9,
+      "yoy": 18.7,
+      "mom": -2.61746752,
+      "cumulative": 139224.2,
+      "cumulative_yoy": 18.4
+    },
+    {
+      "date": "2010-12",
+      "value": 15329.5,
+      "yoy": 19.1,
+      "mom": 10.19775859,
+      "cumulative": 154553.7,
+      "cumulative_yoy": 18.4
+    },
+    {
+      "date": "2011-01",
+      "value": 15249.0,
+      "yoy": 19.9,
+      "mom": -0.52513128,
+      "cumulative": 15249.0,
+      "cumulative_yoy": 19.9
+    },
+    {
+      "date": "2011-02",
+      "value": 13769.1,
+      "yoy": 11.6,
+      "mom": -9.70489868,
+      "cumulative": 29018.1,
+      "cumulative_yoy": 15.8
+    },
+    {
+      "date": "2011-03",
+      "value": 13588.0,
+      "yoy": 17.4,
+      "mom": -1.31526389,
+      "cumulative": 42921.8,
+      "cumulative_yoy": 16.3
+    },
+    {
+      "date": "2011-04",
+      "value": 13649.0,
+      "yoy": 17.1,
+      "mom": 0.44892552,
+      "cumulative": 56570.8,
+      "cumulative_yoy": 16.5
+    },
+    {
+      "date": "2011-05",
+      "value": 14696.8,
+      "yoy": 16.9,
+      "mom": 7.67675288,
+      "cumulative": 71267.6,
+      "cumulative_yoy": 16.6
+    },
+    {
+      "date": "2011-06",
+      "value": 14565.1,
+      "yoy": 17.7,
+      "mom": -0.89611344,
+      "cumulative": 85832.7,
+      "cumulative_yoy": 16.8
+    },
+    {
+      "date": "2011-07",
+      "value": 14408.0,
+      "yoy": 17.2,
+      "mom": -1.07860571,
+      "cumulative": 100240.7,
+      "cumulative_yoy": 16.8
+    },
+    {
+      "date": "2011-08",
+      "value": 14705.0,
+      "yoy": 17.0,
+      "mom": 2.0613548,
+      "cumulative": 114945.7,
+      "cumulative_yoy": 16.9
+    },
+    {
+      "date": "2011-09",
+      "value": 15865.1,
+      "yoy": 17.7,
+      "mom": 7.88915335,
+      "cumulative": 130810.8,
+      "cumulative_yoy": 17.0
+    },
+    {
+      "date": "2011-10",
+      "value": 16546.4,
+      "yoy": 17.2,
+      "mom": 4.29433158,
+      "cumulative": 147357.2,
+      "cumulative_yoy": 17.0
+    },
+    {
+      "date": "2011-11",
+      "value": 16128.9,
+      "yoy": 17.3,
+      "mom": -2.52320747,
+      "cumulative": 163486.1,
+      "cumulative_yoy": 17.0
+    },
+    {
+      "date": "2011-12",
+      "value": 17739.7,
+      "yoy": 18.1,
+      "mom": 9.98704189,
+      "cumulative": 181225.8,
+      "cumulative_yoy": 17.1
+    },
+    {
+      "date": "2012-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 33668.6,
+      "cumulative_yoy": 14.7
+    },
+    {
+      "date": "2012-03",
+      "value": 15650.2,
+      "yoy": 15.2,
+      "mom": null,
+      "cumulative": 49318.8,
+      "cumulative_yoy": 14.8
+    },
+    {
+      "date": "2012-04",
+      "value": 15603.1,
+      "yoy": 14.1,
+      "mom": -0.30095462,
+      "cumulative": 64921.9,
+      "cumulative_yoy": 14.7
+    },
+    {
+      "date": "2012-05",
+      "value": 16714.8,
+      "yoy": 13.8,
+      "mom": 7.12486621,
+      "cumulative": 81636.7,
+      "cumulative_yoy": 14.5
+    },
+    {
+      "date": "2012-06",
+      "value": 16584.9,
+      "yoy": 13.7,
+      "mom": -0.77715557,
+      "cumulative": 98221.6,
+      "cumulative_yoy": 14.4
+    },
+    {
+      "date": "2012-07",
+      "value": 16314.9,
+      "yoy": 13.1,
+      "mom": -1.6279869,
+      "cumulative": 114536.5,
+      "cumulative_yoy": 14.2
+    },
+    {
+      "date": "2012-08",
+      "value": 16658.9,
+      "yoy": 13.2,
+      "mom": 2.10850204,
+      "cumulative": 131195.4,
+      "cumulative_yoy": 14.1
+    },
+    {
+      "date": "2012-09",
+      "value": 18226.6,
+      "yoy": 14.2,
+      "mom": 9.41058533,
+      "cumulative": 149422.0,
+      "cumulative_yoy": 14.1
+    },
+    {
+      "date": "2012-10",
+      "value": 18933.8,
+      "yoy": 14.5,
+      "mom": 3.88004345,
+      "cumulative": 168355.8,
+      "cumulative_yoy": 14.1
+    },
+    {
+      "date": "2012-11",
+      "value": 18476.7,
+      "yoy": 14.9,
+      "mom": -2.41420106,
+      "cumulative": 186832.5,
+      "cumulative_yoy": 14.2
+    },
+    {
+      "date": "2012-12",
+      "value": 20334.2,
+      "yoy": 15.2,
+      "mom": 10.05320214,
+      "cumulative": 207166.7,
+      "cumulative_yoy": 14.3
+    },
+    {
+      "date": "2013-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 37809.8,
+      "cumulative_yoy": 12.3
+    },
+    {
+      "date": "2013-03",
+      "value": 17641.2,
+      "yoy": 12.6,
+      "mom": null,
+      "cumulative": 55451.0,
+      "cumulative_yoy": 12.4
+    },
+    {
+      "date": "2013-04",
+      "value": 17600.3,
+      "yoy": 12.8,
+      "mom": -0.23184364,
+      "cumulative": 73051.3,
+      "cumulative_yoy": 12.5
+    },
+    {
+      "date": "2013-05",
+      "value": 18886.3,
+      "yoy": 12.9,
+      "mom": 7.30669364,
+      "cumulative": 91937.6,
+      "cumulative_yoy": 12.6
+    },
+    {
+      "date": "2013-06",
+      "value": 18826.7,
+      "yoy": 13.3,
+      "mom": -0.31557266,
+      "cumulative": 110764.3,
+      "cumulative_yoy": 12.7
+    },
+    {
+      "date": "2013-07",
+      "value": 18513.2,
+      "yoy": 13.2,
+      "mom": -1.66518827,
+      "cumulative": 129277.5,
+      "cumulative_yoy": 12.8
+    },
+    {
+      "date": "2013-08",
+      "value": 18886.2,
+      "yoy": 13.4,
+      "mom": 2.01477864,
+      "cumulative": 148163.7,
+      "cumulative_yoy": 12.8
+    },
+    {
+      "date": "2013-09",
+      "value": 20653.3,
+      "yoy": 13.3,
+      "mom": 9.35656723,
+      "cumulative": 168817.0,
+      "cumulative_yoy": 12.9
+    },
+    {
+      "date": "2013-10",
+      "value": 21491.3,
+      "yoy": 13.3,
+      "mom": 4.05746297,
+      "cumulative": 190308.3,
+      "cumulative_yoy": 13.0
+    },
+    {
+      "date": "2013-11",
+      "value": 21011.9,
+      "yoy": 13.7,
+      "mom": -2.23067009,
+      "cumulative": 211320.2,
+      "cumulative_yoy": 13.0
+    },
+    {
+      "date": "2013-12",
+      "value": 23059.7,
+      "yoy": 13.6,
+      "mom": 9.74590589,
+      "cumulative": 234380.0,
+      "cumulative_yoy": 13.1
+    },
+    {
+      "date": "2014-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 42280.7,
+      "cumulative_yoy": 11.8
+    },
+    {
+      "date": "2014-03",
+      "value": 19800.6,
+      "yoy": 12.2,
+      "mom": null,
+      "cumulative": 62081.2,
+      "cumulative_yoy": 12.0
+    },
+    {
+      "date": "2014-04",
+      "value": 19701.2,
+      "yoy": 11.9,
+      "mom": -0.50200499,
+      "cumulative": 81782.4,
+      "cumulative_yoy": 12.0
+    },
+    {
+      "date": "2014-05",
+      "value": 21249.8,
+      "yoy": 12.5,
+      "mom": 7.8604349,
+      "cumulative": 103032.2,
+      "cumulative_yoy": 12.1
+    },
+    {
+      "date": "2014-06",
+      "value": 21166.4,
+      "yoy": 12.4,
+      "mom": -0.39247428,
+      "cumulative": 124198.7,
+      "cumulative_yoy": 12.1
+    },
+    {
+      "date": "2014-07",
+      "value": 20775.8,
+      "yoy": 12.2,
+      "mom": -1.84537758,
+      "cumulative": 144974.5,
+      "cumulative_yoy": 12.1
+    },
+    {
+      "date": "2014-08",
+      "value": 21133.9,
+      "yoy": 11.9,
+      "mom": 1.72364,
+      "cumulative": 166108.4,
+      "cumulative_yoy": 12.1
+    },
+    {
+      "date": "2014-09",
+      "value": 23042.4,
+      "yoy": 11.6,
+      "mom": 9.03051495,
+      "cumulative": 189150.8,
+      "cumulative_yoy": 12.0
+    },
+    {
+      "date": "2014-10",
+      "value": 23967.2,
+      "yoy": 11.5,
+      "mom": 4.01347082,
+      "cumulative": 213118.1,
+      "cumulative_yoy": 12.0
+    },
+    {
+      "date": "2014-11",
+      "value": 23474.7,
+      "yoy": 11.7,
+      "mom": -2.05489169,
+      "cumulative": 236592.8,
+      "cumulative_yoy": 12.0
+    },
+    {
+      "date": "2014-12",
+      "value": 25801.3,
+      "yoy": 11.9,
+      "mom": 9.91109578,
+      "cumulative": 262394.1,
+      "cumulative_yoy": 12.0
+    },
+    {
+      "date": "2015-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 47992.5,
+      "cumulative_yoy": 10.7
+    },
+    {
+      "date": "2015-03",
+      "value": 22722.8,
+      "yoy": 10.2,
+      "mom": null,
+      "cumulative": 70715.3,
+      "cumulative_yoy": 10.6
+    },
+    {
+      "date": "2015-04",
+      "value": 22386.7,
+      "yoy": 10.0,
+      "mom": -1.47913109,
+      "cumulative": 93102.0,
+      "cumulative_yoy": 10.4
+    },
+    {
+      "date": "2015-05",
+      "value": 24194.8,
+      "yoy": 10.1,
+      "mom": 8.07667052,
+      "cumulative": 117296.9,
+      "cumulative_yoy": 10.4
+    },
+    {
+      "date": "2015-06",
+      "value": 24280.3,
+      "yoy": 10.6,
+      "mom": 0.35338172,
+      "cumulative": 141577.1,
+      "cumulative_yoy": 10.4
+    },
+    {
+      "date": "2015-07",
+      "value": 24338.8,
+      "yoy": 10.5,
+      "mom": 0.24093607,
+      "cumulative": 165915.9,
+      "cumulative_yoy": 10.4
+    },
+    {
+      "date": "2015-08",
+      "value": 24893.4,
+      "yoy": 10.8,
+      "mom": 2.27866616,
+      "cumulative": 190809.3,
+      "cumulative_yoy": 10.5
+    },
+    {
+      "date": "2015-09",
+      "value": 25270.6,
+      "yoy": 10.9,
+      "mom": 1.51526107,
+      "cumulative": 216079.9,
+      "cumulative_yoy": 10.5
+    },
+    {
+      "date": "2015-10",
+      "value": 28278.9,
+      "yoy": 11.0,
+      "mom": 11.90434734,
+      "cumulative": 244358.8,
+      "cumulative_yoy": 10.6
+    },
+    {
+      "date": "2015-11",
+      "value": 27937.3,
+      "yoy": 11.2,
+      "mom": -1.20796778,
+      "cumulative": 272296.1,
+      "cumulative_yoy": 10.6
+    },
+    {
+      "date": "2015-12",
+      "value": 28634.6,
+      "yoy": 11.1,
+      "mom": 2.49594628,
+      "cumulative": 300930.8,
+      "cumulative_yoy": 10.7
+    },
+    {
+      "date": "2016-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 52910.3,
+      "cumulative_yoy": 10.2
+    },
+    {
+      "date": "2016-03",
+      "value": 25114.1,
+      "yoy": 10.5,
+      "mom": null,
+      "cumulative": 78024.4,
+      "cumulative_yoy": 10.3
+    },
+    {
+      "date": "2016-04",
+      "value": 24645.8,
+      "yoy": 10.1,
+      "mom": -1.86468956,
+      "cumulative": 102670.2,
+      "cumulative_yoy": 10.3
+    },
+    {
+      "date": "2016-05",
+      "value": 26610.7,
+      "yoy": 10.0,
+      "mom": 7.97255516,
+      "cumulative": 129280.9,
+      "cumulative_yoy": 10.2
+    },
+    {
+      "date": "2016-06",
+      "value": 26857.4,
+      "yoy": 10.6,
+      "mom": 0.92707069,
+      "cumulative": 156138.3,
+      "cumulative_yoy": 10.3
+    },
+    {
+      "date": "2016-07",
+      "value": 26827.4,
+      "yoy": 10.2,
+      "mom": -0.11170106,
+      "cumulative": 182965.8,
+      "cumulative_yoy": 10.3
+    },
+    {
+      "date": "2016-08",
+      "value": 27539.6,
+      "yoy": 10.6,
+      "mom": 2.6547485,
+      "cumulative": 210505.4,
+      "cumulative_yoy": 10.3
+    },
+    {
+      "date": "2016-09",
+      "value": 27976.4,
+      "yoy": 10.7,
+      "mom": 1.58607968,
+      "cumulative": 238481.8,
+      "cumulative_yoy": 10.4
+    },
+    {
+      "date": "2016-10",
+      "value": 31119.2,
+      "yoy": 10.0,
+      "mom": 11.23375416,
+      "cumulative": 269601.0,
+      "cumulative_yoy": 10.3
+    },
+    {
+      "date": "2016-11",
+      "value": 30958.5,
+      "yoy": 10.8,
+      "mom": -0.51640145,
+      "cumulative": 300559.5,
+      "cumulative_yoy": 10.4
+    },
+    {
+      "date": "2016-12",
+      "value": 31757.0,
+      "yoy": 10.9,
+      "mom": 2.57925933,
+      "cumulative": 332316.0,
+      "cumulative_yoy": 10.4
+    },
+    {
+      "date": "2017-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 57959.7,
+      "cumulative_yoy": 9.5
+    },
+    {
+      "date": "2017-03",
+      "value": 27863.7,
+      "yoy": 10.9,
+      "mom": null,
+      "cumulative": 85823.4,
+      "cumulative_yoy": 10.0
+    },
+    {
+      "date": "2017-04",
+      "value": 27278.5,
+      "yoy": 10.7,
+      "mom": -2.10022359,
+      "cumulative": 113101.9,
+      "cumulative_yoy": 10.2
+    },
+    {
+      "date": "2017-05",
+      "value": 29459.2,
+      "yoy": 10.7,
+      "mom": 7.99420789,
+      "cumulative": 142561.1,
+      "cumulative_yoy": 10.3
+    },
+    {
+      "date": "2017-06",
+      "value": 29807.6,
+      "yoy": 11.0,
+      "mom": 1.18265262,
+      "cumulative": 172368.7,
+      "cumulative_yoy": 10.4
+    },
+    {
+      "date": "2017-07",
+      "value": 29609.8,
+      "yoy": 10.4,
+      "mom": -0.66358915,
+      "cumulative": 201978.5,
+      "cumulative_yoy": 10.4
+    },
+    {
+      "date": "2017-08",
+      "value": 30329.7,
+      "yoy": 10.1,
+      "mom": 2.43128964,
+      "cumulative": 232308.2,
+      "cumulative_yoy": 10.4
+    },
+    {
+      "date": "2017-09",
+      "value": 30870.3,
+      "yoy": 10.3,
+      "mom": 1.7824113,
+      "cumulative": 263178.4,
+      "cumulative_yoy": 10.4
+    },
+    {
+      "date": "2017-10",
+      "value": 34240.9,
+      "yoy": 10.0,
+      "mom": 10.91858518,
+      "cumulative": 297419.4,
+      "cumulative_yoy": 10.3
+    },
+    {
+      "date": "2017-11",
+      "value": 34108.2,
+      "yoy": 10.2,
+      "mom": -0.38754822,
+      "cumulative": 331527.5,
+      "cumulative_yoy": 10.3
+    },
+    {
+      "date": "2017-12",
+      "value": 34734.1,
+      "yoy": 9.4,
+      "mom": 1.8350426,
+      "cumulative": 366261.6,
+      "cumulative_yoy": 10.2
+    },
+    {
+      "date": "2018-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 61081.8,
+      "cumulative_yoy": 9.7
+    },
+    {
+      "date": "2018-03",
+      "value": 29193.6,
+      "yoy": 10.1,
+      "mom": null,
+      "cumulative": 90275.4,
+      "cumulative_yoy": 9.8
+    },
+    {
+      "date": "2018-04",
+      "value": 28541.9,
+      "yoy": 9.4,
+      "mom": -2.23233859,
+      "cumulative": 118817.3,
+      "cumulative_yoy": 9.7
+    },
+    {
+      "date": "2018-05",
+      "value": 30359.1,
+      "yoy": 8.5,
+      "mom": 6.36678007,
+      "cumulative": 149176.4,
+      "cumulative_yoy": 9.5
+    },
+    {
+      "date": "2018-06",
+      "value": 30841.6,
+      "yoy": 9.0,
+      "mom": 1.5893093,
+      "cumulative": 180017.9,
+      "cumulative_yoy": 9.4
+    },
+    {
+      "date": "2018-07",
+      "value": 30733.7,
+      "yoy": 8.8,
+      "mom": -0.34985215,
+      "cumulative": 210751.6,
+      "cumulative_yoy": 9.3
+    },
+    {
+      "date": "2018-08",
+      "value": 31542.3,
+      "yoy": 9.0,
+      "mom": 2.63098813,
+      "cumulative": 242293.9,
+      "cumulative_yoy": 9.3
+    },
+    {
+      "date": "2018-09",
+      "value": 32005.4,
+      "yoy": 9.2,
+      "mom": 1.46818716,
+      "cumulative": 274299.3,
+      "cumulative_yoy": 9.3
+    },
+    {
+      "date": "2018-10",
+      "value": 35534.4,
+      "yoy": 8.6,
+      "mom": 11.02626432,
+      "cumulative": 309833.7,
+      "cumulative_yoy": 9.2
+    },
+    {
+      "date": "2018-11",
+      "value": 35259.7,
+      "yoy": 8.1,
+      "mom": -0.77305372,
+      "cumulative": 345093.4,
+      "cumulative_yoy": 9.1
+    },
+    {
+      "date": "2018-12",
+      "value": 35893.5,
+      "yoy": 8.2,
+      "mom": 1.79751955,
+      "cumulative": 380986.9,
+      "cumulative_yoy": 9.0
+    },
+    {
+      "date": "2019-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 66064.0,
+      "cumulative_yoy": 8.2
+    },
+    {
+      "date": "2019-03",
+      "value": 31725.7,
+      "yoy": 8.7,
+      "mom": null,
+      "cumulative": 97789.7,
+      "cumulative_yoy": 8.3
+    },
+    {
+      "date": "2019-04",
+      "value": 30586.1,
+      "yoy": 7.2,
+      "mom": -3.59204052,
+      "cumulative": 128375.8,
+      "cumulative_yoy": 8.0
+    },
+    {
+      "date": "2019-05",
+      "value": 32955.7,
+      "yoy": 8.6,
+      "mom": 7.74731005,
+      "cumulative": 161331.6,
+      "cumulative_yoy": 8.1
+    },
+    {
+      "date": "2019-06",
+      "value": 33878.1,
+      "yoy": 9.8,
+      "mom": 2.79890884,
+      "cumulative": 195209.7,
+      "cumulative_yoy": 8.4
+    },
+    {
+      "date": "2019-07",
+      "value": 33073.3,
+      "yoy": 7.6,
+      "mom": -2.37557596,
+      "cumulative": 228282.9,
+      "cumulative_yoy": 8.3
+    },
+    {
+      "date": "2019-08",
+      "value": 33896.3,
+      "yoy": 7.5,
+      "mom": 2.4884121,
+      "cumulative": 262179.3,
+      "cumulative_yoy": 8.2
+    },
+    {
+      "date": "2019-09",
+      "value": 34494.9,
+      "yoy": 7.8,
+      "mom": 1.76597446,
+      "cumulative": 296674.2,
+      "cumulative_yoy": 8.2
+    },
+    {
+      "date": "2019-10",
+      "value": 38104.3,
+      "yoy": 7.2,
+      "mom": 10.46357577,
+      "cumulative": 334778.5,
+      "cumulative_yoy": 8.1
+    },
+    {
+      "date": "2019-11",
+      "value": 38093.8,
+      "yoy": 8.0,
+      "mom": -0.02755595,
+      "cumulative": 372872.3,
+      "cumulative_yoy": 8.0
+    },
+    {
+      "date": "2019-12",
+      "value": 38776.7,
+      "yoy": 8.0,
+      "mom": 1.79268017,
+      "cumulative": 411649.0,
+      "cumulative_yoy": 8.0
+    },
+    {
+      "date": "2020-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 52129.8,
+      "cumulative_yoy": -20.5
+    },
+    {
+      "date": "2020-03",
+      "value": 26449.9,
+      "yoy": -15.8,
+      "mom": null,
+      "cumulative": 78579.7,
+      "cumulative_yoy": -19.0
+    },
+    {
+      "date": "2020-04",
+      "value": 28177.8,
+      "yoy": -7.5,
+      "mom": 6.53272791,
+      "cumulative": 106757.5,
+      "cumulative_yoy": -16.2
+    },
+    {
+      "date": "2020-05",
+      "value": 31972.8,
+      "yoy": -2.8,
+      "mom": 13.46804932,
+      "cumulative": 138730.3,
+      "cumulative_yoy": -13.5
+    },
+    {
+      "date": "2020-06",
+      "value": 33525.9,
+      "yoy": -1.8,
+      "mom": 4.85756643,
+      "cumulative": 172256.2,
+      "cumulative_yoy": -11.4
+    },
+    {
+      "date": "2020-07",
+      "value": 32202.5,
+      "yoy": -1.1,
+      "mom": -3.94739589,
+      "cumulative": 204458.7,
+      "cumulative_yoy": -9.9
+    },
+    {
+      "date": "2020-08",
+      "value": 33570.6,
+      "yoy": 0.5,
+      "mom": 4.24842792,
+      "cumulative": 238029.4,
+      "cumulative_yoy": -8.6
+    },
+    {
+      "date": "2020-09",
+      "value": 35294.7,
+      "yoy": 3.3,
+      "mom": 5.13574378,
+      "cumulative": 273324.0,
+      "cumulative_yoy": -7.2
+    },
+    {
+      "date": "2020-10",
+      "value": 38576.5,
+      "yoy": 4.3,
+      "mom": 9.29827991,
+      "cumulative": 311900.5,
+      "cumulative_yoy": -5.9
+    },
+    {
+      "date": "2020-11",
+      "value": 39514.2,
+      "yoy": 5.0,
+      "mom": 2.43075447,
+      "cumulative": 351414.7,
+      "cumulative_yoy": -4.8
+    },
+    {
+      "date": "2020-12",
+      "value": 40566.0,
+      "yoy": 4.6,
+      "mom": 2.6618279,
+      "cumulative": 391980.6,
+      "cumulative_yoy": -3.9
+    },
+    {
+      "date": "2021-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 69736.8,
+      "cumulative_yoy": 33.8
+    },
+    {
+      "date": "2021-03",
+      "value": 35484.1,
+      "yoy": 34.2,
+      "mom": null,
+      "cumulative": 105220.8,
+      "cumulative_yoy": 33.9
+    },
+    {
+      "date": "2021-04",
+      "value": 33152.6,
+      "yoy": 17.7,
+      "mom": -6.5705485,
+      "cumulative": 138373.4,
+      "cumulative_yoy": 29.6
+    },
+    {
+      "date": "2021-05",
+      "value": 35945.1,
+      "yoy": 12.4,
+      "mom": 8.42317043,
+      "cumulative": 174318.5,
+      "cumulative_yoy": 25.7
+    },
+    {
+      "date": "2021-06",
+      "value": 37585.8,
+      "yoy": 12.1,
+      "mom": 4.5644608,
+      "cumulative": 211904.3,
+      "cumulative_yoy": 23.0
+    },
+    {
+      "date": "2021-07",
+      "value": 34925.1,
+      "yoy": 8.5,
+      "mom": -7.07900324,
+      "cumulative": 246829.4,
+      "cumulative_yoy": 20.7
+    },
+    {
+      "date": "2021-08",
+      "value": 34394.9,
+      "yoy": 2.5,
+      "mom": -1.51810589,
+      "cumulative": 281224.2,
+      "cumulative_yoy": 18.1
+    },
+    {
+      "date": "2021-09",
+      "value": 36833.0,
+      "yoy": 4.4,
+      "mom": 7.08855092,
+      "cumulative": 318057.2,
+      "cumulative_yoy": 16.4
+    },
+    {
+      "date": "2021-10",
+      "value": 40453.9,
+      "yoy": 4.9,
+      "mom": 9.8305867,
+      "cumulative": 358511.1,
+      "cumulative_yoy": 14.9
+    },
+    {
+      "date": "2021-11",
+      "value": 41043.2,
+      "yoy": 3.9,
+      "mom": 1.45671987,
+      "cumulative": 399554.3,
+      "cumulative_yoy": 13.7
+    },
+    {
+      "date": "2021-12",
+      "value": 41268.9,
+      "yoy": 1.7,
+      "mom": 0.54990839,
+      "cumulative": 440823.2,
+      "cumulative_yoy": 12.5
+    },
+    {
+      "date": "2022-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 74426.0,
+      "cumulative_yoy": 6.7
+    },
+    {
+      "date": "2022-03",
+      "value": 34233.1,
+      "yoy": -3.5,
+      "mom": null,
+      "cumulative": 108659.1,
+      "cumulative_yoy": 3.3
+    },
+    {
+      "date": "2022-04",
+      "value": 29483.1,
+      "yoy": -11.1,
+      "mom": -13.87545972,
+      "cumulative": 138142.2,
+      "cumulative_yoy": -0.2
+    },
+    {
+      "date": "2022-05",
+      "value": 33547.0,
+      "yoy": -6.7,
+      "mom": 13.7838287,
+      "cumulative": 171689.3,
+      "cumulative_yoy": -1.5
+    },
+    {
+      "date": "2022-06",
+      "value": 38742.5,
+      "yoy": 3.1,
+      "mom": 15.48722688,
+      "cumulative": 210431.7,
+      "cumulative_yoy": -0.7
+    },
+    {
+      "date": "2022-07",
+      "value": 35870.1,
+      "yoy": 2.7,
+      "mom": -7.41408014,
+      "cumulative": 246301.8,
+      "cumulative_yoy": -0.2
+    },
+    {
+      "date": "2022-08",
+      "value": 36257.9,
+      "yoy": 5.4,
+      "mom": 1.08112328,
+      "cumulative": 282559.7,
+      "cumulative_yoy": 0.5
+    },
+    {
+      "date": "2022-09",
+      "value": 37744.9,
+      "yoy": 2.5,
+      "mom": 4.10117519,
+      "cumulative": 320304.6,
+      "cumulative_yoy": 0.7
+    },
+    {
+      "date": "2022-10",
+      "value": 40270.5,
+      "yoy": -0.5,
+      "mom": 6.69123511,
+      "cumulative": 360575.1,
+      "cumulative_yoy": 0.6
+    },
+    {
+      "date": "2022-11",
+      "value": 38615.1,
+      "yoy": -5.9,
+      "mom": -4.11070138,
+      "cumulative": 399190.2,
+      "cumulative_yoy": -0.1
+    },
+    {
+      "date": "2022-12",
+      "value": 40542.3,
+      "yoy": -1.8,
+      "mom": 4.99079376,
+      "cumulative": 439732.5,
+      "cumulative_yoy": -0.2
+    },
+    {
+      "date": "2023-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 77067.0,
+      "cumulative_yoy": 3.5
+    },
+    {
+      "date": "2023-03",
+      "value": 37855.4,
+      "yoy": 10.6,
+      "mom": null,
+      "cumulative": 114922.4,
+      "cumulative_yoy": 5.8
+    },
+    {
+      "date": "2023-04",
+      "value": 34910.5,
+      "yoy": 18.4,
+      "mom": -7.77933928,
+      "cumulative": 149832.9,
+      "cumulative_yoy": 8.5
+    },
+    {
+      "date": "2023-05",
+      "value": 37803.3,
+      "yoy": 12.7,
+      "mom": 8.28633219,
+      "cumulative": 187636.3,
+      "cumulative_yoy": 9.3
+    },
+    {
+      "date": "2023-06",
+      "value": 39951.4,
+      "yoy": 3.1,
+      "mom": 5.68230816,
+      "cumulative": 227587.6,
+      "cumulative_yoy": 8.2
+    },
+    {
+      "date": "2023-07",
+      "value": 36760.7,
+      "yoy": 2.5,
+      "mom": -7.98645354,
+      "cumulative": 264348.4,
+      "cumulative_yoy": 7.3
+    },
+    {
+      "date": "2023-08",
+      "value": 37932.7,
+      "yoy": 4.6,
+      "mom": 3.18818738,
+      "cumulative": 302281.0,
+      "cumulative_yoy": 7.0
+    },
+    {
+      "date": "2023-09",
+      "value": 39826.0,
+      "yoy": 5.5,
+      "mom": 4.99120811,
+      "cumulative": 342107.0,
+      "cumulative_yoy": 6.8
+    },
+    {
+      "date": "2023-10",
+      "value": 43333.0,
+      "yoy": 7.6,
+      "mom": 8.80580525,
+      "cumulative": 385440.0,
+      "cumulative_yoy": 6.9
+    },
+    {
+      "date": "2023-11",
+      "value": 42505.0,
+      "yoy": 10.1,
+      "mom": -1.91078393,
+      "cumulative": 427945.0,
+      "cumulative_yoy": 7.2
+    },
+    {
+      "date": "2023-12",
+      "value": 43550.2,
+      "yoy": 7.4,
+      "mom": 2.45900482,
+      "cumulative": 471495.2,
+      "cumulative_yoy": 7.2
+    },
+    {
+      "date": "2024-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 81306.9,
+      "cumulative_yoy": 5.5
+    },
+    {
+      "date": "2024-03",
+      "value": 39019.9,
+      "yoy": 3.1,
+      "mom": null,
+      "cumulative": 120326.8,
+      "cumulative_yoy": 4.7
+    },
+    {
+      "date": "2024-04",
+      "value": 35699.1,
+      "yoy": 2.3,
+      "mom": -8.51052924,
+      "cumulative": 156025.8,
+      "cumulative_yoy": 4.1
+    },
+    {
+      "date": "2024-05",
+      "value": 39211.0,
+      "yoy": 3.7,
+      "mom": 9.83750291,
+      "cumulative": 195236.9,
+      "cumulative_yoy": 4.1
+    },
+    {
+      "date": "2024-06",
+      "value": 40731.6,
+      "yoy": 2.0,
+      "mom": 3.87799342,
+      "cumulative": 235969.0,
+      "cumulative_yoy": 3.7
+    },
+    {
+      "date": "2024-07",
+      "value": 37757.4,
+      "yoy": 2.7,
+      "mom": -7.30194738,
+      "cumulative": 273725.9,
+      "cumulative_yoy": 3.5
+    },
+    {
+      "date": "2024-08",
+      "value": 38725.8,
+      "yoy": 2.1,
+      "mom": 2.56479525,
+      "cumulative": 312451.7,
+      "cumulative_yoy": 3.4
+    },
+    {
+      "date": "2024-09",
+      "value": 41112.3,
+      "yoy": 3.2,
+      "mom": 6.16255829,
+      "cumulative": 353564.0,
+      "cumulative_yoy": 3.3
+    },
+    {
+      "date": "2024-10",
+      "value": 45396.4,
+      "yoy": 4.8,
+      "mom": 10.42048243,
+      "cumulative": 398960.3,
+      "cumulative_yoy": 3.5
+    },
+    {
+      "date": "2024-11",
+      "value": 43763.0,
+      "yoy": 3.0,
+      "mom": -3.59808267,
+      "cumulative": 442723.3,
+      "cumulative_yoy": 3.5
+    },
+    {
+      "date": "2024-12",
+      "value": 45171.5,
+      "yoy": 3.7,
+      "mom": 3.21847223,
+      "cumulative": 487894.8,
+      "cumulative_yoy": 3.5
+    },
+    {
+      "date": "2025-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 83730.6,
+      "cumulative_yoy": 4.0
+    },
+    {
+      "date": "2025-03",
+      "value": 40940.5,
+      "yoy": 5.9,
+      "mom": null,
+      "cumulative": 124671.1,
+      "cumulative_yoy": 4.6
+    },
+    {
+      "date": "2025-04",
+      "value": 37174.1,
+      "yoy": 5.1,
+      "mom": -9.19969224,
+      "cumulative": 161845.2,
+      "cumulative_yoy": 4.7
+    },
+    {
+      "date": "2025-05",
+      "value": 41325.8,
+      "yoy": 6.4,
+      "mom": 11.16825962,
+      "cumulative": 203171.0,
+      "cumulative_yoy": 5.0
+    },
+    {
+      "date": "2025-06",
+      "value": 42287.4,
+      "yoy": 4.8,
+      "mom": 2.3268757,
+      "cumulative": 245458.4,
+      "cumulative_yoy": 5.0
+    },
+    {
+      "date": "2025-07",
+      "value": 38780.2,
+      "yoy": 3.7,
+      "mom": -8.29372343,
+      "cumulative": 284238.5,
+      "cumulative_yoy": 4.8
+    },
+    {
+      "date": "2025-08",
+      "value": 39667.6,
+      "yoy": 3.4,
+      "mom": 2.28828113,
+      "cumulative": 323906.2,
+      "cumulative_yoy": 4.6
+    },
+    {
+      "date": "2025-09",
+      "value": 41971.0,
+      "yoy": 3.0,
+      "mom": 5.80675413,
+      "cumulative": 365877.2,
+      "cumulative_yoy": 4.5
+    },
+    {
+      "date": "2025-10",
+      "value": 46291.3,
+      "yoy": 2.9,
+      "mom": 10.29353601,
+      "cumulative": 412168.5,
+      "cumulative_yoy": 4.3
+    },
+    {
+      "date": "2025-11",
+      "value": 43898.0,
+      "yoy": 1.3,
+      "mom": -5.17008596,
+      "cumulative": 456066.6,
+      "cumulative_yoy": 4.0
+    },
+    {
+      "date": "2025-12",
+      "value": 45135.9,
+      "yoy": 0.9,
+      "mom": 2.81994624,
+      "cumulative": 501202.4,
+      "cumulative_yoy": 3.7
+    },
+    {
+      "date": "2026-02",
+      "value": null,
+      "yoy": null,
+      "mom": null,
+      "cumulative": 86078.9,
+      "cumulative_yoy": 2.8
+    },
+    {
+      "date": "2026-03",
+      "value": 41616.0,
+      "yoy": 1.7,
+      "mom": null,
+      "cumulative": 127694.9,
+      "cumulative_yoy": 2.4
+    },
+    {
+      "date": "2026-04",
+      "value": 37246.5,
+      "yoy": 0.2,
+      "mom": -10.49956747,
+      "cumulative": 164941.5,
+      "cumulative_yoy": 1.9
+    },
+    {
+      "date": "2026-05",
+      "value": 41090.0,
+      "yoy": -0.6,
+      "mom": 10.31909038,
+      "cumulative": 206031.4,
+      "cumulative_yoy": 1.4
+    }
+  ],
+  "category_detail": [
+    {
+      "date": "2022-02",
+      "category": "粮油食品",
+      "yoy": 7.9
+    },
+    {
+      "date": "2022-02",
+      "category": "饮料",
+      "yoy": 11.4
+    },
+    {
+      "date": "2022-02",
+      "category": "烟酒",
+      "yoy": 13.6
+    },
+    {
+      "date": "2022-02",
+      "category": "服装鞋帽",
+      "yoy": 4.8
+    },
+    {
+      "date": "2022-02",
+      "category": "化妆品",
+      "yoy": 7.0
+    },
+    {
+      "date": "2022-02",
+      "category": "金银珠宝",
+      "yoy": 19.5
+    },
+    {
+      "date": "2022-02",
+      "category": "日用品",
+      "yoy": 10.7
+    },
+    {
+      "date": "2022-02",
+      "category": "家用电器",
+      "yoy": 12.7
+    },
+    {
+      "date": "2022-02",
+      "category": "中西药品",
+      "yoy": 7.5
+    },
+    {
+      "date": "2022-02",
+      "category": "文化办公",
+      "yoy": 11.1
+    },
+    {
+      "date": "2022-02",
+      "category": "家具",
+      "yoy": -6.0
+    },
+    {
+      "date": "2022-02",
+      "category": "通讯器材",
+      "yoy": 4.8
+    },
+    {
+      "date": "2022-02",
+      "category": "石油制品",
+      "yoy": 25.6
+    },
+    {
+      "date": "2022-02",
+      "category": "汽车",
+      "yoy": 3.9
+    },
+    {
+      "date": "2022-02",
+      "category": "建筑装潢",
+      "yoy": 6.2
+    },
+    {
+      "date": "2022-04",
+      "category": "粮油食品",
+      "yoy": 10.0
+    },
+    {
+      "date": "2022-04",
+      "category": "饮料",
+      "yoy": 6.0
+    },
+    {
+      "date": "2022-04",
+      "category": "烟酒",
+      "yoy": -7.0
+    },
+    {
+      "date": "2022-04",
+      "category": "服装鞋帽",
+      "yoy": -22.8
+    },
+    {
+      "date": "2022-04",
+      "category": "化妆品",
+      "yoy": -22.3
+    },
+    {
+      "date": "2022-04",
+      "category": "金银珠宝",
+      "yoy": -26.7
+    },
+    {
+      "date": "2022-04",
+      "category": "日用品",
+      "yoy": -10.2
+    },
+    {
+      "date": "2022-04",
+      "category": "家用电器",
+      "yoy": -8.1
+    },
+    {
+      "date": "2022-04",
+      "category": "中西药品",
+      "yoy": 7.9
+    },
+    {
+      "date": "2022-04",
+      "category": "文化办公",
+      "yoy": -4.8
+    },
+    {
+      "date": "2022-04",
+      "category": "家具",
+      "yoy": -14.0
+    },
+    {
+      "date": "2022-04",
+      "category": "通讯器材",
+      "yoy": -21.8
+    },
+    {
+      "date": "2022-04",
+      "category": "石油制品",
+      "yoy": 4.7
+    },
+    {
+      "date": "2022-04",
+      "category": "汽车",
+      "yoy": -31.6
+    },
+    {
+      "date": "2022-04",
+      "category": "建筑装潢",
+      "yoy": -11.7
+    },
+    {
+      "date": "2022-05",
+      "category": "粮油食品",
+      "yoy": 12.3
+    },
+    {
+      "date": "2022-05",
+      "category": "饮料",
+      "yoy": 7.7
+    },
+    {
+      "date": "2022-05",
+      "category": "烟酒",
+      "yoy": 3.8
+    },
+    {
+      "date": "2022-05",
+      "category": "服装鞋帽",
+      "yoy": -16.2
+    },
+    {
+      "date": "2022-05",
+      "category": "化妆品",
+      "yoy": -11.0
+    },
+    {
+      "date": "2022-05",
+      "category": "金银珠宝",
+      "yoy": -15.5
+    },
+    {
+      "date": "2022-05",
+      "category": "日用品",
+      "yoy": -6.7
+    },
+    {
+      "date": "2022-05",
+      "category": "家用电器",
+      "yoy": -10.6
+    },
+    {
+      "date": "2022-05",
+      "category": "中西药品",
+      "yoy": 10.8
+    },
+    {
+      "date": "2022-05",
+      "category": "文化办公",
+      "yoy": -3.3
+    },
+    {
+      "date": "2022-05",
+      "category": "家具",
+      "yoy": -12.2
+    },
+    {
+      "date": "2022-05",
+      "category": "通讯器材",
+      "yoy": -7.7
+    },
+    {
+      "date": "2022-05",
+      "category": "石油制品",
+      "yoy": 8.3
+    },
+    {
+      "date": "2022-05",
+      "category": "汽车",
+      "yoy": -16.0
+    },
+    {
+      "date": "2022-05",
+      "category": "建筑装潢",
+      "yoy": -7.8
+    },
+    {
+      "date": "2022-06",
+      "category": "粮油食品",
+      "yoy": 9.0
+    },
+    {
+      "date": "2022-06",
+      "category": "饮料",
+      "yoy": 1.9
+    },
+    {
+      "date": "2022-06",
+      "category": "烟酒",
+      "yoy": 5.1
+    },
+    {
+      "date": "2022-06",
+      "category": "服装鞋帽",
+      "yoy": 1.2
+    },
+    {
+      "date": "2022-06",
+      "category": "化妆品",
+      "yoy": 8.1
+    },
+    {
+      "date": "2022-06",
+      "category": "金银珠宝",
+      "yoy": 8.1
+    },
+    {
+      "date": "2022-06",
+      "category": "日用品",
+      "yoy": 4.3
+    },
+    {
+      "date": "2022-06",
+      "category": "家用电器",
+      "yoy": 3.2
+    },
+    {
+      "date": "2022-06",
+      "category": "中西药品",
+      "yoy": 11.9
+    },
+    {
+      "date": "2022-06",
+      "category": "文化办公",
+      "yoy": 8.9
+    },
+    {
+      "date": "2022-06",
+      "category": "家具",
+      "yoy": -6.6
+    },
+    {
+      "date": "2022-06",
+      "category": "通讯器材",
+      "yoy": 6.6
+    },
+    {
+      "date": "2022-06",
+      "category": "石油制品",
+      "yoy": 14.7
+    },
+    {
+      "date": "2022-06",
+      "category": "汽车",
+      "yoy": 13.9
+    },
+    {
+      "date": "2022-06",
+      "category": "建筑装潢",
+      "yoy": -4.9
+    },
+    {
+      "date": "2022-07",
+      "category": "粮油食品",
+      "yoy": 6.2
+    },
+    {
+      "date": "2022-07",
+      "category": "饮料",
+      "yoy": 3.0
+    },
+    {
+      "date": "2022-07",
+      "category": "烟酒",
+      "yoy": 7.7
+    },
+    {
+      "date": "2022-07",
+      "category": "服装鞋帽",
+      "yoy": 0.8
+    },
+    {
+      "date": "2022-07",
+      "category": "化妆品",
+      "yoy": 0.7
+    },
+    {
+      "date": "2022-07",
+      "category": "金银珠宝",
+      "yoy": 22.1
+    },
+    {
+      "date": "2022-07",
+      "category": "日用品",
+      "yoy": 0.7
+    },
+    {
+      "date": "2022-07",
+      "category": "家用电器",
+      "yoy": 7.1
+    },
+    {
+      "date": "2022-07",
+      "category": "中西药品",
+      "yoy": 7.8
+    },
+    {
+      "date": "2022-07",
+      "category": "文化办公",
+      "yoy": 11.5
+    },
+    {
+      "date": "2022-07",
+      "category": "家具",
+      "yoy": -6.3
+    },
+    {
+      "date": "2022-07",
+      "category": "通讯器材",
+      "yoy": 4.9
+    },
+    {
+      "date": "2022-07",
+      "category": "石油制品",
+      "yoy": 14.2
+    },
+    {
+      "date": "2022-07",
+      "category": "汽车",
+      "yoy": 9.7
+    },
+    {
+      "date": "2022-07",
+      "category": "建筑装潢",
+      "yoy": -7.8
+    },
+    {
+      "date": "2022-08",
+      "category": "粮油食品",
+      "yoy": 8.1
+    },
+    {
+      "date": "2022-08",
+      "category": "饮料",
+      "yoy": 5.8
+    },
+    {
+      "date": "2022-08",
+      "category": "烟酒",
+      "yoy": 8.0
+    },
+    {
+      "date": "2022-08",
+      "category": "服装鞋帽",
+      "yoy": 5.1
+    },
+    {
+      "date": "2022-08",
+      "category": "化妆品",
+      "yoy": -6.4
+    },
+    {
+      "date": "2022-08",
+      "category": "金银珠宝",
+      "yoy": 7.2
+    },
+    {
+      "date": "2022-08",
+      "category": "日用品",
+      "yoy": 3.6
+    },
+    {
+      "date": "2022-08",
+      "category": "家用电器",
+      "yoy": 3.4
+    },
+    {
+      "date": "2022-08",
+      "category": "中西药品",
+      "yoy": 9.1
+    },
+    {
+      "date": "2022-08",
+      "category": "文化办公",
+      "yoy": 6.2
+    },
+    {
+      "date": "2022-08",
+      "category": "家具",
+      "yoy": -8.1
+    },
+    {
+      "date": "2022-08",
+      "category": "通讯器材",
+      "yoy": -4.6
+    },
+    {
+      "date": "2022-08",
+      "category": "石油制品",
+      "yoy": 17.1
+    },
+    {
+      "date": "2022-08",
+      "category": "汽车",
+      "yoy": 15.9
+    },
+    {
+      "date": "2022-08",
+      "category": "建筑装潢",
+      "yoy": -9.1
+    },
+    {
+      "date": "2022-09",
+      "category": "粮油食品",
+      "yoy": 8.5
+    },
+    {
+      "date": "2022-09",
+      "category": "饮料",
+      "yoy": 4.9
+    },
+    {
+      "date": "2022-09",
+      "category": "烟酒",
+      "yoy": -8.8
+    },
+    {
+      "date": "2022-09",
+      "category": "服装鞋帽",
+      "yoy": -0.5
+    },
+    {
+      "date": "2022-09",
+      "category": "化妆品",
+      "yoy": -3.1
+    },
+    {
+      "date": "2022-09",
+      "category": "金银珠宝",
+      "yoy": 1.9
+    },
+    {
+      "date": "2022-09",
+      "category": "日用品",
+      "yoy": 5.6
+    },
+    {
+      "date": "2022-09",
+      "category": "家用电器",
+      "yoy": -6.1
+    },
+    {
+      "date": "2022-09",
+      "category": "中西药品",
+      "yoy": 9.3
+    },
+    {
+      "date": "2022-09",
+      "category": "文化办公",
+      "yoy": 8.7
+    },
+    {
+      "date": "2022-09",
+      "category": "家具",
+      "yoy": -7.3
+    },
+    {
+      "date": "2022-09",
+      "category": "通讯器材",
+      "yoy": 5.8
+    },
+    {
+      "date": "2022-09",
+      "category": "石油制品",
+      "yoy": 10.2
+    },
+    {
+      "date": "2022-09",
+      "category": "汽车",
+      "yoy": 14.2
+    },
+    {
+      "date": "2022-09",
+      "category": "建筑装潢",
+      "yoy": -8.1
+    },
+    {
+      "date": "2022-10",
+      "category": "粮油食品",
+      "yoy": 8.3
+    },
+    {
+      "date": "2022-10",
+      "category": "饮料",
+      "yoy": 4.1
+    },
+    {
+      "date": "2022-10",
+      "category": "烟酒",
+      "yoy": -0.7
+    },
+    {
+      "date": "2022-10",
+      "category": "服装鞋帽",
+      "yoy": -7.5
+    },
+    {
+      "date": "2022-10",
+      "category": "化妆品",
+      "yoy": -3.7
+    },
+    {
+      "date": "2022-10",
+      "category": "金银珠宝",
+      "yoy": -2.7
+    },
+    {
+      "date": "2022-10",
+      "category": "日用品",
+      "yoy": -2.2
+    },
+    {
+      "date": "2022-10",
+      "category": "家用电器",
+      "yoy": -14.1
+    },
+    {
+      "date": "2022-10",
+      "category": "中西药品",
+      "yoy": 8.9
+    },
+    {
+      "date": "2022-10",
+      "category": "文化办公",
+      "yoy": -2.1
+    },
+    {
+      "date": "2022-10",
+      "category": "家具",
+      "yoy": -6.6
+    },
+    {
+      "date": "2022-10",
+      "category": "通讯器材",
+      "yoy": -8.9
+    },
+    {
+      "date": "2022-10",
+      "category": "石油制品",
+      "yoy": 0.9
+    },
+    {
+      "date": "2022-10",
+      "category": "汽车",
+      "yoy": 3.9
+    },
+    {
+      "date": "2022-10",
+      "category": "建筑装潢",
+      "yoy": -8.7
+    },
+    {
+      "date": "2022-11",
+      "category": "粮油食品",
+      "yoy": 3.9
+    },
+    {
+      "date": "2022-11",
+      "category": "饮料",
+      "yoy": -6.2
+    },
+    {
+      "date": "2022-11",
+      "category": "烟酒",
+      "yoy": -2.0
+    },
+    {
+      "date": "2022-11",
+      "category": "服装鞋帽",
+      "yoy": -15.6
+    },
+    {
+      "date": "2022-11",
+      "category": "化妆品",
+      "yoy": -4.6
+    },
+    {
+      "date": "2022-11",
+      "category": "金银珠宝",
+      "yoy": -7.0
+    },
+    {
+      "date": "2022-11",
+      "category": "日用品",
+      "yoy": -9.1
+    },
+    {
+      "date": "2022-11",
+      "category": "家用电器",
+      "yoy": -17.3
+    },
+    {
+      "date": "2022-11",
+      "category": "中西药品",
+      "yoy": 8.3
+    },
+    {
+      "date": "2022-11",
+      "category": "文化办公",
+      "yoy": -1.7
+    },
+    {
+      "date": "2022-11",
+      "category": "家具",
+      "yoy": -4.0
+    },
+    {
+      "date": "2022-11",
+      "category": "通讯器材",
+      "yoy": -17.6
+    },
+    {
+      "date": "2022-11",
+      "category": "石油制品",
+      "yoy": -1.6
+    },
+    {
+      "date": "2022-11",
+      "category": "汽车",
+      "yoy": -4.2
+    },
+    {
+      "date": "2022-11",
+      "category": "建筑装潢",
+      "yoy": -10.0
+    },
+    {
+      "date": "2022-12",
+      "category": "粮油食品",
+      "yoy": 10.5
+    },
+    {
+      "date": "2022-12",
+      "category": "饮料",
+      "yoy": 5.5
+    },
+    {
+      "date": "2022-12",
+      "category": "烟酒",
+      "yoy": -7.3
+    },
+    {
+      "date": "2022-12",
+      "category": "服装鞋帽",
+      "yoy": -12.5
+    },
+    {
+      "date": "2022-12",
+      "category": "化妆品",
+      "yoy": -19.3
+    },
+    {
+      "date": "2022-12",
+      "category": "金银珠宝",
+      "yoy": -18.4
+    },
+    {
+      "date": "2022-12",
+      "category": "日用品",
+      "yoy": -9.2
+    },
+    {
+      "date": "2022-12",
+      "category": "家用电器",
+      "yoy": -13.1
+    },
+    {
+      "date": "2022-12",
+      "category": "中西药品",
+      "yoy": 39.8
+    },
+    {
+      "date": "2022-12",
+      "category": "文化办公",
+      "yoy": -0.3
+    },
+    {
+      "date": "2022-12",
+      "category": "家具",
+      "yoy": -5.8
+    },
+    {
+      "date": "2022-12",
+      "category": "通讯器材",
+      "yoy": -4.5
+    },
+    {
+      "date": "2022-12",
+      "category": "石油制品",
+      "yoy": -2.9
+    },
+    {
+      "date": "2022-12",
+      "category": "汽车",
+      "yoy": 4.6
+    },
+    {
+      "date": "2022-12",
+      "category": "建筑装潢",
+      "yoy": -8.9
+    },
+    {
+      "date": "2023-02",
+      "category": "粮油食品",
+      "yoy": 9.0
+    },
+    {
+      "date": "2023-02",
+      "category": "饮料",
+      "yoy": 5.2
+    },
+    {
+      "date": "2023-02",
+      "category": "烟酒",
+      "yoy": 6.1
+    },
+    {
+      "date": "2023-02",
+      "category": "服装鞋帽",
+      "yoy": 5.4
+    },
+    {
+      "date": "2023-02",
+      "category": "化妆品",
+      "yoy": 3.8
+    },
+    {
+      "date": "2023-02",
+      "category": "金银珠宝",
+      "yoy": 5.9
+    },
+    {
+      "date": "2023-02",
+      "category": "日用品",
+      "yoy": 3.9
+    },
+    {
+      "date": "2023-02",
+      "category": "体育娱乐",
+      "yoy": 1.0
+    },
+    {
+      "date": "2023-02",
+      "category": "家用电器",
+      "yoy": -1.9
+    },
+    {
+      "date": "2023-02",
+      "category": "中西药品",
+      "yoy": 19.3
+    },
+    {
+      "date": "2023-02",
+      "category": "文化办公",
+      "yoy": -1.1
+    },
+    {
+      "date": "2023-02",
+      "category": "家具",
+      "yoy": 5.2
+    },
+    {
+      "date": "2023-02",
+      "category": "通讯器材",
+      "yoy": -8.2
+    },
+    {
+      "date": "2023-02",
+      "category": "石油制品",
+      "yoy": 10.9
+    },
+    {
+      "date": "2023-02",
+      "category": "汽车",
+      "yoy": -9.4
+    },
+    {
+      "date": "2023-02",
+      "category": "建筑装潢",
+      "yoy": -0.9
+    },
+    {
+      "date": "2023-03",
+      "category": "粮油食品",
+      "yoy": 4.4
+    },
+    {
+      "date": "2023-03",
+      "category": "饮料",
+      "yoy": -5.1
+    },
+    {
+      "date": "2023-03",
+      "category": "烟酒",
+      "yoy": 9.0
+    },
+    {
+      "date": "2023-03",
+      "category": "服装鞋帽",
+      "yoy": 17.7
+    },
+    {
+      "date": "2023-03",
+      "category": "化妆品",
+      "yoy": 9.6
+    },
+    {
+      "date": "2023-03",
+      "category": "金银珠宝",
+      "yoy": 37.4
+    },
+    {
+      "date": "2023-03",
+      "category": "日用品",
+      "yoy": 7.7
+    },
+    {
+      "date": "2023-03",
+      "category": "体育娱乐",
+      "yoy": 15.8
+    },
+    {
+      "date": "2023-03",
+      "category": "家用电器",
+      "yoy": -1.4
+    },
+    {
+      "date": "2023-03",
+      "category": "中西药品",
+      "yoy": 11.7
+    },
+    {
+      "date": "2023-03",
+      "category": "文化办公",
+      "yoy": -1.9
+    },
+    {
+      "date": "2023-03",
+      "category": "家具",
+      "yoy": 3.5
+    },
+    {
+      "date": "2023-03",
+      "category": "通讯器材",
+      "yoy": 1.8
+    },
+    {
+      "date": "2023-03",
+      "category": "石油制品",
+      "yoy": 9.2
+    },
+    {
+      "date": "2023-03",
+      "category": "汽车",
+      "yoy": 11.5
+    },
+    {
+      "date": "2023-03",
+      "category": "建筑装潢",
+      "yoy": -4.7
+    },
+    {
+      "date": "2023-04",
+      "category": "粮油食品",
+      "yoy": 1.0
+    },
+    {
+      "date": "2023-04",
+      "category": "饮料",
+      "yoy": -3.4
+    },
+    {
+      "date": "2023-04",
+      "category": "烟酒",
+      "yoy": 14.9
+    },
+    {
+      "date": "2023-04",
+      "category": "服装鞋帽",
+      "yoy": 32.4
+    },
+    {
+      "date": "2023-04",
+      "category": "化妆品",
+      "yoy": 24.3
+    },
+    {
+      "date": "2023-04",
+      "category": "金银珠宝",
+      "yoy": 44.7
+    },
+    {
+      "date": "2023-04",
+      "category": "日用品",
+      "yoy": 10.1
+    },
+    {
+      "date": "2023-04",
+      "category": "体育娱乐",
+      "yoy": 25.7
+    },
+    {
+      "date": "2023-04",
+      "category": "家用电器",
+      "yoy": 4.7
+    },
+    {
+      "date": "2023-04",
+      "category": "中西药品",
+      "yoy": 3.7
+    },
+    {
+      "date": "2023-04",
+      "category": "文化办公",
+      "yoy": -4.9
+    },
+    {
+      "date": "2023-04",
+      "category": "家具",
+      "yoy": 3.4
+    },
+    {
+      "date": "2023-04",
+      "category": "通讯器材",
+      "yoy": 14.6
+    },
+    {
+      "date": "2023-04",
+      "category": "石油制品",
+      "yoy": 13.5
+    },
+    {
+      "date": "2023-04",
+      "category": "汽车",
+      "yoy": 38.0
+    },
+    {
+      "date": "2023-04",
+      "category": "建筑装潢",
+      "yoy": -11.2
+    },
+    {
+      "date": "2023-05",
+      "category": "粮油食品",
+      "yoy": -0.7
+    },
+    {
+      "date": "2023-05",
+      "category": "饮料",
+      "yoy": -0.7
+    },
+    {
+      "date": "2023-05",
+      "category": "烟酒",
+      "yoy": 8.6
+    },
+    {
+      "date": "2023-05",
+      "category": "服装鞋帽",
+      "yoy": 17.6
+    },
+    {
+      "date": "2023-05",
+      "category": "化妆品",
+      "yoy": 11.7
+    },
+    {
+      "date": "2023-05",
+      "category": "金银珠宝",
+      "yoy": 24.4
+    },
+    {
+      "date": "2023-05",
+      "category": "日用品",
+      "yoy": 9.4
+    },
+    {
+      "date": "2023-05",
+      "category": "体育娱乐",
+      "yoy": 14.3
+    },
+    {
+      "date": "2023-05",
+      "category": "家用电器",
+      "yoy": 0.1
+    },
+    {
+      "date": "2023-05",
+      "category": "中西药品",
+      "yoy": 7.1
+    },
+    {
+      "date": "2023-05",
+      "category": "文化办公",
+      "yoy": -1.2
+    },
+    {
+      "date": "2023-05",
+      "category": "家具",
+      "yoy": 5.0
+    },
+    {
+      "date": "2023-05",
+      "category": "通讯器材",
+      "yoy": 27.4
+    },
+    {
+      "date": "2023-05",
+      "category": "石油制品",
+      "yoy": 4.1
+    },
+    {
+      "date": "2023-05",
+      "category": "汽车",
+      "yoy": 24.2
+    },
+    {
+      "date": "2023-05",
+      "category": "建筑装潢",
+      "yoy": -14.6
+    },
+    {
+      "date": "2023-07",
+      "category": "粮油食品",
+      "yoy": 5.5
+    },
+    {
+      "date": "2023-07",
+      "category": "饮料",
+      "yoy": 3.1
+    },
+    {
+      "date": "2023-07",
+      "category": "烟酒",
+      "yoy": 7.2
+    },
+    {
+      "date": "2023-07",
+      "category": "服装鞋帽",
+      "yoy": 2.3
+    },
+    {
+      "date": "2023-07",
+      "category": "化妆品",
+      "yoy": -4.1
+    },
+    {
+      "date": "2023-07",
+      "category": "金银珠宝",
+      "yoy": -10.0
+    },
+    {
+      "date": "2023-07",
+      "category": "日用品",
+      "yoy": -1.0
+    },
+    {
+      "date": "2023-07",
+      "category": "体育娱乐",
+      "yoy": 2.6
+    },
+    {
+      "date": "2023-07",
+      "category": "家用电器",
+      "yoy": -5.5
+    },
+    {
+      "date": "2023-07",
+      "category": "中西药品",
+      "yoy": 3.7
+    },
+    {
+      "date": "2023-07",
+      "category": "文化办公",
+      "yoy": -13.1
+    },
+    {
+      "date": "2023-07",
+      "category": "家具",
+      "yoy": 0.1
+    },
+    {
+      "date": "2023-07",
+      "category": "通讯器材",
+      "yoy": 3.0
+    },
+    {
+      "date": "2023-07",
+      "category": "石油制品",
+      "yoy": -0.6
+    },
+    {
+      "date": "2023-07",
+      "category": "汽车",
+      "yoy": -1.5
+    },
+    {
+      "date": "2023-07",
+      "category": "建筑装潢",
+      "yoy": -11.2
+    },
+    {
+      "date": "2023-09",
+      "category": "粮油食品",
+      "yoy": 8.3
+    },
+    {
+      "date": "2023-09",
+      "category": "饮料",
+      "yoy": 8.0
+    },
+    {
+      "date": "2023-09",
+      "category": "烟酒",
+      "yoy": 23.1
+    },
+    {
+      "date": "2023-09",
+      "category": "服装鞋帽",
+      "yoy": 9.9
+    },
+    {
+      "date": "2023-09",
+      "category": "化妆品",
+      "yoy": 1.6
+    },
+    {
+      "date": "2023-09",
+      "category": "金银珠宝",
+      "yoy": 7.7
+    },
+    {
+      "date": "2023-09",
+      "category": "日用品",
+      "yoy": 0.7
+    },
+    {
+      "date": "2023-09",
+      "category": "体育娱乐",
+      "yoy": 10.7
+    },
+    {
+      "date": "2023-09",
+      "category": "家用电器",
+      "yoy": -2.3
+    },
+    {
+      "date": "2023-09",
+      "category": "中西药品",
+      "yoy": 4.5
+    },
+    {
+      "date": "2023-09",
+      "category": "文化办公",
+      "yoy": -13.6
+    },
+    {
+      "date": "2023-09",
+      "category": "家具",
+      "yoy": 0.5
+    },
+    {
+      "date": "2023-09",
+      "category": "通讯器材",
+      "yoy": 0.4
+    },
+    {
+      "date": "2023-09",
+      "category": "石油制品",
+      "yoy": 8.9
+    },
+    {
+      "date": "2023-09",
+      "category": "汽车",
+      "yoy": 2.8
+    },
+    {
+      "date": "2023-09",
+      "category": "建筑装潢",
+      "yoy": -8.2
+    },
+    {
+      "date": "2023-10",
+      "category": "粮油食品",
+      "yoy": 4.4
+    },
+    {
+      "date": "2023-10",
+      "category": "饮料",
+      "yoy": 6.2
+    },
+    {
+      "date": "2023-10",
+      "category": "烟酒",
+      "yoy": 15.4
+    },
+    {
+      "date": "2023-10",
+      "category": "服装鞋帽",
+      "yoy": 7.5
+    },
+    {
+      "date": "2023-10",
+      "category": "化妆品",
+      "yoy": 1.1
+    },
+    {
+      "date": "2023-10",
+      "category": "金银珠宝",
+      "yoy": 10.4
+    },
+    {
+      "date": "2023-10",
+      "category": "日用品",
+      "yoy": 4.4
+    },
+    {
+      "date": "2023-10",
+      "category": "体育娱乐",
+      "yoy": 25.7
+    },
+    {
+      "date": "2023-10",
+      "category": "家用电器",
+      "yoy": 9.6
+    },
+    {
+      "date": "2023-10",
+      "category": "中西药品",
+      "yoy": 8.2
+    },
+    {
+      "date": "2023-10",
+      "category": "文化办公",
+      "yoy": 7.7
+    },
+    {
+      "date": "2023-10",
+      "category": "家具",
+      "yoy": 1.7
+    },
+    {
+      "date": "2023-10",
+      "category": "通讯器材",
+      "yoy": 14.6
+    },
+    {
+      "date": "2023-10",
+      "category": "石油制品",
+      "yoy": 5.4
+    },
+    {
+      "date": "2023-10",
+      "category": "汽车",
+      "yoy": 11.4
+    },
+    {
+      "date": "2023-10",
+      "category": "建筑装潢",
+      "yoy": -4.8
+    },
+    {
+      "date": "2023-11",
+      "category": "粮油食品",
+      "yoy": 4.4
+    },
+    {
+      "date": "2023-11",
+      "category": "饮料",
+      "yoy": 6.3
+    },
+    {
+      "date": "2023-11",
+      "category": "烟酒",
+      "yoy": 16.2
+    },
+    {
+      "date": "2023-11",
+      "category": "服装鞋帽",
+      "yoy": 22.0
+    },
+    {
+      "date": "2023-11",
+      "category": "化妆品",
+      "yoy": -3.5
+    },
+    {
+      "date": "2023-11",
+      "category": "金银珠宝",
+      "yoy": 10.7
+    },
+    {
+      "date": "2023-11",
+      "category": "日用品",
+      "yoy": 3.5
+    },
+    {
+      "date": "2023-11",
+      "category": "体育娱乐",
+      "yoy": 16.0
+    },
+    {
+      "date": "2023-11",
+      "category": "家用电器",
+      "yoy": 2.7
+    },
+    {
+      "date": "2023-11",
+      "category": "中西药品",
+      "yoy": 7.1
+    },
+    {
+      "date": "2023-11",
+      "category": "文化办公",
+      "yoy": -8.2
+    },
+    {
+      "date": "2023-11",
+      "category": "家具",
+      "yoy": 2.2
+    },
+    {
+      "date": "2023-11",
+      "category": "通讯器材",
+      "yoy": 16.8
+    },
+    {
+      "date": "2023-11",
+      "category": "石油制品",
+      "yoy": 7.2
+    },
+    {
+      "date": "2023-11",
+      "category": "汽车",
+      "yoy": 14.7
+    },
+    {
+      "date": "2023-11",
+      "category": "建筑装潢",
+      "yoy": -10.4
+    },
+    {
+      "date": "2023-12",
+      "category": "粮油食品",
+      "yoy": 5.8
+    },
+    {
+      "date": "2023-12",
+      "category": "饮料",
+      "yoy": 7.7
+    },
+    {
+      "date": "2023-12",
+      "category": "烟酒",
+      "yoy": 8.3
+    },
+    {
+      "date": "2023-12",
+      "category": "服装鞋帽",
+      "yoy": 26.0
+    },
+    {
+      "date": "2023-12",
+      "category": "化妆品",
+      "yoy": 9.7
+    },
+    {
+      "date": "2023-12",
+      "category": "金银珠宝",
+      "yoy": 29.4
+    },
+    {
+      "date": "2023-12",
+      "category": "日用品",
+      "yoy": -5.9
+    },
+    {
+      "date": "2023-12",
+      "category": "体育娱乐",
+      "yoy": 16.7
+    },
+    {
+      "date": "2023-12",
+      "category": "家用电器",
+      "yoy": -0.1
+    },
+    {
+      "date": "2023-12",
+      "category": "中西药品",
+      "yoy": -18.0
+    },
+    {
+      "date": "2023-12",
+      "category": "文化办公",
+      "yoy": -9.0
+    },
+    {
+      "date": "2023-12",
+      "category": "家具",
+      "yoy": 2.3
+    },
+    {
+      "date": "2023-12",
+      "category": "通讯器材",
+      "yoy": 11.0
+    },
+    {
+      "date": "2023-12",
+      "category": "石油制品",
+      "yoy": 8.6
+    },
+    {
+      "date": "2023-12",
+      "category": "汽车",
+      "yoy": 4.0
+    },
+    {
+      "date": "2023-12",
+      "category": "建筑装潢",
+      "yoy": -7.5
+    },
+    {
+      "date": "2024-02",
+      "category": "粮油食品",
+      "yoy": 9.0
+    },
+    {
+      "date": "2024-02",
+      "category": "饮料",
+      "yoy": 6.9
+    },
+    {
+      "date": "2024-02",
+      "category": "烟酒",
+      "yoy": 13.7
+    },
+    {
+      "date": "2024-02",
+      "category": "服装鞋帽",
+      "yoy": 1.9
+    },
+    {
+      "date": "2024-02",
+      "category": "化妆品",
+      "yoy": 4.0
+    },
+    {
+      "date": "2024-02",
+      "category": "金银珠宝",
+      "yoy": 5.0
+    },
+    {
+      "date": "2024-02",
+      "category": "日用品",
+      "yoy": -0.7
+    },
+    {
+      "date": "2024-02",
+      "category": "体育娱乐",
+      "yoy": 11.3
+    },
+    {
+      "date": "2024-02",
+      "category": "家用电器",
+      "yoy": 5.7
+    },
+    {
+      "date": "2024-02",
+      "category": "中西药品",
+      "yoy": 2.0
+    },
+    {
+      "date": "2024-02",
+      "category": "文化办公",
+      "yoy": -8.8
+    },
+    {
+      "date": "2024-02",
+      "category": "家具",
+      "yoy": 4.6
+    },
+    {
+      "date": "2024-02",
+      "category": "通讯器材",
+      "yoy": 16.2
+    },
+    {
+      "date": "2024-02",
+      "category": "石油制品",
+      "yoy": 5.0
+    },
+    {
+      "date": "2024-02",
+      "category": "汽车",
+      "yoy": 8.7
+    },
+    {
+      "date": "2024-02",
+      "category": "建筑装潢",
+      "yoy": 2.1
+    },
+    {
+      "date": "2024-03",
+      "category": "粮油食品",
+      "yoy": 11.0
+    },
+    {
+      "date": "2024-03",
+      "category": "饮料",
+      "yoy": 5.8
+    },
+    {
+      "date": "2024-03",
+      "category": "烟酒",
+      "yoy": 9.4
+    },
+    {
+      "date": "2024-03",
+      "category": "服装鞋帽",
+      "yoy": 3.8
+    },
+    {
+      "date": "2024-03",
+      "category": "化妆品",
+      "yoy": 2.2
+    },
+    {
+      "date": "2024-03",
+      "category": "金银珠宝",
+      "yoy": 3.2
+    },
+    {
+      "date": "2024-03",
+      "category": "日用品",
+      "yoy": 3.5
+    },
+    {
+      "date": "2024-03",
+      "category": "体育娱乐",
+      "yoy": 19.3
+    },
+    {
+      "date": "2024-03",
+      "category": "家用电器",
+      "yoy": 5.8
+    },
+    {
+      "date": "2024-03",
+      "category": "中西药品",
+      "yoy": 5.9
+    },
+    {
+      "date": "2024-03",
+      "category": "文化办公",
+      "yoy": -6.6
+    },
+    {
+      "date": "2024-03",
+      "category": "家具",
+      "yoy": 0.2
+    },
+    {
+      "date": "2024-03",
+      "category": "通讯器材",
+      "yoy": 7.2
+    },
+    {
+      "date": "2024-03",
+      "category": "石油制品",
+      "yoy": 3.5
+    },
+    {
+      "date": "2024-03",
+      "category": "汽车",
+      "yoy": -3.7
+    },
+    {
+      "date": "2024-03",
+      "category": "建筑装潢",
+      "yoy": 2.8
+    },
+    {
+      "date": "2024-04",
+      "category": "粮油食品",
+      "yoy": 8.5
+    },
+    {
+      "date": "2024-04",
+      "category": "饮料",
+      "yoy": 6.4
+    },
+    {
+      "date": "2024-04",
+      "category": "烟酒",
+      "yoy": 8.4
+    },
+    {
+      "date": "2024-04",
+      "category": "服装鞋帽",
+      "yoy": -2.0
+    },
+    {
+      "date": "2024-04",
+      "category": "化妆品",
+      "yoy": -2.7
+    },
+    {
+      "date": "2024-04",
+      "category": "金银珠宝",
+      "yoy": -0.1
+    },
+    {
+      "date": "2024-04",
+      "category": "日用品",
+      "yoy": 4.4
+    },
+    {
+      "date": "2024-04",
+      "category": "体育娱乐",
+      "yoy": 12.7
+    },
+    {
+      "date": "2024-04",
+      "category": "家用电器",
+      "yoy": 4.5
+    },
+    {
+      "date": "2024-04",
+      "category": "中西药品",
+      "yoy": 7.8
+    },
+    {
+      "date": "2024-04",
+      "category": "文化办公",
+      "yoy": -4.4
+    },
+    {
+      "date": "2024-04",
+      "category": "家具",
+      "yoy": 1.2
+    },
+    {
+      "date": "2024-04",
+      "category": "通讯器材",
+      "yoy": 13.3
+    },
+    {
+      "date": "2024-04",
+      "category": "石油制品",
+      "yoy": 1.6
+    },
+    {
+      "date": "2024-04",
+      "category": "汽车",
+      "yoy": -5.6
+    },
+    {
+      "date": "2024-04",
+      "category": "建筑装潢",
+      "yoy": -4.5
+    },
+    {
+      "date": "2024-05",
+      "category": "粮油食品",
+      "yoy": 9.3
+    },
+    {
+      "date": "2024-05",
+      "category": "饮料",
+      "yoy": 6.5
+    },
+    {
+      "date": "2024-05",
+      "category": "烟酒",
+      "yoy": 7.7
+    },
+    {
+      "date": "2024-05",
+      "category": "服装鞋帽",
+      "yoy": 4.4
+    },
+    {
+      "date": "2024-05",
+      "category": "化妆品",
+      "yoy": 18.7
+    },
+    {
+      "date": "2024-05",
+      "category": "金银珠宝",
+      "yoy": -11.0
+    },
+    {
+      "date": "2024-05",
+      "category": "日用品",
+      "yoy": 7.7
+    },
+    {
+      "date": "2024-05",
+      "category": "体育娱乐",
+      "yoy": 20.2
+    },
+    {
+      "date": "2024-05",
+      "category": "家用电器",
+      "yoy": 12.9
+    },
+    {
+      "date": "2024-05",
+      "category": "中西药品",
+      "yoy": 4.3
+    },
+    {
+      "date": "2024-05",
+      "category": "文化办公",
+      "yoy": 4.3
+    },
+    {
+      "date": "2024-05",
+      "category": "家具",
+      "yoy": 4.8
+    },
+    {
+      "date": "2024-05",
+      "category": "通讯器材",
+      "yoy": 16.6
+    },
+    {
+      "date": "2024-05",
+      "category": "石油制品",
+      "yoy": 5.1
+    },
+    {
+      "date": "2024-05",
+      "category": "汽车",
+      "yoy": -4.4
+    },
+    {
+      "date": "2024-05",
+      "category": "建筑装潢",
+      "yoy": -4.5
+    },
+    {
+      "date": "2024-06",
+      "category": "饮料",
+      "yoy": 1.7
+    },
+    {
+      "date": "2024-06",
+      "category": "烟酒",
+      "yoy": 5.2
+    },
+    {
+      "date": "2024-06",
+      "category": "服装鞋帽",
+      "yoy": -1.9
+    },
+    {
+      "date": "2024-06",
+      "category": "化妆品",
+      "yoy": -14.6
+    },
+    {
+      "date": "2024-06",
+      "category": "金银珠宝",
+      "yoy": -3.7
+    },
+    {
+      "date": "2024-06",
+      "category": "日用品",
+      "yoy": 0.3
+    },
+    {
+      "date": "2024-06",
+      "category": "体育娱乐",
+      "yoy": -1.5
+    },
+    {
+      "date": "2024-06",
+      "category": "家用电器",
+      "yoy": -7.6
+    },
+    {
+      "date": "2024-06",
+      "category": "中西药品",
+      "yoy": 4.5
+    },
+    {
+      "date": "2024-06",
+      "category": "文化办公",
+      "yoy": -8.5
+    },
+    {
+      "date": "2024-06",
+      "category": "家具",
+      "yoy": 1.1
+    },
+    {
+      "date": "2024-06",
+      "category": "通讯器材",
+      "yoy": 2.9
+    },
+    {
+      "date": "2024-06",
+      "category": "石油制品",
+      "yoy": 4.6
+    },
+    {
+      "date": "2024-06",
+      "category": "汽车",
+      "yoy": -6.2
+    },
+    {
+      "date": "2024-06",
+      "category": "建筑装潢",
+      "yoy": -4.4
+    },
+    {
+      "date": "2024-07",
+      "category": "饮料",
+      "yoy": 6.1
+    },
+    {
+      "date": "2024-07",
+      "category": "烟酒",
+      "yoy": -0.1
+    },
+    {
+      "date": "2024-07",
+      "category": "服装鞋帽",
+      "yoy": -5.2
+    },
+    {
+      "date": "2024-07",
+      "category": "化妆品",
+      "yoy": -6.1
+    },
+    {
+      "date": "2024-07",
+      "category": "金银珠宝",
+      "yoy": -10.4
+    },
+    {
+      "date": "2024-07",
+      "category": "日用品",
+      "yoy": 2.1
+    },
+    {
+      "date": "2024-07",
+      "category": "体育娱乐",
+      "yoy": 10.7
+    },
+    {
+      "date": "2024-07",
+      "category": "家用电器",
+      "yoy": -2.4
+    },
+    {
+      "date": "2024-07",
+      "category": "中西药品",
+      "yoy": 5.8
+    },
+    {
+      "date": "2024-07",
+      "category": "文化办公",
+      "yoy": -2.4
+    },
+    {
+      "date": "2024-07",
+      "category": "家具",
+      "yoy": -1.1
+    },
+    {
+      "date": "2024-07",
+      "category": "通讯器材",
+      "yoy": 12.7
+    },
+    {
+      "date": "2024-07",
+      "category": "石油制品",
+      "yoy": 1.6
+    },
+    {
+      "date": "2024-07",
+      "category": "汽车",
+      "yoy": -4.9
+    },
+    {
+      "date": "2024-07",
+      "category": "建筑装潢",
+      "yoy": -2.1
+    },
+    {
+      "date": "2024-08",
+      "category": "饮料",
+      "yoy": 2.7
+    },
+    {
+      "date": "2024-08",
+      "category": "烟酒",
+      "yoy": 3.1
+    },
+    {
+      "date": "2024-08",
+      "category": "服装鞋帽",
+      "yoy": -1.6
+    },
+    {
+      "date": "2024-08",
+      "category": "化妆品",
+      "yoy": -6.1
+    },
+    {
+      "date": "2024-08",
+      "category": "金银珠宝",
+      "yoy": -12.0
+    },
+    {
+      "date": "2024-08",
+      "category": "日用品",
+      "yoy": 1.3
+    },
+    {
+      "date": "2024-08",
+      "category": "体育娱乐",
+      "yoy": 3.2
+    },
+    {
+      "date": "2024-08",
+      "category": "家用电器",
+      "yoy": 3.4
+    },
+    {
+      "date": "2024-08",
+      "category": "中西药品",
+      "yoy": 4.3
+    },
+    {
+      "date": "2024-08",
+      "category": "文化办公",
+      "yoy": -1.9
+    },
+    {
+      "date": "2024-08",
+      "category": "家具",
+      "yoy": -3.7
+    },
+    {
+      "date": "2024-08",
+      "category": "通讯器材",
+      "yoy": 14.8
+    },
+    {
+      "date": "2024-08",
+      "category": "石油制品",
+      "yoy": -0.4
+    },
+    {
+      "date": "2024-08",
+      "category": "汽车",
+      "yoy": -7.3
+    },
+    {
+      "date": "2024-08",
+      "category": "建筑装潢",
+      "yoy": -6.7
+    },
+    {
+      "date": "2024-09",
+      "category": "饮料",
+      "yoy": -0.7
+    },
+    {
+      "date": "2024-09",
+      "category": "烟酒",
+      "yoy": -0.7
+    },
+    {
+      "date": "2024-09",
+      "category": "服装鞋帽",
+      "yoy": -0.4
+    },
+    {
+      "date": "2024-09",
+      "category": "化妆品",
+      "yoy": -4.5
+    },
+    {
+      "date": "2024-09",
+      "category": "金银珠宝",
+      "yoy": -7.8
+    },
+    {
+      "date": "2024-09",
+      "category": "日用品",
+      "yoy": 3.0
+    },
+    {
+      "date": "2024-09",
+      "category": "体育娱乐",
+      "yoy": 6.2
+    },
+    {
+      "date": "2024-09",
+      "category": "家用电器",
+      "yoy": 20.5
+    },
+    {
+      "date": "2024-09",
+      "category": "中西药品",
+      "yoy": 5.4
+    },
+    {
+      "date": "2024-09",
+      "category": "文化办公",
+      "yoy": 10.0
+    },
+    {
+      "date": "2024-09",
+      "category": "家具",
+      "yoy": 0.4
+    },
+    {
+      "date": "2024-09",
+      "category": "通讯器材",
+      "yoy": 12.3
+    },
+    {
+      "date": "2024-09",
+      "category": "石油制品",
+      "yoy": -4.4
+    },
+    {
+      "date": "2024-09",
+      "category": "汽车",
+      "yoy": 0.4
+    },
+    {
+      "date": "2024-09",
+      "category": "建筑装潢",
+      "yoy": -6.6
+    },
+    {
+      "date": "2024-10",
+      "category": "饮料",
+      "yoy": -0.9
+    },
+    {
+      "date": "2024-10",
+      "category": "烟酒",
+      "yoy": -0.1
+    },
+    {
+      "date": "2024-10",
+      "category": "服装鞋帽",
+      "yoy": 8.0
+    },
+    {
+      "date": "2024-10",
+      "category": "化妆品",
+      "yoy": 40.1
+    },
+    {
+      "date": "2024-10",
+      "category": "金银珠宝",
+      "yoy": -2.7
+    },
+    {
+      "date": "2024-10",
+      "category": "日用品",
+      "yoy": 8.5
+    },
+    {
+      "date": "2024-10",
+      "category": "体育娱乐",
+      "yoy": 26.7
+    },
+    {
+      "date": "2024-10",
+      "category": "家用电器",
+      "yoy": 39.2
+    },
+    {
+      "date": "2024-10",
+      "category": "中西药品",
+      "yoy": 1.4
+    },
+    {
+      "date": "2024-10",
+      "category": "文化办公",
+      "yoy": 18.0
+    },
+    {
+      "date": "2024-10",
+      "category": "家具",
+      "yoy": 7.4
+    },
+    {
+      "date": "2024-10",
+      "category": "通讯器材",
+      "yoy": 14.4
+    },
+    {
+      "date": "2024-10",
+      "category": "石油制品",
+      "yoy": -6.6
+    },
+    {
+      "date": "2024-10",
+      "category": "汽车",
+      "yoy": 3.7
+    },
+    {
+      "date": "2024-10",
+      "category": "建筑装潢",
+      "yoy": -5.8
+    },
+    {
+      "date": "2024-11",
+      "category": "饮料",
+      "yoy": -4.3
+    },
+    {
+      "date": "2024-11",
+      "category": "烟酒",
+      "yoy": -3.1
+    },
+    {
+      "date": "2024-11",
+      "category": "服装鞋帽",
+      "yoy": -4.5
+    },
+    {
+      "date": "2024-11",
+      "category": "化妆品",
+      "yoy": -26.4
+    },
+    {
+      "date": "2024-11",
+      "category": "金银珠宝",
+      "yoy": -5.9
+    },
+    {
+      "date": "2024-11",
+      "category": "日用品",
+      "yoy": 1.3
+    },
+    {
+      "date": "2024-11",
+      "category": "体育娱乐",
+      "yoy": 3.5
+    },
+    {
+      "date": "2024-11",
+      "category": "家用电器",
+      "yoy": 22.2
+    },
+    {
+      "date": "2024-11",
+      "category": "中西药品",
+      "yoy": -2.7
+    },
+    {
+      "date": "2024-11",
+      "category": "文化办公",
+      "yoy": -5.9
+    },
+    {
+      "date": "2024-11",
+      "category": "家具",
+      "yoy": 10.5
+    },
+    {
+      "date": "2024-11",
+      "category": "通讯器材",
+      "yoy": -7.7
+    },
+    {
+      "date": "2024-11",
+      "category": "石油制品",
+      "yoy": -7.1
+    },
+    {
+      "date": "2024-11",
+      "category": "汽车",
+      "yoy": 6.6
+    },
+    {
+      "date": "2024-11",
+      "category": "建筑装潢",
+      "yoy": 2.9
+    },
+    {
+      "date": "2024-12",
+      "category": "饮料",
+      "yoy": -8.5
+    },
+    {
+      "date": "2024-12",
+      "category": "烟酒",
+      "yoy": 10.4
+    },
+    {
+      "date": "2024-12",
+      "category": "服装鞋帽",
+      "yoy": -0.3
+    },
+    {
+      "date": "2024-12",
+      "category": "化妆品",
+      "yoy": 0.8
+    },
+    {
+      "date": "2024-12",
+      "category": "金银珠宝",
+      "yoy": -1.0
+    },
+    {
+      "date": "2024-12",
+      "category": "日用品",
+      "yoy": 6.3
+    },
+    {
+      "date": "2024-12",
+      "category": "体育娱乐",
+      "yoy": 16.7
+    },
+    {
+      "date": "2024-12",
+      "category": "家用电器",
+      "yoy": 39.3
+    },
+    {
+      "date": "2024-12",
+      "category": "中西药品",
+      "yoy": -0.9
+    },
+    {
+      "date": "2024-12",
+      "category": "文化办公",
+      "yoy": 9.1
+    },
+    {
+      "date": "2024-12",
+      "category": "家具",
+      "yoy": 8.8
+    },
+    {
+      "date": "2024-12",
+      "category": "通讯器材",
+      "yoy": 14.0
+    },
+    {
+      "date": "2024-12",
+      "category": "石油制品",
+      "yoy": -2.8
+    },
+    {
+      "date": "2024-12",
+      "category": "汽车",
+      "yoy": 0.5
+    },
+    {
+      "date": "2024-12",
+      "category": "建筑装潢",
+      "yoy": 0.8
+    },
+    {
+      "date": "2025-02",
+      "category": "饮料",
+      "yoy": -2.6
+    },
+    {
+      "date": "2025-02",
+      "category": "烟酒",
+      "yoy": 5.5
+    },
+    {
+      "date": "2025-02",
+      "category": "服装鞋帽",
+      "yoy": 3.3
+    },
+    {
+      "date": "2025-02",
+      "category": "化妆品",
+      "yoy": 4.4
+    },
+    {
+      "date": "2025-02",
+      "category": "金银珠宝",
+      "yoy": 5.4
+    },
+    {
+      "date": "2025-02",
+      "category": "日用品",
+      "yoy": 5.7
+    },
+    {
+      "date": "2025-02",
+      "category": "体育娱乐",
+      "yoy": 25.0
+    },
+    {
+      "date": "2025-02",
+      "category": "家用电器",
+      "yoy": 10.9
+    },
+    {
+      "date": "2025-02",
+      "category": "中西药品",
+      "yoy": 2.5
+    },
+    {
+      "date": "2025-02",
+      "category": "文化办公",
+      "yoy": 21.8
+    },
+    {
+      "date": "2025-02",
+      "category": "家具",
+      "yoy": 11.7
+    },
+    {
+      "date": "2025-02",
+      "category": "通讯器材",
+      "yoy": 26.2
+    },
+    {
+      "date": "2025-02",
+      "category": "石油制品",
+      "yoy": 0.9
+    },
+    {
+      "date": "2025-02",
+      "category": "汽车",
+      "yoy": -4.4
+    },
+    {
+      "date": "2025-02",
+      "category": "建筑装潢",
+      "yoy": 0.1
+    },
+    {
+      "date": "2025-03",
+      "category": "饮料",
+      "yoy": 4.4
+    },
+    {
+      "date": "2025-03",
+      "category": "烟酒",
+      "yoy": 8.5
+    },
+    {
+      "date": "2025-03",
+      "category": "服装鞋帽",
+      "yoy": 3.6
+    },
+    {
+      "date": "2025-03",
+      "category": "化妆品",
+      "yoy": 1.1
+    },
+    {
+      "date": "2025-03",
+      "category": "金银珠宝",
+      "yoy": 10.6
+    },
+    {
+      "date": "2025-03",
+      "category": "日用品",
+      "yoy": 8.8
+    },
+    {
+      "date": "2025-03",
+      "category": "体育娱乐",
+      "yoy": 26.2
+    },
+    {
+      "date": "2025-03",
+      "category": "家用电器",
+      "yoy": 35.1
+    },
+    {
+      "date": "2025-03",
+      "category": "中西药品",
+      "yoy": 1.4
+    },
+    {
+      "date": "2025-03",
+      "category": "文化办公",
+      "yoy": 21.5
+    },
+    {
+      "date": "2025-03",
+      "category": "家具",
+      "yoy": 29.5
+    },
+    {
+      "date": "2025-03",
+      "category": "通讯器材",
+      "yoy": 28.6
+    },
+    {
+      "date": "2025-03",
+      "category": "石油制品",
+      "yoy": -1.9
+    },
+    {
+      "date": "2025-03",
+      "category": "汽车",
+      "yoy": 5.5
+    },
+    {
+      "date": "2025-03",
+      "category": "建筑装潢",
+      "yoy": -0.1
+    },
+    {
+      "date": "2025-04",
+      "category": "饮料",
+      "yoy": 2.9
+    },
+    {
+      "date": "2025-04",
+      "category": "烟酒",
+      "yoy": 4.0
+    },
+    {
+      "date": "2025-04",
+      "category": "服装鞋帽",
+      "yoy": 2.2
+    },
+    {
+      "date": "2025-04",
+      "category": "化妆品",
+      "yoy": 7.2
+    },
+    {
+      "date": "2025-04",
+      "category": "金银珠宝",
+      "yoy": 25.3
+    },
+    {
+      "date": "2025-04",
+      "category": "日用品",
+      "yoy": 7.6
+    },
+    {
+      "date": "2025-04",
+      "category": "体育娱乐",
+      "yoy": 23.3
+    },
+    {
+      "date": "2025-04",
+      "category": "家用电器",
+      "yoy": 38.8
+    },
+    {
+      "date": "2025-04",
+      "category": "中西药品",
+      "yoy": 2.6
+    },
+    {
+      "date": "2025-04",
+      "category": "文化办公",
+      "yoy": 33.5
+    },
+    {
+      "date": "2025-04",
+      "category": "家具",
+      "yoy": 26.9
+    },
+    {
+      "date": "2025-04",
+      "category": "通讯器材",
+      "yoy": 19.9
+    },
+    {
+      "date": "2025-04",
+      "category": "石油制品",
+      "yoy": -5.7
+    },
+    {
+      "date": "2025-04",
+      "category": "汽车",
+      "yoy": 0.7
+    },
+    {
+      "date": "2025-04",
+      "category": "建筑装潢",
+      "yoy": 9.7
+    },
+    {
+      "date": "2025-05",
+      "category": "饮料",
+      "yoy": 0.1
+    },
+    {
+      "date": "2025-05",
+      "category": "烟酒",
+      "yoy": 11.2
+    },
+    {
+      "date": "2025-05",
+      "category": "服装鞋帽",
+      "yoy": 4.0
+    },
+    {
+      "date": "2025-05",
+      "category": "化妆品",
+      "yoy": 4.4
+    },
+    {
+      "date": "2025-05",
+      "category": "金银珠宝",
+      "yoy": 21.8
+    },
+    {
+      "date": "2025-05",
+      "category": "日用品",
+      "yoy": 8.0
+    },
+    {
+      "date": "2025-05",
+      "category": "体育娱乐",
+      "yoy": 28.3
+    },
+    {
+      "date": "2025-05",
+      "category": "家用电器",
+      "yoy": 53.0
+    },
+    {
+      "date": "2025-05",
+      "category": "中西药品",
+      "yoy": 0.3
+    },
+    {
+      "date": "2025-05",
+      "category": "文化办公",
+      "yoy": 30.5
+    },
+    {
+      "date": "2025-05",
+      "category": "家具",
+      "yoy": 25.6
+    },
+    {
+      "date": "2025-05",
+      "category": "通讯器材",
+      "yoy": 33.0
+    },
+    {
+      "date": "2025-05",
+      "category": "石油制品",
+      "yoy": -7.0
+    },
+    {
+      "date": "2025-05",
+      "category": "汽车",
+      "yoy": 1.1
+    },
+    {
+      "date": "2025-05",
+      "category": "建筑装潢",
+      "yoy": 5.8
+    },
+    {
+      "date": "2025-06",
+      "category": "饮料",
+      "yoy": -4.4
+    },
+    {
+      "date": "2025-06",
+      "category": "烟酒",
+      "yoy": -0.7
+    },
+    {
+      "date": "2025-06",
+      "category": "服装鞋帽",
+      "yoy": 1.9
+    },
+    {
+      "date": "2025-06",
+      "category": "化妆品",
+      "yoy": -2.3
+    },
+    {
+      "date": "2025-06",
+      "category": "金银珠宝",
+      "yoy": 6.1
+    },
+    {
+      "date": "2025-06",
+      "category": "日用品",
+      "yoy": 7.8
+    },
+    {
+      "date": "2025-06",
+      "category": "体育娱乐",
+      "yoy": 9.5
+    },
+    {
+      "date": "2025-06",
+      "category": "家用电器",
+      "yoy": 32.4
+    },
+    {
+      "date": "2025-06",
+      "category": "中西药品",
+      "yoy": -0.7
+    },
+    {
+      "date": "2025-06",
+      "category": "文化办公",
+      "yoy": 24.4
+    },
+    {
+      "date": "2025-06",
+      "category": "家具",
+      "yoy": 28.7
+    },
+    {
+      "date": "2025-06",
+      "category": "通讯器材",
+      "yoy": 13.9
+    },
+    {
+      "date": "2025-06",
+      "category": "石油制品",
+      "yoy": -7.3
+    },
+    {
+      "date": "2025-06",
+      "category": "汽车",
+      "yoy": 4.6
+    },
+    {
+      "date": "2025-06",
+      "category": "建筑装潢",
+      "yoy": 1.0
+    },
+    {
+      "date": "2025-07",
+      "category": "饮料",
+      "yoy": 2.7
+    },
+    {
+      "date": "2025-07",
+      "category": "烟酒",
+      "yoy": 2.7
+    },
+    {
+      "date": "2025-07",
+      "category": "服装鞋帽",
+      "yoy": 1.8
+    },
+    {
+      "date": "2025-07",
+      "category": "化妆品",
+      "yoy": 4.5
+    },
+    {
+      "date": "2025-07",
+      "category": "金银珠宝",
+      "yoy": 8.2
+    },
+    {
+      "date": "2025-07",
+      "category": "日用品",
+      "yoy": 8.2
+    },
+    {
+      "date": "2025-07",
+      "category": "体育娱乐",
+      "yoy": 13.7
+    },
+    {
+      "date": "2025-07",
+      "category": "家用电器",
+      "yoy": 28.7
+    },
+    {
+      "date": "2025-07",
+      "category": "中西药品",
+      "yoy": 0.1
+    },
+    {
+      "date": "2025-07",
+      "category": "文化办公",
+      "yoy": 13.8
+    },
+    {
+      "date": "2025-07",
+      "category": "家具",
+      "yoy": 20.6
+    },
+    {
+      "date": "2025-07",
+      "category": "通讯器材",
+      "yoy": 14.9
+    },
+    {
+      "date": "2025-07",
+      "category": "石油制品",
+      "yoy": -8.3
+    },
+    {
+      "date": "2025-07",
+      "category": "汽车",
+      "yoy": -1.5
+    },
+    {
+      "date": "2025-07",
+      "category": "建筑装潢",
+      "yoy": -0.5
+    },
+    {
+      "date": "2025-08",
+      "category": "饮料",
+      "yoy": 2.8
+    },
+    {
+      "date": "2025-08",
+      "category": "烟酒",
+      "yoy": -2.3
+    },
+    {
+      "date": "2025-08",
+      "category": "服装鞋帽",
+      "yoy": 3.1
+    },
+    {
+      "date": "2025-08",
+      "category": "化妆品",
+      "yoy": 5.1
+    },
+    {
+      "date": "2025-08",
+      "category": "金银珠宝",
+      "yoy": 16.8
+    },
+    {
+      "date": "2025-08",
+      "category": "日用品",
+      "yoy": 7.7
+    },
+    {
+      "date": "2025-08",
+      "category": "体育娱乐",
+      "yoy": 16.9
+    },
+    {
+      "date": "2025-08",
+      "category": "家用电器",
+      "yoy": 14.3
+    },
+    {
+      "date": "2025-08",
+      "category": "中西药品",
+      "yoy": 0.9
+    },
+    {
+      "date": "2025-08",
+      "category": "文化办公",
+      "yoy": 14.2
+    },
+    {
+      "date": "2025-08",
+      "category": "家具",
+      "yoy": 18.6
+    },
+    {
+      "date": "2025-08",
+      "category": "通讯器材",
+      "yoy": 7.3
+    },
+    {
+      "date": "2025-08",
+      "category": "石油制品",
+      "yoy": -8.0
+    },
+    {
+      "date": "2025-08",
+      "category": "汽车",
+      "yoy": 0.8
+    },
+    {
+      "date": "2025-08",
+      "category": "建筑装潢",
+      "yoy": -0.7
+    },
+    {
+      "date": "2025-09",
+      "category": "饮料",
+      "yoy": -0.8
+    },
+    {
+      "date": "2025-09",
+      "category": "烟酒",
+      "yoy": 1.6
+    },
+    {
+      "date": "2025-09",
+      "category": "服装鞋帽",
+      "yoy": 4.7
+    },
+    {
+      "date": "2025-09",
+      "category": "化妆品",
+      "yoy": 8.6
+    },
+    {
+      "date": "2025-09",
+      "category": "金银珠宝",
+      "yoy": 9.7
+    },
+    {
+      "date": "2025-09",
+      "category": "日用品",
+      "yoy": 6.8
+    },
+    {
+      "date": "2025-09",
+      "category": "体育娱乐",
+      "yoy": 11.9
+    },
+    {
+      "date": "2025-09",
+      "category": "家用电器",
+      "yoy": 3.3
+    },
+    {
+      "date": "2025-09",
+      "category": "中西药品",
+      "yoy": 1.9
+    },
+    {
+      "date": "2025-09",
+      "category": "文化办公",
+      "yoy": 6.2
+    },
+    {
+      "date": "2025-09",
+      "category": "家具",
+      "yoy": 16.2
+    },
+    {
+      "date": "2025-09",
+      "category": "通讯器材",
+      "yoy": 16.2
+    },
+    {
+      "date": "2025-09",
+      "category": "石油制品",
+      "yoy": -7.1
+    },
+    {
+      "date": "2025-09",
+      "category": "汽车",
+      "yoy": 1.6
+    },
+    {
+      "date": "2025-09",
+      "category": "建筑装潢",
+      "yoy": -0.1
+    },
+    {
+      "date": "2025-10",
+      "category": "饮料",
+      "yoy": 7.1
+    },
+    {
+      "date": "2025-10",
+      "category": "烟酒",
+      "yoy": 4.1
+    },
+    {
+      "date": "2025-10",
+      "category": "服装鞋帽",
+      "yoy": 6.3
+    },
+    {
+      "date": "2025-10",
+      "category": "化妆品",
+      "yoy": 9.6
+    },
+    {
+      "date": "2025-10",
+      "category": "金银珠宝",
+      "yoy": 37.6
+    },
+    {
+      "date": "2025-10",
+      "category": "日用品",
+      "yoy": 7.4
+    },
+    {
+      "date": "2025-10",
+      "category": "体育娱乐",
+      "yoy": 10.1
+    },
+    {
+      "date": "2025-10",
+      "category": "家用电器",
+      "yoy": -14.6
+    },
+    {
+      "date": "2025-10",
+      "category": "中西药品",
+      "yoy": 3.6
+    },
+    {
+      "date": "2025-10",
+      "category": "文化办公",
+      "yoy": 13.5
+    },
+    {
+      "date": "2025-10",
+      "category": "家具",
+      "yoy": 9.6
+    },
+    {
+      "date": "2025-10",
+      "category": "通讯器材",
+      "yoy": 23.2
+    },
+    {
+      "date": "2025-10",
+      "category": "石油制品",
+      "yoy": -5.9
+    },
+    {
+      "date": "2025-10",
+      "category": "汽车",
+      "yoy": -6.6
+    },
+    {
+      "date": "2025-10",
+      "category": "建筑装潢",
+      "yoy": -8.3
+    },
+    {
+      "date": "2025-11",
+      "category": "饮料",
+      "yoy": 2.9
+    },
+    {
+      "date": "2025-11",
+      "category": "烟酒",
+      "yoy": -3.4
+    },
+    {
+      "date": "2025-11",
+      "category": "服装鞋帽",
+      "yoy": 3.5
+    },
+    {
+      "date": "2025-11",
+      "category": "化妆品",
+      "yoy": 6.1
+    },
+    {
+      "date": "2025-11",
+      "category": "金银珠宝",
+      "yoy": 8.5
+    },
+    {
+      "date": "2025-11",
+      "category": "日用品",
+      "yoy": -0.8
+    },
+    {
+      "date": "2025-11",
+      "category": "体育娱乐",
+      "yoy": 0.4
+    },
+    {
+      "date": "2025-11",
+      "category": "家用电器",
+      "yoy": -19.4
+    },
+    {
+      "date": "2025-11",
+      "category": "中西药品",
+      "yoy": 4.9
+    },
+    {
+      "date": "2025-11",
+      "category": "文化办公",
+      "yoy": 11.7
+    },
+    {
+      "date": "2025-11",
+      "category": "家具",
+      "yoy": -3.8
+    },
+    {
+      "date": "2025-11",
+      "category": "通讯器材",
+      "yoy": 20.6
+    },
+    {
+      "date": "2025-11",
+      "category": "石油制品",
+      "yoy": -8.0
+    },
+    {
+      "date": "2025-11",
+      "category": "汽车",
+      "yoy": -8.3
+    },
+    {
+      "date": "2025-11",
+      "category": "建筑装潢",
+      "yoy": -17.0
+    },
+    {
+      "date": "2025-12",
+      "category": "饮料",
+      "yoy": 3.0
+    },
+    {
+      "date": "2025-12",
+      "category": "烟酒",
+      "yoy": 7.0
+    },
+    {
+      "date": "2025-12",
+      "category": "服装鞋帽",
+      "yoy": 12.0
+    },
+    {
+      "date": "2025-12",
+      "category": "化妆品",
+      "yoy": 4.0
+    },
+    {
+      "date": "2025-12",
+      "category": "金银珠宝",
+      "yoy": 12.8
+    },
+    {
+      "date": "2025-12",
+      "category": "日用品",
+      "yoy": 6.3
+    },
+    {
+      "date": "2025-12",
+      "category": "体育娱乐",
+      "yoy": 15.7
+    },
+    {
+      "date": "2025-12",
+      "category": "家用电器",
+      "yoy": 11.0
+    },
+    {
+      "date": "2025-12",
+      "category": "中西药品",
+      "yoy": 1.8
+    },
+    {
+      "date": "2025-12",
+      "category": "文化办公",
+      "yoy": 17.3
+    },
+    {
+      "date": "2025-12",
+      "category": "家具",
+      "yoy": 14.6
+    },
+    {
+      "date": "2025-12",
+      "category": "通讯器材",
+      "yoy": 20.9
+    },
+    {
+      "date": "2025-12",
+      "category": "石油制品",
+      "yoy": -5.7
+    },
+    {
+      "date": "2025-12",
+      "category": "汽车",
+      "yoy": -1.5
+    },
+    {
+      "date": "2025-12",
+      "category": "建筑装潢",
+      "yoy": -2.7
+    },
+    {
+      "date": "2025-12",
+      "category": "粮油食品",
+      "yoy": 12.5
+    },
+    {
+      "date": "2026-02",
+      "category": "饮料",
+      "yoy": 3.0
+    },
+    {
+      "date": "2026-02",
+      "category": "烟酒",
+      "yoy": 9.8
+    },
+    {
+      "date": "2026-02",
+      "category": "服装鞋帽",
+      "yoy": 10.4
+    },
+    {
+      "date": "2026-02",
+      "category": "化妆品",
+      "yoy": 4.5
+    },
+    {
+      "date": "2026-02",
+      "category": "金银珠宝",
+      "yoy": 13.0
+    },
+    {
+      "date": "2026-02",
+      "category": "日用品",
+      "yoy": 5.3
+    },
+    {
+      "date": "2026-02",
+      "category": "体育娱乐",
+      "yoy": 25.0
+    },
+    {
+      "date": "2026-02",
+      "category": "家用电器",
+      "yoy": 3.3
+    },
+    {
+      "date": "2026-02",
+      "category": "中西药品",
+      "yoy": 1.5
+    },
+    {
+      "date": "2026-02",
+      "category": "文化办公",
+      "yoy": 22.0
+    },
+    {
+      "date": "2026-02",
+      "category": "家具",
+      "yoy": 8.8
+    },
+    {
+      "date": "2026-02",
+      "category": "通讯器材",
+      "yoy": 17.8
+    },
+    {
+      "date": "2026-02",
+      "category": "石油制品",
+      "yoy": -9.7
+    },
+    {
+      "date": "2026-02",
+      "category": "汽车",
+      "yoy": -7.3
+    },
+    {
+      "date": "2026-02",
+      "category": "建筑装潢",
+      "yoy": -2.2
+    },
+    {
+      "date": "2026-02",
+      "category": "粮油食品",
+      "yoy": 15.2
+    },
+    {
+      "date": "2026-03",
+      "category": "饮料",
+      "yoy": 4.1
+    },
+    {
+      "date": "2026-03",
+      "category": "烟酒",
+      "yoy": 4.1
+    },
+    {
+      "date": "2026-03",
+      "category": "服装鞋帽",
+      "yoy": 7.0
+    },
+    {
+      "date": "2026-03",
+      "category": "化妆品",
+      "yoy": 8.3
+    },
+    {
+      "date": "2026-03",
+      "category": "金银珠宝",
+      "yoy": 11.7
+    },
+    {
+      "date": "2026-03",
+      "category": "日用品",
+      "yoy": 4.6
+    },
+    {
+      "date": "2026-03",
+      "category": "体育娱乐",
+      "yoy": 2.0
+    },
+    {
+      "date": "2026-03",
+      "category": "家用电器",
+      "yoy": -5.0
+    },
+    {
+      "date": "2026-03",
+      "category": "中西药品",
+      "yoy": 5.7
+    },
+    {
+      "date": "2026-03",
+      "category": "文化办公",
+      "yoy": 15.0
+    },
+    {
+      "date": "2026-03",
+      "category": "家具",
+      "yoy": -8.7
+    },
+    {
+      "date": "2026-03",
+      "category": "通讯器材",
+      "yoy": 27.3
+    },
+    {
+      "date": "2026-03",
+      "category": "石油制品",
+      "yoy": 0.1
+    },
+    {
+      "date": "2026-03",
+      "category": "汽车",
+      "yoy": -11.8
+    },
+    {
+      "date": "2026-03",
+      "category": "建筑装潢",
+      "yoy": -9.0
+    },
+    {
+      "date": "2026-03",
+      "category": "粮油食品",
+      "yoy": 9.5
+    },
+    {
+      "date": "2026-04",
+      "category": "饮料",
+      "yoy": 4.1
+    },
+    {
+      "date": "2026-04",
+      "category": "烟酒",
+      "yoy": 3.2
+    },
+    {
+      "date": "2026-04",
+      "category": "服装鞋帽",
+      "yoy": 3.6
+    },
+    {
+      "date": "2026-04",
+      "category": "化妆品",
+      "yoy": 4.7
+    },
+    {
+      "date": "2026-04",
+      "category": "金银珠宝",
+      "yoy": -21.3
+    },
+    {
+      "date": "2026-04",
+      "category": "日用品",
+      "yoy": 3.5
+    },
+    {
+      "date": "2026-04",
+      "category": "体育娱乐",
+      "yoy": -8.0
+    },
+    {
+      "date": "2026-04",
+      "category": "家用电器",
+      "yoy": -15.1
+    },
+    {
+      "date": "2026-04",
+      "category": "中西药品",
+      "yoy": 4.2
+    },
+    {
+      "date": "2026-04",
+      "category": "文化办公",
+      "yoy": -6.9
+    },
+    {
+      "date": "2026-04",
+      "category": "家具",
+      "yoy": -10.4
+    },
+    {
+      "date": "2026-04",
+      "category": "通讯器材",
+      "yoy": 6.2
+    },
+    {
+      "date": "2026-04",
+      "category": "石油制品",
+      "yoy": -6.5
+    },
+    {
+      "date": "2026-04",
+      "category": "汽车",
+      "yoy": -15.3
+    },
+    {
+      "date": "2026-04",
+      "category": "建筑装潢",
+      "yoy": -13.8
+    },
+    {
+      "date": "2026-04",
+      "category": "粮油食品",
+      "yoy": 4.1
+    },
+    {
+      "date": "2026-05",
+      "category": "饮料",
+      "yoy": 6.1
+    },
+    {
+      "date": "2026-05",
+      "category": "烟酒",
+      "yoy": 4.8
+    },
+    {
+      "date": "2026-05",
+      "category": "服装鞋帽",
+      "yoy": 3.8
+    },
+    {
+      "date": "2026-05",
+      "category": "化妆品",
+      "yoy": 2.5
+    },
+    {
+      "date": "2026-05",
+      "category": "金银珠宝",
+      "yoy": -8.9
+    },
+    {
+      "date": "2026-05",
+      "category": "日用品",
+      "yoy": 1.6
+    },
+    {
+      "date": "2026-05",
+      "category": "体育娱乐",
+      "yoy": -8.0
+    },
+    {
+      "date": "2026-05",
+      "category": "家用电器",
+      "yoy": -15.6
+    },
+    {
+      "date": "2026-05",
+      "category": "中西药品",
+      "yoy": 4.0
+    },
+    {
+      "date": "2026-05",
+      "category": "文化办公",
+      "yoy": -1.5
+    },
+    {
+      "date": "2026-05",
+      "category": "家具",
+      "yoy": -8.7
+    },
+    {
+      "date": "2026-05",
+      "category": "通讯器材",
+      "yoy": 0.7
+    },
+    {
+      "date": "2026-05",
+      "category": "石油制品",
+      "yoy": -3.2
+    },
+    {
+      "date": "2026-05",
+      "category": "汽车",
+      "yoy": -16.1
+    },
+    {
+      "date": "2026-05",
+      "category": "建筑装潢",
+      "yoy": -13.6
+    },
+    {
+      "date": "2026-05",
+      "category": "粮油食品",
+      "yoy": 1.9
+    }
+  ],
+  "urban_rural": [
+    {
+      "date": "2008-01",
+      "category": "城镇",
+      "yoy": 21.2
+    },
+    {
+      "date": "2008-01",
+      "category": "乡村",
+      "yoy": 21.2
+    },
+    {
+      "date": "2008-02",
+      "category": "城镇",
+      "yoy": 19.1
+    },
+    {
+      "date": "2008-02",
+      "category": "乡村",
+      "yoy": 19.1
+    },
+    {
+      "date": "2008-03",
+      "category": "城镇",
+      "yoy": 21.5
+    },
+    {
+      "date": "2008-03",
+      "category": "乡村",
+      "yoy": 21.5
+    },
+    {
+      "date": "2008-04",
+      "category": "城镇",
+      "yoy": 22.0
+    },
+    {
+      "date": "2008-04",
+      "category": "乡村",
+      "yoy": 22.0
+    },
+    {
+      "date": "2008-05",
+      "category": "城镇",
+      "yoy": 21.6
+    },
+    {
+      "date": "2008-05",
+      "category": "乡村",
+      "yoy": 21.6
+    },
+    {
+      "date": "2008-06",
+      "category": "城镇",
+      "yoy": 23.0
+    },
+    {
+      "date": "2008-06",
+      "category": "乡村",
+      "yoy": 23.0
+    },
+    {
+      "date": "2008-07",
+      "category": "城镇",
+      "yoy": 23.3
+    },
+    {
+      "date": "2008-07",
+      "category": "乡村",
+      "yoy": 23.3
+    },
+    {
+      "date": "2008-08",
+      "category": "城镇",
+      "yoy": 23.2
+    },
+    {
+      "date": "2008-08",
+      "category": "乡村",
+      "yoy": 23.2
+    },
+    {
+      "date": "2008-09",
+      "category": "城镇",
+      "yoy": 23.2
+    },
+    {
+      "date": "2008-09",
+      "category": "乡村",
+      "yoy": 23.2
+    },
+    {
+      "date": "2008-10",
+      "category": "城镇",
+      "yoy": 22.0
+    },
+    {
+      "date": "2008-10",
+      "category": "乡村",
+      "yoy": 22.0
+    },
+    {
+      "date": "2008-11",
+      "category": "城镇",
+      "yoy": 20.8
+    },
+    {
+      "date": "2008-11",
+      "category": "乡村",
+      "yoy": 20.8
+    },
+    {
+      "date": "2008-12",
+      "category": "城镇",
+      "yoy": 19.0
+    },
+    {
+      "date": "2008-12",
+      "category": "乡村",
+      "yoy": 19.0
+    },
+    {
+      "date": "2009-01",
+      "category": "城镇",
+      "yoy": 18.5
+    },
+    {
+      "date": "2009-01",
+      "category": "乡村",
+      "yoy": 18.5
+    },
+    {
+      "date": "2009-02",
+      "category": "城镇",
+      "yoy": 11.6
+    },
+    {
+      "date": "2009-02",
+      "category": "乡村",
+      "yoy": 11.6
+    },
+    {
+      "date": "2009-03",
+      "category": "城镇",
+      "yoy": 14.7
+    },
+    {
+      "date": "2009-03",
+      "category": "乡村",
+      "yoy": 14.7
+    },
+    {
+      "date": "2009-04",
+      "category": "城镇",
+      "yoy": 14.8
+    },
+    {
+      "date": "2009-04",
+      "category": "乡村",
+      "yoy": 14.8
+    },
+    {
+      "date": "2009-05",
+      "category": "城镇",
+      "yoy": 15.2
+    },
+    {
+      "date": "2009-05",
+      "category": "乡村",
+      "yoy": 15.2
+    },
+    {
+      "date": "2009-06",
+      "category": "城镇",
+      "yoy": 15.0
+    },
+    {
+      "date": "2009-06",
+      "category": "乡村",
+      "yoy": 15.0
+    },
+    {
+      "date": "2009-07",
+      "category": "城镇",
+      "yoy": 15.2
+    },
+    {
+      "date": "2009-07",
+      "category": "乡村",
+      "yoy": 15.2
+    },
+    {
+      "date": "2009-08",
+      "category": "城镇",
+      "yoy": 15.4
+    },
+    {
+      "date": "2009-08",
+      "category": "乡村",
+      "yoy": 15.4
+    },
+    {
+      "date": "2009-09",
+      "category": "城镇",
+      "yoy": 15.5
+    },
+    {
+      "date": "2009-09",
+      "category": "乡村",
+      "yoy": 15.5
+    },
+    {
+      "date": "2009-10",
+      "category": "城镇",
+      "yoy": 16.2
+    },
+    {
+      "date": "2009-10",
+      "category": "乡村",
+      "yoy": 16.2
+    },
+    {
+      "date": "2009-11",
+      "category": "城镇",
+      "yoy": 15.8
+    },
+    {
+      "date": "2009-11",
+      "category": "乡村",
+      "yoy": 15.8
+    },
+    {
+      "date": "2009-12",
+      "category": "城镇",
+      "yoy": 17.5
+    },
+    {
+      "date": "2009-12",
+      "category": "乡村",
+      "yoy": 17.5
+    },
+    {
+      "date": "2010-01",
+      "category": "城镇",
+      "yoy": 14.0
+    },
+    {
+      "date": "2010-01",
+      "category": "乡村",
+      "yoy": 14.0
+    },
+    {
+      "date": "2010-02",
+      "category": "城镇",
+      "yoy": 22.1
+    },
+    {
+      "date": "2010-02",
+      "category": "乡村",
+      "yoy": 22.1
+    },
+    {
+      "date": "2010-03",
+      "category": "城镇",
+      "yoy": 18.0
+    },
+    {
+      "date": "2010-03",
+      "category": "乡村",
+      "yoy": 18.0
+    },
+    {
+      "date": "2010-04",
+      "category": "城镇",
+      "yoy": 18.5
+    },
+    {
+      "date": "2010-04",
+      "category": "乡村",
+      "yoy": 18.5
+    },
+    {
+      "date": "2010-05",
+      "category": "城镇",
+      "yoy": 18.7
+    },
+    {
+      "date": "2010-05",
+      "category": "乡村",
+      "yoy": 18.7
+    },
+    {
+      "date": "2010-06",
+      "category": "城镇",
+      "yoy": 18.3
+    },
+    {
+      "date": "2010-06",
+      "category": "乡村",
+      "yoy": 18.3
+    },
+    {
+      "date": "2010-07",
+      "category": "城镇",
+      "yoy": 17.9
+    },
+    {
+      "date": "2010-07",
+      "category": "乡村",
+      "yoy": 17.9
+    },
+    {
+      "date": "2010-08",
+      "category": "城镇",
+      "yoy": 18.4
+    },
+    {
+      "date": "2010-08",
+      "category": "乡村",
+      "yoy": 18.4
+    },
+    {
+      "date": "2010-09",
+      "category": "城镇",
+      "yoy": 18.8
+    },
+    {
+      "date": "2010-09",
+      "category": "乡村",
+      "yoy": 18.8
+    },
+    {
+      "date": "2010-10",
+      "category": "城镇",
+      "yoy": 18.6
+    },
+    {
+      "date": "2010-10",
+      "category": "乡村",
+      "yoy": 18.6
+    },
+    {
+      "date": "2010-11",
+      "category": "城镇",
+      "yoy": 18.7
+    },
+    {
+      "date": "2010-11",
+      "category": "乡村",
+      "yoy": 18.7
+    },
+    {
+      "date": "2010-12",
+      "category": "城镇",
+      "yoy": 19.1
+    },
+    {
+      "date": "2010-12",
+      "category": "乡村",
+      "yoy": 19.1
+    },
+    {
+      "date": "2011-01",
+      "category": "城镇",
+      "yoy": 19.9
+    },
+    {
+      "date": "2011-01",
+      "category": "乡村",
+      "yoy": 19.9
+    },
+    {
+      "date": "2011-02",
+      "category": "城镇",
+      "yoy": 11.6
+    },
+    {
+      "date": "2011-02",
+      "category": "乡村",
+      "yoy": 11.6
+    },
+    {
+      "date": "2011-03",
+      "category": "城镇",
+      "yoy": 17.4
+    },
+    {
+      "date": "2011-03",
+      "category": "乡村",
+      "yoy": 17.4
+    },
+    {
+      "date": "2011-04",
+      "category": "城镇",
+      "yoy": 17.1
+    },
+    {
+      "date": "2011-04",
+      "category": "乡村",
+      "yoy": 17.1
+    },
+    {
+      "date": "2011-05",
+      "category": "城镇",
+      "yoy": 16.9
+    },
+    {
+      "date": "2011-05",
+      "category": "乡村",
+      "yoy": 16.9
+    },
+    {
+      "date": "2011-06",
+      "category": "城镇",
+      "yoy": 17.7
+    },
+    {
+      "date": "2011-06",
+      "category": "乡村",
+      "yoy": 17.7
+    },
+    {
+      "date": "2011-07",
+      "category": "城镇",
+      "yoy": 17.2
+    },
+    {
+      "date": "2011-07",
+      "category": "乡村",
+      "yoy": 17.2
+    },
+    {
+      "date": "2011-08",
+      "category": "城镇",
+      "yoy": 17.0
+    },
+    {
+      "date": "2011-08",
+      "category": "乡村",
+      "yoy": 17.0
+    },
+    {
+      "date": "2011-09",
+      "category": "城镇",
+      "yoy": 17.7
+    },
+    {
+      "date": "2011-09",
+      "category": "乡村",
+      "yoy": 17.7
+    },
+    {
+      "date": "2011-10",
+      "category": "城镇",
+      "yoy": 17.2
+    },
+    {
+      "date": "2011-10",
+      "category": "乡村",
+      "yoy": 17.2
+    },
+    {
+      "date": "2011-11",
+      "category": "城镇",
+      "yoy": 17.3
+    },
+    {
+      "date": "2011-11",
+      "category": "乡村",
+      "yoy": 17.3
+    },
+    {
+      "date": "2011-12",
+      "category": "城镇",
+      "yoy": 18.1
+    },
+    {
+      "date": "2011-12",
+      "category": "乡村",
+      "yoy": 18.1
+    },
+    {
+      "date": "2012-03",
+      "category": "城镇",
+      "yoy": 15.2
+    },
+    {
+      "date": "2012-03",
+      "category": "乡村",
+      "yoy": 15.2
+    },
+    {
+      "date": "2012-04",
+      "category": "城镇",
+      "yoy": 14.1
+    },
+    {
+      "date": "2012-04",
+      "category": "乡村",
+      "yoy": 14.1
+    },
+    {
+      "date": "2012-05",
+      "category": "城镇",
+      "yoy": 13.8
+    },
+    {
+      "date": "2012-05",
+      "category": "乡村",
+      "yoy": 13.8
+    },
+    {
+      "date": "2012-06",
+      "category": "城镇",
+      "yoy": 13.7
+    },
+    {
+      "date": "2012-06",
+      "category": "乡村",
+      "yoy": 13.7
+    },
+    {
+      "date": "2012-07",
+      "category": "城镇",
+      "yoy": 13.1
+    },
+    {
+      "date": "2012-07",
+      "category": "乡村",
+      "yoy": 13.1
+    },
+    {
+      "date": "2012-08",
+      "category": "城镇",
+      "yoy": 13.2
+    },
+    {
+      "date": "2012-08",
+      "category": "乡村",
+      "yoy": 13.2
+    },
+    {
+      "date": "2012-09",
+      "category": "城镇",
+      "yoy": 14.2
+    },
+    {
+      "date": "2012-09",
+      "category": "乡村",
+      "yoy": 14.2
+    },
+    {
+      "date": "2012-10",
+      "category": "城镇",
+      "yoy": 14.5
+    },
+    {
+      "date": "2012-10",
+      "category": "乡村",
+      "yoy": 14.5
+    },
+    {
+      "date": "2012-11",
+      "category": "城镇",
+      "yoy": 14.9
+    },
+    {
+      "date": "2012-11",
+      "category": "乡村",
+      "yoy": 14.9
+    },
+    {
+      "date": "2012-12",
+      "category": "城镇",
+      "yoy": 15.2
+    },
+    {
+      "date": "2012-12",
+      "category": "乡村",
+      "yoy": 15.2
+    },
+    {
+      "date": "2013-03",
+      "category": "城镇",
+      "yoy": 12.6
+    },
+    {
+      "date": "2013-03",
+      "category": "乡村",
+      "yoy": 12.6
+    },
+    {
+      "date": "2013-04",
+      "category": "城镇",
+      "yoy": 12.8
+    },
+    {
+      "date": "2013-04",
+      "category": "乡村",
+      "yoy": 12.8
+    },
+    {
+      "date": "2013-05",
+      "category": "城镇",
+      "yoy": 12.9
+    },
+    {
+      "date": "2013-05",
+      "category": "乡村",
+      "yoy": 12.9
+    },
+    {
+      "date": "2013-06",
+      "category": "城镇",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-06",
+      "category": "乡村",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-07",
+      "category": "城镇",
+      "yoy": 13.2
+    },
+    {
+      "date": "2013-07",
+      "category": "乡村",
+      "yoy": 13.2
+    },
+    {
+      "date": "2013-08",
+      "category": "城镇",
+      "yoy": 13.4
+    },
+    {
+      "date": "2013-08",
+      "category": "乡村",
+      "yoy": 13.4
+    },
+    {
+      "date": "2013-09",
+      "category": "城镇",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-09",
+      "category": "乡村",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-10",
+      "category": "城镇",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-10",
+      "category": "乡村",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-11",
+      "category": "城镇",
+      "yoy": 13.7
+    },
+    {
+      "date": "2013-11",
+      "category": "乡村",
+      "yoy": 13.7
+    },
+    {
+      "date": "2013-12",
+      "category": "城镇",
+      "yoy": 13.6
+    },
+    {
+      "date": "2013-12",
+      "category": "乡村",
+      "yoy": 13.6
+    },
+    {
+      "date": "2014-03",
+      "category": "城镇",
+      "yoy": 12.2
+    },
+    {
+      "date": "2014-03",
+      "category": "乡村",
+      "yoy": 12.2
+    },
+    {
+      "date": "2014-04",
+      "category": "城镇",
+      "yoy": 11.9
+    },
+    {
+      "date": "2014-04",
+      "category": "乡村",
+      "yoy": 11.9
+    },
+    {
+      "date": "2014-05",
+      "category": "城镇",
+      "yoy": 12.5
+    },
+    {
+      "date": "2014-05",
+      "category": "乡村",
+      "yoy": 12.5
+    },
+    {
+      "date": "2014-06",
+      "category": "城镇",
+      "yoy": 12.4
+    },
+    {
+      "date": "2014-06",
+      "category": "乡村",
+      "yoy": 12.4
+    },
+    {
+      "date": "2014-07",
+      "category": "城镇",
+      "yoy": 12.2
+    },
+    {
+      "date": "2014-07",
+      "category": "乡村",
+      "yoy": 12.2
+    },
+    {
+      "date": "2014-08",
+      "category": "城镇",
+      "yoy": 11.9
+    },
+    {
+      "date": "2014-08",
+      "category": "乡村",
+      "yoy": 11.9
+    },
+    {
+      "date": "2014-09",
+      "category": "城镇",
+      "yoy": 11.6
+    },
+    {
+      "date": "2014-09",
+      "category": "乡村",
+      "yoy": 11.6
+    },
+    {
+      "date": "2014-10",
+      "category": "城镇",
+      "yoy": 11.5
+    },
+    {
+      "date": "2014-10",
+      "category": "乡村",
+      "yoy": 11.5
+    },
+    {
+      "date": "2014-11",
+      "category": "城镇",
+      "yoy": 11.7
+    },
+    {
+      "date": "2014-11",
+      "category": "乡村",
+      "yoy": 11.7
+    },
+    {
+      "date": "2014-12",
+      "category": "城镇",
+      "yoy": 11.9
+    },
+    {
+      "date": "2014-12",
+      "category": "乡村",
+      "yoy": 11.9
+    },
+    {
+      "date": "2015-03",
+      "category": "城镇",
+      "yoy": 10.2
+    },
+    {
+      "date": "2015-03",
+      "category": "乡村",
+      "yoy": 10.2
+    },
+    {
+      "date": "2015-04",
+      "category": "城镇",
+      "yoy": 10.0
+    },
+    {
+      "date": "2015-04",
+      "category": "乡村",
+      "yoy": 10.0
+    },
+    {
+      "date": "2015-05",
+      "category": "城镇",
+      "yoy": 10.1
+    },
+    {
+      "date": "2015-05",
+      "category": "乡村",
+      "yoy": 10.1
+    },
+    {
+      "date": "2015-06",
+      "category": "城镇",
+      "yoy": 10.6
+    },
+    {
+      "date": "2015-06",
+      "category": "乡村",
+      "yoy": 10.6
+    },
+    {
+      "date": "2015-07",
+      "category": "城镇",
+      "yoy": 10.5
+    },
+    {
+      "date": "2015-07",
+      "category": "乡村",
+      "yoy": 10.5
+    },
+    {
+      "date": "2015-08",
+      "category": "城镇",
+      "yoy": 10.8
+    },
+    {
+      "date": "2015-08",
+      "category": "乡村",
+      "yoy": 10.8
+    },
+    {
+      "date": "2015-09",
+      "category": "城镇",
+      "yoy": 10.9
+    },
+    {
+      "date": "2015-09",
+      "category": "乡村",
+      "yoy": 10.9
+    },
+    {
+      "date": "2015-10",
+      "category": "城镇",
+      "yoy": 11.0
+    },
+    {
+      "date": "2015-10",
+      "category": "乡村",
+      "yoy": 11.0
+    },
+    {
+      "date": "2015-11",
+      "category": "城镇",
+      "yoy": 11.2
+    },
+    {
+      "date": "2015-11",
+      "category": "乡村",
+      "yoy": 11.2
+    },
+    {
+      "date": "2015-12",
+      "category": "城镇",
+      "yoy": 11.1
+    },
+    {
+      "date": "2015-12",
+      "category": "乡村",
+      "yoy": 11.1
+    },
+    {
+      "date": "2016-03",
+      "category": "城镇",
+      "yoy": 10.5
+    },
+    {
+      "date": "2016-03",
+      "category": "乡村",
+      "yoy": 10.5
+    },
+    {
+      "date": "2016-04",
+      "category": "城镇",
+      "yoy": 10.1
+    },
+    {
+      "date": "2016-04",
+      "category": "乡村",
+      "yoy": 10.1
+    },
+    {
+      "date": "2016-05",
+      "category": "城镇",
+      "yoy": 10.0
+    },
+    {
+      "date": "2016-05",
+      "category": "乡村",
+      "yoy": 10.0
+    },
+    {
+      "date": "2016-06",
+      "category": "城镇",
+      "yoy": 10.6
+    },
+    {
+      "date": "2016-06",
+      "category": "乡村",
+      "yoy": 10.6
+    },
+    {
+      "date": "2016-07",
+      "category": "城镇",
+      "yoy": 10.2
+    },
+    {
+      "date": "2016-07",
+      "category": "乡村",
+      "yoy": 10.2
+    },
+    {
+      "date": "2016-08",
+      "category": "城镇",
+      "yoy": 10.6
+    },
+    {
+      "date": "2016-08",
+      "category": "乡村",
+      "yoy": 10.6
+    },
+    {
+      "date": "2016-09",
+      "category": "城镇",
+      "yoy": 10.7
+    },
+    {
+      "date": "2016-09",
+      "category": "乡村",
+      "yoy": 10.7
+    },
+    {
+      "date": "2016-10",
+      "category": "城镇",
+      "yoy": 10.0
+    },
+    {
+      "date": "2016-10",
+      "category": "乡村",
+      "yoy": 10.0
+    },
+    {
+      "date": "2016-11",
+      "category": "城镇",
+      "yoy": 10.8
+    },
+    {
+      "date": "2016-11",
+      "category": "乡村",
+      "yoy": 10.8
+    },
+    {
+      "date": "2016-12",
+      "category": "城镇",
+      "yoy": 10.9
+    },
+    {
+      "date": "2016-12",
+      "category": "乡村",
+      "yoy": 10.9
+    },
+    {
+      "date": "2017-03",
+      "category": "城镇",
+      "yoy": 10.9
+    },
+    {
+      "date": "2017-03",
+      "category": "乡村",
+      "yoy": 10.9
+    },
+    {
+      "date": "2017-04",
+      "category": "城镇",
+      "yoy": 10.7
+    },
+    {
+      "date": "2017-04",
+      "category": "乡村",
+      "yoy": 10.7
+    },
+    {
+      "date": "2017-05",
+      "category": "城镇",
+      "yoy": 10.7
+    },
+    {
+      "date": "2017-05",
+      "category": "乡村",
+      "yoy": 10.7
+    },
+    {
+      "date": "2017-06",
+      "category": "城镇",
+      "yoy": 11.0
+    },
+    {
+      "date": "2017-06",
+      "category": "乡村",
+      "yoy": 11.0
+    },
+    {
+      "date": "2017-07",
+      "category": "城镇",
+      "yoy": 10.4
+    },
+    {
+      "date": "2017-07",
+      "category": "乡村",
+      "yoy": 10.4
+    },
+    {
+      "date": "2017-08",
+      "category": "城镇",
+      "yoy": 10.1
+    },
+    {
+      "date": "2017-08",
+      "category": "乡村",
+      "yoy": 10.1
+    },
+    {
+      "date": "2017-09",
+      "category": "城镇",
+      "yoy": 10.3
+    },
+    {
+      "date": "2017-09",
+      "category": "乡村",
+      "yoy": 10.3
+    },
+    {
+      "date": "2017-10",
+      "category": "城镇",
+      "yoy": 10.0
+    },
+    {
+      "date": "2017-10",
+      "category": "乡村",
+      "yoy": 10.0
+    },
+    {
+      "date": "2017-11",
+      "category": "城镇",
+      "yoy": 10.2
+    },
+    {
+      "date": "2017-11",
+      "category": "乡村",
+      "yoy": 10.2
+    },
+    {
+      "date": "2017-12",
+      "category": "城镇",
+      "yoy": 9.4
+    },
+    {
+      "date": "2017-12",
+      "category": "乡村",
+      "yoy": 9.4
+    },
+    {
+      "date": "2018-03",
+      "category": "城镇",
+      "yoy": 10.1
+    },
+    {
+      "date": "2018-03",
+      "category": "乡村",
+      "yoy": 10.1
+    },
+    {
+      "date": "2018-04",
+      "category": "城镇",
+      "yoy": 9.4
+    },
+    {
+      "date": "2018-04",
+      "category": "乡村",
+      "yoy": 9.4
+    },
+    {
+      "date": "2018-05",
+      "category": "城镇",
+      "yoy": 8.5
+    },
+    {
+      "date": "2018-05",
+      "category": "乡村",
+      "yoy": 8.5
+    },
+    {
+      "date": "2018-06",
+      "category": "城镇",
+      "yoy": 9.0
+    },
+    {
+      "date": "2018-06",
+      "category": "乡村",
+      "yoy": 9.0
+    },
+    {
+      "date": "2018-07",
+      "category": "城镇",
+      "yoy": 8.8
+    },
+    {
+      "date": "2018-07",
+      "category": "乡村",
+      "yoy": 8.8
+    },
+    {
+      "date": "2018-08",
+      "category": "城镇",
+      "yoy": 9.0
+    },
+    {
+      "date": "2018-08",
+      "category": "乡村",
+      "yoy": 9.0
+    },
+    {
+      "date": "2018-09",
+      "category": "城镇",
+      "yoy": 9.2
+    },
+    {
+      "date": "2018-09",
+      "category": "乡村",
+      "yoy": 9.2
+    },
+    {
+      "date": "2018-10",
+      "category": "城镇",
+      "yoy": 8.6
+    },
+    {
+      "date": "2018-10",
+      "category": "乡村",
+      "yoy": 8.6
+    },
+    {
+      "date": "2018-11",
+      "category": "城镇",
+      "yoy": 8.1
+    },
+    {
+      "date": "2018-11",
+      "category": "乡村",
+      "yoy": 8.1
+    },
+    {
+      "date": "2018-12",
+      "category": "城镇",
+      "yoy": 8.2
+    },
+    {
+      "date": "2018-12",
+      "category": "乡村",
+      "yoy": 8.2
+    },
+    {
+      "date": "2019-03",
+      "category": "城镇",
+      "yoy": 8.7
+    },
+    {
+      "date": "2019-03",
+      "category": "乡村",
+      "yoy": 8.7
+    },
+    {
+      "date": "2019-04",
+      "category": "城镇",
+      "yoy": 7.2
+    },
+    {
+      "date": "2019-04",
+      "category": "乡村",
+      "yoy": 7.2
+    },
+    {
+      "date": "2019-05",
+      "category": "城镇",
+      "yoy": 8.6
+    },
+    {
+      "date": "2019-05",
+      "category": "乡村",
+      "yoy": 8.6
+    },
+    {
+      "date": "2019-06",
+      "category": "城镇",
+      "yoy": 9.8
+    },
+    {
+      "date": "2019-06",
+      "category": "乡村",
+      "yoy": 9.8
+    },
+    {
+      "date": "2019-07",
+      "category": "城镇",
+      "yoy": 7.6
+    },
+    {
+      "date": "2019-07",
+      "category": "乡村",
+      "yoy": 7.6
+    },
+    {
+      "date": "2019-08",
+      "category": "城镇",
+      "yoy": 7.5
+    },
+    {
+      "date": "2019-08",
+      "category": "乡村",
+      "yoy": 7.5
+    },
+    {
+      "date": "2019-09",
+      "category": "城镇",
+      "yoy": 7.8
+    },
+    {
+      "date": "2019-09",
+      "category": "乡村",
+      "yoy": 7.8
+    },
+    {
+      "date": "2019-10",
+      "category": "城镇",
+      "yoy": 7.2
+    },
+    {
+      "date": "2019-10",
+      "category": "乡村",
+      "yoy": 7.2
+    },
+    {
+      "date": "2019-11",
+      "category": "城镇",
+      "yoy": 8.0
+    },
+    {
+      "date": "2019-11",
+      "category": "乡村",
+      "yoy": 8.0
+    },
+    {
+      "date": "2019-12",
+      "category": "城镇",
+      "yoy": 8.0
+    },
+    {
+      "date": "2019-12",
+      "category": "乡村",
+      "yoy": 8.0
+    },
+    {
+      "date": "2020-03",
+      "category": "城镇",
+      "yoy": -15.8
+    },
+    {
+      "date": "2020-03",
+      "category": "乡村",
+      "yoy": -15.8
+    },
+    {
+      "date": "2020-04",
+      "category": "城镇",
+      "yoy": -7.5
+    },
+    {
+      "date": "2020-04",
+      "category": "乡村",
+      "yoy": -7.5
+    },
+    {
+      "date": "2020-05",
+      "category": "城镇",
+      "yoy": -2.8
+    },
+    {
+      "date": "2020-05",
+      "category": "乡村",
+      "yoy": -2.8
+    },
+    {
+      "date": "2020-06",
+      "category": "城镇",
+      "yoy": -1.8
+    },
+    {
+      "date": "2020-06",
+      "category": "乡村",
+      "yoy": -1.8
+    },
+    {
+      "date": "2020-07",
+      "category": "城镇",
+      "yoy": -1.1
+    },
+    {
+      "date": "2020-07",
+      "category": "乡村",
+      "yoy": -1.1
+    },
+    {
+      "date": "2020-08",
+      "category": "城镇",
+      "yoy": 0.5
+    },
+    {
+      "date": "2020-08",
+      "category": "乡村",
+      "yoy": 0.5
+    },
+    {
+      "date": "2020-09",
+      "category": "城镇",
+      "yoy": 3.3
+    },
+    {
+      "date": "2020-09",
+      "category": "乡村",
+      "yoy": 3.3
+    },
+    {
+      "date": "2020-10",
+      "category": "城镇",
+      "yoy": 4.3
+    },
+    {
+      "date": "2020-10",
+      "category": "乡村",
+      "yoy": 4.3
+    },
+    {
+      "date": "2020-11",
+      "category": "城镇",
+      "yoy": 5.0
+    },
+    {
+      "date": "2020-11",
+      "category": "乡村",
+      "yoy": 5.0
+    },
+    {
+      "date": "2020-12",
+      "category": "城镇",
+      "yoy": 4.6
+    },
+    {
+      "date": "2020-12",
+      "category": "乡村",
+      "yoy": 4.6
+    },
+    {
+      "date": "2021-03",
+      "category": "城镇",
+      "yoy": 34.2
+    },
+    {
+      "date": "2021-03",
+      "category": "乡村",
+      "yoy": 34.2
+    },
+    {
+      "date": "2021-04",
+      "category": "城镇",
+      "yoy": 17.7
+    },
+    {
+      "date": "2021-04",
+      "category": "乡村",
+      "yoy": 17.7
+    },
+    {
+      "date": "2021-05",
+      "category": "城镇",
+      "yoy": 12.4
+    },
+    {
+      "date": "2021-05",
+      "category": "乡村",
+      "yoy": 12.4
+    },
+    {
+      "date": "2021-06",
+      "category": "城镇",
+      "yoy": 12.1
+    },
+    {
+      "date": "2021-06",
+      "category": "乡村",
+      "yoy": 12.1
+    },
+    {
+      "date": "2021-07",
+      "category": "城镇",
+      "yoy": 8.5
+    },
+    {
+      "date": "2021-07",
+      "category": "乡村",
+      "yoy": 8.5
+    },
+    {
+      "date": "2021-08",
+      "category": "城镇",
+      "yoy": 2.5
+    },
+    {
+      "date": "2021-08",
+      "category": "乡村",
+      "yoy": 2.5
+    },
+    {
+      "date": "2021-09",
+      "category": "城镇",
+      "yoy": 4.4
+    },
+    {
+      "date": "2021-09",
+      "category": "乡村",
+      "yoy": 4.4
+    },
+    {
+      "date": "2021-10",
+      "category": "城镇",
+      "yoy": 4.9
+    },
+    {
+      "date": "2021-10",
+      "category": "乡村",
+      "yoy": 4.9
+    },
+    {
+      "date": "2021-11",
+      "category": "城镇",
+      "yoy": 3.9
+    },
+    {
+      "date": "2021-11",
+      "category": "乡村",
+      "yoy": 3.9
+    },
+    {
+      "date": "2021-12",
+      "category": "城镇",
+      "yoy": 1.7
+    },
+    {
+      "date": "2021-12",
+      "category": "乡村",
+      "yoy": 1.7
+    },
+    {
+      "date": "2022-03",
+      "category": "城镇",
+      "yoy": -3.5
+    },
+    {
+      "date": "2022-03",
+      "category": "乡村",
+      "yoy": -3.5
+    },
+    {
+      "date": "2022-04",
+      "category": "城镇",
+      "yoy": -11.1
+    },
+    {
+      "date": "2022-04",
+      "category": "乡村",
+      "yoy": -11.1
+    },
+    {
+      "date": "2022-05",
+      "category": "城镇",
+      "yoy": -6.7
+    },
+    {
+      "date": "2022-05",
+      "category": "乡村",
+      "yoy": -6.7
+    },
+    {
+      "date": "2022-06",
+      "category": "城镇",
+      "yoy": 3.1
+    },
+    {
+      "date": "2022-06",
+      "category": "乡村",
+      "yoy": 3.1
+    },
+    {
+      "date": "2022-07",
+      "category": "城镇",
+      "yoy": 2.7
+    },
+    {
+      "date": "2022-07",
+      "category": "乡村",
+      "yoy": 2.7
+    },
+    {
+      "date": "2022-08",
+      "category": "城镇",
+      "yoy": 5.4
+    },
+    {
+      "date": "2022-08",
+      "category": "乡村",
+      "yoy": 5.4
+    },
+    {
+      "date": "2022-09",
+      "category": "城镇",
+      "yoy": 2.5
+    },
+    {
+      "date": "2022-09",
+      "category": "乡村",
+      "yoy": 2.5
+    },
+    {
+      "date": "2022-10",
+      "category": "城镇",
+      "yoy": -0.5
+    },
+    {
+      "date": "2022-10",
+      "category": "乡村",
+      "yoy": -0.5
+    },
+    {
+      "date": "2022-11",
+      "category": "城镇",
+      "yoy": -5.9
+    },
+    {
+      "date": "2022-11",
+      "category": "乡村",
+      "yoy": -5.9
+    },
+    {
+      "date": "2022-12",
+      "category": "城镇",
+      "yoy": -1.8
+    },
+    {
+      "date": "2022-12",
+      "category": "乡村",
+      "yoy": -1.8
+    },
+    {
+      "date": "2023-03",
+      "category": "城镇",
+      "yoy": 10.6
+    },
+    {
+      "date": "2023-03",
+      "category": "乡村",
+      "yoy": 10.6
+    },
+    {
+      "date": "2023-04",
+      "category": "城镇",
+      "yoy": 18.4
+    },
+    {
+      "date": "2023-04",
+      "category": "乡村",
+      "yoy": 18.4
+    },
+    {
+      "date": "2023-05",
+      "category": "城镇",
+      "yoy": 12.7
+    },
+    {
+      "date": "2023-05",
+      "category": "乡村",
+      "yoy": 12.7
+    },
+    {
+      "date": "2023-06",
+      "category": "城镇",
+      "yoy": 3.1
+    },
+    {
+      "date": "2023-06",
+      "category": "乡村",
+      "yoy": 3.1
+    },
+    {
+      "date": "2023-07",
+      "category": "城镇",
+      "yoy": 2.5
+    },
+    {
+      "date": "2023-07",
+      "category": "乡村",
+      "yoy": 2.5
+    },
+    {
+      "date": "2023-08",
+      "category": "城镇",
+      "yoy": 4.6
+    },
+    {
+      "date": "2023-08",
+      "category": "乡村",
+      "yoy": 4.6
+    },
+    {
+      "date": "2023-09",
+      "category": "城镇",
+      "yoy": 5.5
+    },
+    {
+      "date": "2023-09",
+      "category": "乡村",
+      "yoy": 5.5
+    },
+    {
+      "date": "2023-10",
+      "category": "城镇",
+      "yoy": 7.6
+    },
+    {
+      "date": "2023-10",
+      "category": "乡村",
+      "yoy": 7.6
+    },
+    {
+      "date": "2023-11",
+      "category": "城镇",
+      "yoy": 10.1
+    },
+    {
+      "date": "2023-11",
+      "category": "乡村",
+      "yoy": 10.1
+    },
+    {
+      "date": "2023-12",
+      "category": "城镇",
+      "yoy": 7.4
+    },
+    {
+      "date": "2023-12",
+      "category": "乡村",
+      "yoy": 7.4
+    },
+    {
+      "date": "2024-03",
+      "category": "城镇",
+      "yoy": 3.1
+    },
+    {
+      "date": "2024-03",
+      "category": "乡村",
+      "yoy": 3.1
+    },
+    {
+      "date": "2024-04",
+      "category": "城镇",
+      "yoy": 2.3
+    },
+    {
+      "date": "2024-04",
+      "category": "乡村",
+      "yoy": 2.3
+    },
+    {
+      "date": "2024-05",
+      "category": "城镇",
+      "yoy": 3.7
+    },
+    {
+      "date": "2024-05",
+      "category": "乡村",
+      "yoy": 3.7
+    },
+    {
+      "date": "2024-06",
+      "category": "城镇",
+      "yoy": 2.0
+    },
+    {
+      "date": "2024-06",
+      "category": "乡村",
+      "yoy": 2.0
+    },
+    {
+      "date": "2024-07",
+      "category": "城镇",
+      "yoy": 2.7
+    },
+    {
+      "date": "2024-07",
+      "category": "乡村",
+      "yoy": 2.7
+    },
+    {
+      "date": "2024-08",
+      "category": "城镇",
+      "yoy": 2.1
+    },
+    {
+      "date": "2024-08",
+      "category": "乡村",
+      "yoy": 2.1
+    },
+    {
+      "date": "2024-09",
+      "category": "城镇",
+      "yoy": 3.2
+    },
+    {
+      "date": "2024-09",
+      "category": "乡村",
+      "yoy": 3.2
+    },
+    {
+      "date": "2024-10",
+      "category": "城镇",
+      "yoy": 4.8
+    },
+    {
+      "date": "2024-10",
+      "category": "乡村",
+      "yoy": 4.8
+    },
+    {
+      "date": "2024-11",
+      "category": "城镇",
+      "yoy": 3.0
+    },
+    {
+      "date": "2024-11",
+      "category": "乡村",
+      "yoy": 3.0
+    },
+    {
+      "date": "2024-12",
+      "category": "城镇",
+      "yoy": 3.7
+    },
+    {
+      "date": "2024-12",
+      "category": "乡村",
+      "yoy": 3.7
+    },
+    {
+      "date": "2025-03",
+      "category": "城镇",
+      "yoy": 5.9
+    },
+    {
+      "date": "2025-03",
+      "category": "乡村",
+      "yoy": 5.9
+    },
+    {
+      "date": "2025-04",
+      "category": "城镇",
+      "yoy": 5.1
+    },
+    {
+      "date": "2025-04",
+      "category": "乡村",
+      "yoy": 5.1
+    },
+    {
+      "date": "2025-05",
+      "category": "城镇",
+      "yoy": 6.4
+    },
+    {
+      "date": "2025-05",
+      "category": "乡村",
+      "yoy": 6.4
+    },
+    {
+      "date": "2025-06",
+      "category": "城镇",
+      "yoy": 4.8
+    },
+    {
+      "date": "2025-06",
+      "category": "乡村",
+      "yoy": 4.8
+    },
+    {
+      "date": "2025-07",
+      "category": "城镇",
+      "yoy": 3.7
+    },
+    {
+      "date": "2025-07",
+      "category": "乡村",
+      "yoy": 3.7
+    },
+    {
+      "date": "2025-08",
+      "category": "城镇",
+      "yoy": 3.4
+    },
+    {
+      "date": "2025-08",
+      "category": "乡村",
+      "yoy": 3.4
+    },
+    {
+      "date": "2025-09",
+      "category": "城镇",
+      "yoy": 3.0
+    },
+    {
+      "date": "2025-09",
+      "category": "乡村",
+      "yoy": 3.0
+    },
+    {
+      "date": "2025-10",
+      "category": "城镇",
+      "yoy": 2.9
+    },
+    {
+      "date": "2025-10",
+      "category": "乡村",
+      "yoy": 2.9
+    },
+    {
+      "date": "2025-11",
+      "category": "城镇",
+      "yoy": 1.3
+    },
+    {
+      "date": "2025-11",
+      "category": "乡村",
+      "yoy": 1.3
+    },
+    {
+      "date": "2025-12",
+      "category": "城镇",
+      "yoy": 0.9
+    },
+    {
+      "date": "2025-12",
+      "category": "乡村",
+      "yoy": 0.9
+    },
+    {
+      "date": "2026-03",
+      "category": "城镇",
+      "yoy": 1.7
+    },
+    {
+      "date": "2026-03",
+      "category": "乡村",
+      "yoy": 1.7
+    },
+    {
+      "date": "2026-04",
+      "category": "城镇",
+      "yoy": 0.2
+    },
+    {
+      "date": "2026-04",
+      "category": "乡村",
+      "yoy": 0.2
+    },
+    {
+      "date": "2026-05",
+      "category": "城镇",
+      "yoy": -0.6
+    },
+    {
+      "date": "2026-05",
+      "category": "乡村",
+      "yoy": -0.6
+    }
+  ],
+  "goods_catering": [
+    {
+      "date": "2008-01",
+      "category": "商品零售",
+      "yoy": 21.2
+    },
+    {
+      "date": "2008-01",
+      "category": "餐饮收入",
+      "yoy": 21.2
+    },
+    {
+      "date": "2008-02",
+      "category": "商品零售",
+      "yoy": 19.1
+    },
+    {
+      "date": "2008-02",
+      "category": "餐饮收入",
+      "yoy": 19.1
+    },
+    {
+      "date": "2008-03",
+      "category": "商品零售",
+      "yoy": 21.5
+    },
+    {
+      "date": "2008-03",
+      "category": "餐饮收入",
+      "yoy": 21.5
+    },
+    {
+      "date": "2008-04",
+      "category": "商品零售",
+      "yoy": 22.0
+    },
+    {
+      "date": "2008-04",
+      "category": "餐饮收入",
+      "yoy": 22.0
+    },
+    {
+      "date": "2008-05",
+      "category": "商品零售",
+      "yoy": 21.6
+    },
+    {
+      "date": "2008-05",
+      "category": "餐饮收入",
+      "yoy": 21.6
+    },
+    {
+      "date": "2008-06",
+      "category": "商品零售",
+      "yoy": 23.0
+    },
+    {
+      "date": "2008-06",
+      "category": "餐饮收入",
+      "yoy": 23.0
+    },
+    {
+      "date": "2008-07",
+      "category": "商品零售",
+      "yoy": 23.3
+    },
+    {
+      "date": "2008-07",
+      "category": "餐饮收入",
+      "yoy": 23.3
+    },
+    {
+      "date": "2008-08",
+      "category": "商品零售",
+      "yoy": 23.2
+    },
+    {
+      "date": "2008-08",
+      "category": "餐饮收入",
+      "yoy": 23.2
+    },
+    {
+      "date": "2008-09",
+      "category": "商品零售",
+      "yoy": 23.2
+    },
+    {
+      "date": "2008-09",
+      "category": "餐饮收入",
+      "yoy": 23.2
+    },
+    {
+      "date": "2008-10",
+      "category": "商品零售",
+      "yoy": 22.0
+    },
+    {
+      "date": "2008-10",
+      "category": "餐饮收入",
+      "yoy": 22.0
+    },
+    {
+      "date": "2008-11",
+      "category": "商品零售",
+      "yoy": 20.8
+    },
+    {
+      "date": "2008-11",
+      "category": "餐饮收入",
+      "yoy": 20.8
+    },
+    {
+      "date": "2008-12",
+      "category": "商品零售",
+      "yoy": 19.0
+    },
+    {
+      "date": "2008-12",
+      "category": "餐饮收入",
+      "yoy": 19.0
+    },
+    {
+      "date": "2009-01",
+      "category": "商品零售",
+      "yoy": 18.5
+    },
+    {
+      "date": "2009-01",
+      "category": "餐饮收入",
+      "yoy": 18.5
+    },
+    {
+      "date": "2009-02",
+      "category": "商品零售",
+      "yoy": 11.6
+    },
+    {
+      "date": "2009-02",
+      "category": "餐饮收入",
+      "yoy": 11.6
+    },
+    {
+      "date": "2009-03",
+      "category": "商品零售",
+      "yoy": 14.7
+    },
+    {
+      "date": "2009-03",
+      "category": "餐饮收入",
+      "yoy": 14.7
+    },
+    {
+      "date": "2009-04",
+      "category": "商品零售",
+      "yoy": 14.8
+    },
+    {
+      "date": "2009-04",
+      "category": "餐饮收入",
+      "yoy": 14.8
+    },
+    {
+      "date": "2009-05",
+      "category": "商品零售",
+      "yoy": 15.2
+    },
+    {
+      "date": "2009-05",
+      "category": "餐饮收入",
+      "yoy": 15.2
+    },
+    {
+      "date": "2009-06",
+      "category": "商品零售",
+      "yoy": 15.0
+    },
+    {
+      "date": "2009-06",
+      "category": "餐饮收入",
+      "yoy": 15.0
+    },
+    {
+      "date": "2009-07",
+      "category": "商品零售",
+      "yoy": 15.2
+    },
+    {
+      "date": "2009-07",
+      "category": "餐饮收入",
+      "yoy": 15.2
+    },
+    {
+      "date": "2009-08",
+      "category": "商品零售",
+      "yoy": 15.4
+    },
+    {
+      "date": "2009-08",
+      "category": "餐饮收入",
+      "yoy": 15.4
+    },
+    {
+      "date": "2009-09",
+      "category": "商品零售",
+      "yoy": 15.5
+    },
+    {
+      "date": "2009-09",
+      "category": "餐饮收入",
+      "yoy": 15.5
+    },
+    {
+      "date": "2009-10",
+      "category": "商品零售",
+      "yoy": 16.2
+    },
+    {
+      "date": "2009-10",
+      "category": "餐饮收入",
+      "yoy": 16.2
+    },
+    {
+      "date": "2009-11",
+      "category": "商品零售",
+      "yoy": 15.8
+    },
+    {
+      "date": "2009-11",
+      "category": "餐饮收入",
+      "yoy": 15.8
+    },
+    {
+      "date": "2009-12",
+      "category": "商品零售",
+      "yoy": 17.5
+    },
+    {
+      "date": "2009-12",
+      "category": "餐饮收入",
+      "yoy": 17.5
+    },
+    {
+      "date": "2010-01",
+      "category": "商品零售",
+      "yoy": 14.0
+    },
+    {
+      "date": "2010-01",
+      "category": "餐饮收入",
+      "yoy": 14.0
+    },
+    {
+      "date": "2010-02",
+      "category": "商品零售",
+      "yoy": 22.1
+    },
+    {
+      "date": "2010-02",
+      "category": "餐饮收入",
+      "yoy": 22.1
+    },
+    {
+      "date": "2010-03",
+      "category": "商品零售",
+      "yoy": 18.0
+    },
+    {
+      "date": "2010-03",
+      "category": "餐饮收入",
+      "yoy": 18.0
+    },
+    {
+      "date": "2010-04",
+      "category": "商品零售",
+      "yoy": 18.5
+    },
+    {
+      "date": "2010-04",
+      "category": "餐饮收入",
+      "yoy": 18.5
+    },
+    {
+      "date": "2010-05",
+      "category": "商品零售",
+      "yoy": 18.7
+    },
+    {
+      "date": "2010-05",
+      "category": "餐饮收入",
+      "yoy": 18.7
+    },
+    {
+      "date": "2010-06",
+      "category": "商品零售",
+      "yoy": 18.3
+    },
+    {
+      "date": "2010-06",
+      "category": "餐饮收入",
+      "yoy": 18.3
+    },
+    {
+      "date": "2010-07",
+      "category": "商品零售",
+      "yoy": 17.9
+    },
+    {
+      "date": "2010-07",
+      "category": "餐饮收入",
+      "yoy": 17.9
+    },
+    {
+      "date": "2010-08",
+      "category": "商品零售",
+      "yoy": 18.4
+    },
+    {
+      "date": "2010-08",
+      "category": "餐饮收入",
+      "yoy": 18.4
+    },
+    {
+      "date": "2010-09",
+      "category": "商品零售",
+      "yoy": 18.8
+    },
+    {
+      "date": "2010-09",
+      "category": "餐饮收入",
+      "yoy": 18.8
+    },
+    {
+      "date": "2010-10",
+      "category": "商品零售",
+      "yoy": 18.6
+    },
+    {
+      "date": "2010-10",
+      "category": "餐饮收入",
+      "yoy": 18.6
+    },
+    {
+      "date": "2010-11",
+      "category": "商品零售",
+      "yoy": 18.7
+    },
+    {
+      "date": "2010-11",
+      "category": "餐饮收入",
+      "yoy": 18.7
+    },
+    {
+      "date": "2010-12",
+      "category": "商品零售",
+      "yoy": 19.1
+    },
+    {
+      "date": "2010-12",
+      "category": "餐饮收入",
+      "yoy": 19.1
+    },
+    {
+      "date": "2011-01",
+      "category": "商品零售",
+      "yoy": 19.9
+    },
+    {
+      "date": "2011-01",
+      "category": "餐饮收入",
+      "yoy": 19.9
+    },
+    {
+      "date": "2011-02",
+      "category": "商品零售",
+      "yoy": 11.6
+    },
+    {
+      "date": "2011-02",
+      "category": "餐饮收入",
+      "yoy": 11.6
+    },
+    {
+      "date": "2011-03",
+      "category": "商品零售",
+      "yoy": 17.4
+    },
+    {
+      "date": "2011-03",
+      "category": "餐饮收入",
+      "yoy": 17.4
+    },
+    {
+      "date": "2011-04",
+      "category": "商品零售",
+      "yoy": 17.1
+    },
+    {
+      "date": "2011-04",
+      "category": "餐饮收入",
+      "yoy": 17.1
+    },
+    {
+      "date": "2011-05",
+      "category": "商品零售",
+      "yoy": 16.9
+    },
+    {
+      "date": "2011-05",
+      "category": "餐饮收入",
+      "yoy": 16.9
+    },
+    {
+      "date": "2011-06",
+      "category": "商品零售",
+      "yoy": 17.7
+    },
+    {
+      "date": "2011-06",
+      "category": "餐饮收入",
+      "yoy": 17.7
+    },
+    {
+      "date": "2011-07",
+      "category": "商品零售",
+      "yoy": 17.2
+    },
+    {
+      "date": "2011-07",
+      "category": "餐饮收入",
+      "yoy": 17.2
+    },
+    {
+      "date": "2011-08",
+      "category": "商品零售",
+      "yoy": 17.0
+    },
+    {
+      "date": "2011-08",
+      "category": "餐饮收入",
+      "yoy": 17.0
+    },
+    {
+      "date": "2011-09",
+      "category": "商品零售",
+      "yoy": 17.7
+    },
+    {
+      "date": "2011-09",
+      "category": "餐饮收入",
+      "yoy": 17.7
+    },
+    {
+      "date": "2011-10",
+      "category": "商品零售",
+      "yoy": 17.2
+    },
+    {
+      "date": "2011-10",
+      "category": "餐饮收入",
+      "yoy": 17.2
+    },
+    {
+      "date": "2011-11",
+      "category": "商品零售",
+      "yoy": 17.3
+    },
+    {
+      "date": "2011-11",
+      "category": "餐饮收入",
+      "yoy": 17.3
+    },
+    {
+      "date": "2011-12",
+      "category": "商品零售",
+      "yoy": 18.1
+    },
+    {
+      "date": "2011-12",
+      "category": "餐饮收入",
+      "yoy": 18.1
+    },
+    {
+      "date": "2012-03",
+      "category": "商品零售",
+      "yoy": 15.2
+    },
+    {
+      "date": "2012-03",
+      "category": "餐饮收入",
+      "yoy": 15.2
+    },
+    {
+      "date": "2012-04",
+      "category": "商品零售",
+      "yoy": 14.1
+    },
+    {
+      "date": "2012-04",
+      "category": "餐饮收入",
+      "yoy": 14.1
+    },
+    {
+      "date": "2012-05",
+      "category": "商品零售",
+      "yoy": 13.8
+    },
+    {
+      "date": "2012-05",
+      "category": "餐饮收入",
+      "yoy": 13.8
+    },
+    {
+      "date": "2012-06",
+      "category": "商品零售",
+      "yoy": 13.7
+    },
+    {
+      "date": "2012-06",
+      "category": "餐饮收入",
+      "yoy": 13.7
+    },
+    {
+      "date": "2012-07",
+      "category": "商品零售",
+      "yoy": 13.1
+    },
+    {
+      "date": "2012-07",
+      "category": "餐饮收入",
+      "yoy": 13.1
+    },
+    {
+      "date": "2012-08",
+      "category": "商品零售",
+      "yoy": 13.2
+    },
+    {
+      "date": "2012-08",
+      "category": "餐饮收入",
+      "yoy": 13.2
+    },
+    {
+      "date": "2012-09",
+      "category": "商品零售",
+      "yoy": 14.2
+    },
+    {
+      "date": "2012-09",
+      "category": "餐饮收入",
+      "yoy": 14.2
+    },
+    {
+      "date": "2012-10",
+      "category": "商品零售",
+      "yoy": 14.5
+    },
+    {
+      "date": "2012-10",
+      "category": "餐饮收入",
+      "yoy": 14.5
+    },
+    {
+      "date": "2012-11",
+      "category": "商品零售",
+      "yoy": 14.9
+    },
+    {
+      "date": "2012-11",
+      "category": "餐饮收入",
+      "yoy": 14.9
+    },
+    {
+      "date": "2012-12",
+      "category": "商品零售",
+      "yoy": 15.2
+    },
+    {
+      "date": "2012-12",
+      "category": "餐饮收入",
+      "yoy": 15.2
+    },
+    {
+      "date": "2013-03",
+      "category": "商品零售",
+      "yoy": 12.6
+    },
+    {
+      "date": "2013-03",
+      "category": "餐饮收入",
+      "yoy": 12.6
+    },
+    {
+      "date": "2013-04",
+      "category": "商品零售",
+      "yoy": 12.8
+    },
+    {
+      "date": "2013-04",
+      "category": "餐饮收入",
+      "yoy": 12.8
+    },
+    {
+      "date": "2013-05",
+      "category": "商品零售",
+      "yoy": 12.9
+    },
+    {
+      "date": "2013-05",
+      "category": "餐饮收入",
+      "yoy": 12.9
+    },
+    {
+      "date": "2013-06",
+      "category": "商品零售",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-06",
+      "category": "餐饮收入",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-07",
+      "category": "商品零售",
+      "yoy": 13.2
+    },
+    {
+      "date": "2013-07",
+      "category": "餐饮收入",
+      "yoy": 13.2
+    },
+    {
+      "date": "2013-08",
+      "category": "商品零售",
+      "yoy": 13.4
+    },
+    {
+      "date": "2013-08",
+      "category": "餐饮收入",
+      "yoy": 13.4
+    },
+    {
+      "date": "2013-09",
+      "category": "商品零售",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-09",
+      "category": "餐饮收入",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-10",
+      "category": "商品零售",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-10",
+      "category": "餐饮收入",
+      "yoy": 13.3
+    },
+    {
+      "date": "2013-11",
+      "category": "商品零售",
+      "yoy": 13.7
+    },
+    {
+      "date": "2013-11",
+      "category": "餐饮收入",
+      "yoy": 13.7
+    },
+    {
+      "date": "2013-12",
+      "category": "商品零售",
+      "yoy": 13.6
+    },
+    {
+      "date": "2013-12",
+      "category": "餐饮收入",
+      "yoy": 13.6
+    },
+    {
+      "date": "2014-03",
+      "category": "商品零售",
+      "yoy": 12.2
+    },
+    {
+      "date": "2014-03",
+      "category": "餐饮收入",
+      "yoy": 12.2
+    },
+    {
+      "date": "2014-04",
+      "category": "商品零售",
+      "yoy": 11.9
+    },
+    {
+      "date": "2014-04",
+      "category": "餐饮收入",
+      "yoy": 11.9
+    },
+    {
+      "date": "2014-05",
+      "category": "商品零售",
+      "yoy": 12.5
+    },
+    {
+      "date": "2014-05",
+      "category": "餐饮收入",
+      "yoy": 12.5
+    },
+    {
+      "date": "2014-06",
+      "category": "商品零售",
+      "yoy": 12.4
+    },
+    {
+      "date": "2014-06",
+      "category": "餐饮收入",
+      "yoy": 12.4
+    },
+    {
+      "date": "2014-07",
+      "category": "商品零售",
+      "yoy": 12.2
+    },
+    {
+      "date": "2014-07",
+      "category": "餐饮收入",
+      "yoy": 12.2
+    },
+    {
+      "date": "2014-08",
+      "category": "商品零售",
+      "yoy": 11.9
+    },
+    {
+      "date": "2014-08",
+      "category": "餐饮收入",
+      "yoy": 11.9
+    },
+    {
+      "date": "2014-09",
+      "category": "商品零售",
+      "yoy": 11.6
+    },
+    {
+      "date": "2014-09",
+      "category": "餐饮收入",
+      "yoy": 11.6
+    },
+    {
+      "date": "2014-10",
+      "category": "商品零售",
+      "yoy": 11.5
+    },
+    {
+      "date": "2014-10",
+      "category": "餐饮收入",
+      "yoy": 11.5
+    },
+    {
+      "date": "2014-11",
+      "category": "商品零售",
+      "yoy": 11.7
+    },
+    {
+      "date": "2014-11",
+      "category": "餐饮收入",
+      "yoy": 11.7
+    },
+    {
+      "date": "2014-12",
+      "category": "商品零售",
+      "yoy": 11.9
+    },
+    {
+      "date": "2014-12",
+      "category": "餐饮收入",
+      "yoy": 11.9
+    },
+    {
+      "date": "2015-03",
+      "category": "商品零售",
+      "yoy": 10.2
+    },
+    {
+      "date": "2015-03",
+      "category": "餐饮收入",
+      "yoy": 10.2
+    },
+    {
+      "date": "2015-04",
+      "category": "商品零售",
+      "yoy": 10.0
+    },
+    {
+      "date": "2015-04",
+      "category": "餐饮收入",
+      "yoy": 10.0
+    },
+    {
+      "date": "2015-05",
+      "category": "商品零售",
+      "yoy": 10.1
+    },
+    {
+      "date": "2015-05",
+      "category": "餐饮收入",
+      "yoy": 10.1
+    },
+    {
+      "date": "2015-06",
+      "category": "商品零售",
+      "yoy": 10.6
+    },
+    {
+      "date": "2015-06",
+      "category": "餐饮收入",
+      "yoy": 10.6
+    },
+    {
+      "date": "2015-07",
+      "category": "商品零售",
+      "yoy": 10.5
+    },
+    {
+      "date": "2015-07",
+      "category": "餐饮收入",
+      "yoy": 10.5
+    },
+    {
+      "date": "2015-08",
+      "category": "商品零售",
+      "yoy": 10.8
+    },
+    {
+      "date": "2015-08",
+      "category": "餐饮收入",
+      "yoy": 10.8
+    },
+    {
+      "date": "2015-09",
+      "category": "商品零售",
+      "yoy": 10.9
+    },
+    {
+      "date": "2015-09",
+      "category": "餐饮收入",
+      "yoy": 10.9
+    },
+    {
+      "date": "2015-10",
+      "category": "商品零售",
+      "yoy": 11.0
+    },
+    {
+      "date": "2015-10",
+      "category": "餐饮收入",
+      "yoy": 11.0
+    },
+    {
+      "date": "2015-11",
+      "category": "商品零售",
+      "yoy": 11.2
+    },
+    {
+      "date": "2015-11",
+      "category": "餐饮收入",
+      "yoy": 11.2
+    },
+    {
+      "date": "2015-12",
+      "category": "商品零售",
+      "yoy": 11.1
+    },
+    {
+      "date": "2015-12",
+      "category": "餐饮收入",
+      "yoy": 11.1
+    },
+    {
+      "date": "2016-03",
+      "category": "商品零售",
+      "yoy": 10.5
+    },
+    {
+      "date": "2016-03",
+      "category": "餐饮收入",
+      "yoy": 10.5
+    },
+    {
+      "date": "2016-04",
+      "category": "商品零售",
+      "yoy": 10.1
+    },
+    {
+      "date": "2016-04",
+      "category": "餐饮收入",
+      "yoy": 10.1
+    },
+    {
+      "date": "2016-05",
+      "category": "商品零售",
+      "yoy": 10.0
+    },
+    {
+      "date": "2016-05",
+      "category": "餐饮收入",
+      "yoy": 10.0
+    },
+    {
+      "date": "2016-06",
+      "category": "商品零售",
+      "yoy": 10.6
+    },
+    {
+      "date": "2016-06",
+      "category": "餐饮收入",
+      "yoy": 10.6
+    },
+    {
+      "date": "2016-07",
+      "category": "商品零售",
+      "yoy": 10.2
+    },
+    {
+      "date": "2016-07",
+      "category": "餐饮收入",
+      "yoy": 10.2
+    },
+    {
+      "date": "2016-08",
+      "category": "商品零售",
+      "yoy": 10.6
+    },
+    {
+      "date": "2016-08",
+      "category": "餐饮收入",
+      "yoy": 10.6
+    },
+    {
+      "date": "2016-09",
+      "category": "商品零售",
+      "yoy": 10.7
+    },
+    {
+      "date": "2016-09",
+      "category": "餐饮收入",
+      "yoy": 10.7
+    },
+    {
+      "date": "2016-10",
+      "category": "商品零售",
+      "yoy": 10.0
+    },
+    {
+      "date": "2016-10",
+      "category": "餐饮收入",
+      "yoy": 10.0
+    },
+    {
+      "date": "2016-11",
+      "category": "商品零售",
+      "yoy": 10.8
+    },
+    {
+      "date": "2016-11",
+      "category": "餐饮收入",
+      "yoy": 10.8
+    },
+    {
+      "date": "2016-12",
+      "category": "商品零售",
+      "yoy": 10.9
+    },
+    {
+      "date": "2016-12",
+      "category": "餐饮收入",
+      "yoy": 10.9
+    },
+    {
+      "date": "2017-03",
+      "category": "商品零售",
+      "yoy": 10.9
+    },
+    {
+      "date": "2017-03",
+      "category": "餐饮收入",
+      "yoy": 10.9
+    },
+    {
+      "date": "2017-04",
+      "category": "商品零售",
+      "yoy": 10.7
+    },
+    {
+      "date": "2017-04",
+      "category": "餐饮收入",
+      "yoy": 10.7
+    },
+    {
+      "date": "2017-05",
+      "category": "商品零售",
+      "yoy": 10.7
+    },
+    {
+      "date": "2017-05",
+      "category": "餐饮收入",
+      "yoy": 10.7
+    },
+    {
+      "date": "2017-06",
+      "category": "商品零售",
+      "yoy": 11.0
+    },
+    {
+      "date": "2017-06",
+      "category": "餐饮收入",
+      "yoy": 11.0
+    },
+    {
+      "date": "2017-07",
+      "category": "商品零售",
+      "yoy": 10.4
+    },
+    {
+      "date": "2017-07",
+      "category": "餐饮收入",
+      "yoy": 10.4
+    },
+    {
+      "date": "2017-08",
+      "category": "商品零售",
+      "yoy": 10.1
+    },
+    {
+      "date": "2017-08",
+      "category": "餐饮收入",
+      "yoy": 10.1
+    },
+    {
+      "date": "2017-09",
+      "category": "商品零售",
+      "yoy": 10.3
+    },
+    {
+      "date": "2017-09",
+      "category": "餐饮收入",
+      "yoy": 10.3
+    },
+    {
+      "date": "2017-10",
+      "category": "商品零售",
+      "yoy": 10.0
+    },
+    {
+      "date": "2017-10",
+      "category": "餐饮收入",
+      "yoy": 10.0
+    },
+    {
+      "date": "2017-11",
+      "category": "商品零售",
+      "yoy": 10.2
+    },
+    {
+      "date": "2017-11",
+      "category": "餐饮收入",
+      "yoy": 10.2
+    },
+    {
+      "date": "2017-12",
+      "category": "商品零售",
+      "yoy": 9.4
+    },
+    {
+      "date": "2017-12",
+      "category": "餐饮收入",
+      "yoy": 9.4
+    },
+    {
+      "date": "2018-03",
+      "category": "商品零售",
+      "yoy": 10.1
+    },
+    {
+      "date": "2018-03",
+      "category": "餐饮收入",
+      "yoy": 10.1
+    },
+    {
+      "date": "2018-04",
+      "category": "商品零售",
+      "yoy": 9.4
+    },
+    {
+      "date": "2018-04",
+      "category": "餐饮收入",
+      "yoy": 9.4
+    },
+    {
+      "date": "2018-05",
+      "category": "商品零售",
+      "yoy": 8.5
+    },
+    {
+      "date": "2018-05",
+      "category": "餐饮收入",
+      "yoy": 8.5
+    },
+    {
+      "date": "2018-06",
+      "category": "商品零售",
+      "yoy": 9.0
+    },
+    {
+      "date": "2018-06",
+      "category": "餐饮收入",
+      "yoy": 9.0
+    },
+    {
+      "date": "2018-07",
+      "category": "商品零售",
+      "yoy": 8.8
+    },
+    {
+      "date": "2018-07",
+      "category": "餐饮收入",
+      "yoy": 8.8
+    },
+    {
+      "date": "2018-08",
+      "category": "商品零售",
+      "yoy": 9.0
+    },
+    {
+      "date": "2018-08",
+      "category": "餐饮收入",
+      "yoy": 9.0
+    },
+    {
+      "date": "2018-09",
+      "category": "商品零售",
+      "yoy": 9.2
+    },
+    {
+      "date": "2018-09",
+      "category": "餐饮收入",
+      "yoy": 9.2
+    },
+    {
+      "date": "2018-10",
+      "category": "商品零售",
+      "yoy": 8.6
+    },
+    {
+      "date": "2018-10",
+      "category": "餐饮收入",
+      "yoy": 8.6
+    },
+    {
+      "date": "2018-11",
+      "category": "商品零售",
+      "yoy": 8.1
+    },
+    {
+      "date": "2018-11",
+      "category": "餐饮收入",
+      "yoy": 8.1
+    },
+    {
+      "date": "2018-12",
+      "category": "商品零售",
+      "yoy": 8.2
+    },
+    {
+      "date": "2018-12",
+      "category": "餐饮收入",
+      "yoy": 8.2
+    },
+    {
+      "date": "2019-03",
+      "category": "商品零售",
+      "yoy": 8.7
+    },
+    {
+      "date": "2019-03",
+      "category": "餐饮收入",
+      "yoy": 8.7
+    },
+    {
+      "date": "2019-04",
+      "category": "商品零售",
+      "yoy": 7.2
+    },
+    {
+      "date": "2019-04",
+      "category": "餐饮收入",
+      "yoy": 7.2
+    },
+    {
+      "date": "2019-05",
+      "category": "商品零售",
+      "yoy": 8.6
+    },
+    {
+      "date": "2019-05",
+      "category": "餐饮收入",
+      "yoy": 8.6
+    },
+    {
+      "date": "2019-06",
+      "category": "商品零售",
+      "yoy": 9.8
+    },
+    {
+      "date": "2019-06",
+      "category": "餐饮收入",
+      "yoy": 9.8
+    },
+    {
+      "date": "2019-07",
+      "category": "商品零售",
+      "yoy": 7.6
+    },
+    {
+      "date": "2019-07",
+      "category": "餐饮收入",
+      "yoy": 7.6
+    },
+    {
+      "date": "2019-08",
+      "category": "商品零售",
+      "yoy": 7.5
+    },
+    {
+      "date": "2019-08",
+      "category": "餐饮收入",
+      "yoy": 7.5
+    },
+    {
+      "date": "2019-09",
+      "category": "商品零售",
+      "yoy": 7.8
+    },
+    {
+      "date": "2019-09",
+      "category": "餐饮收入",
+      "yoy": 7.8
+    },
+    {
+      "date": "2019-10",
+      "category": "商品零售",
+      "yoy": 7.2
+    },
+    {
+      "date": "2019-10",
+      "category": "餐饮收入",
+      "yoy": 7.2
+    },
+    {
+      "date": "2019-11",
+      "category": "商品零售",
+      "yoy": 8.0
+    },
+    {
+      "date": "2019-11",
+      "category": "餐饮收入",
+      "yoy": 8.0
+    },
+    {
+      "date": "2019-12",
+      "category": "商品零售",
+      "yoy": 8.0
+    },
+    {
+      "date": "2019-12",
+      "category": "餐饮收入",
+      "yoy": 8.0
+    },
+    {
+      "date": "2020-03",
+      "category": "商品零售",
+      "yoy": -15.8
+    },
+    {
+      "date": "2020-03",
+      "category": "餐饮收入",
+      "yoy": -15.8
+    },
+    {
+      "date": "2020-04",
+      "category": "商品零售",
+      "yoy": -7.5
+    },
+    {
+      "date": "2020-04",
+      "category": "餐饮收入",
+      "yoy": -7.5
+    },
+    {
+      "date": "2020-05",
+      "category": "商品零售",
+      "yoy": -2.8
+    },
+    {
+      "date": "2020-05",
+      "category": "餐饮收入",
+      "yoy": -2.8
+    },
+    {
+      "date": "2020-06",
+      "category": "商品零售",
+      "yoy": -1.8
+    },
+    {
+      "date": "2020-06",
+      "category": "餐饮收入",
+      "yoy": -1.8
+    },
+    {
+      "date": "2020-07",
+      "category": "商品零售",
+      "yoy": -1.1
+    },
+    {
+      "date": "2020-07",
+      "category": "餐饮收入",
+      "yoy": -1.1
+    },
+    {
+      "date": "2020-08",
+      "category": "商品零售",
+      "yoy": 0.5
+    },
+    {
+      "date": "2020-08",
+      "category": "餐饮收入",
+      "yoy": 0.5
+    },
+    {
+      "date": "2020-09",
+      "category": "商品零售",
+      "yoy": 3.3
+    },
+    {
+      "date": "2020-09",
+      "category": "餐饮收入",
+      "yoy": 3.3
+    },
+    {
+      "date": "2020-10",
+      "category": "商品零售",
+      "yoy": 4.3
+    },
+    {
+      "date": "2020-10",
+      "category": "餐饮收入",
+      "yoy": 4.3
+    },
+    {
+      "date": "2020-11",
+      "category": "商品零售",
+      "yoy": 5.0
+    },
+    {
+      "date": "2020-11",
+      "category": "餐饮收入",
+      "yoy": 5.0
+    },
+    {
+      "date": "2020-12",
+      "category": "商品零售",
+      "yoy": 4.6
+    },
+    {
+      "date": "2020-12",
+      "category": "餐饮收入",
+      "yoy": 4.6
+    },
+    {
+      "date": "2021-03",
+      "category": "商品零售",
+      "yoy": 34.2
+    },
+    {
+      "date": "2021-03",
+      "category": "餐饮收入",
+      "yoy": 34.2
+    },
+    {
+      "date": "2021-04",
+      "category": "商品零售",
+      "yoy": 17.7
+    },
+    {
+      "date": "2021-04",
+      "category": "餐饮收入",
+      "yoy": 17.7
+    },
+    {
+      "date": "2021-05",
+      "category": "商品零售",
+      "yoy": 12.4
+    },
+    {
+      "date": "2021-05",
+      "category": "餐饮收入",
+      "yoy": 12.4
+    },
+    {
+      "date": "2021-06",
+      "category": "商品零售",
+      "yoy": 12.1
+    },
+    {
+      "date": "2021-06",
+      "category": "餐饮收入",
+      "yoy": 12.1
+    },
+    {
+      "date": "2021-07",
+      "category": "商品零售",
+      "yoy": 8.5
+    },
+    {
+      "date": "2021-07",
+      "category": "餐饮收入",
+      "yoy": 8.5
+    },
+    {
+      "date": "2021-08",
+      "category": "商品零售",
+      "yoy": 2.5
+    },
+    {
+      "date": "2021-08",
+      "category": "餐饮收入",
+      "yoy": 2.5
+    },
+    {
+      "date": "2021-09",
+      "category": "商品零售",
+      "yoy": 4.4
+    },
+    {
+      "date": "2021-09",
+      "category": "餐饮收入",
+      "yoy": 4.4
+    },
+    {
+      "date": "2021-10",
+      "category": "商品零售",
+      "yoy": 4.9
+    },
+    {
+      "date": "2021-10",
+      "category": "餐饮收入",
+      "yoy": 4.9
+    },
+    {
+      "date": "2021-11",
+      "category": "商品零售",
+      "yoy": 3.9
+    },
+    {
+      "date": "2021-11",
+      "category": "餐饮收入",
+      "yoy": 3.9
+    },
+    {
+      "date": "2021-12",
+      "category": "商品零售",
+      "yoy": 1.7
+    },
+    {
+      "date": "2021-12",
+      "category": "餐饮收入",
+      "yoy": 1.7
+    },
+    {
+      "date": "2022-03",
+      "category": "商品零售",
+      "yoy": -3.5
+    },
+    {
+      "date": "2022-03",
+      "category": "餐饮收入",
+      "yoy": -3.5
+    },
+    {
+      "date": "2022-04",
+      "category": "商品零售",
+      "yoy": -11.1
+    },
+    {
+      "date": "2022-04",
+      "category": "餐饮收入",
+      "yoy": -11.1
+    },
+    {
+      "date": "2022-05",
+      "category": "商品零售",
+      "yoy": -6.7
+    },
+    {
+      "date": "2022-05",
+      "category": "餐饮收入",
+      "yoy": -6.7
+    },
+    {
+      "date": "2022-06",
+      "category": "商品零售",
+      "yoy": 3.1
+    },
+    {
+      "date": "2022-06",
+      "category": "餐饮收入",
+      "yoy": 3.1
+    },
+    {
+      "date": "2022-07",
+      "category": "商品零售",
+      "yoy": 2.7
+    },
+    {
+      "date": "2022-07",
+      "category": "餐饮收入",
+      "yoy": 2.7
+    },
+    {
+      "date": "2022-08",
+      "category": "商品零售",
+      "yoy": 5.4
+    },
+    {
+      "date": "2022-08",
+      "category": "餐饮收入",
+      "yoy": 5.4
+    },
+    {
+      "date": "2022-09",
+      "category": "商品零售",
+      "yoy": 2.5
+    },
+    {
+      "date": "2022-09",
+      "category": "餐饮收入",
+      "yoy": 2.5
+    },
+    {
+      "date": "2022-10",
+      "category": "商品零售",
+      "yoy": -0.5
+    },
+    {
+      "date": "2022-10",
+      "category": "餐饮收入",
+      "yoy": -0.5
+    },
+    {
+      "date": "2022-11",
+      "category": "商品零售",
+      "yoy": -5.9
+    },
+    {
+      "date": "2022-11",
+      "category": "餐饮收入",
+      "yoy": -5.9
+    },
+    {
+      "date": "2022-12",
+      "category": "商品零售",
+      "yoy": -1.8
+    },
+    {
+      "date": "2022-12",
+      "category": "餐饮收入",
+      "yoy": -1.8
+    },
+    {
+      "date": "2023-03",
+      "category": "商品零售",
+      "yoy": 10.6
+    },
+    {
+      "date": "2023-03",
+      "category": "餐饮收入",
+      "yoy": 10.6
+    },
+    {
+      "date": "2023-04",
+      "category": "商品零售",
+      "yoy": 18.4
+    },
+    {
+      "date": "2023-04",
+      "category": "餐饮收入",
+      "yoy": 18.4
+    },
+    {
+      "date": "2023-05",
+      "category": "商品零售",
+      "yoy": 12.7
+    },
+    {
+      "date": "2023-05",
+      "category": "餐饮收入",
+      "yoy": 12.7
+    },
+    {
+      "date": "2023-06",
+      "category": "商品零售",
+      "yoy": 3.1
+    },
+    {
+      "date": "2023-06",
+      "category": "餐饮收入",
+      "yoy": 3.1
+    },
+    {
+      "date": "2023-07",
+      "category": "商品零售",
+      "yoy": 2.5
+    },
+    {
+      "date": "2023-07",
+      "category": "餐饮收入",
+      "yoy": 2.5
+    },
+    {
+      "date": "2023-08",
+      "category": "商品零售",
+      "yoy": 4.6
+    },
+    {
+      "date": "2023-08",
+      "category": "餐饮收入",
+      "yoy": 4.6
+    },
+    {
+      "date": "2023-09",
+      "category": "商品零售",
+      "yoy": 5.5
+    },
+    {
+      "date": "2023-09",
+      "category": "餐饮收入",
+      "yoy": 5.5
+    },
+    {
+      "date": "2023-10",
+      "category": "商品零售",
+      "yoy": 7.6
+    },
+    {
+      "date": "2023-10",
+      "category": "餐饮收入",
+      "yoy": 7.6
+    },
+    {
+      "date": "2023-11",
+      "category": "商品零售",
+      "yoy": 10.1
+    },
+    {
+      "date": "2023-11",
+      "category": "餐饮收入",
+      "yoy": 10.1
+    },
+    {
+      "date": "2023-12",
+      "category": "商品零售",
+      "yoy": 7.4
+    },
+    {
+      "date": "2023-12",
+      "category": "餐饮收入",
+      "yoy": 7.4
+    },
+    {
+      "date": "2024-03",
+      "category": "商品零售",
+      "yoy": 3.1
+    },
+    {
+      "date": "2024-03",
+      "category": "餐饮收入",
+      "yoy": 3.1
+    },
+    {
+      "date": "2024-04",
+      "category": "商品零售",
+      "yoy": 2.3
+    },
+    {
+      "date": "2024-04",
+      "category": "餐饮收入",
+      "yoy": 2.3
+    },
+    {
+      "date": "2024-05",
+      "category": "商品零售",
+      "yoy": 3.7
+    },
+    {
+      "date": "2024-05",
+      "category": "餐饮收入",
+      "yoy": 3.7
+    },
+    {
+      "date": "2024-06",
+      "category": "商品零售",
+      "yoy": 2.0
+    },
+    {
+      "date": "2024-06",
+      "category": "餐饮收入",
+      "yoy": 2.0
+    },
+    {
+      "date": "2024-07",
+      "category": "商品零售",
+      "yoy": 2.7
+    },
+    {
+      "date": "2024-07",
+      "category": "餐饮收入",
+      "yoy": 2.7
+    },
+    {
+      "date": "2024-08",
+      "category": "商品零售",
+      "yoy": 2.1
+    },
+    {
+      "date": "2024-08",
+      "category": "餐饮收入",
+      "yoy": 2.1
+    },
+    {
+      "date": "2024-09",
+      "category": "商品零售",
+      "yoy": 3.2
+    },
+    {
+      "date": "2024-09",
+      "category": "餐饮收入",
+      "yoy": 3.2
+    },
+    {
+      "date": "2024-10",
+      "category": "商品零售",
+      "yoy": 4.8
+    },
+    {
+      "date": "2024-10",
+      "category": "餐饮收入",
+      "yoy": 4.8
+    },
+    {
+      "date": "2024-11",
+      "category": "商品零售",
+      "yoy": 3.0
+    },
+    {
+      "date": "2024-11",
+      "category": "餐饮收入",
+      "yoy": 3.0
+    },
+    {
+      "date": "2024-12",
+      "category": "商品零售",
+      "yoy": 3.7
+    },
+    {
+      "date": "2024-12",
+      "category": "餐饮收入",
+      "yoy": 3.7
+    },
+    {
+      "date": "2025-03",
+      "category": "商品零售",
+      "yoy": 5.9
+    },
+    {
+      "date": "2025-03",
+      "category": "餐饮收入",
+      "yoy": 5.9
+    },
+    {
+      "date": "2025-04",
+      "category": "商品零售",
+      "yoy": 5.1
+    },
+    {
+      "date": "2025-04",
+      "category": "餐饮收入",
+      "yoy": 5.1
+    },
+    {
+      "date": "2025-05",
+      "category": "商品零售",
+      "yoy": 6.4
+    },
+    {
+      "date": "2025-05",
+      "category": "餐饮收入",
+      "yoy": 6.4
+    },
+    {
+      "date": "2025-06",
+      "category": "商品零售",
+      "yoy": 4.8
+    },
+    {
+      "date": "2025-06",
+      "category": "餐饮收入",
+      "yoy": 4.8
+    },
+    {
+      "date": "2025-07",
+      "category": "商品零售",
+      "yoy": 3.7
+    },
+    {
+      "date": "2025-07",
+      "category": "餐饮收入",
+      "yoy": 3.7
+    },
+    {
+      "date": "2025-08",
+      "category": "商品零售",
+      "yoy": 3.4
+    },
+    {
+      "date": "2025-08",
+      "category": "餐饮收入",
+      "yoy": 3.4
+    },
+    {
+      "date": "2025-09",
+      "category": "商品零售",
+      "yoy": 3.0
+    },
+    {
+      "date": "2025-09",
+      "category": "餐饮收入",
+      "yoy": 3.0
+    },
+    {
+      "date": "2025-10",
+      "category": "商品零售",
+      "yoy": 2.9
+    },
+    {
+      "date": "2025-10",
+      "category": "餐饮收入",
+      "yoy": 2.9
+    },
+    {
+      "date": "2025-11",
+      "category": "商品零售",
+      "yoy": 1.3
+    },
+    {
+      "date": "2025-11",
+      "category": "餐饮收入",
+      "yoy": 1.3
+    },
+    {
+      "date": "2025-12",
+      "category": "商品零售",
+      "yoy": 0.9
+    },
+    {
+      "date": "2025-12",
+      "category": "餐饮收入",
+      "yoy": 0.9
+    },
+    {
+      "date": "2026-03",
+      "category": "商品零售",
+      "yoy": 1.7
+    },
+    {
+      "date": "2026-03",
+      "category": "餐饮收入",
+      "yoy": 1.7
+    },
+    {
+      "date": "2026-04",
+      "category": "商品零售",
+      "yoy": 0.2
+    },
+    {
+      "date": "2026-04",
+      "category": "餐饮收入",
+      "yoy": 0.2
+    },
+    {
+      "date": "2026-05",
+      "category": "商品零售",
+      "yoy": -0.6
+    },
+    {
+      "date": "2026-05",
+      "category": "餐饮收入",
+      "yoy": -0.6
+    }
+  ],
+  "source_urls": {
+    "2022-02": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901406.html",
+    "2022-04": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901464.html",
+    "2022-05": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901490.html",
+    "2022-06": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901517.html",
+    "2022-07": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901552.html",
+    "2022-08": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901583.html",
+    "2022-09": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901619.html",
+    "2022-10": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901655.html",
+    "2022-11": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901682.html",
+    "2022-12": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901713.html",
+    "2023-02": "https://www.stats.gov.cn/sj/zxfb/202303/t20230315_1937198.html",
+    "2023-03": "https://www.stats.gov.cn/sj/zxfb/202304/t20230418_1938710.html",
+    "2023-04": "https://www.stats.gov.cn/sj/zxfb/202305/t20230516_1939485.html",
+    "2023-05": "https://www.stats.gov.cn/sj/zxfb/202306/t20230615_1940627.html",
+    "2023-07": "https://www.stats.gov.cn/sj/zxfb/202308/t20230815_1941958.html",
+    "2023-09": "https://www.stats.gov.cn/sj/zxfb/202310/t20231018_1943658.html",
+    "2023-10": "https://www.stats.gov.cn/sj/zxfb/202311/t20231115_1944530.html",
+    "2023-11": "https://www.stats.gov.cn/sj/zxfb/202312/t20231215_1945575.html",
+    "2023-12": "https://www.stats.gov.cn/sj/zxfb/202401/t20240116_1946619.html",
+    "2024-02": "https://www.stats.gov.cn/sj/zxfb/202403/t20240327_1948175.html",
+    "2024-03": "https://www.stats.gov.cn/sj/zxfb/202404/t20240416_1948573.html",
+    "2024-04": "https://www.stats.gov.cn/sj/zxfb/202405/t20240520_1950429.html",
+    "2024-05": "https://www.stats.gov.cn/sj/zxfb/202406/t20240617_1954709.html",
+    "2024-06": "https://www.stats.gov.cn/sj/zxfb/202407/t20240715_1955609.html",
+    "2024-07": "https://www.stats.gov.cn/sj/zxfb/202408/t20240815_1955981.html",
+    "2024-08": "https://www.stats.gov.cn/sj/zxfb/202409/t20240914_1956481.html",
+    "2024-09": "https://www.stats.gov.cn/sj/zxfb/202410/t20241018_1957039.html",
+    "2024-10": "https://www.stats.gov.cn/sj/zxfb/202411/t20241115_1957427.html",
+    "2024-11": "https://www.stats.gov.cn/sj/zxfb/202412/t20241216_1957759.html",
+    "2024-12": "https://www.stats.gov.cn/sj/zxfb/202501/t20250117_1958327.html",
+    "2025-02": "https://www.stats.gov.cn/sj/zxfb/202503/t20250317_1959014.html",
+    "2025-03": "https://www.stats.gov.cn/sj/zxfb/202504/t20250416_1959317.html",
+    "2025-04": "https://www.stats.gov.cn/sj/zxfb/202505/t20250519_1959858.html",
+    "2025-05": "https://www.stats.gov.cn/sj/zxfb/202506/t20250616_1960169.html",
+    "2025-06": "https://www.stats.gov.cn/sj/zxfb/202507/t20250715_1960409.html",
+    "2025-07": "https://www.stats.gov.cn/sj/zxfb/202508/t20250815_1960783.html",
+    "2025-08": "https://www.stats.gov.cn/sj/zxfb/202509/t20250915_1961177.html",
+    "2025-09": "https://www.stats.gov.cn/sj/zxfb/202510/t20251020_1961606.html",
+    "2025-10": "https://www.stats.gov.cn/sj/zxfb/202511/t20251114_1961852.html",
+    "2025-11": "https://www.stats.gov.cn/sj/zxfb/202512/t20251215_1962071.html",
+    "2025-12": "https://www.stats.gov.cn/sj/zxfb/202601/t20260119_1962323.html",
+    "2026-02": "https://www.stats.gov.cn/sj/zxfb/202603/t20260316_1962786.html",
+    "2026-03": "https://www.stats.gov.cn/sj/zxfb/202604/t20260416_1963325.html",
+    "2026-04": "https://www.stats.gov.cn/sj/zxfb/202605/t20260518_1963727.html",
+    "2026-05": "https://www.stats.gov.cn/sj/zxfb/202606/t20260616_1963949.html"
+  }
+}
