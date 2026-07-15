@@ -10,37 +10,157 @@ html, body {
     overflow: hidden;
 }
 
+html.scroll-page,
+html.scroll-page body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #f5f6fa;
     color: #333;
 }
 
 /* 整体应用容器：全屏高度，纵向flex */
 .app {
     height: 100vh;
+    width: min(100%, 1500px);
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    padding: 10px 14px 10px;
-    gap: 8px;
+    padding: 20px;
+    gap: 14px;
     overflow: hidden;
 }
 
-/* 标题栏：紧凑横排 */
+/* 三个数据分类共用的页面框架 */
+.dashboard-container {
+    width: min(100%, 1500px);
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-header,
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 18px;
     flex-shrink: 0;
-    padding: 0 4px;
+    min-height: 64px;
+    padding: 12px 16px;
+    background: #fff;
+    border: 1px solid rgba(102, 126, 234, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(31, 41, 55, 0.06);
 }
 
+.page-header h1,
 .header h1 {
-    color: white;
-    font-size: 1.35rem;
+    color: #1a1a2e;
+    font-size: 1.3rem;
     font-weight: 600;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.25);
     white-space: nowrap;
+}
+
+.page-header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    min-width: 0;
+}
+
+.category-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    border-radius: 22px;
+    background: #f2f3f8;
+}
+
+.category-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 66px;
+    padding: 7px 15px;
+    border-radius: 18px;
+    color: #667085;
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.category-tab:hover {
+    color: #667eea;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.category-tab.active {
+    color: #fff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 3px 8px rgba(102, 126, 234, 0.25);
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin: 18px 0;
+}
+
+.summary-card,
+.scd {
+    background: #fff;
+    border: 1px solid rgba(102, 126, 234, 0.06);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 2px 12px rgba(31, 41, 55, 0.05);
+    text-align: center;
+}
+
+.scd .l {
+    margin-bottom: 6px;
+    color: #98a2b3;
+    font-size: 12px;
+}
+
+.scd .v {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.scd .v.r { color: #e74c3c; }
+.scd .v.g { color: #27ae60; }
+.scd .d {
+    margin-top: 4px;
+    color: #b5bdc9;
+    font-size: 11px;
+}
+
+.dashboard-section {
+    margin-bottom: 18px;
+    padding: 20px 24px;
+    background: #fff;
+    border: 1px solid rgba(102, 126, 234, 0.06);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(31, 41, 55, 0.05);
+}
+
+.dashboard-section h2 {
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #1a1a2e;
+    font-size: 15px;
 }
 
 /* 更新数据按钮 */
@@ -48,9 +168,9 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    background: rgba(255,255,255,0.2);
+    background: #667eea;
     color: white;
-    border: 1.5px solid rgba(255,255,255,0.6);
+    border: 1.5px solid #667eea;
     padding: 6px 16px;
     border-radius: 20px;
     font-size: 0.88rem;
@@ -62,8 +182,8 @@ body {
 }
 
 .update-data-btn:hover {
-    background: rgba(255,255,255,0.35);
-    border-color: white;
+    background: #5a6fd6;
+    border-color: #5a6fd6;
 }
 
 .update-data-btn:disabled {
@@ -208,7 +328,8 @@ body {
 
 /* 左侧：图表面板 */
 .chart-panel {
-    background: rgba(255, 255, 255, 0.95);
+    background: #fff;
+    border: 1px solid rgba(102, 126, 234, 0.06);
     border-radius: 12px;
     padding: 14px 16px 10px;
     display: flex;
@@ -216,6 +337,7 @@ body {
     gap: 8px;
     min-height: 0;
     overflow: hidden;
+    box-shadow: 0 2px 12px rgba(31, 41, 55, 0.05);
 }
 
 .chart-container {
@@ -313,7 +435,8 @@ body {
 
 /* 右侧：控制面板 */
 .control-panel {
-    background: rgba(255, 255, 255, 0.95);
+    background: #fff;
+    border: 1px solid rgba(102, 126, 234, 0.06);
     border-radius: 12px;
     padding: 12px 14px;
     display: flex;
@@ -321,6 +444,7 @@ body {
     gap: 0;
     min-height: 0;
     overflow: hidden;
+    box-shadow: 0 2px 12px rgba(31, 41, 55, 0.05);
 }
 
 .control-section {
@@ -489,16 +613,166 @@ body {
     background: rgba(102, 126, 234, 0.75);
 }
 
+/* 关注资产价格页 */
+.asset-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.asset-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.asset-filter {
+    padding: 6px 14px;
+    border: 1.5px solid #dde1ea;
+    border-radius: 18px;
+    background: #fff;
+    color: #667085;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.18s ease;
+}
+
+.asset-filter:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.asset-filter.active {
+    border-color: #667eea;
+    background: #667eea;
+    color: #fff;
+}
+
+.asset-updated-at {
+    color: #98a2b3;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.asset-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.asset-card {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid #edf0f5;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.asset-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.asset-card-title h3 {
+    margin: 0 0 4px;
+    color: #1a1a2e;
+    font-size: 15px;
+}
+
+.asset-card-title p,
+.asset-latest small {
+    color: #98a2b3;
+    font-size: 11px;
+}
+
+.asset-latest {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.asset-latest strong {
+    display: block;
+    color: #344054;
+    font-size: 18px;
+}
+
+.asset-latest .up { color: #e74c3c; }
+.asset-latest .down { color: #27ae60; }
+
+.asset-chart {
+    position: relative;
+    height: 250px;
+}
+
+.asset-source {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 9px;
+    border-top: 1px solid #f2f4f7;
+    color: #98a2b3;
+    font-size: 11px;
+}
+
+.asset-source a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.asset-empty {
+    padding: 60px 20px;
+    color: #98a2b3;
+    text-align: center;
+}
+
 /* 响应式 */
 @media (max-width: 900px) {
+    .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .main-layout {
         grid-template-columns: 1fr 250px;
+    }
+
+    .asset-grid {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 700px) {
     html, body { overflow: auto; }
-    .app { height: auto; overflow: visible; }
+    .app,
+    .dashboard-container {
+        height: auto;
+        padding: 12px;
+        overflow: visible;
+    }
+    .page-header,
+    .header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .page-header-actions {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .category-nav {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+    .asset-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
     .main-layout {
         grid-template-columns: 1fr;
         overflow: visible;
@@ -508,5 +782,16 @@ body {
     }
     .control-panel {
         max-height: 500px;
+    }
+}
+
+@media (max-width: 460px) {
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-tab {
+        min-width: auto;
+        padding-inline: 12px;
     }
 }

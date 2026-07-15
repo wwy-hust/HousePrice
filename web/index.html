@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>房价数据可视化平台</title>
-    <link rel="stylesheet" href="style.css?v=20260511b">
+    <link rel="stylesheet" href="style.css?v=20260714">
+    <script src="navigation.js?v=20260714-assets" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
     <div class="app">
         <!-- 标题栏 -->
-        <header class="header">
+        <header class="header page-header">
             <h1>中国70个大中城市房价指数</h1>
-            <div style="display:flex; gap:10px; align-items:center;">
-                <a href="/retail.html" class="update-data-btn" style="text-decoration:none; background:#27ae60;">
-                    社零数据
-                </a>
+            <div class="page-header-actions">
+                <div data-category-nav></div>
                 <button class="update-data-btn" id="updateDataBtn" onclick="triggerDataUpdate()">
                     <span class="update-icon">↻</span> 更新数据
                 </button>

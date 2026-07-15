@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关注资产价格 - 数据可视化</title>
+    <link rel="stylesheet" href="style.css?v=20260715-scroll">
+    <script src="navigation.js?v=20260714-assets" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="assets.js?v=20260714" defer></script>
+</head>
+<body>
+<div class="dashboard-container">
+    <header class="page-header">
+        <h1>关注资产价格</h1>
+        <div class="page-header-actions">
+            <div data-category-nav></div>
+            <button class="update-data-btn" id="updateAssetBtn" type="button">
+                <span class="update-icon">↻</span> 拉取最新数据
+            </button>
+        </div>
+    </header>
+
+    <div class="summary-grid" id="assetSummary"></div>
+
+    <section class="dashboard-section">
+        <div class="asset-toolbar">
+            <div class="asset-filters" id="assetFilters"></div>
+            <div class="asset-updated-at" id="assetUpdatedAt"></div>
+        </div>
+        <div class="asset-grid" id="assetGrid">
+            <div class="asset-empty">正在加载资产价格数据...</div>
+        </div>
+    </section>
+</div>
+
+<div class="update-modal-overlay" id="assetUpdateModal">
+    <div class="update-modal">
+        <div class="update-modal-header">
+            <span class="update-modal-title" id="assetUpdateTitle">正在拉取资产价格</span>
+        </div>
+        <div class="update-modal-body">
+            <div class="update-progress-bar-wrap">
+                <div class="update-progress-bar" id="assetUpdateProgress"></div>
+            </div>
+            <div class="update-log" id="assetUpdateLog"></div>
+        </div>
+        <div class="update-modal-footer" id="assetUpdateFooter" style="display:none;">
+            <button class="update-modal-close-btn" id="closeAssetUpdateBtn" type="button">关闭</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

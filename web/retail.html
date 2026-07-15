@@ -4,28 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社会消费品零售总额 - 数据可视化</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260714">
+    <script src="navigation.js?v=20260714-assets" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <style>
         html, body { overflow: auto !important; height: auto !important; background: #f5f6fa; }
-        .rc { max-width: 1500px; margin: 0 auto; padding: 20px; }
-        .rh { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .rh h1 { font-size: 22px; color: #1a1a2e; margin: 0; }
-        .rh a { color: #667eea; text-decoration: none; font-size: 14px; }
-        .rh a:hover { text-decoration: underline; }
-
-        /* 统计卡片 */
-        .sc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
-        .scd { background: #fff; border-radius: 10px; padding: 18px; box-shadow: 0 1px 8px rgba(0,0,0,0.05); text-align: center; }
-        .scd .l { font-size: 12px; color: #999; margin-bottom: 6px; }
-        .scd .v { font-size: 26px; font-weight: 700; }
-        .scd .v.r { color: #e74c3c; } .scd .v.g { color: #27ae60; }
-        .scd .d { font-size: 11px; color: #bbb; margin-top: 4px; }
-
-        /* 区块 */
-        .sec { background: #fff; border-radius: 12px; padding: 20px 24px; box-shadow: 0 1px 8px rgba(0,0,0,0.05); margin-bottom: 18px; }
-        .sec h2 { font-size: 15px; color: #1a1a2e; margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid #f0f0f0; }
         .cw { position: relative; height: 360px; }
 
         /* Tab 组件 — 多选 */
@@ -58,23 +42,22 @@
         .brush-tick { position: absolute; top: 0; font-size: 10px; color: #aaa; white-space: nowrap; }
         .brush-tick::before { content: ''; position: absolute; top: -5px; left: 50%; width: 1px; height: 4px; background: #ccd; }
 
-        @media (max-width: 900px) {
-            .sc { grid-template-columns: repeat(2, 1fr); }
-        }
     </style>
 </head>
 <body>
-<div class="rc">
-    <div class="rh">
-        <h1>📊 社会消费品零售总额</h1>
-        <a href="/">← 返回房价数据</a>
-    </div>
+<div class="dashboard-container">
+    <header class="page-header">
+        <h1>社会消费品零售总额</h1>
+        <div class="page-header-actions">
+            <div data-category-nav></div>
+        </div>
+    </header>
 
     <!-- 统计卡片 -->
-    <div class="sc" id="sc"></div>
+    <div class="summary-grid" id="sc"></div>
 
     <!-- ====== 总量视图 ====== -->
-    <div class="sec">
+    <div class="dashboard-section">
         <h2>总量视图</h2>
         <div class="tabs" id="tabsMain"></div>
         <div class="cw"><canvas id="chartMain"></canvas></div>
@@ -82,7 +65,7 @@
     </div>
 
     <!-- ====== 分项视图 ====== -->
-    <div class="sec">
+    <div class="dashboard-section">
         <h2>限额以上分品类 同比增速 (%)</h2>
         <div class="tabs" id="tabsCat"></div>
         <div class="cw"><canvas id="chartCat"></canvas></div>

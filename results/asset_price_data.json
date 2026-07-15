@@ -1,0 +1,3473 @@
+{
+  "data_type": "关注资产价格",
+  "generated_at": "2026-07-15T12:34:11+08:00",
+  "source_updated_at": "2026-07-15T12:34:11",
+  "categories": [
+    {
+      "name": "大宗商品",
+      "asset_codes": [
+        "SULFUR"
+      ]
+    },
+    {
+      "name": "饲料添加剂",
+      "asset_codes": [
+        "VD3"
+      ]
+    },
+    {
+      "name": "VLCC油运",
+      "asset_codes": [
+        "TD15",
+        "TD15_WS",
+        "TD3C",
+        "TD3C_WS"
+      ]
+    },
+    {
+      "name": "生物医药上游",
+      "asset_codes": [
+        "MONKEY"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "code": "SULFUR",
+      "name": "硫磺",
+      "unit": "元/吨",
+      "source": "生意社",
+      "category": "大宗商品",
+      "latest": {
+        "date": "2026-07-15",
+        "price": 9185.67,
+        "price_low": null,
+        "price_high": null,
+        "source_url": "https://www.100ppi.com/rawmex/detail-427.html"
+      },
+      "series": [
+        {
+          "date": "2026-02-20",
+          "price": 3833.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-02-21",
+          "price": 3833.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-02-22",
+          "price": 3833.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-02-23",
+          "price": 3833.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-02-24",
+          "price": 3803.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-02-25",
+          "price": 3810.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-02-26",
+          "price": 3843.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-02-27",
+          "price": 3876.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-02-28",
+          "price": 3910.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-01",
+          "price": 3910.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-02",
+          "price": 3963.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-03",
+          "price": 4050.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-04",
+          "price": 4130.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-05",
+          "price": 4246.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-06",
+          "price": 4313.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-07",
+          "price": 4396.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-08",
+          "price": 4446.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-09",
+          "price": 4550.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-10",
+          "price": 4616.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-11",
+          "price": 4750.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-12",
+          "price": 4750.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-13",
+          "price": 4750.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-14",
+          "price": 4750.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-15",
+          "price": 4750.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-16",
+          "price": 4616.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-17",
+          "price": 4583.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-18",
+          "price": 4616.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-19",
+          "price": 4716.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-20",
+          "price": 4816.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-21",
+          "price": 4816.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-22",
+          "price": 4816.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-23",
+          "price": 4966.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-24",
+          "price": 5183.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-25",
+          "price": 5383.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-26",
+          "price": 5500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-27",
+          "price": 5543.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-28",
+          "price": 5543.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-29",
+          "price": 5543.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-30",
+          "price": 5726.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-03-31",
+          "price": 5943.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-01",
+          "price": 6260.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-02",
+          "price": 6466.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-03",
+          "price": 6700.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-04",
+          "price": 6700.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-05",
+          "price": 6700.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-06",
+          "price": 6700.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-07",
+          "price": 6733.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-08",
+          "price": 6800.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-09",
+          "price": 6766.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-10",
+          "price": 6600.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-11",
+          "price": 6600.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-12",
+          "price": 6600.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-13",
+          "price": 6533.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-14",
+          "price": 6483.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-15",
+          "price": 6483.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-16",
+          "price": 6350.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-17",
+          "price": 6100.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-18",
+          "price": 6100.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-19",
+          "price": 6100.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-20",
+          "price": 5950.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-21",
+          "price": 5950.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-22",
+          "price": 6000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-23",
+          "price": 6000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-24",
+          "price": 6050.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-25",
+          "price": 6050.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-26",
+          "price": 6050.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-27",
+          "price": 6166.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-28",
+          "price": 6216.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-29",
+          "price": 6316.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-04-30",
+          "price": 6500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-01",
+          "price": 6500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-02",
+          "price": 6500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-03",
+          "price": 6500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-04",
+          "price": 6500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-05",
+          "price": 6500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-06",
+          "price": 6800.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-07",
+          "price": 6866.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-08",
+          "price": 6966.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-09",
+          "price": 7033.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-10",
+          "price": 7033.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-11",
+          "price": 7050.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-12",
+          "price": 7083.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-13",
+          "price": 7200.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-14",
+          "price": 7400.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-15",
+          "price": 7583.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-16",
+          "price": 7583.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-17",
+          "price": 7583.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-18",
+          "price": 7633.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-19",
+          "price": 7533.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
+        },
+        {
+          "date": "2026-05-20",
+          "price": 7550.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/rawmex/detail-427.html"
+        },
+        {
+          "date": "2026-06-30",
+          "price": 8935.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/rawmex/detail-427.html"
+        },
+        {
+          "date": "2026-07-04",
+          "price": 9135.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/rawmex/detail-427.html"
+        },
+        {
+          "date": "2026-07-09",
+          "price": 8702.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/rawmex/detail-427.html"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 8802.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/rawmex/detail-427.html"
+        },
+        {
+          "date": "2026-07-14",
+          "price": 9119.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/rawmex/detail-427.html"
+        },
+        {
+          "date": "2026-07-15",
+          "price": 9185.67,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.100ppi.com/rawmex/detail-427.html"
+        }
+      ]
+    },
+    {
+      "code": "VD3",
+      "name": "维生素D3（饲料级）",
+      "unit": "元/公斤",
+      "source": "饲料行业信息网",
+      "category": "饲料添加剂",
+      "latest": {
+        "date": "2026-07-14",
+        "price": 125.0,
+        "price_low": 115.0,
+        "price_high": 135.0,
+        "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-07-14/2187050.html"
+      },
+      "series": [
+        {
+          "date": "2025-05-26",
+          "price": 225.0,
+          "price_low": 215.0,
+          "price_high": 235.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-05-26/2175412.html"
+        },
+        {
+          "date": "2025-05-27",
+          "price": 225.0,
+          "price_low": 215.0,
+          "price_high": 235.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-05-27/2175455.html"
+        },
+        {
+          "date": "2025-05-28",
+          "price": 225.0,
+          "price_low": 215.0,
+          "price_high": 235.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-05-28/2175499.html"
+        },
+        {
+          "date": "2025-05-29",
+          "price": 225.0,
+          "price_low": 215.0,
+          "price_high": 235.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-05-29/2175542.html"
+        },
+        {
+          "date": "2025-05-30",
+          "price": 225.0,
+          "price_low": 215.0,
+          "price_high": 235.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-05-30/2175588.html"
+        },
+        {
+          "date": "2025-06-03",
+          "price": 215.0,
+          "price_low": 205.0,
+          "price_high": 225.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-03/2175633.html"
+        },
+        {
+          "date": "2025-06-04",
+          "price": 215.0,
+          "price_low": 205.0,
+          "price_high": 225.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-04/2175676.html"
+        },
+        {
+          "date": "2025-06-05",
+          "price": 215.0,
+          "price_low": 205.0,
+          "price_high": 225.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-05/2175721.html"
+        },
+        {
+          "date": "2025-06-06",
+          "price": 215.0,
+          "price_low": 205.0,
+          "price_high": 225.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-06/2175767.html"
+        },
+        {
+          "date": "2025-06-09",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-09/2175810.html"
+        },
+        {
+          "date": "2025-06-10",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-10/2175853.html"
+        },
+        {
+          "date": "2025-06-11",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-11/2175897.html"
+        },
+        {
+          "date": "2025-06-12",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-12/2175939.html"
+        },
+        {
+          "date": "2025-06-13",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-13/2175986.html"
+        },
+        {
+          "date": "2025-06-16",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-16/2176029.html"
+        },
+        {
+          "date": "2025-06-17",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-17/2176072.html"
+        },
+        {
+          "date": "2025-06-18",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-18/2176114.html"
+        },
+        {
+          "date": "2025-06-19",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-19/2176156.html"
+        },
+        {
+          "date": "2025-06-20",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-20/2176204.html"
+        },
+        {
+          "date": "2025-06-23",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-23/2176248.html"
+        },
+        {
+          "date": "2025-06-24",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-24/2176292.html"
+        },
+        {
+          "date": "2025-06-25",
+          "price": 210.0,
+          "price_low": 200.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-25/2176334.html"
+        },
+        {
+          "date": "2025-06-26",
+          "price": 185.0,
+          "price_low": 170.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-26/2176377.html"
+        },
+        {
+          "date": "2025-06-27",
+          "price": 185.0,
+          "price_low": 170.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-27/2176422.html"
+        },
+        {
+          "date": "2025-06-30",
+          "price": 185.0,
+          "price_low": 170.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-06-30/2176466.html"
+        },
+        {
+          "date": "2025-07-01",
+          "price": 185.0,
+          "price_low": 170.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-01/2176508.html"
+        },
+        {
+          "date": "2025-07-02",
+          "price": 185.0,
+          "price_low": 170.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-02/2176559.html"
+        },
+        {
+          "date": "2025-07-03",
+          "price": 185.0,
+          "price_low": 170.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-03/2176602.html"
+        },
+        {
+          "date": "2025-07-04",
+          "price": 180.0,
+          "price_low": 170.0,
+          "price_high": 190.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-04/2176645.html"
+        },
+        {
+          "date": "2025-07-07",
+          "price": 180.0,
+          "price_low": 170.0,
+          "price_high": 190.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-07/2176684.html"
+        },
+        {
+          "date": "2025-07-08",
+          "price": 180.0,
+          "price_low": 170.0,
+          "price_high": 190.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-08/2176728.html"
+        },
+        {
+          "date": "2025-07-09",
+          "price": 180.0,
+          "price_low": 170.0,
+          "price_high": 190.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-09/2176735.html"
+        },
+        {
+          "date": "2025-07-10",
+          "price": 180.0,
+          "price_low": 170.0,
+          "price_high": 190.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-10/2176780.html"
+        },
+        {
+          "date": "2025-07-11",
+          "price": 181.0,
+          "price_low": 172.0,
+          "price_high": 190.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-11/2176827.html"
+        },
+        {
+          "date": "2025-07-14",
+          "price": 187.5,
+          "price_low": 175.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-14/2176871.html"
+        },
+        {
+          "date": "2025-07-15",
+          "price": 187.5,
+          "price_low": 175.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-15/2176913.html"
+        },
+        {
+          "date": "2025-07-16",
+          "price": 195.0,
+          "price_low": 180.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-16/2176957.html"
+        },
+        {
+          "date": "2025-07-17",
+          "price": 195.0,
+          "price_low": 180.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-17/2177000.html"
+        },
+        {
+          "date": "2025-07-18",
+          "price": 195.0,
+          "price_low": 180.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-18/2177047.html"
+        },
+        {
+          "date": "2025-07-21",
+          "price": 195.0,
+          "price_low": 180.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-21/2177090.html"
+        },
+        {
+          "date": "2025-07-22",
+          "price": 195.0,
+          "price_low": 180.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-22/2177133.html"
+        },
+        {
+          "date": "2025-07-23",
+          "price": 195.0,
+          "price_low": 180.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-23/2177177.html"
+        },
+        {
+          "date": "2025-07-24",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-24/2177220.html"
+        },
+        {
+          "date": "2025-07-25",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-25/2177257.html"
+        },
+        {
+          "date": "2025-07-28",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-28/2177299.html"
+        },
+        {
+          "date": "2025-07-29",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-29/2177343.html"
+        },
+        {
+          "date": "2025-07-30",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-30/2177385.html"
+        },
+        {
+          "date": "2025-07-31",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-07-31/2177429.html"
+        },
+        {
+          "date": "2025-08-01",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-01/2177475.html"
+        },
+        {
+          "date": "2025-08-04",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-04/2177517.html"
+        },
+        {
+          "date": "2025-08-05",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-05/2177561.html"
+        },
+        {
+          "date": "2025-08-06",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-06/2177603.html"
+        },
+        {
+          "date": "2025-08-07",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-07/2177646.html"
+        },
+        {
+          "date": "2025-08-08",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-08/2177694.html"
+        },
+        {
+          "date": "2025-08-11",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-11/2177737.html"
+        },
+        {
+          "date": "2025-08-12",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-12/2177779.html"
+        },
+        {
+          "date": "2025-08-13",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-13/2177824.html"
+        },
+        {
+          "date": "2025-08-14",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-14/2177867.html"
+        },
+        {
+          "date": "2025-08-15",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-15/2177915.html"
+        },
+        {
+          "date": "2025-08-18",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-18/2177958.html"
+        },
+        {
+          "date": "2025-08-19",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-19/2178001.html"
+        },
+        {
+          "date": "2025-08-20",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-20/2178047.html"
+        },
+        {
+          "date": "2025-08-21",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-21/2178091.html"
+        },
+        {
+          "date": "2025-08-22",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-22/2178137.html"
+        },
+        {
+          "date": "2025-08-25",
+          "price": 200.0,
+          "price_low": 185.0,
+          "price_high": 215.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-25/2178180.html"
+        },
+        {
+          "date": "2025-08-26",
+          "price": 202.5,
+          "price_low": 185.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-26/2178227.html"
+        },
+        {
+          "date": "2025-08-27",
+          "price": 202.5,
+          "price_low": 185.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-27/2178271.html"
+        },
+        {
+          "date": "2025-08-28",
+          "price": 202.5,
+          "price_low": 185.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-28/2178314.html"
+        },
+        {
+          "date": "2025-08-29",
+          "price": 202.5,
+          "price_low": 185.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-08-29/2178360.html"
+        },
+        {
+          "date": "2025-09-01",
+          "price": 202.5,
+          "price_low": 185.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-01/2178402.html"
+        },
+        {
+          "date": "2025-09-02",
+          "price": 202.5,
+          "price_low": 185.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-02/2178445.html"
+        },
+        {
+          "date": "2025-09-03",
+          "price": 202.5,
+          "price_low": 185.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-03/2178487.html"
+        },
+        {
+          "date": "2025-09-04",
+          "price": 202.5,
+          "price_low": 185.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-04/2178528.html"
+        },
+        {
+          "date": "2025-09-05",
+          "price": 202.5,
+          "price_low": 185.0,
+          "price_high": 220.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-05/2178571.html"
+        },
+        {
+          "date": "2025-09-08",
+          "price": 197.5,
+          "price_low": 185.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-08/2178613.html"
+        },
+        {
+          "date": "2025-09-09",
+          "price": 197.5,
+          "price_low": 185.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-09/2178656.html"
+        },
+        {
+          "date": "2025-09-10",
+          "price": 197.5,
+          "price_low": 185.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-10/2178699.html"
+        },
+        {
+          "date": "2025-09-11",
+          "price": 197.5,
+          "price_low": 185.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-11/2178741.html"
+        },
+        {
+          "date": "2025-09-12",
+          "price": 197.5,
+          "price_low": 185.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-12/2178783.html"
+        },
+        {
+          "date": "2025-09-15",
+          "price": 197.5,
+          "price_low": 185.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-15/2178825.html"
+        },
+        {
+          "date": "2025-09-16",
+          "price": 197.5,
+          "price_low": 185.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-16/2178864.html"
+        },
+        {
+          "date": "2025-09-17",
+          "price": 197.5,
+          "price_low": 185.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-17/2178906.html"
+        },
+        {
+          "date": "2025-09-18",
+          "price": 197.5,
+          "price_low": 185.0,
+          "price_high": 210.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-18/2178949.html"
+        },
+        {
+          "date": "2025-09-19",
+          "price": 190.0,
+          "price_low": 180.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-19/2178994.html"
+        },
+        {
+          "date": "2025-09-22",
+          "price": 190.0,
+          "price_low": 180.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-22/2179037.html"
+        },
+        {
+          "date": "2025-09-23",
+          "price": 190.0,
+          "price_low": 180.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-23/2179080.html"
+        },
+        {
+          "date": "2025-09-24",
+          "price": 190.0,
+          "price_low": 180.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-24/2179122.html"
+        },
+        {
+          "date": "2025-09-25",
+          "price": 190.0,
+          "price_low": 180.0,
+          "price_high": 200.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-25/2179164.html"
+        },
+        {
+          "date": "2025-09-26",
+          "price": 185.0,
+          "price_low": 175.0,
+          "price_high": 195.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-26/2179208.html"
+        },
+        {
+          "date": "2025-09-28",
+          "price": 185.0,
+          "price_low": 175.0,
+          "price_high": 195.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-28/2179254.html"
+        },
+        {
+          "date": "2025-09-29",
+          "price": 185.0,
+          "price_low": 175.0,
+          "price_high": 195.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-29/2179296.html"
+        },
+        {
+          "date": "2025-09-30",
+          "price": 185.0,
+          "price_low": 175.0,
+          "price_high": 195.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-09-30/2179334.html"
+        },
+        {
+          "date": "2025-10-09",
+          "price": 185.0,
+          "price_low": 175.0,
+          "price_high": 195.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-09/2179376.html"
+        },
+        {
+          "date": "2025-10-10",
+          "price": 185.0,
+          "price_low": 175.0,
+          "price_high": 195.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-10/2179422.html"
+        },
+        {
+          "date": "2025-10-11",
+          "price": 180.0,
+          "price_low": 170.0,
+          "price_high": 190.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-11/2179468.html"
+        },
+        {
+          "date": "2025-10-13",
+          "price": 175.0,
+          "price_low": 170.0,
+          "price_high": 180.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-13/2179510.html"
+        },
+        {
+          "date": "2025-10-14",
+          "price": 170.0,
+          "price_low": 160.0,
+          "price_high": 180.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-14/2179553.html"
+        },
+        {
+          "date": "2025-10-15",
+          "price": 170.0,
+          "price_low": 160.0,
+          "price_high": 180.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-15/2179595.html"
+        },
+        {
+          "date": "2025-10-16",
+          "price": 170.0,
+          "price_low": 160.0,
+          "price_high": 180.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-16/2179638.html"
+        },
+        {
+          "date": "2025-10-17",
+          "price": 170.0,
+          "price_low": 160.0,
+          "price_high": 180.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-17/2179686.html"
+        },
+        {
+          "date": "2025-10-20",
+          "price": 167.5,
+          "price_low": 160.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-20/2179728.html"
+        },
+        {
+          "date": "2025-10-21",
+          "price": 167.5,
+          "price_low": 160.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-21/2179771.html"
+        },
+        {
+          "date": "2025-10-22",
+          "price": 167.5,
+          "price_low": 160.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-22/2179813.html"
+        },
+        {
+          "date": "2025-10-23",
+          "price": 167.5,
+          "price_low": 160.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-23/2179857.html"
+        },
+        {
+          "date": "2025-10-24",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-24/2179904.html"
+        },
+        {
+          "date": "2025-10-27",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-27/2179946.html"
+        },
+        {
+          "date": "2025-10-28",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-28/2179992.html"
+        },
+        {
+          "date": "2025-10-29",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-29/2180036.html"
+        },
+        {
+          "date": "2025-10-30",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-30/2180081.html"
+        },
+        {
+          "date": "2025-10-31",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-10-31/2180127.html"
+        },
+        {
+          "date": "2025-11-03",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-03/2180173.html"
+        },
+        {
+          "date": "2025-11-04",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-04/2180216.html"
+        },
+        {
+          "date": "2025-11-05",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-05/2180259.html"
+        },
+        {
+          "date": "2025-11-06",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-06/2180301.html"
+        },
+        {
+          "date": "2025-11-07",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-07/2180348.html"
+        },
+        {
+          "date": "2025-11-10",
+          "price": 170.0,
+          "price_low": 160.0,
+          "price_high": 180.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-10/2180391.html"
+        },
+        {
+          "date": "2025-11-11",
+          "price": 170.0,
+          "price_low": 160.0,
+          "price_high": 180.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-11/2180434.html"
+        },
+        {
+          "date": "2025-11-12",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-12/2180477.html"
+        },
+        {
+          "date": "2025-11-13",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-13/2180522.html"
+        },
+        {
+          "date": "2025-11-14",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-14/2180570.html"
+        },
+        {
+          "date": "2025-11-17",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-17/2180613.html"
+        },
+        {
+          "date": "2025-11-18",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-18/2180656.html"
+        },
+        {
+          "date": "2025-11-19",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-19/2180698.html"
+        },
+        {
+          "date": "2025-11-20",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-20/2180741.html"
+        },
+        {
+          "date": "2025-11-21",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-21/2180789.html"
+        },
+        {
+          "date": "2025-11-24",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-24/2180835.html"
+        },
+        {
+          "date": "2025-11-25",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-25/2180877.html"
+        },
+        {
+          "date": "2025-11-26",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-26/2180920.html"
+        },
+        {
+          "date": "2025-11-27",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-27/2180963.html"
+        },
+        {
+          "date": "2025-11-28",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-11-28/2181009.html"
+        },
+        {
+          "date": "2025-12-01",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-01/2181053.html"
+        },
+        {
+          "date": "2025-12-02",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-02/2181098.html"
+        },
+        {
+          "date": "2025-12-03",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-03/2181142.html"
+        },
+        {
+          "date": "2025-12-04",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-04/2181184.html"
+        },
+        {
+          "date": "2025-12-05",
+          "price": 165.0,
+          "price_low": 155.0,
+          "price_high": 175.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-05/2181232.html"
+        },
+        {
+          "date": "2025-12-08",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-08/2181275.html"
+        },
+        {
+          "date": "2025-12-09",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-09/2181321.html"
+        },
+        {
+          "date": "2025-12-10",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-10/2181364.html"
+        },
+        {
+          "date": "2025-12-11",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-11/2181406.html"
+        },
+        {
+          "date": "2025-12-12",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-12/2181452.html"
+        },
+        {
+          "date": "2025-12-15",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-15/2181494.html"
+        },
+        {
+          "date": "2025-12-16",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-16/2181537.html"
+        },
+        {
+          "date": "2025-12-17",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-17/2181580.html"
+        },
+        {
+          "date": "2025-12-18",
+          "price": 160.0,
+          "price_low": 150.0,
+          "price_high": 170.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-18/2181623.html"
+        },
+        {
+          "date": "2025-12-19",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-19/2181670.html"
+        },
+        {
+          "date": "2025-12-22",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-22/2181714.html"
+        },
+        {
+          "date": "2025-12-23",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-23/2181757.html"
+        },
+        {
+          "date": "2025-12-24",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-24/2181800.html"
+        },
+        {
+          "date": "2025-12-25",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-25/2181843.html"
+        },
+        {
+          "date": "2025-12-26",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-26/2181889.html"
+        },
+        {
+          "date": "2025-12-29",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-29/2181935.html"
+        },
+        {
+          "date": "2025-12-30",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-30/2181974.html"
+        },
+        {
+          "date": "2025-12-31",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2025-12-31/2182017.html"
+        },
+        {
+          "date": "2026-01-04",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-04/2182062.html"
+        },
+        {
+          "date": "2026-01-05",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-05/2182106.html"
+        },
+        {
+          "date": "2026-01-06",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-06/2182148.html"
+        },
+        {
+          "date": "2026-01-07",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-07/2182191.html"
+        },
+        {
+          "date": "2026-01-08",
+          "price": 155.0,
+          "price_low": 145.0,
+          "price_high": 165.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-08/2182235.html"
+        },
+        {
+          "date": "2026-01-09",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-09/2182280.html"
+        },
+        {
+          "date": "2026-01-12",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-12/2182322.html"
+        },
+        {
+          "date": "2026-01-13",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-13/2182366.html"
+        },
+        {
+          "date": "2026-01-14",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-14/2182408.html"
+        },
+        {
+          "date": "2026-01-15",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-15/2182453.html"
+        },
+        {
+          "date": "2026-01-16",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-16/2182495.html"
+        },
+        {
+          "date": "2026-01-19",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-19/2182538.html"
+        },
+        {
+          "date": "2026-01-20",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-20/2182584.html"
+        },
+        {
+          "date": "2026-01-21",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-21/2182624.html"
+        },
+        {
+          "date": "2026-01-22",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-22/2182667.html"
+        },
+        {
+          "date": "2026-01-23",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-23/2182715.html"
+        },
+        {
+          "date": "2026-01-26",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-26/2182759.html"
+        },
+        {
+          "date": "2026-01-27",
+          "price": 135.0,
+          "price_low": 125.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-27/2182802.html"
+        },
+        {
+          "date": "2026-01-28",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-28/2182845.html"
+        },
+        {
+          "date": "2026-01-29",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-29/2182888.html"
+        },
+        {
+          "date": "2026-01-30",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-01-30/2182936.html"
+        },
+        {
+          "date": "2026-02-02",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-02/2182981.html"
+        },
+        {
+          "date": "2026-02-03",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-03/2183024.html"
+        },
+        {
+          "date": "2026-02-04",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-04/2183066.html"
+        },
+        {
+          "date": "2026-02-05",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-05/2183100.html"
+        },
+        {
+          "date": "2026-02-06",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-06/2183149.html"
+        },
+        {
+          "date": "2026-02-09",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-09/2183191.html"
+        },
+        {
+          "date": "2026-02-10",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-10/2183237.html"
+        },
+        {
+          "date": "2026-02-11",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-11/2183280.html"
+        },
+        {
+          "date": "2026-02-12",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-12/2183323.html"
+        },
+        {
+          "date": "2026-02-24",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-24/2183365.html"
+        },
+        {
+          "date": "2026-02-25",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-25/2183408.html"
+        },
+        {
+          "date": "2026-02-26",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-26/2183453.html"
+        },
+        {
+          "date": "2026-02-27",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-27/2183500.html"
+        },
+        {
+          "date": "2026-02-28",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-02-28/2183543.html"
+        },
+        {
+          "date": "2026-03-02",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-02/2183589.html"
+        },
+        {
+          "date": "2026-03-03",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-03/2183633.html"
+        },
+        {
+          "date": "2026-03-04",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-04/2183673.html"
+        },
+        {
+          "date": "2026-03-05",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-05/2183718.html"
+        },
+        {
+          "date": "2026-03-06",
+          "price": 130.0,
+          "price_low": 120.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-06/2183764.html"
+        },
+        {
+          "date": "2026-03-09",
+          "price": 137.5,
+          "price_low": 135.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-09/2183808.html"
+        },
+        {
+          "date": "2026-03-10",
+          "price": 137.5,
+          "price_low": 135.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-10/2183852.html"
+        },
+        {
+          "date": "2026-03-11",
+          "price": 137.5,
+          "price_low": 135.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-11/2183895.html"
+        },
+        {
+          "date": "2026-03-12",
+          "price": 137.5,
+          "price_low": 135.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-12/2183938.html"
+        },
+        {
+          "date": "2026-03-13",
+          "price": 132.5,
+          "price_low": 125.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-13/2183984.html"
+        },
+        {
+          "date": "2026-03-16",
+          "price": 132.5,
+          "price_low": 125.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-16/2184028.html"
+        },
+        {
+          "date": "2026-03-17",
+          "price": 132.5,
+          "price_low": 125.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-17/2184071.html"
+        },
+        {
+          "date": "2026-03-18",
+          "price": 132.5,
+          "price_low": 125.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-18/2184115.html"
+        },
+        {
+          "date": "2026-03-19",
+          "price": 132.5,
+          "price_low": 125.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-19/2184160.html"
+        },
+        {
+          "date": "2026-03-20",
+          "price": 132.5,
+          "price_low": 125.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-20/2184206.html"
+        },
+        {
+          "date": "2026-03-23",
+          "price": 132.5,
+          "price_low": 125.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-23/2184249.html"
+        },
+        {
+          "date": "2026-03-24",
+          "price": 132.5,
+          "price_low": 125.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-24/2184291.html"
+        },
+        {
+          "date": "2026-03-25",
+          "price": 132.5,
+          "price_low": 125.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-25/2184334.html"
+        },
+        {
+          "date": "2026-03-26",
+          "price": 132.5,
+          "price_low": 125.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-26/2184376.html"
+        },
+        {
+          "date": "2026-03-27",
+          "price": 132.5,
+          "price_low": 125.0,
+          "price_high": 140.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-27/2184422.html"
+        },
+        {
+          "date": "2026-03-30",
+          "price": 137.5,
+          "price_low": 130.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-30/2184464.html"
+        },
+        {
+          "date": "2026-03-31",
+          "price": 137.5,
+          "price_low": 130.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-03-31/2184506.html"
+        },
+        {
+          "date": "2026-04-01",
+          "price": 137.5,
+          "price_low": 130.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-01/2184551.html"
+        },
+        {
+          "date": "2026-04-02",
+          "price": 137.5,
+          "price_low": 130.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-02/2184593.html"
+        },
+        {
+          "date": "2026-04-03",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-03/2184634.html"
+        },
+        {
+          "date": "2026-04-07",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-07/2184676.html"
+        },
+        {
+          "date": "2026-04-08",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-08/2184719.html"
+        },
+        {
+          "date": "2026-04-09",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-09/2184764.html"
+        },
+        {
+          "date": "2026-04-10",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-10/2184805.html"
+        },
+        {
+          "date": "2026-04-13",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-13/2184846.html"
+        },
+        {
+          "date": "2026-04-14",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-14/2184887.html"
+        },
+        {
+          "date": "2026-04-15",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-15/2184928.html"
+        },
+        {
+          "date": "2026-04-16",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-16/2184972.html"
+        },
+        {
+          "date": "2026-04-17",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-17/2185019.html"
+        },
+        {
+          "date": "2026-04-20",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-20/2185061.html"
+        },
+        {
+          "date": "2026-04-21",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-21/2185105.html"
+        },
+        {
+          "date": "2026-04-22",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-22/2185152.html"
+        },
+        {
+          "date": "2026-04-23",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-23/2185194.html"
+        },
+        {
+          "date": "2026-04-24",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-24/2185241.html"
+        },
+        {
+          "date": "2026-04-27",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-27/2185284.html"
+        },
+        {
+          "date": "2026-04-28",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-28/2185327.html"
+        },
+        {
+          "date": "2026-04-29",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-29/2185369.html"
+        },
+        {
+          "date": "2026-04-30",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-04-30/2185411.html"
+        },
+        {
+          "date": "2026-05-06",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-06/2185454.html"
+        },
+        {
+          "date": "2026-05-07",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-07/2185497.html"
+        },
+        {
+          "date": "2026-05-08",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-08/2185544.html"
+        },
+        {
+          "date": "2026-05-09",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-09/2185587.html"
+        },
+        {
+          "date": "2026-05-11",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-11/2185626.html"
+        },
+        {
+          "date": "2026-05-12",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-12/2185668.html"
+        },
+        {
+          "date": "2026-05-13",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-13/2185710.html"
+        },
+        {
+          "date": "2026-05-14",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-14/2185719.html"
+        },
+        {
+          "date": "2026-05-15",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-15/2185760.html"
+        },
+        {
+          "date": "2026-05-18",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-18/2185800.html"
+        },
+        {
+          "date": "2026-05-19",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-19/2185842.html"
+        },
+        {
+          "date": "2026-05-20",
+          "price": 140.0,
+          "price_low": 135.0,
+          "price_high": 145.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-05-20/2185885.html"
+        },
+        {
+          "date": "2026-06-29",
+          "price": 131.5,
+          "price_low": 128.0,
+          "price_high": 135.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-06-29/2186794.html"
+        },
+        {
+          "date": "2026-07-03",
+          "price": 131.5,
+          "price_low": 128.0,
+          "price_high": 135.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-07-03/2186892.html"
+        },
+        {
+          "date": "2026-07-08",
+          "price": 131.5,
+          "price_low": 128.0,
+          "price_high": 135.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-07-08/2186959.html"
+        },
+        {
+          "date": "2026-07-09",
+          "price": 131.5,
+          "price_low": 128.0,
+          "price_high": 135.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-07-09/2186981.html"
+        },
+        {
+          "date": "2026-07-14",
+          "price": 125.0,
+          "price_low": 115.0,
+          "price_high": 135.0,
+          "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-07-14/2187050.html"
+        }
+      ]
+    },
+    {
+      "code": "TD15",
+      "name": "TD15航线日租金（西非→中国VLCC）",
+      "unit": "美元/天",
+      "source": "波罗的海交易所（信德海事网转载）",
+      "category": "VLCC油运",
+      "latest": {
+        "date": "2026-07-10",
+        "price": 145826.0,
+        "price_low": null,
+        "price_high": null,
+        "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+      },
+      "series": [
+        {
+          "date": "2025-06-06",
+          "price": 29631.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59958"
+        },
+        {
+          "date": "2025-06-20",
+          "price": 50000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60173"
+        },
+        {
+          "date": "2025-06-27",
+          "price": 41319.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60289"
+        },
+        {
+          "date": "2025-07-11",
+          "price": 33249.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60509"
+        },
+        {
+          "date": "2025-07-18",
+          "price": 33525.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60610"
+        },
+        {
+          "date": "2025-07-25",
+          "price": 28863.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60741"
+        },
+        {
+          "date": "2025-08-01",
+          "price": 27549.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60806"
+        },
+        {
+          "date": "2025-08-08",
+          "price": 37398.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60867"
+        },
+        {
+          "date": "2025-08-29",
+          "price": 47382.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61151"
+        },
+        {
+          "date": "2025-09-12",
+          "price": 80878.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61299"
+        },
+        {
+          "date": "2025-09-19",
+          "price": 85511.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61425"
+        },
+        {
+          "date": "2025-09-26",
+          "price": 81034.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61533"
+        },
+        {
+          "date": "2025-10-03",
+          "price": 65910.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61638"
+        },
+        {
+          "date": "2025-10-10",
+          "price": 64220.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61661"
+        },
+        {
+          "date": "2025-10-17",
+          "price": 82482.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61770"
+        },
+        {
+          "date": "2025-10-24",
+          "price": 73487.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61820"
+        },
+        {
+          "date": "2025-11-07",
+          "price": 97502.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61942"
+        },
+        {
+          "date": "2025-11-28",
+          "price": 117300.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62065"
+        },
+        {
+          "date": "2025-12-12",
+          "price": 117074.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62235"
+        },
+        {
+          "date": "2026-01-16",
+          "price": 96700.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62576"
+        },
+        {
+          "date": "2026-01-23",
+          "price": 101263.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62654"
+        },
+        {
+          "date": "2026-01-30",
+          "price": 79500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62757"
+        },
+        {
+          "date": "2026-02-06",
+          "price": 107200.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62838"
+        },
+        {
+          "date": "2026-02-20",
+          "price": 130650.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63003"
+        },
+        {
+          "date": "2026-02-27",
+          "price": 174600.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63049"
+        },
+        {
+          "date": "2026-03-06",
+          "price": 242782.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63125"
+        },
+        {
+          "date": "2026-03-27",
+          "price": 130000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63306"
+        },
+        {
+          "date": "2026-04-24",
+          "price": 109200.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63548"
+        },
+        {
+          "date": "2026-05-15",
+          "price": 104500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63684"
+        },
+        {
+          "date": "2026-06-12",
+          "price": 89358.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63828"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 145826.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+        }
+      ]
+    },
+    {
+      "code": "TD15_WS",
+      "name": "TD15运价WS（西非→中国VLCC）",
+      "unit": "WS点数",
+      "source": "波罗的海交易所（信德海事网转载）",
+      "category": "VLCC油运",
+      "latest": {
+        "date": "2026-07-10",
+        "price": 168.25,
+        "price_low": null,
+        "price_high": null,
+        "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+      },
+      "series": [
+        {
+          "date": "2025-06-06",
+          "price": 48.63,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59958"
+        },
+        {
+          "date": "2025-06-20",
+          "price": 68.81,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60173"
+        },
+        {
+          "date": "2025-06-27",
+          "price": 60.13,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60289"
+        },
+        {
+          "date": "2025-07-11",
+          "price": 53.25,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60509"
+        },
+        {
+          "date": "2025-07-18",
+          "price": 53.06,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60610"
+        },
+        {
+          "date": "2025-07-25",
+          "price": 48.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60741"
+        },
+        {
+          "date": "2025-08-01",
+          "price": 47.63,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60806"
+        },
+        {
+          "date": "2025-08-08",
+          "price": 56.31,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60867"
+        },
+        {
+          "date": "2025-08-29",
+          "price": 64.81,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61151"
+        },
+        {
+          "date": "2025-09-12",
+          "price": 92.81,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61299"
+        },
+        {
+          "date": "2025-09-19",
+          "price": 97.13,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61425"
+        },
+        {
+          "date": "2025-09-26",
+          "price": 93.13,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61533"
+        },
+        {
+          "date": "2025-10-03",
+          "price": 80.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61638"
+        },
+        {
+          "date": "2025-10-10",
+          "price": 78.31,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61661"
+        },
+        {
+          "date": "2025-10-17",
+          "price": 92.81,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61770"
+        },
+        {
+          "date": "2025-10-24",
+          "price": 85.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61820"
+        },
+        {
+          "date": "2025-11-07",
+          "price": 106.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61942"
+        },
+        {
+          "date": "2025-11-21",
+          "price": 119.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62005"
+        },
+        {
+          "date": "2025-11-28",
+          "price": 119.25,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62065"
+        },
+        {
+          "date": "2025-12-12",
+          "price": 113.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62235"
+        },
+        {
+          "date": "2026-01-16",
+          "price": 113.19,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62576"
+        },
+        {
+          "date": "2026-01-23",
+          "price": 117.31,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62654"
+        },
+        {
+          "date": "2026-01-30",
+          "price": 98.25,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62757"
+        },
+        {
+          "date": "2026-02-06",
+          "price": 124.25,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62838"
+        },
+        {
+          "date": "2026-02-20",
+          "price": 146.38,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63003"
+        },
+        {
+          "date": "2026-02-27",
+          "price": 188.13,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63049"
+        },
+        {
+          "date": "2026-03-06",
+          "price": 258.44,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63125"
+        },
+        {
+          "date": "2026-03-27",
+          "price": 163.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63306"
+        },
+        {
+          "date": "2026-04-24",
+          "price": 137.31,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63548"
+        },
+        {
+          "date": "2026-05-15",
+          "price": 138.69,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63684"
+        },
+        {
+          "date": "2026-06-12",
+          "price": 120.44,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63828"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 168.25,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+        }
+      ]
+    },
+    {
+      "code": "TD3C",
+      "name": "TD3C航线日租金（中东湾→中国VLCC）",
+      "unit": "美元/天",
+      "source": "波罗的海交易所（信德海事网转载）",
+      "category": "VLCC油运",
+      "latest": {
+        "date": "2026-07-10",
+        "price": 344250.0,
+        "price_low": null,
+        "price_high": null,
+        "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+      },
+      "series": [
+        {
+          "date": "2025-06-06",
+          "price": 24332.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59958"
+        },
+        {
+          "date": "2025-06-20",
+          "price": 57758.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60173"
+        },
+        {
+          "date": "2025-06-27",
+          "price": 35281.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60289"
+        },
+        {
+          "date": "2025-07-11",
+          "price": 28470.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60509"
+        },
+        {
+          "date": "2025-07-18",
+          "price": 32978.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60610"
+        },
+        {
+          "date": "2025-07-25",
+          "price": 25493.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60741"
+        },
+        {
+          "date": "2025-08-01",
+          "price": 22048.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60806"
+        },
+        {
+          "date": "2025-08-08",
+          "price": 37158.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60867"
+        },
+        {
+          "date": "2025-08-29",
+          "price": 49034.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61151"
+        },
+        {
+          "date": "2025-09-12",
+          "price": 74338.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61299"
+        },
+        {
+          "date": "2025-09-19",
+          "price": 95835.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61425"
+        },
+        {
+          "date": "2025-09-26",
+          "price": 81034.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61533"
+        },
+        {
+          "date": "2025-10-03",
+          "price": 68146.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61638"
+        },
+        {
+          "date": "2025-10-10",
+          "price": 56800.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61661"
+        },
+        {
+          "date": "2025-10-17",
+          "price": 85109.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61770"
+        },
+        {
+          "date": "2025-10-24",
+          "price": 72678.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61820"
+        },
+        {
+          "date": "2025-11-07",
+          "price": 98773.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61942"
+        },
+        {
+          "date": "2025-11-21",
+          "price": 131252.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62005"
+        },
+        {
+          "date": "2025-11-28",
+          "price": 138266.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62065"
+        },
+        {
+          "date": "2025-12-12",
+          "price": 122676.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62235"
+        },
+        {
+          "date": "2026-01-16",
+          "price": 96338.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62576"
+        },
+        {
+          "date": "2026-01-23",
+          "price": 112394.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62654"
+        },
+        {
+          "date": "2026-01-30",
+          "price": 75807.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62757"
+        },
+        {
+          "date": "2026-02-06",
+          "price": 122666.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62838"
+        },
+        {
+          "date": "2026-02-20",
+          "price": 151208.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63003"
+        },
+        {
+          "date": "2026-02-27",
+          "price": 209550.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63049"
+        },
+        {
+          "date": "2026-03-06",
+          "price": 485959.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63125"
+        },
+        {
+          "date": "2026-03-27",
+          "price": 356483.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63306"
+        },
+        {
+          "date": "2026-04-24",
+          "price": 467408.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63548"
+        },
+        {
+          "date": "2026-05-15",
+          "price": 448502.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63684"
+        },
+        {
+          "date": "2026-06-12",
+          "price": 402500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63828"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 344250.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+        }
+      ]
+    },
+    {
+      "code": "TD3C_WS",
+      "name": "TD3C运价WS（中东湾→中国VLCC）",
+      "unit": "WS点数",
+      "source": "波罗的海交易所（信德海事网转载）",
+      "category": "VLCC油运",
+      "latest": {
+        "date": "2026-07-10",
+        "price": 345.0,
+        "price_low": null,
+        "price_high": null,
+        "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+      },
+      "series": [
+        {
+          "date": "2025-06-06",
+          "price": 44.35,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59958"
+        },
+        {
+          "date": "2025-06-20",
+          "price": 75.8,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60173"
+        },
+        {
+          "date": "2025-06-27",
+          "price": 55.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60289"
+        },
+        {
+          "date": "2025-07-11",
+          "price": 49.4,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60509"
+        },
+        {
+          "date": "2025-07-18",
+          "price": 53.2,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60610"
+        },
+        {
+          "date": "2025-07-25",
+          "price": 46.15,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60741"
+        },
+        {
+          "date": "2025-08-01",
+          "price": 43.3,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60806"
+        },
+        {
+          "date": "2025-08-08",
+          "price": 56.65,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60867"
+        },
+        {
+          "date": "2025-08-29",
+          "price": 66.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61151"
+        },
+        {
+          "date": "2025-09-12",
+          "price": 87.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61299"
+        },
+        {
+          "date": "2025-09-19",
+          "price": 105.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61425"
+        },
+        {
+          "date": "2025-09-26",
+          "price": 100.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61533"
+        },
+        {
+          "date": "2025-10-03",
+          "price": 81.89,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61638"
+        },
+        {
+          "date": "2025-10-10",
+          "price": 72.17,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61661"
+        },
+        {
+          "date": "2025-10-17",
+          "price": 94.72,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61770"
+        },
+        {
+          "date": "2025-10-24",
+          "price": 84.28,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61820"
+        },
+        {
+          "date": "2025-11-07",
+          "price": 107.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61942"
+        },
+        {
+          "date": "2025-11-21",
+          "price": 133.94,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62005"
+        },
+        {
+          "date": "2025-11-28",
+          "price": 136.06,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62065"
+        },
+        {
+          "date": "2025-12-12",
+          "price": 125.78,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62235"
+        },
+        {
+          "date": "2026-01-16",
+          "price": 112.17,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62576"
+        },
+        {
+          "date": "2026-01-23",
+          "price": 126.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62654"
+        },
+        {
+          "date": "2026-01-30",
+          "price": 94.61,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62757"
+        },
+        {
+          "date": "2026-02-06",
+          "price": 137.17,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62838"
+        },
+        {
+          "date": "2026-02-20",
+          "price": 163.28,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63003"
+        },
+        {
+          "date": "2026-02-27",
+          "price": 216.89,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63049"
+        },
+        {
+          "date": "2026-03-06",
+          "price": 473.33,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63125"
+        },
+        {
+          "date": "2026-04-24",
+          "price": 459.28,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63548"
+        },
+        {
+          "date": "2026-05-15",
+          "price": 447.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63684"
+        },
+        {
+          "date": "2026-06-12",
+          "price": 401.94,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63828"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 345.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+        }
+      ]
+    },
+    {
+      "code": "MONKEY",
+      "name": "实验猴（食蟹猴）",
+      "unit": "万元/只",
+      "source": "中国政府采购网",
+      "category": "生物医药上游",
+      "latest": {
+        "date": "2026-06-16",
+        "price": 17.8,
+        "price_low": null,
+        "price_high": null,
+        "source_url": "http://www.ccgp.gov.cn/cggg/zygg/zbgg/202606/t20260616_26755006.htm"
+      },
+      "series": [
+        {
+          "date": "2024-11-12",
+          "price": 9.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "http://www.ccgp.gov.cn/cggg/zygg/cjgg/202411/t20241112_23595991.htm"
+        },
+        {
+          "date": "2025-05-06",
+          "price": 9.2,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "http://www.ccgp.gov.cn/cggg/zygg/zbgg/202505/t20250506_24541753.htm"
+        },
+        {
+          "date": "2025-11-18",
+          "price": 10.16,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "http://www.ccgp.gov.cn/cggg/zygg/cjgg/202511/t20251118_25720919.htm"
+        },
+        {
+          "date": "2026-03-05",
+          "price": 13.1,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "http://www.ccgp.gov.cn/cggg/zygg/zbgg/202603/t20260305_26229632.htm"
+        },
+        {
+          "date": "2026-06-16",
+          "price": 17.8,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "http://www.ccgp.gov.cn/cggg/zygg/zbgg/202606/t20260616_26755006.htm"
+        }
+      ]
+    }
+  ]
+}

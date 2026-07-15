@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>规模以上工业企业 - 数据可视化</title>
+    <link rel="stylesheet" href="style.css?v=20260714">
+    <script src="navigation.js?v=20260714-assets" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <style>
+        html, body { overflow: auto !important; height: auto !important; background: #f5f6fa; }
+        .cw { position: relative; height: 380px; }
+
+        .tbar { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+        .tbar span { font-size: 13px; color: #666; font-weight: 600; }
+        .tbar input[type=month] { padding: 4px 8px; border: 1.5px solid #dde; border-radius: 6px; font-size: 13px; }
+        .tb-btn { padding: 5px 14px; border-radius: 18px; border: 1.5px solid #dde; background: #fff; cursor: pointer; font-size: 13px; color: #666; }
+        .tb-btn:hover { border-color: #667eea; color: #667eea; }
+        .tb-btn.on { background: #667eea; color: #fff; border-color: #667eea; }
+
+        .src { margin-top: 10px; font-size: 11px; color: #bbb; border-top: 1px solid #f5f5f5; padding-top: 8px; }
+        .src a { color: #667eea; }
+
+    </style>
+</head>
+<body>
+<div class="dashboard-container">
+    <header class="page-header">
+        <h1>规模以上工业企业</h1>
+        <div class="page-header-actions">
+            <div data-category-nav></div>
+        </div>
+    </header>
+
+    <div class="summary-grid" id="sc"></div>
+
+    <!-- 时间范围 -->
+    <div class="tbar">
+        <span>时间范围</span>
+        <input type="month" id="ts">
+        <span style="color:#999">—</span>
+        <input type="month" id="te">
+        <span class="tb-btn on" onclick="setRange('1y')">近1年</span>
+        <span class="tb-btn" onclick="setRange('3y')">近3年</span>
+        <span class="tb-btn" onclick="setRange('all')">全部</span>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>营业收入 / 产成品存货 累积同比增速 (%)</h2>
+        <div class="cw"><canvas id="chart"></canvas></div>
+        <div class="src">📎 数据来源：国家统计局 · 最新 <a id="srcLink" href="#" target="_blank">查看原文</a></div>
+    </div>
+</div>
+
+<script>
+const COLORS = { revenue: '#e74c3c', inventory: '#3498db' };
+
+let RD = null, chart = null;
+let ts = '2022-01', te = '2026-12';
+
+function parseDate(s) { const [y,m] = s.split('-').map(Number); return new Date(y,m-1,1); }
+
+async function init() {
+    const r = await fetch('/api/data/industry_data.json');
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    RD = await r.json();
+    renderStats();
+    setRange('3y');
+    document.getElementById('ts').addEventListener('change', () => { ts = document.getElementById('ts').value; renderChart(); });
+    document.getElementById('te').addEventListener('change', () => { te = document.getElementById('te').value; renderChart(); });
+}
+
+function setRange(r) {
+    const keys = Object.keys(RD.revenue_yoy).sort();
+    const latest = keys[keys.length - 1];
+    const [ly, lm] = latest.split('-').map(Number);
+    if (r === '1y') ts = `${ly-1}-${String(lm).padStart(2,'0')}`;
+    else if (r === '3y') ts = `${ly-3}-${String(lm).padStart(2,'0')}`;
+    else ts = keys[0];
+    te = latest;
+    document.getElementById('ts').value = ts;
+    document.getElementById('te').value = te;
+    // 更新按钮状态
+    document.querySelectorAll('.tb-btn').forEach(b => b.classList.toggle('on', b.textContent === (r==='1y'?'近1年':r==='3y'?'近3年':'全部')));
+    renderChart();
+}
+
+function renderStats() {
+    const rk = Object.keys(RD.revenue_yoy).sort();
+    const latest = rk[rk.length-1];
+    const rev = RD.revenue_yoy[latest];
+    const inv = RD.inventory_yoy[latest];
+    document.getElementById('sc').innerHTML = `
+        <div class="scd"><div class="l">营业收入 同比</div><div class="v ${rev>=0?'r':'g'}">${(rev>=0?'+':'')+rev.toFixed(1)}%</div><div class="l" style="font-size:11px">${latest}</div></div>
+        <div class="scd"><div class="l">产成品存货 同比</div><div class="v ${inv>=0?'r':'g'}">${(inv>=0?'+':'')+inv.toFixed(1)}%</div><div class="l" style="font-size:11px">${latest}</div></div>
+        <div class="scd"><div class="l">数据来源</div><div class="v" style="font-size:14px;color:#667eea;">国家统计局</div></div>
+        <div class="scd"><div class="l">数据月份</div><div class="v" style="font-size:14px;">${rk.length} 个</div><div class="l" style="font-size:11px">${rk[0]} ~ ${latest}</div></div>
+    `;
+    // 源链接
+    const sl = RD.source_urls && RD.source_urls[latest];
+    document.getElementById('srcLink').href = sl || '#';
+    document.getElementById('srcLink').textContent = sl ? latest : '';
+}
+
+function renderChart() {
+    if (chart) chart.destroy();
+    const rk = Object.keys(RD.revenue_yoy).filter(k => k >= ts && k <= te).sort();
+
+    const datasets = [
+        {
+            label: '营业收入 累积同比 (%)',
+            data: rk.map(k => ({ x: parseDate(k).getTime(), y: RD.revenue_yoy[k] })).filter(p => p.y != null),
+            borderColor: COLORS.revenue,
+            backgroundColor: 'rgba(231,76,60,0.06)',
+            fill: true,
+            tension: 0.15,
+            borderWidth: 2.5,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+        },
+        {
+            label: '产成品存货 同比 (%)',
+            data: rk.map(k => ({ x: parseDate(k).getTime(), y: RD.inventory_yoy[k] })).filter(p => p.y != null),
+            borderColor: COLORS.inventory,
+            backgroundColor: 'transparent',
+            tension: 0.15,
+            borderWidth: 2.5,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            borderDash: [5, 3],
+            fill: false,
+        },
+    ];
+
+    const ctx = document.getElementById('chart').getContext('2d');
+    chart = new Chart(ctx, {
+        type: 'line',
+        data: { datasets },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: { position: 'top', labels: { usePointStyle: true, padding: 16, font: { size: 12 } } },
+                tooltip: { callbacks: { label: c => c.dataset.label.replace('(%)','') + ': ' + (c.raw.y>=0?'+':'') + c.raw.y.toFixed(1) + '%' } }
+            },
+            scales: {
+                x: { type: 'time', time: { unit: 'month', displayFormats: { month: 'yyyy-MM' } }, grid: { display: false } },
+                y: { title: { display: true, text: '%' }, grid: { color: '#f0f0f0' } }
+            }
+        }
+    });
+}
+
+init().catch(e => document.body.innerHTML = `<div style="text-align:center;padding:60px;color:#e74c3c;">加载失败: ${e.message}</div>`);
+</script>
+</body>
+</html>
