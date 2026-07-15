@@ -22,6 +22,18 @@
         .src { margin-top: 10px; font-size: 11px; color: #bbb; border-top: 1px solid #f5f5f5; padding-top: 8px; }
         .src a { color: #667eea; }
 
+        /* 时间范围拖动条 */
+        .rng { margin: 26px 4px 6px; user-select: none; }
+        .rng-track { position: relative; height: 6px; background: #ececf4; border-radius: 3px; margin: 40px 12px 0; touch-action: none; }
+        .rng-fill { position: absolute; top: -3px; height: 12px; background: rgba(102,126,234,0.14); border: 1px solid rgba(102,126,234,0.35); border-radius: 4px; box-sizing: border-box; }
+        .rng-thumb { position: absolute; top: 50%; width: 16px; height: 26px; transform: translate(-50%,-50%); background: #fff; border: 1.5px solid #667eea; border-radius: 5px; cursor: grab; box-shadow: 0 1px 5px rgba(102,126,234,0.35); display: flex; align-items: center; justify-content: center; gap: 3px; touch-action: none; z-index: 2; }
+        .rng-thumb::before, .rng-thumb::after { content: ''; width: 1.5px; height: 10px; background: #b7c0f0; border-radius: 1px; }
+        .rng-thumb:active { cursor: grabbing; }
+        .rng-lab { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 600; color: #667eea; white-space: nowrap; pointer-events: none; }
+        .rng-ticks { position: relative; height: 16px; margin: 10px 12px 0; }
+        .rng-tick { position: absolute; transform: translateX(-50%); font-size: 11px; color: #999; white-space: nowrap; }
+        .rng-tick::before { content: ''; position: absolute; top: -8px; left: 50%; width: 1px; height: 4px; background: #dcdce4; }
+
     </style>
 </head>
 <body>
@@ -49,6 +61,16 @@
     <div class="dashboard-section">
         <h2>营业收入 / 产成品存货 累积同比增速 (%)</h2>
         <div class="cw"><canvas id="chart"></canvas></div>
+
+        <div class="rng">
+            <div class="rng-track" id="rngTrack">
+                <div class="rng-fill" id="rngFill"></div>
+                <div class="rng-thumb" id="thumbA"><span class="rng-lab" id="labA"></span></div>
+                <div class="rng-thumb" id="thumbB"><span class="rng-lab" id="labB"></span></div>
+            </div>
+            <div class="rng-ticks" id="rngTicks"></div>
+        </div>
+
         <div class="src">📎 数据来源：国家统计局 · 最新 <a id="srcLink" href="#" target="_blank">查看原文</a></div>
     </div>
 </div>
@@ -58,6 +80,7 @@ const COLORS = { revenue: '#e74c3c', inventory: '#3498db' };
 
 let RD = null, chart = null;
 let ts = '2022-01', te = '2026-12';
+let allKeys = [], ai = 0, bi = 0, dragThumb = null;
 
 function parseDate(s) { const [y,m] = s.split('-').map(Number); return new Date(y,m-1,1); }
 
@@ -65,14 +88,17 @@ async function init() {
     const r = await fetch('/api/data/industry_data.json');
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     RD = await r.json();
+    allKeys = Object.keys(RD.revenue_yoy).sort();
     renderStats();
+    buildTicks();
+    initSlider();
     setRange('3y');
-    document.getElementById('ts').addEventListener('change', () => { ts = document.getElementById('ts').value; renderChart(); });
-    document.getElementById('te').addEventListener('change', () => { te = document.getElementById('te').value; renderChart(); });
+    document.getElementById('ts').addEventListener('change', () => { ts = document.getElementById('ts').value; syncSliderThumbs(); renderChart(); });
+    document.getElementById('te').addEventListener('change', () => { te = document.getElementById('te').value; syncSliderThumbs(); renderChart(); });
 }
 
 function setRange(r) {
-    const keys = Object.keys(RD.revenue_yoy).sort();
+    const keys = allKeys;
     const latest = keys[keys.length - 1];
     const [ly, lm] = latest.split('-').map(Number);
     if (r === '1y') ts = `${ly-1}-${String(lm).padStart(2,'0')}`;
@@ -83,7 +109,79 @@ function setRange(r) {
     document.getElementById('te').value = te;
     // 更新按钮状态
     document.querySelectorAll('.tb-btn').forEach(b => b.classList.toggle('on', b.textContent === (r==='1y'?'近1年':r==='3y'?'近3年':'全部')));
+    syncSliderThumbs();
     renderChart();
+}
+
+// ---------------- 时间范围拖动条 ----------------
+function nearestIdx(key) {
+    if (!allKeys.length) return 0;
+    for (let i = 0; i < allKeys.length; i++) { if (allKeys[i] >= key) return i; }
+    return allKeys.length - 1;
+}
+
+function buildTicks() {
+    const box = document.getElementById('rngTicks');
+    const N = Math.max(allKeys.length - 1, 1);
+    const seen = {};
+    let html = '';
+    allKeys.forEach((k, i) => {
+        const y = k.slice(0, 4);
+        if (!seen[y]) { seen[y] = true; html += `<span class="rng-tick" style="left:${(i / N * 100).toFixed(3)}%">${y}</span>`; }
+    });
+    box.innerHTML = html;
+}
+
+function layoutThumbs() {
+    const N = Math.max(allKeys.length - 1, 1);
+    const pa = ai / N * 100, pb = bi / N * 100;
+    document.getElementById('thumbA').style.left = pa + '%';
+    document.getElementById('thumbB').style.left = pb + '%';
+    const fill = document.getElementById('rngFill');
+    fill.style.left = pa + '%';
+    fill.style.width = (pb - pa) + '%';
+    document.getElementById('labA').textContent = allKeys[ai] || '';
+    document.getElementById('labB').textContent = allKeys[bi] || '';
+}
+
+function syncSliderThumbs() {
+    ai = nearestIdx(ts);
+    bi = nearestIdx(te);
+    if (ai > bi) { const t = ai; ai = bi; bi = t; }
+    layoutThumbs();
+}
+
+function initSlider() {
+    const track = document.getElementById('rngTrack');
+    const idxFromEvent = (e) => {
+        const rect = track.getBoundingClientRect();
+        const frac = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+        return Math.round(frac * Math.max(allKeys.length - 1, 1));
+    };
+    const applyDrag = (e) => {
+        if (!dragThumb) return;
+        const idx = idxFromEvent(e);
+        if (dragThumb === 'A') ai = Math.min(idx, bi);
+        else bi = Math.max(idx, ai);
+        ts = allKeys[ai]; te = allKeys[bi];
+        document.getElementById('ts').value = ts;
+        document.getElementById('te').value = te;
+        document.querySelectorAll('.tb-btn').forEach(b => b.classList.remove('on'));
+        layoutThumbs();
+        renderChart();
+    };
+    const start = (thumb) => (e) => { dragThumb = thumb; e.preventDefault(); };
+    document.getElementById('thumbA').addEventListener('pointerdown', start('A'));
+    document.getElementById('thumbB').addEventListener('pointerdown', start('B'));
+    // 点击轨道：移动最近的手柄
+    track.addEventListener('pointerdown', (e) => {
+        if (e.target.closest('.rng-thumb')) return;
+        const idx = idxFromEvent(e);
+        dragThumb = (Math.abs(idx - ai) <= Math.abs(idx - bi)) ? 'A' : 'B';
+        applyDrag(e);
+    });
+    window.addEventListener('pointermove', applyDrag);
+    window.addEventListener('pointerup', () => { dragThumb = null; });
 }
 
 function renderStats() {
