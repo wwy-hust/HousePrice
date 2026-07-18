@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大类资产年度排名 - 数据可视化</title>
+    <link rel="stylesheet" href="style.css?v=20260718-asset-returns-wide">
+    <script src="navigation.js?v=20260718-asset-returns" defer></script>
+    <script src="asset-returns.js?v=20260718-update" defer></script>
+</head>
+<body>
+<div class="dashboard-container asset-returns-page">
+    <header class="page-header">
+        <div>
+            <h1>大类资产年度排名</h1>
+            <p class="page-subtitle">每年按价格收益率由高到低排列</p>
+        </div>
+        <div class="page-header-actions">
+            <div data-category-nav></div>
+            <button class="update-data-btn" id="updateAssetReturnsBtn" type="button">
+                <span class="update-icon">↻</span> 更新当年数据
+            </button>
+        </div>
+    </header>
+
+    <div class="summary-grid" id="assetReturnSummary"></div>
+
+    <section class="dashboard-section asset-return-section">
+        <div class="asset-return-toolbar">
+            <div>
+                <h2>历年收益排名</h2>
+                <p>悬停或点选任一资产，可联动查看它在所有年份的表现</p>
+            </div>
+            <div class="asset-return-controls">
+                <button class="asset-return-sort" id="assetReturnSort" type="button"
+                        aria-label="切换年份排列顺序">
+                    年份：新 → 旧
+                </button>
+                <div class="asset-visibility">
+                    <button class="asset-return-sort" id="assetVisibilityToggle"
+                            type="button" aria-expanded="false"
+                            aria-controls="assetVisibilityPanel">
+                        显示资产
+                    </button>
+                    <div class="asset-visibility-panel" id="assetVisibilityPanel" hidden>
+                        <div class="asset-visibility-header">
+                            <strong>选择要显示的资产</strong>
+                            <button type="button" id="showAllAssets">全部显示</button>
+                        </div>
+                        <div class="asset-visibility-options"
+                             id="assetVisibilityOptions"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-return-legend" id="assetReturnLegend"
+             aria-label="资产图例"></div>
+
+        <div class="asset-return-table-wrap">
+            <div class="asset-return-table" id="assetReturnTable"
+                 aria-live="polite">
+                <div class="asset-return-loading">正在加载历年收益数据...</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-section asset-return-notes">
+        <h2>数据口径与来源</h2>
+        <p id="assetReturnMethodology"></p>
+        <div class="asset-return-sources" id="assetReturnSources"></div>
+        <p class="asset-return-disclaimer">
+            历史收益不代表未来表现；不同数据源的收盘时点可能造成小幅差异。
+        </p>
+    </section>
+</div>
+
+<div class="update-modal-overlay" id="assetReturnsUpdateModal">
+    <div class="update-modal">
+        <div class="update-modal-header">
+            <span class="update-modal-title" id="assetReturnsUpdateTitle">
+                正在更新当年收益率
+            </span>
+        </div>
+        <div class="update-modal-body">
+            <div class="update-progress-bar-wrap">
+                <div class="update-progress-bar" id="assetReturnsUpdateProgress"></div>
+            </div>
+            <div class="update-log" id="assetReturnsUpdateLog"></div>
+        </div>
+        <div class="update-modal-footer" id="assetReturnsUpdateFooter"
+             style="display:none;">
+            <button class="update-modal-close-btn" id="closeAssetReturnsUpdateBtn"
+                    type="button">关闭</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

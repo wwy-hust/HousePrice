@@ -47,6 +47,17 @@ asset_update_status = {
 }
 asset_update_lock = threading.Lock()
 
+asset_returns_update_status = {
+    'running': False,
+    'logs': [],
+    'step': '',
+    'success': None,
+    'error': '',
+    'start_time': None,
+    'end_time': None,
+}
+asset_returns_update_lock = threading.Lock()
+
 
 def _push_log(line):
     with update_lock:
@@ -181,6 +192,74 @@ def run_asset_update_task():
         logger.error(f'资产价格拉取任务异常: {e}')
 
 
+def _push_asset_returns_log(line):
+    with asset_returns_update_lock:
+        asset_returns_update_status['logs'].append(line)
+
+
+def run_asset_returns_update_task():
+    """在后台线程中更新当前年份的大类资产 YTD 收益率。"""
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    script = os.path.join(base_path, 'asset_returns_updater.py')
+
+    with asset_returns_update_lock:
+        asset_returns_update_status.update({
+            'running': True,
+            'logs': ['正在启动大类资产年度收益更新任务...'],
+            'step': 'fetching',
+            'success': None,
+            'error': '',
+            'start_time': time.time(),
+            'end_time': None,
+        })
+
+    try:
+        proc = subprocess.Popen(
+            [sys.executable, script],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            cwd=base_path,
+        )
+
+        last_line = ''
+        for line in proc.stdout:
+            line = line.rstrip()
+            if line:
+                last_line = line
+                _push_asset_returns_log(line)
+                logger.info(f'[asset-returns-update] {line}')
+
+        proc.wait()
+        success = proc.returncode == 0
+
+        with asset_returns_update_lock:
+            asset_returns_update_status['running'] = False
+            asset_returns_update_status['success'] = success
+            asset_returns_update_status['end_time'] = time.time()
+            if success:
+                asset_returns_update_status['step'] = 'done'
+                asset_returns_update_status['logs'].append('年度收益数据更新完成！')
+            else:
+                asset_returns_update_status['step'] = 'error'
+                asset_returns_update_status['error'] = (
+                    f'脚本退出码: {proc.returncode}，最后输出: {last_line}'
+                )
+                asset_returns_update_status['logs'].append(
+                    f'更新失败：{asset_returns_update_status["error"]}'
+                )
+
+    except Exception as e:
+        with asset_returns_update_lock:
+            asset_returns_update_status['running'] = False
+            asset_returns_update_status['success'] = False
+            asset_returns_update_status['step'] = 'error'
+            asset_returns_update_status['error'] = str(e)
+            asset_returns_update_status['logs'].append(f'出错: {e}')
+            asset_returns_update_status['end_time'] = time.time()
+        logger.error(f'大类资产年度收益更新任务异常: {e}')
+
+
 class HousePriceHandler(BaseHTTPRequestHandler):
     """房价数据HTTP请求处理器"""
     
@@ -235,6 +314,10 @@ class HousePriceHandler(BaseHTTPRequestHandler):
             self.handle_asset_update_trigger()
         elif path == '/api/asset/update/status':
             self.handle_asset_update_status()
+        elif path == '/api/asset-returns/update':
+            self.handle_asset_returns_update_trigger()
+        elif path == '/api/asset-returns/update/status':
+            self.handle_asset_returns_update_status()
         else:
             self.send_error(404, "API Not Found")
     
@@ -253,7 +336,8 @@ class HousePriceHandler(BaseHTTPRequestHandler):
             'summary_report.json',
             'retail_data.json',
             'industry_data.json',
-            'asset_price_data.json'
+            'asset_price_data.json',
+            'asset_returns_ranking.json'
         ]
         
         if filename not in allowed_files:
@@ -375,6 +459,53 @@ class HousePriceHandler(BaseHTTPRequestHandler):
                 'step': asset_update_status['step'],
                 'success': asset_update_status['success'],
                 'error': asset_update_status['error'],
+                'total_logs': len(logs),
+                'new_logs': logs[offset:],
+            }
+
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Cache-Control', 'no-cache')
+        self.end_headers()
+        self.wfile.write(json.dumps(snap, ensure_ascii=False).encode('utf-8'))
+
+    def handle_asset_returns_update_trigger(self):
+        """触发大类资产当前年份收益率更新任务。"""
+        with asset_returns_update_lock:
+            if asset_returns_update_status['running']:
+                resp = {'ok': False, 'message': '已有年度收益更新任务正在执行，请稍候'}
+            else:
+                asset_returns_update_status['running'] = True
+                t = threading.Thread(
+                    target=run_asset_returns_update_task,
+                    daemon=True,
+                )
+                t.start()
+                resp = {'ok': True, 'message': '年度收益更新任务已启动'}
+
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.end_headers()
+        self.wfile.write(json.dumps(resp, ensure_ascii=False).encode('utf-8'))
+
+    def handle_asset_returns_update_status(self):
+        """返回大类资产年度收益更新状态，支持增量日志。"""
+        parsed = urlparse(self.path)
+        params = parse_qs(parsed.query)
+        try:
+            offset = int(params.get('offset', ['0'])[0])
+        except (ValueError, IndexError):
+            offset = 0
+
+        with asset_returns_update_lock:
+            logs = asset_returns_update_status['logs']
+            snap = {
+                'running': asset_returns_update_status['running'],
+                'step': asset_returns_update_status['step'],
+                'success': asset_returns_update_status['success'],
+                'error': asset_returns_update_status['error'],
                 'total_logs': len(logs),
                 'new_logs': logs[offset:],
             }
