@@ -5,6 +5,7 @@
         { key: 'industry', label: '工业企业', href: '/industry.html' },
         { key: 'assets', label: '关注资产价格', href: '/assets.html' },
         { key: 'asset-returns', label: '资产收益', href: '/asset-returns.html' },
+        { key: 'cycles', label: '经济周期', href: '/cycles.html' },
     ];
 
     function getActiveCategory() {
@@ -13,6 +14,7 @@
         if (path.endsWith('/industry.html')) return 'industry';
         if (path.endsWith('/assets.html')) return 'assets';
         if (path.endsWith('/asset-returns.html')) return 'asset-returns';
+        if (path.endsWith('/cycles.html')) return 'cycles';
         return 'price';
     }
 

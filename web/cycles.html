@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>经济周期叠加时刻表 - 数据可视化</title>
+    <link rel="stylesheet" href="style.css?v=20260718-cycles">
+    <script src="navigation.js?v=20260718-cycles" defer></script>
+    <script src="cycles.js?v=20260718" defer></script>
+</head>
+<body>
+<div class="dashboard-container cycle-page">
+    <header class="page-header">
+        <div>
+            <h1>经济周期叠加时刻表</h1>
+            <p class="page-subtitle">在同一理论时间窗中观察长、中、短周期的嵌套关系</p>
+        </div>
+        <div class="page-header-actions">
+            <div data-category-nav></div>
+        </div>
+    </header>
+
+    <section class="cycle-intro" aria-label="图表说明">
+        <div>
+            <strong>1782 年至今</strong>
+            <span>历史康波定位 + 四类周期理论叠加</span>
+        </div>
+        <p>历史时刻表采用图示年份；理论叠加图采用相对时间。实际经济周期会发生错位、拉长、缩短或共振。</p>
+    </section>
+
+    <section class="dashboard-section historical-cycle-section">
+        <div class="cycle-section-heading">
+            <div>
+                <h2>1782—2033 月度周期时间轴</h2>
+                <p>每个年份细分为 12 个月；康波采用历史研究分期，其他三类为从 1782 年起连续推演的理论周期。</p>
+            </div>
+            <span class="historical-cycle-range">1782—2033</span>
+        </div>
+
+        <div class="monthly-timeline-toolbar">
+            <div class="monthly-cycle-options" id="monthlyCycleOptions"
+                 aria-label="选择时间轴显示的周期"></div>
+            <div class="monthly-timeline-actions">
+                <button class="cycle-action" id="monthlyShowAll" type="button">显示全部</button>
+                <button class="cycle-action primary" id="monthlyJumpNow" type="button">跳到现在</button>
+            </div>
+        </div>
+
+        <div class="monthly-viewport-controls" aria-label="时间轴缩放控制">
+            <button class="monthly-zoom-button" id="monthlyZoomOut" type="button"
+                    aria-label="缩小时间轴">−</button>
+            <input id="monthlyZoomRange" type="range" min="3" max="28" value="12"
+                   aria-label="时间轴缩放比例">
+            <button class="monthly-zoom-button" id="monthlyZoomIn" type="button"
+                    aria-label="放大时间轴">+</button>
+            <button class="monthly-zoom-reset" id="monthlyZoomReset" type="button">重置缩放</button>
+            <output id="monthlyZoomValue" for="monthlyZoomRange">12 px/月</output>
+            <span>按住时间轴左右拖动</span>
+        </div>
+
+        <div class="monthly-timeline-legend">
+            <span><i class="is-history"></i>历史研究分期</span>
+            <span><i class="is-model"></i>理论模拟分期</span>
+            <span><i class="is-war"></i>战争窗口（计入衰退）</span>
+            <span><i class="is-uncertain"></i>阶段边界争议窗</span>
+            <span><i class="is-future"></i>当前年份之后</span>
+        </div>
+
+        <div class="historical-timeline-scroll" tabindex="0"
+             id="monthlyTimelineScroll"
+             aria-label="1782年1月至2033年12月经济周期时间轴，可横向滚动">
+            <div class="historical-timeline" id="historicalTimeline"></div>
+        </div>
+        <p class="monthly-scroll-hint">横向滚动查看每年每月；点击阶段色块可查看起止年月和阶段说明。</p>
+        <div class="cycle-selection monthly-selection" id="monthlyTimelineSelection"
+             aria-live="polite">
+            <span class="cycle-selection-dot"></span>
+            <div>
+                <strong>选择任一阶段查看精确区间</strong>
+                <p>康波为历史研究口径；库兹涅茨、朱格拉、基钦为理论模拟。</p>
+            </div>
+        </div>
+        <div class="historical-cycle-cards" id="historicalCycleCards"></div>
+        <div class="historical-phase-list" id="historicalPhaseList"></div>
+    </section>
+
+    <section class="dashboard-section cycle-chart-section">
+        <div class="cycle-toolbar">
+            <div>
+                <h2>周期逐层叠加</h2>
+                <p id="cycleStepDescription">第 1 层：先观察约 60 年的康波周期</p>
+            </div>
+            <div class="cycle-actions" aria-label="周期图表控制">
+                <button class="cycle-action" id="cyclePrevious" type="button" disabled>上一步</button>
+                <button class="cycle-action primary" id="cycleNext" type="button">叠加下一层</button>
+                <button class="cycle-action" id="cycleShowAll" type="button">全部展示</button>
+            </div>
+        </div>
+
+        <div class="cycle-progress" id="cycleProgress" aria-label="当前叠加层级"></div>
+
+        <div class="cycle-timeline-scroll" tabindex="0"
+             aria-label="经济周期叠加时刻表，可横向滚动">
+            <div class="cycle-timeline" id="cycleTimeline"></div>
+        </div>
+
+        <div class="cycle-selection" id="cycleSelection" aria-live="polite">
+            <span class="cycle-selection-dot"></span>
+            <div>
+                <strong>选择任一阶段查看说明</strong>
+                <p>点击图中的色块，了解该阶段常见的经济特征。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-section cycle-guide-section">
+        <div class="cycle-section-heading">
+            <div>
+                <h2>周期内部细分</h2>
+                <p>每种周期均按四阶段展示；阶段名称是常见分析框架，并非唯一划分方法。</p>
+            </div>
+        </div>
+        <div class="cycle-guide-grid" id="cycleGuideGrid"></div>
+    </section>
+
+    <section class="dashboard-section cycle-notes">
+        <h2>阅读提示</h2>
+        <div class="cycle-note-grid">
+            <p><strong>嵌套：</strong>一个长周期内通常包含多个较短周期，短周期波动会加强或削弱长周期趋势。</p>
+            <p><strong>错位：</strong>不同国家、行业和指标的周期拐点并不同步，图中的整齐边界只用于展示结构。</p>
+            <p><strong>口径：</strong>典型时长取康波 60 年、库兹涅茨 20 年、朱格拉 10 年、基钦 4 年，以便在统一横轴上比较。</p>
+            <p><strong>免责声明：</strong>本图是经济理论教学示意，不构成宏观预测、市场择时或投资建议。</p>
+        </div>
+        <p class="cycle-source-note">
+            康波阶段按范·杜因五波体系呈现；参考
+            <a href="https://journal-s.scnu.edu.cn/article/id/e4c7f8c3-7a5c-4826-ab40-e3b085650de1"
+               target="_blank" rel="noopener noreferrer">《历史上的五次经济长波》</a>；
+            以及
+            <a href="https://nkiie.nankai.edu.cn/2015/1026/c11877a127571/page.htm"
+               target="_blank" rel="noopener noreferrer">周金涛康波研究</a>。
+            原始口径只精确到年份，本页把拐点年视为新阶段起点，并用“当年1月至下一边界前一个月”转换为连续月度区间；第五波的斜线年份以争议窗口展示。
+        </p>
+    </section>
+</div>
+</body>
+</html>

@@ -5,6 +5,10 @@ let assetUpdatePollTimer = null;
 
 const ASSET_COLORS = {
     SULFUR: '#f59e0b',
+    SB_CN: '#b45309',
+    SB_INTL: '#0f766e',
+    W_CN: '#475569',
+    W_INTL: '#2563eb',
     VD3: '#8b5cf6',
     TD3C: '#ef4444',
     TD3C_WS: '#f97316',
