@@ -58,6 +58,28 @@ asset_returns_update_status = {
 }
 asset_returns_update_lock = threading.Lock()
 
+retail_update_status = {
+    'running': False,
+    'logs': [],
+    'step': '',
+    'success': None,
+    'error': '',
+    'start_time': None,
+    'end_time': None,
+}
+retail_update_lock = threading.Lock()
+
+industry_update_status = {
+    'running': False,
+    'logs': [],
+    'step': '',
+    'success': None,
+    'error': '',
+    'start_time': None,
+    'end_time': None,
+}
+industry_update_lock = threading.Lock()
+
 
 def _push_log(line):
     with update_lock:
@@ -260,6 +282,142 @@ def run_asset_returns_update_task():
         logger.error(f'大类资产年度收益更新任务异常: {e}')
 
 
+def _push_retail_log(line):
+    with retail_update_lock:
+        retail_update_status['logs'].append(line)
+
+
+def run_retail_update_task():
+    """在后台线程中更新社零数据。"""
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    script = os.path.join(base_path, 'retail_data_collector.py')
+
+    with retail_update_lock:
+        retail_update_status.update({
+            'running': True,
+            'logs': ['正在启动社零数据更新任务...'],
+            'step': 'fetching',
+            'success': None,
+            'error': '',
+            'start_time': time.time(),
+            'end_time': None,
+        })
+
+    try:
+        proc = subprocess.Popen(
+            [sys.executable, script],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            cwd=base_path,
+        )
+
+        last_line = ''
+        for line in proc.stdout:
+            line = line.rstrip()
+            if line:
+                last_line = line
+                _push_retail_log(line)
+                logger.info(f'[retail-update] {line}')
+
+        proc.wait()
+        success = proc.returncode == 0
+
+        with retail_update_lock:
+            retail_update_status['running'] = False
+            retail_update_status['success'] = success
+            retail_update_status['end_time'] = time.time()
+            if success:
+                retail_update_status['step'] = 'done'
+                retail_update_status['logs'].append('社零数据更新完成！')
+            else:
+                retail_update_status['step'] = 'error'
+                retail_update_status['error'] = (
+                    f'脚本退出码: {proc.returncode}，最后输出: {last_line}'
+                )
+                retail_update_status['logs'].append(
+                    f'更新失败：{retail_update_status["error"]}'
+                )
+
+    except Exception as e:
+        with retail_update_lock:
+            retail_update_status['running'] = False
+            retail_update_status['success'] = False
+            retail_update_status['step'] = 'error'
+            retail_update_status['error'] = str(e)
+            retail_update_status['logs'].append(f'出错: {e}')
+            retail_update_status['end_time'] = time.time()
+        logger.error(f'社零数据更新任务异常: {e}')
+
+
+def _push_industry_log(line):
+    with industry_update_lock:
+        industry_update_status['logs'].append(line)
+
+
+def run_industry_update_task():
+    """在后台线程中更新工业企业数据。"""
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    script = os.path.join(base_path, 'industry_data_collector.py')
+
+    with industry_update_lock:
+        industry_update_status.update({
+            'running': True,
+            'logs': ['正在启动工业企业数据更新任务...'],
+            'step': 'fetching',
+            'success': None,
+            'error': '',
+            'start_time': time.time(),
+            'end_time': None,
+        })
+
+    try:
+        proc = subprocess.Popen(
+            [sys.executable, script],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            cwd=base_path,
+        )
+
+        last_line = ''
+        for line in proc.stdout:
+            line = line.rstrip()
+            if line:
+                last_line = line
+                _push_industry_log(line)
+                logger.info(f'[industry-update] {line}')
+
+        proc.wait()
+        success = proc.returncode == 0
+
+        with industry_update_lock:
+            industry_update_status['running'] = False
+            industry_update_status['success'] = success
+            industry_update_status['end_time'] = time.time()
+            if success:
+                industry_update_status['step'] = 'done'
+                industry_update_status['logs'].append('工业企业数据更新完成！')
+            else:
+                industry_update_status['step'] = 'error'
+                industry_update_status['error'] = (
+                    f'脚本退出码: {proc.returncode}，最后输出: {last_line}'
+                )
+                industry_update_status['logs'].append(
+                    f'更新失败：{industry_update_status["error"]}'
+                )
+
+    except Exception as e:
+        with industry_update_lock:
+            industry_update_status['running'] = False
+            industry_update_status['success'] = False
+            industry_update_status['step'] = 'error'
+            industry_update_status['error'] = str(e)
+            industry_update_status['logs'].append(f'出错: {e}')
+            industry_update_status['end_time'] = time.time()
+        logger.error(f'工业企业数据更新任务异常: {e}')
+
+
 class HousePriceHandler(BaseHTTPRequestHandler):
     """房价数据HTTP请求处理器"""
     
@@ -318,6 +476,14 @@ class HousePriceHandler(BaseHTTPRequestHandler):
             self.handle_asset_returns_update_trigger()
         elif path == '/api/asset-returns/update/status':
             self.handle_asset_returns_update_status()
+        elif path == '/api/retail/update':
+            self.handle_retail_update_trigger()
+        elif path == '/api/retail/update/status':
+            self.handle_retail_update_status()
+        elif path == '/api/industry/update':
+            self.handle_industry_update_trigger()
+        elif path == '/api/industry/update/status':
+            self.handle_industry_update_status()
         else:
             self.send_error(404, "API Not Found")
     
@@ -506,6 +672,94 @@ class HousePriceHandler(BaseHTTPRequestHandler):
                 'step': asset_returns_update_status['step'],
                 'success': asset_returns_update_status['success'],
                 'error': asset_returns_update_status['error'],
+                'total_logs': len(logs),
+                'new_logs': logs[offset:],
+            }
+
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Cache-Control', 'no-cache')
+        self.end_headers()
+        self.wfile.write(json.dumps(snap, ensure_ascii=False).encode('utf-8'))
+
+    def handle_retail_update_trigger(self):
+        """触发社零数据更新任务。"""
+        with retail_update_lock:
+            if retail_update_status['running']:
+                resp = {'ok': False, 'message': '已有社零数据更新任务正在执行，请稍候'}
+            else:
+                retail_update_status['running'] = True
+                t = threading.Thread(target=run_retail_update_task, daemon=True)
+                t.start()
+                resp = {'ok': True, 'message': '社零数据更新任务已启动'}
+
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.end_headers()
+        self.wfile.write(json.dumps(resp, ensure_ascii=False).encode('utf-8'))
+
+    def handle_retail_update_status(self):
+        """返回社零数据更新状态，支持增量日志。"""
+        parsed = urlparse(self.path)
+        params = parse_qs(parsed.query)
+        try:
+            offset = int(params.get('offset', ['0'])[0])
+        except (ValueError, IndexError):
+            offset = 0
+
+        with retail_update_lock:
+            logs = retail_update_status['logs']
+            snap = {
+                'running': retail_update_status['running'],
+                'step': retail_update_status['step'],
+                'success': retail_update_status['success'],
+                'error': retail_update_status['error'],
+                'total_logs': len(logs),
+                'new_logs': logs[offset:],
+            }
+
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Cache-Control', 'no-cache')
+        self.end_headers()
+        self.wfile.write(json.dumps(snap, ensure_ascii=False).encode('utf-8'))
+
+    def handle_industry_update_trigger(self):
+        """触发工业企业数据更新任务。"""
+        with industry_update_lock:
+            if industry_update_status['running']:
+                resp = {'ok': False, 'message': '已有工业企业数据更新任务正在执行，请稍候'}
+            else:
+                industry_update_status['running'] = True
+                t = threading.Thread(target=run_industry_update_task, daemon=True)
+                t.start()
+                resp = {'ok': True, 'message': '工业企业数据更新任务已启动'}
+
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.end_headers()
+        self.wfile.write(json.dumps(resp, ensure_ascii=False).encode('utf-8'))
+
+    def handle_industry_update_status(self):
+        """返回工业企业数据更新状态，支持增量日志。"""
+        parsed = urlparse(self.path)
+        params = parse_qs(parsed.query)
+        try:
+            offset = int(params.get('offset', ['0'])[0])
+        except (ValueError, IndexError):
+            offset = 0
+
+        with industry_update_lock:
+            logs = industry_update_status['logs']
+            snap = {
+                'running': industry_update_status['running'],
+                'step': industry_update_status['step'],
+                'success': industry_update_status['success'],
+                'error': industry_update_status['error'],
                 'total_logs': len(logs),
                 'new_logs': logs[offset:],
             }

@@ -50,8 +50,28 @@
         <h1>社会消费品零售总额</h1>
         <div class="page-header-actions">
             <div data-category-nav></div>
+            <button class="update-data-btn" id="updateRetailBtn" type="button">
+                <span class="update-icon">↻</span> 更新数据
+            </button>
         </div>
     </header>
+
+    <div class="update-modal-overlay" id="retailUpdateModal">
+        <div class="update-modal">
+            <div class="update-modal-header">
+                <span class="update-modal-title" id="retailUpdateTitle">正在更新社零数据</span>
+            </div>
+            <div class="update-modal-body">
+                <div class="update-progress-bar-wrap">
+                    <div class="update-progress-bar" id="retailUpdateProgress"></div>
+                </div>
+                <div class="update-log" id="retailUpdateLog"></div>
+            </div>
+            <div class="update-modal-footer" id="retailUpdateFooter" style="display:none;">
+                <button class="update-modal-close-btn" id="closeRetailUpdateBtn" type="button">关闭</button>
+            </div>
+        </div>
+    </div>
 
     <!-- 统计卡片 -->
     <div class="summary-grid" id="sc"></div>
@@ -139,6 +159,7 @@ function parseDate(s) { const [y,m] = s.split('-').map(Number); return new Date(
 
 let chartMain = null, chartCat = null;
 let RD = null;
+let retailUpdatePollTimer = null;
 // 每个图表独立的时间范围
 let mainRange = { start: '2023-07', end: '2026-12' };
 let catRange = { start: '2023-07', end: '2026-12' };
@@ -267,7 +288,7 @@ function createBrush(containerId, dates, values, defStart, defEnd, onChange) {
 
 async function init() {
     try {
-        const r = await fetch('/api/data/retail_data.json');
+        const r = await fetch('/api/data/retail_data.json', { cache: 'no-store' });
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         RD = await r.json();
         buildCatColorMap();
@@ -300,6 +321,89 @@ async function init() {
 
         window.addEventListener('resize', () => brushes.forEach(b => b.redraw()));
     } catch(e) { document.body.innerHTML = '<div style="text-align:center;padding:60px;color:#e74c3c;">加载失败: '+e.message+'</div>'; }
+}
+
+function appendRetailUpdateLog(text, type) {
+    if (!text) return;
+    const log = document.getElementById('retailUpdateLog');
+    const line = document.createElement('div');
+    if (type) line.className = `log-${type}`;
+    line.textContent = text;
+    log.appendChild(line);
+    log.scrollTop = log.scrollHeight;
+}
+
+function finishRetailUpdate(success, message) {
+    const progress = document.getElementById('retailUpdateProgress');
+    progress.className = 'update-progress-bar';
+    progress.style.width = '100%';
+    progress.style.background = success
+        ? 'linear-gradient(90deg, #38a169, #48bb78)'
+        : 'linear-gradient(90deg, #e53e3e, #fc8181)';
+    document.getElementById('retailUpdateTitle').textContent =
+        success ? '更新完成' : '更新失败';
+    document.getElementById('retailUpdateFooter').style.display = 'block';
+
+    const button = document.getElementById('updateRetailBtn');
+    button.disabled = false;
+    button.classList.remove('spinning');
+    appendRetailUpdateLog(message, success ? 'success' : 'error');
+
+    if (success) {
+        setTimeout(() => window.location.reload(), 800);
+    }
+}
+
+function startRetailUpdatePolling() {
+    let offset = 0;
+    retailUpdatePollTimer = setInterval(async () => {
+        try {
+            const response = await fetch(`/api/retail/update/status?offset=${offset}`);
+            const status = await response.json();
+            (status.new_logs || []).forEach(line => appendRetailUpdateLog(line));
+            offset = status.total_logs;
+
+            if (!status.running && status.success !== null) {
+                clearInterval(retailUpdatePollTimer);
+                retailUpdatePollTimer = null;
+                finishRetailUpdate(
+                    status.success,
+                    status.success
+                        ? '最新社零数据已写入，页面即将刷新。'
+                        : `更新失败：${status.error || '未知错误'}`
+                );
+            }
+        } catch (_) {
+            // 临时网络错误时继续下一轮轮询。
+        }
+    }, 800);
+}
+
+async function triggerRetailUpdate() {
+    const button = document.getElementById('updateRetailBtn');
+    const progress = document.getElementById('retailUpdateProgress');
+    document.getElementById('retailUpdateLog').replaceChildren();
+    document.getElementById('retailUpdateTitle').textContent = '正在更新社零数据';
+    document.getElementById('retailUpdateFooter').style.display = 'none';
+    document.getElementById('retailUpdateModal').classList.add('visible');
+    progress.className = 'update-progress-bar indeterminate';
+    progress.style.width = '';
+    progress.style.background = '';
+    button.disabled = true;
+    button.classList.add('spinning');
+
+    try {
+        const response = await fetch('/api/retail/update');
+        const result = await response.json();
+        appendRetailUpdateLog(result.message);
+        if (result.ok) {
+            startRetailUpdatePolling();
+        } else {
+            finishRetailUpdate(false, result.message);
+        }
+    } catch (error) {
+        finishRetailUpdate(false, `请求失败：${error.message}`);
+    }
 }
 
 // ============ 统计卡片 ============
@@ -475,6 +579,10 @@ function updateSourceLinks(groupKeys) {
     document.getElementById('catSourceLinks').innerHTML = links.join(' · ') || '暂无源链接';
 }
 
+document.getElementById('updateRetailBtn').addEventListener('click', triggerRetailUpdate);
+document.getElementById('closeRetailUpdateBtn').addEventListener('click', () => {
+    document.getElementById('retailUpdateModal').classList.remove('visible');
+});
 init();
 </script>
 </body>
