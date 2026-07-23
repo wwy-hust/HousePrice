@@ -31,7 +31,9 @@
         .marker-add { height: 32px; padding: 0 14px; border: 0; border-radius: 16px; background: #667eea; color: #fff; font-size: 13px; cursor: pointer; }
         .marker-add:hover { background: #5a6fd6; }
         .annotation-list-section { margin-top: 22px; padding-top: 14px; border-top: 1px solid #edf0f5; }
-        .annotation-list-title { margin: 0 0 9px; color: #596579; font-size: 13px; font-weight: 700; }
+        .annotation-list-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 9px; color: #596579; font-size: 13px; font-weight: 700; }
+        .annotation-save-status { color: #8b95a7; font-size: 11px; font-weight: 400; }
+        .annotation-save-status.error { color: #dc2626; }
         .marker-list { display: grid; gap: 8px; }
         .marker-item { display: grid; grid-template-columns: 20px 48px minmax(0, 1fr) 24px; align-items: center; gap: 8px; min-height: 34px; padding: 5px 7px 5px 9px; border: 1px solid #e5e7ef; border-radius: 8px; background: #fafbfc; color: #596579; font-size: 12px; }
         .region-group { padding: 10px; border: 1px solid color-mix(in srgb, var(--region-color) 38%, #e5e7ef); border-radius: 10px; background: color-mix(in srgb, var(--region-color) 7%, #fff); }
@@ -44,6 +46,7 @@
         .marker-swatch.region { height: 12px; border: 1px solid var(--marker-color); border-radius: 3px; background: color-mix(in srgb, var(--marker-color) 20%, transparent); }
         .annotation-kind { color: #8b95a7; font-size: 11px; font-weight: 700; }
         .annotation-text { min-width: 0; overflow-wrap: anywhere; }
+        .annotation-edit { min-width: 0; width: 100%; height: 26px; padding: 3px 7px; border: 1.5px solid #8b5cf6; border-radius: 5px; outline: none; color: #596579; font: inherit; box-sizing: border-box; }
         .annotation-empty { padding: 9px 10px; border: 1px dashed #dfe3ec; border-radius: 8px; color: #a0a7b4; font-size: 12px; text-align: center; }
         .marker-remove { width: 18px; height: 18px; border: 0; border-radius: 50%; background: #eceef4; color: #7c879b; line-height: 18px; cursor: pointer; }
         .marker-remove:hover { background: #fee2e2; color: #dc2626; }
@@ -151,7 +154,10 @@
         </div>
 
         <div class="annotation-list-section">
-            <div class="annotation-list-title">时间注释（按时间顺序）</div>
+            <div class="annotation-list-title">
+                <span>时间注释（按时间顺序）</span>
+                <span class="annotation-save-status" id="annotationSaveStatus"></span>
+            </div>
             <div class="marker-list" id="markerList" aria-live="polite"></div>
         </div>
 
@@ -163,13 +169,17 @@
 const COLORS = { revenue: '#e74c3c', inventory: '#3498db' };
 const MARKER_STORAGE_KEY = 'industry-chart-markers-v1';
 const REGION_STORAGE_KEY = 'industry-chart-regions-v1';
+const ANNOTATION_MIGRATION_KEY = 'industry-chart-annotations-repo-migrated-v1';
+const ANNOTATION_API = '/api/industry/annotations';
 const LINE_DASHES = { solid: [], dashed: [7, 5], dotted: [2, 4] };
 
 let RD = null, chart = null;
 let ts = '2022-01', te = '2026-12';
 let allKeys = [], ai = 0, bi = 0, dragThumb = null;
-let markers = loadMarkers();
-let regions = loadRegions();
+let markers = [];
+let regions = [];
+let annotationSaveQueue = Promise.resolve();
+let annotationSaveVersion = 0;
 let industryUpdatePollTimer = null;
 
 function parseDate(s) { const [y,m] = s.split('-').map(Number); return new Date(y,m-1,1); }
@@ -280,41 +290,143 @@ const verticalMarkerPlugin = {
     }
 };
 
-function loadMarkers() {
+function filterMarkers(saved) {
+    if (!Array.isArray(saved)) return [];
+    return saved.filter(marker =>
+        typeof marker.id === 'string' &&
+        /^\d{4}-\d{2}$/.test(marker.date) &&
+        typeof marker.label === 'string' &&
+        /^#[0-9a-f]{6}$/i.test(marker.color) &&
+        Object.hasOwn(LINE_DASHES, marker.style)
+    );
+}
+
+function filterRegions(saved) {
+    if (!Array.isArray(saved)) return [];
+    return saved.filter(region =>
+        typeof region.id === 'string' &&
+        /^\d{4}-\d{2}$/.test(region.start) &&
+        /^\d{4}-\d{2}$/.test(region.end) &&
+        region.start < region.end &&
+        typeof region.label === 'string' &&
+        /^#[0-9a-f]{6}$/i.test(region.color)
+    );
+}
+
+function loadLocalMarkers() {
     try {
         const saved = JSON.parse(localStorage.getItem(MARKER_STORAGE_KEY) || '[]');
-        if (!Array.isArray(saved)) return [];
-        return saved.filter(m =>
-            /^\d{4}-\d{2}$/.test(m.date) &&
-            /^#[0-9a-f]{6}$/i.test(m.color) &&
-            Object.hasOwn(LINE_DASHES, m.style)
-        );
+        return filterMarkers(saved);
     } catch (_) {
         return [];
+    }
+}
+
+function loadLocalRegions() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(REGION_STORAGE_KEY) || '[]');
+        return filterRegions(saved);
+    } catch (_) {
+        return [];
+    }
+}
+
+function cacheAnnotationsLocally() {
+    try {
+        localStorage.setItem(MARKER_STORAGE_KEY, JSON.stringify(markers));
+        localStorage.setItem(REGION_STORAGE_KEY, JSON.stringify(regions));
+    } catch (_) {
+        // 仓库文件是主存储，本地缓存失败不影响保存。
+    }
+}
+
+function setAnnotationSaveStatus(message, isError = false) {
+    const status = document.getElementById('annotationSaveStatus');
+    status.textContent = message;
+    status.classList.toggle('error', isError);
+}
+
+function hasMigratedLocalAnnotations() {
+    try {
+        return localStorage.getItem(ANNOTATION_MIGRATION_KEY) === '1';
+    } catch (_) {
+        return false;
+    }
+}
+
+function markLocalAnnotationsMigrated() {
+    try {
+        localStorage.setItem(ANNOTATION_MIGRATION_KEY, '1');
+    } catch (_) {
+        // 浏览器禁用本地存储时，仓库文件保存仍然有效。
+    }
+}
+
+function persistAnnotations() {
+    const payload = JSON.stringify({ markers, regions });
+    const saveVersion = ++annotationSaveVersion;
+    setAnnotationSaveStatus('正在保存到仓库文件…');
+    const request = annotationSaveQueue.catch(() => {}).then(async () => {
+        const response = await fetch(ANNOTATION_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: payload
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || !result.ok) {
+            throw new Error(result.message || `HTTP ${response.status}`);
+        }
+        if (saveVersion === annotationSaveVersion) {
+            setAnnotationSaveStatus('已保存到 results/industry_annotations.json');
+        }
+    });
+    annotationSaveQueue = request;
+    request.catch(error => {
+        if (saveVersion === annotationSaveVersion) {
+            setAnnotationSaveStatus(`保存失败：${error.message}`, true);
+        }
+    });
+    return request;
+}
+
+async function loadAnnotations() {
+    const localMarkers = loadLocalMarkers();
+    const localRegions = loadLocalRegions();
+    try {
+        const response = await fetch(ANNOTATION_API, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        markers = filterMarkers(data.markers);
+        regions = filterRegions(data.regions);
+
+        const hasRepositoryData = markers.length || regions.length;
+        const hasLocalData = localMarkers.length || localRegions.length;
+        const hasMigrated = hasMigratedLocalAnnotations();
+        if (!hasRepositoryData && hasLocalData && !hasMigrated) {
+            markers = localMarkers;
+            regions = localRegions;
+            await persistAnnotations();
+            markLocalAnnotationsMigrated();
+        } else {
+            cacheAnnotationsLocally();
+            if (hasRepositoryData) markLocalAnnotationsMigrated();
+            setAnnotationSaveStatus('已从仓库文件加载');
+        }
+    } catch (error) {
+        markers = localMarkers;
+        regions = localRegions;
+        setAnnotationSaveStatus(`仓库标注加载失败：${error.message}`, true);
     }
 }
 
 function saveMarkers() {
-    localStorage.setItem(MARKER_STORAGE_KEY, JSON.stringify(markers));
-}
-
-function loadRegions() {
-    try {
-        const saved = JSON.parse(localStorage.getItem(REGION_STORAGE_KEY) || '[]');
-        if (!Array.isArray(saved)) return [];
-        return saved.filter(region =>
-            /^\d{4}-\d{2}$/.test(region.start) &&
-            /^\d{4}-\d{2}$/.test(region.end) &&
-            region.start < region.end &&
-            /^#[0-9a-f]{6}$/i.test(region.color)
-        );
-    } catch (_) {
-        return [];
-    }
+    cacheAnnotationsLocally();
+    persistAnnotations().catch(() => {});
 }
 
 function saveRegions() {
-    localStorage.setItem(REGION_STORAGE_KEY, JSON.stringify(regions));
+    cacheAnnotationsLocally();
+    persistAnnotations().catch(() => {});
 }
 
 function renderMarkerList() {
@@ -349,6 +461,46 @@ function renderMarkerList() {
         return remove;
     }
 
+    function enableLabelEditing(container, text, data, kind) {
+        container.title = '双击修改说明';
+        container.addEventListener('dblclick', event => {
+            if (event.target.closest('.marker-remove') || container.querySelector('.annotation-edit')) return;
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'annotation-edit';
+            input.maxLength = 60;
+            input.value = data.label || '';
+            input.setAttribute('aria-label', kind === 'region' ? '修改区域说明' : '修改竖线说明');
+            text.replaceWith(input);
+            input.focus();
+            input.select();
+
+            let editing = true;
+            const finish = save => {
+                if (!editing) return;
+                editing = false;
+                if (save) {
+                    data.label = input.value.trim();
+                    if (kind === 'region') saveRegions();
+                    else saveMarkers();
+                    chart?.draw();
+                }
+                renderMarkerList();
+            };
+            input.addEventListener('keydown', keyEvent => {
+                if (keyEvent.key === 'Enter') {
+                    keyEvent.preventDefault();
+                    finish(true);
+                } else if (keyEvent.key === 'Escape') {
+                    keyEvent.preventDefault();
+                    finish(false);
+                }
+            });
+            input.addEventListener('blur', () => finish(true));
+        });
+    }
+
     function createMarkerItem(marker) {
         const item = document.createElement('span');
         item.className = 'marker-item';
@@ -366,6 +518,7 @@ function renderMarkerList() {
         text.textContent = `${marker.date}${marker.label ? ` · ${marker.label}` : ''}`;
 
         item.append(swatch, kindLabel, text, createRemoveButton(marker, 'marker', text.textContent));
+        enableLabelEditing(item, text, marker, 'marker');
         return item;
     }
 
@@ -419,6 +572,7 @@ function renderMarkerList() {
         text.className = 'annotation-text';
         text.textContent = `${region.start} — ${region.end}${region.label ? ` · ${region.label}` : ''}`;
         header.append(swatch, kindLabel, text, createRemoveButton(region, 'region', text.textContent));
+        enableLabelEditing(header, text, region, 'region');
         group.appendChild(header);
 
         const nestedMarkers = regionAssignments.get(region.id);
@@ -484,6 +638,7 @@ function addRegion() {
 }
 
 async function init() {
+    await loadAnnotations();
     const r = await fetch('/api/data/industry_data.json', { cache: 'no-store' });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     RD = await r.json();

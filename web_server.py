@@ -79,6 +79,86 @@ industry_update_status = {
     'end_time': None,
 }
 industry_update_lock = threading.Lock()
+industry_annotations_lock = threading.Lock()
+
+
+def _is_valid_month(value):
+    if not isinstance(value, str) or len(value) != 7:
+        return False
+    try:
+        time.strptime(value, '%Y-%m')
+        return True
+    except ValueError:
+        return False
+
+
+def _is_valid_color(value):
+    if not isinstance(value, str) or len(value) != 7 or not value.startswith('#'):
+        return False
+    return all(char in '0123456789abcdefABCDEF' for char in value[1:])
+
+
+def validate_industry_annotations(data):
+    """校验并规范化可提交到仓库的工业图表标注。"""
+    if not isinstance(data, dict):
+        raise ValueError('标注数据必须是对象')
+
+    raw_markers = data.get('markers', [])
+    raw_regions = data.get('regions', [])
+    if not isinstance(raw_markers, list) or not isinstance(raw_regions, list):
+        raise ValueError('markers 和 regions 必须是数组')
+    if len(raw_markers) > 500 or len(raw_regions) > 500:
+        raise ValueError('标注数量不能超过 500 个')
+
+    markers = []
+    for marker in raw_markers:
+        if not isinstance(marker, dict):
+            raise ValueError('竖线标注格式错误')
+        marker_id = marker.get('id')
+        label = marker.get('label', '')
+        if not isinstance(marker_id, str) or not marker_id or len(marker_id) > 100:
+            raise ValueError('竖线标注 ID 无效')
+        if not isinstance(label, str) or len(label) > 60:
+            raise ValueError('竖线说明不能超过 60 个字符')
+        if not _is_valid_month(marker.get('date')):
+            raise ValueError('竖线月份格式错误')
+        if not _is_valid_color(marker.get('color')):
+            raise ValueError('竖线颜色格式错误')
+        if marker.get('style') not in ('solid', 'dashed', 'dotted'):
+            raise ValueError('竖线线型无效')
+        markers.append({
+            'id': marker_id,
+            'date': marker['date'],
+            'label': label.strip(),
+            'color': marker['color'],
+            'style': marker['style'],
+        })
+
+    regions = []
+    for region in raw_regions:
+        if not isinstance(region, dict):
+            raise ValueError('区域标注格式错误')
+        region_id = region.get('id')
+        label = region.get('label', '')
+        if not isinstance(region_id, str) or not region_id or len(region_id) > 100:
+            raise ValueError('区域标注 ID 无效')
+        if not isinstance(label, str) or len(label) > 60:
+            raise ValueError('区域说明不能超过 60 个字符')
+        if not _is_valid_month(region.get('start')) or not _is_valid_month(region.get('end')):
+            raise ValueError('区域月份格式错误')
+        if region['start'] >= region['end']:
+            raise ValueError('区域结束月份必须晚于开始月份')
+        if not _is_valid_color(region.get('color')):
+            raise ValueError('区域颜色格式错误')
+        regions.append({
+            'id': region_id,
+            'start': region['start'],
+            'end': region['end'],
+            'label': label.strip(),
+            'color': region['color'],
+        })
+
+    return {'markers': markers, 'regions': regions}
 
 
 def _push_log(line):
@@ -444,6 +524,18 @@ class HousePriceHandler(BaseHTTPRequestHandler):
         except Exception as e:
             logger.error(f"处理请求时发生错误: {e}")
             self.send_error(500, "Internal Server Error")
+
+    def do_POST(self):
+        """处理会写入仓库数据文件的请求。"""
+        try:
+            path = urlparse(self.path).path
+            if path == '/api/industry/annotations':
+                self.save_industry_annotations()
+            else:
+                self.send_error(404, "API Not Found")
+        except Exception as e:
+            logger.error(f"处理 POST 请求时发生错误: {e}")
+            self.send_error(500, "Internal Server Error")
     
     def handle_api_request(self, path):
         """处理API请求"""
@@ -484,8 +576,65 @@ class HousePriceHandler(BaseHTTPRequestHandler):
             self.handle_industry_update_trigger()
         elif path == '/api/industry/update/status':
             self.handle_industry_update_status()
+        elif path == '/api/industry/annotations':
+            self.serve_industry_annotations()
         else:
             self.send_error(404, "API Not Found")
+
+    def send_json(self, status, data):
+        """发送 JSON 响应。"""
+        response = json.dumps(data, ensure_ascii=False).encode('utf-8')
+        self.send_response(status)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Cache-Control', 'no-store')
+        self.send_header('Content-Length', str(len(response)))
+        self.end_headers()
+        self.wfile.write(response)
+
+    def serve_industry_annotations(self):
+        """读取由 Git 跟踪的工业图表标注文件。"""
+        file_path = os.path.join(self.results_path, 'industry_annotations.json')
+        try:
+            with industry_annotations_lock:
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    data = validate_industry_annotations(json.load(file))
+            self.send_json(200, data)
+        except FileNotFoundError:
+            self.send_json(200, {'markers': [], 'regions': []})
+        except (json.JSONDecodeError, ValueError) as error:
+            logger.error(f'工业图表标注文件无效: {error}')
+            self.send_json(500, {'ok': False, 'message': f'标注文件无效：{error}'})
+
+    def save_industry_annotations(self):
+        """把工业图表标注写入仓库内的 JSON 文件。"""
+        try:
+            content_length = int(self.headers.get('Content-Length', '0'))
+        except ValueError:
+            self.send_json(400, {'ok': False, 'message': 'Content-Length 无效'})
+            return
+        if content_length <= 0 or content_length > 1024 * 1024:
+            self.send_json(413, {'ok': False, 'message': '标注数据大小无效'})
+            return
+
+        try:
+            raw_data = self.rfile.read(content_length)
+            data = validate_industry_annotations(json.loads(raw_data.decode('utf-8')))
+        except (UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+            self.send_json(400, {'ok': False, 'message': str(error)})
+            return
+
+        file_path = os.path.join(self.results_path, 'industry_annotations.json')
+        temp_path = f'{file_path}.tmp'
+        try:
+            with industry_annotations_lock:
+                with open(temp_path, 'w', encoding='utf-8') as file:
+                    json.dump(data, file, ensure_ascii=False, indent=2)
+                    file.write('\n')
+                os.replace(temp_path, file_path)
+            self.send_json(200, {'ok': True, 'message': '标注已保存到仓库文件'})
+        except OSError as error:
+            logger.error(f'保存工业图表标注失败: {error}')
+            self.send_json(500, {'ok': False, 'message': f'保存失败：{error}'})
     
     def serve_data_file(self, filename):
         """提供数据文件"""
