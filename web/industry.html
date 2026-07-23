@@ -22,6 +22,7 @@
         .marker-panel { margin: -2px 0 14px; padding: 12px 14px; border: 1px solid #e8eaf2; border-radius: 10px; background: #fff; }
         .marker-form { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .marker-form > span { margin-right: 2px; color: #666; font-size: 13px; font-weight: 600; }
+        .marker-form + .marker-form { margin-top: 10px; padding-top: 10px; border-top: 1px dashed #e8eaf2; }
         .marker-form input[type=month],
         .marker-form input[type=text],
         .marker-form select { height: 32px; padding: 4px 8px; border: 1.5px solid #dde; border-radius: 6px; background: #fff; color: #555; font-size: 13px; }
@@ -29,12 +30,21 @@
         .marker-form input[type=color] { width: 38px; height: 32px; padding: 2px; border: 1.5px solid #dde; border-radius: 6px; background: #fff; cursor: pointer; }
         .marker-add { height: 32px; padding: 0 14px; border: 0; border-radius: 16px; background: #667eea; color: #fff; font-size: 13px; cursor: pointer; }
         .marker-add:hover { background: #5a6fd6; }
-        .marker-list { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 10px; }
-        .marker-list:empty { display: none; }
-        .marker-item { display: inline-flex; align-items: center; gap: 6px; padding: 5px 7px 5px 9px; border: 1px solid #e5e7ef; border-radius: 15px; background: #fafbfc; color: #596579; font-size: 12px; }
+        .annotation-list-section { margin-top: 22px; padding-top: 14px; border-top: 1px solid #edf0f5; }
+        .annotation-list-title { margin: 0 0 9px; color: #596579; font-size: 13px; font-weight: 700; }
+        .marker-list { display: grid; gap: 8px; }
+        .marker-item { display: grid; grid-template-columns: 20px 48px minmax(0, 1fr) 24px; align-items: center; gap: 8px; min-height: 34px; padding: 5px 7px 5px 9px; border: 1px solid #e5e7ef; border-radius: 8px; background: #fafbfc; color: #596579; font-size: 12px; }
+        .region-group { padding: 10px; border: 1px solid color-mix(in srgb, var(--region-color) 38%, #e5e7ef); border-radius: 10px; background: color-mix(in srgb, var(--region-color) 7%, #fff); }
+        .region-header { display: grid; grid-template-columns: 20px 48px minmax(0, 1fr) 24px; align-items: center; gap: 8px; color: #4f5c70; font-size: 12px; }
+        .region-markers { display: grid; gap: 6px; margin: 9px 0 0 28px; padding: 8px 0 0 12px; border-top: 1px dashed color-mix(in srgb, var(--region-color) 30%, #e5e7ef); border-left: 2px solid color-mix(in srgb, var(--region-color) 38%, #e5e7ef); }
+        .region-markers .marker-item { background: rgba(255,255,255,.78); }
         .marker-swatch { width: 18px; height: 0; border-top: 2px solid var(--marker-color); }
         .marker-swatch.dashed { border-top-style: dashed; }
         .marker-swatch.dotted { border-top-style: dotted; }
+        .marker-swatch.region { height: 12px; border: 1px solid var(--marker-color); border-radius: 3px; background: color-mix(in srgb, var(--marker-color) 20%, transparent); }
+        .annotation-kind { color: #8b95a7; font-size: 11px; font-weight: 700; }
+        .annotation-text { min-width: 0; overflow-wrap: anywhere; }
+        .annotation-empty { padding: 9px 10px; border: 1px dashed #dfe3ec; border-radius: 8px; color: #a0a7b4; font-size: 12px; text-align: center; }
         .marker-remove { width: 18px; height: 18px; border: 0; border-radius: 50%; background: #eceef4; color: #7c879b; line-height: 18px; cursor: pointer; }
         .marker-remove:hover { background: #fee2e2; color: #dc2626; }
 
@@ -107,7 +117,7 @@
         <div class="marker-form">
             <span>竖线标记</span>
             <input type="month" id="markerDate" aria-label="标记月份">
-            <input type="text" id="markerLabel" maxlength="30" placeholder="标签（可选）" aria-label="标记标签">
+            <input type="text" id="markerLabel" maxlength="60" placeholder="注释（可选）" aria-label="竖线注释">
             <input type="color" id="markerColor" value="#8b5cf6" title="竖线颜色" aria-label="竖线颜色">
             <select id="markerStyle" aria-label="竖线线型">
                 <option value="solid">实线</option>
@@ -116,7 +126,15 @@
             </select>
             <button type="button" class="marker-add" id="markerAdd">添加竖线</button>
         </div>
-        <div class="marker-list" id="markerList" aria-live="polite"></div>
+        <div class="marker-form">
+            <span>时间段区域</span>
+            <input type="month" id="regionStart" aria-label="区域开始月份">
+            <span style="color:#999">—</span>
+            <input type="month" id="regionEnd" aria-label="区域结束月份">
+            <input type="text" id="regionLabel" maxlength="60" placeholder="区域注释" aria-label="区域注释">
+            <input type="color" id="regionColor" value="#f59e0b" title="区域颜色" aria-label="区域颜色">
+            <button type="button" class="marker-add" id="regionAdd">添加区域</button>
+        </div>
     </div>
 
     <div class="dashboard-section">
@@ -132,6 +150,11 @@
             <div class="rng-ticks" id="rngTicks"></div>
         </div>
 
+        <div class="annotation-list-section">
+            <div class="annotation-list-title">时间注释（按时间顺序）</div>
+            <div class="marker-list" id="markerList" aria-live="polite"></div>
+        </div>
+
         <div class="src">📎 数据来源：国家统计局 · 最新 <a id="srcLink" href="#" target="_blank">查看原文</a></div>
     </div>
 </div>
@@ -139,18 +162,46 @@
 <script>
 const COLORS = { revenue: '#e74c3c', inventory: '#3498db' };
 const MARKER_STORAGE_KEY = 'industry-chart-markers-v1';
+const REGION_STORAGE_KEY = 'industry-chart-regions-v1';
 const LINE_DASHES = { solid: [], dashed: [7, 5], dotted: [2, 4] };
 
 let RD = null, chart = null;
 let ts = '2022-01', te = '2026-12';
 let allKeys = [], ai = 0, bi = 0, dragThumb = null;
 let markers = loadMarkers();
+let regions = loadRegions();
 let industryUpdatePollTimer = null;
 
 function parseDate(s) { const [y,m] = s.split('-').map(Number); return new Date(y,m-1,1); }
 
 const verticalMarkerPlugin = {
     id: 'verticalMarkers',
+    beforeDatasetsDraw(chartInstance) {
+        const { ctx, chartArea, scales } = chartInstance;
+        const xScale = scales.x;
+        if (!chartArea || !xScale) return;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(chartArea.left, chartArea.top, chartArea.width, chartArea.height);
+        ctx.clip();
+        regions.forEach(region => {
+            const rawStart = xScale.getPixelForValue(parseDate(region.start).getTime());
+            const rawEnd = xScale.getPixelForValue(parseDate(region.end).getTime());
+            if (!Number.isFinite(rawStart) || !Number.isFinite(rawEnd)) return;
+            const left = Math.max(chartArea.left, Math.min(rawStart, rawEnd));
+            const right = Math.min(chartArea.right, Math.max(rawStart, rawEnd));
+            if (right < chartArea.left || left > chartArea.right || right <= left) return;
+
+            ctx.fillStyle = `${region.color}26`;
+            ctx.fillRect(left, chartArea.top, right - left, chartArea.height);
+            ctx.strokeStyle = `${region.color}99`;
+            ctx.lineWidth = 1;
+            ctx.setLineDash([4, 3]);
+            ctx.strokeRect(left, chartArea.top, right - left, chartArea.height);
+        });
+        ctx.restore();
+    },
     afterDatasetsDraw(chartInstance) {
         const { ctx, chartArea, scales } = chartInstance;
         const xScale = scales.x;
@@ -193,6 +244,38 @@ const verticalMarkerPlugin = {
             ctx.textBaseline = 'middle';
             ctx.fillText(marker.label, labelX + labelWidth / 2, labelY + labelHeight / 2);
         });
+
+        regions.forEach((region, index) => {
+            if (!region.label) return;
+            const rawStart = xScale.getPixelForValue(parseDate(region.start).getTime());
+            const rawEnd = xScale.getPixelForValue(parseDate(region.end).getTime());
+            if (!Number.isFinite(rawStart) || !Number.isFinite(rawEnd)) return;
+            const left = Math.max(chartArea.left, Math.min(rawStart, rawEnd));
+            const right = Math.min(chartArea.right, Math.max(rawStart, rawEnd));
+            if (right <= left) return;
+
+            ctx.font = '600 11px "Segoe UI", sans-serif';
+            const paddingX = 6;
+            const maxWidth = Math.max(0, right - left - paddingX * 2);
+            let label = region.label;
+            while (label.length > 1 && ctx.measureText(`${label}…`).width > maxWidth) {
+                label = label.slice(0, -1);
+            }
+            if (!label || maxWidth < 12) return;
+            if (label !== region.label) label += '…';
+            const labelWidth = Math.min(ctx.measureText(label).width + paddingX * 2, right - left);
+            const labelHeight = 20;
+            const labelX = left + (right - left - labelWidth) / 2;
+            const labelY = chartArea.bottom - 25 - (index % 2) * 24;
+            ctx.fillStyle = region.color;
+            ctx.beginPath();
+            ctx.roundRect(labelX, labelY, labelWidth, labelHeight, 4);
+            ctx.fill();
+            ctx.fillStyle = '#fff';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(label, labelX + labelWidth / 2, labelY + labelHeight / 2);
+        });
         ctx.restore();
     }
 };
@@ -215,10 +298,58 @@ function saveMarkers() {
     localStorage.setItem(MARKER_STORAGE_KEY, JSON.stringify(markers));
 }
 
+function loadRegions() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(REGION_STORAGE_KEY) || '[]');
+        if (!Array.isArray(saved)) return [];
+        return saved.filter(region =>
+            /^\d{4}-\d{2}$/.test(region.start) &&
+            /^\d{4}-\d{2}$/.test(region.end) &&
+            region.start < region.end &&
+            /^#[0-9a-f]{6}$/i.test(region.color)
+        );
+    } catch (_) {
+        return [];
+    }
+}
+
+function saveRegions() {
+    localStorage.setItem(REGION_STORAGE_KEY, JSON.stringify(regions));
+}
+
 function renderMarkerList() {
     const list = document.getElementById('markerList');
     list.replaceChildren();
-    markers.forEach(marker => {
+    if (!markers.length && !regions.length) {
+        const empty = document.createElement('div');
+        empty.className = 'annotation-empty';
+        empty.textContent = '暂无竖线或时间段区域';
+        list.appendChild(empty);
+        return;
+    }
+
+    function createRemoveButton(data, kind, description) {
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'marker-remove';
+        remove.textContent = '×';
+        remove.title = kind === 'region' ? '删除该区域' : '删除该竖线';
+        remove.setAttribute('aria-label', `删除 ${description}`);
+        remove.addEventListener('click', () => {
+            if (kind === 'region') {
+                regions = regions.filter(region => region.id !== data.id);
+                saveRegions();
+            } else {
+                markers = markers.filter(marker => marker.id !== data.id);
+                saveMarkers();
+            }
+            renderMarkerList();
+            chart?.draw();
+        });
+        return remove;
+    }
+
+    function createMarkerItem(marker) {
         const item = document.createElement('span');
         item.className = 'marker-item';
 
@@ -226,24 +357,78 @@ function renderMarkerList() {
         swatch.className = `marker-swatch ${marker.style}`;
         swatch.style.setProperty('--marker-color', marker.color);
 
+        const kindLabel = document.createElement('span');
+        kindLabel.className = 'annotation-kind';
+        kindLabel.textContent = '竖线';
+
         const text = document.createElement('span');
+        text.className = 'annotation-text';
         text.textContent = `${marker.date}${marker.label ? ` · ${marker.label}` : ''}`;
 
-        const remove = document.createElement('button');
-        remove.type = 'button';
-        remove.className = 'marker-remove';
-        remove.textContent = '×';
-        remove.title = '删除该竖线';
-        remove.setAttribute('aria-label', `删除 ${text.textContent}`);
-        remove.addEventListener('click', () => {
-            markers = markers.filter(m => m.id !== marker.id);
-            saveMarkers();
-            renderMarkerList();
-            chart?.draw();
-        });
+        item.append(swatch, kindLabel, text, createRemoveButton(marker, 'marker', text.textContent));
+        return item;
+    }
 
-        item.append(swatch, text, remove);
-        list.appendChild(item);
+    const sortedRegions = [...regions].sort((a, b) =>
+        a.start.localeCompare(b.start) || a.end.localeCompare(b.end)
+    );
+    const regionAssignments = new Map(sortedRegions.map(region => [region.id, []]));
+    const standaloneMarkers = [];
+
+    [...markers].sort((a, b) => a.date.localeCompare(b.date)).forEach(marker => {
+        const containingRegions = sortedRegions.filter(region =>
+            marker.date >= region.start && marker.date <= region.end
+        );
+        if (!containingRegions.length) {
+            standaloneMarkers.push(marker);
+            return;
+        }
+        containingRegions.sort((a, b) => {
+            const aSpan = parseDate(a.end) - parseDate(a.start);
+            const bSpan = parseDate(b.end) - parseDate(b.start);
+            return aSpan - bSpan || a.start.localeCompare(b.start);
+        });
+        regionAssignments.get(containingRegions[0].id).push(marker);
+    });
+
+    const topLevelItems = [
+        ...sortedRegions.map(region => ({ kind: 'region', date: region.start, data: region })),
+        ...standaloneMarkers.map(marker => ({ kind: 'marker', date: marker.date, data: marker }))
+    ].sort((a, b) => a.date.localeCompare(b.date) || a.kind.localeCompare(b.kind));
+
+    topLevelItems.forEach(entry => {
+        if (entry.kind === 'marker') {
+            list.appendChild(createMarkerItem(entry.data));
+            return;
+        }
+
+        const region = entry.data;
+        const group = document.createElement('section');
+        group.className = 'region-group';
+        group.style.setProperty('--region-color', region.color);
+
+        const header = document.createElement('div');
+        header.className = 'region-header';
+        const swatch = document.createElement('i');
+        swatch.className = 'marker-swatch region';
+        swatch.style.setProperty('--marker-color', region.color);
+        const kindLabel = document.createElement('span');
+        kindLabel.className = 'annotation-kind';
+        kindLabel.textContent = '区域';
+        const text = document.createElement('span');
+        text.className = 'annotation-text';
+        text.textContent = `${region.start} — ${region.end}${region.label ? ` · ${region.label}` : ''}`;
+        header.append(swatch, kindLabel, text, createRemoveButton(region, 'region', text.textContent));
+        group.appendChild(header);
+
+        const nestedMarkers = regionAssignments.get(region.id);
+        if (nestedMarkers.length) {
+            const nestedList = document.createElement('div');
+            nestedList.className = 'region-markers';
+            nestedMarkers.forEach(marker => nestedList.appendChild(createMarkerItem(marker)));
+            group.appendChild(nestedList);
+        }
+        list.appendChild(group);
     });
 }
 
@@ -267,6 +452,37 @@ function addMarker() {
     chart?.draw();
 }
 
+function addRegion() {
+    const startInput = document.getElementById('regionStart');
+    const endInput = document.getElementById('regionEnd');
+    if (!startInput.value) {
+        startInput.focus();
+        return;
+    }
+    if (!endInput.value) {
+        endInput.focus();
+        return;
+    }
+    if (startInput.value >= endInput.value) {
+        endInput.setCustomValidity('结束月份必须晚于开始月份');
+        endInput.reportValidity();
+        return;
+    }
+    endInput.setCustomValidity('');
+    regions.push({
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        start: startInput.value,
+        end: endInput.value,
+        label: document.getElementById('regionLabel').value.trim(),
+        color: document.getElementById('regionColor').value
+    });
+    regions.sort((a, b) => a.start.localeCompare(b.start));
+    saveRegions();
+    renderMarkerList();
+    document.getElementById('regionLabel').value = '';
+    chart?.draw();
+}
+
 async function init() {
     const r = await fetch('/api/data/industry_data.json', { cache: 'no-store' });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -276,10 +492,21 @@ async function init() {
     markerDate.min = allKeys[0];
     markerDate.max = allKeys[allKeys.length - 1];
     markerDate.value = allKeys[allKeys.length - 1];
+    const regionStart = document.getElementById('regionStart');
+    const regionEnd = document.getElementById('regionEnd');
+    regionStart.min = regionEnd.min = allKeys[0];
+    regionStart.max = regionEnd.max = allKeys[allKeys.length - 1];
+    regionStart.value = allKeys[Math.max(0, allKeys.length - 13)];
+    regionEnd.value = allKeys[allKeys.length - 1];
     document.getElementById('markerAdd').addEventListener('click', addMarker);
+    document.getElementById('regionAdd').addEventListener('click', addRegion);
     document.getElementById('markerLabel').addEventListener('keydown', e => {
         if (e.key === 'Enter') addMarker();
     });
+    document.getElementById('regionLabel').addEventListener('keydown', e => {
+        if (e.key === 'Enter') addRegion();
+    });
+    regionEnd.addEventListener('input', () => regionEnd.setCustomValidity(''));
     renderMarkerList();
     renderStats();
     buildTicks();
