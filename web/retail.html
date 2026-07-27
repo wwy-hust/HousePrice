@@ -503,7 +503,14 @@ function initCatTabs() {
 }
 
 function renderCatChart(groupKeys) {
-    if (chartCat) chartCat.destroy();
+    // 时间范围变化会重建图表；重建前保留用户通过图例隐藏的分项。
+    const hiddenCats = new Set();
+    if (chartCat) {
+        chartCat.data.datasets.forEach((dataset, index) => {
+            if (!chartCat.isDatasetVisible(index)) hiddenCats.add(dataset.label);
+        });
+        chartCat.destroy();
+    }
 
     const groups = RD.categories_groups || {};
     const cd = RD.category_detail || [];
@@ -535,6 +542,7 @@ function renderCatChart(groupKeys) {
                 pointRadius: 5,         // 始终显示数据点
                 pointHoverRadius: 7,
                 fill: false,
+                hidden: hiddenCats.has(cat),
             });
         }
     });
