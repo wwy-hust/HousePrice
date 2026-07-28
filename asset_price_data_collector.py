@@ -48,10 +48,26 @@ SMM_ASSETS = {
         "source_url": "https://hq.smm.cn/tungsten/category/202511260001",
     },
 }
+SMM_ALUMINA_ASSETS = {
+    "ALUMINA": {
+        "product_id": "201106140030",
+        "name": "氧化铝（SMM全国加权指数）",
+        "source_url": "https://hq.smm.cn/h5/SMM-alumina-price",
+    },
+}
+SMM_ALUMINUM_ASSETS = {
+    "ALUMINUM": {
+        "product_id": "201102250311",
+        "name": "电解铝（SMM A00铝）",
+        "source_url": "https://hq.smm.cn/aluminum/category/201102250311",
+    },
+}
 
 CATEGORY_BY_CODE = {
     "SULFUR": "大宗商品",
     "PYRITE": "大宗商品",
+    "ALUMINA": "大宗商品",
+    "ALUMINUM": "大宗商品",
     "SB_CN": "小金属",
     "SB_INTL": "小金属",
     "W_CN": "小金属",
@@ -73,6 +89,8 @@ CATEGORY_ORDER = [
 ASSET_ORDER = {
     "SULFUR": 0,
     "PYRITE": 1,
+    "ALUMINA": 2,
+    "ALUMINUM": 3,
 }
 
 
@@ -93,10 +111,14 @@ def _get_smm_data(endpoint: str, params: dict[str, str]) -> list[dict]:
     return payload["data"]
 
 
-def fetch_small_metal_assets(history_days: int = 730) -> list[dict]:
-    """拉取国内和国外小金属价格，并转换为前端通用资产结构。"""
+def _fetch_smm_assets(
+    configs: dict[str, dict[str, str]],
+    category: str,
+    history_days: int = 730,
+) -> list[dict]:
+    """拉取一组 SMM 价格，并转换为前端通用资产结构。"""
     product_ids = ",".join(
-        config["product_id"] for config in SMM_ASSETS.values()
+        config["product_id"] for config in configs.values()
     )
     today = date.today()
     params = {
@@ -114,7 +136,7 @@ def fetch_small_metal_assets(history_days: int = 730) -> list[dict]:
     }
 
     assets = []
-    for code, config in SMM_ASSETS.items():
+    for code, config in configs.items():
         product_id = config["product_id"]
         history = history_by_id.get(product_id)
         latest = latest_by_id.get(product_id)
@@ -147,12 +169,35 @@ def fetch_small_metal_assets(history_days: int = 730) -> list[dict]:
                 "name": config["name"],
                 "unit": latest["unit"],
                 "source": "上海有色网（SMM）",
-                "category": "小金属",
+                "category": category,
                 "latest": series[-1],
                 "series": series,
             }
         )
     return assets
+
+
+def fetch_small_metal_assets(history_days: int = 730) -> list[dict]:
+    """拉取国内和国外小金属价格，并转换为前端通用资产结构。"""
+    return _fetch_smm_assets(SMM_ASSETS, "小金属", history_days)
+
+
+def fetch_alumina_asset(history_days: int = 730) -> dict:
+    """拉取 SMM 氧化铝全国加权指数。"""
+    return _fetch_smm_assets(
+        SMM_ALUMINA_ASSETS,
+        "大宗商品",
+        history_days,
+    )[0]
+
+
+def fetch_aluminum_asset(history_days: int = 730) -> dict:
+    """拉取 SMM A00 电解铝仓库自提指导价。"""
+    return _fetch_smm_assets(
+        SMM_ALUMINUM_ASSETS,
+        "大宗商品",
+        history_days,
+    )[0]
 
 
 def fetch_antimony_assets(history_days: int = 730) -> list[dict]:
@@ -683,6 +728,8 @@ def main() -> int:
         fetchers = [
             ("硫磺", {"SULFUR"}, fetch_sulfur_asset),
             ("硫铁矿", {"PYRITE"}, fetch_pyrite_asset),
+            ("氧化铝", {"ALUMINA"}, fetch_alumina_asset),
+            ("电解铝", {"ALUMINUM"}, fetch_aluminum_asset),
             ("国内、国外小金属", set(SMM_ASSETS), fetch_small_metal_assets),
             ("维生素 D3", {"VD3"}, fetch_vd3_asset),
             (

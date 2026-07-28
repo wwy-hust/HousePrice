@@ -6,6 +6,8 @@ let assetUpdatePollTimer = null;
 const ASSET_COLORS = {
     SULFUR: '#f59e0b',
     PYRITE: '#ca8a04',
+    ALUMINA: '#64748b',
+    ALUMINUM: '#0ea5e9',
     SB_CN: '#b45309',
     SB_INTL: '#0f766e',
     W_CN: '#475569',
