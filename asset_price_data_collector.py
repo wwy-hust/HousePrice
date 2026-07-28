@@ -21,6 +21,7 @@ SULFUR_CHART_URL = (
     "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
 )
 SULFUR_DETAIL_URL = "https://www.100ppi.com/rawmex/detail-427.html"
+PYRITE_LIST_URL = "https://www.100ppi.com/mprice/plist-1-561-{page}.html"
 FEEDTRADE_LIST_URL = "https://www.feedtrade.com.cn/additive/vitamin/index.html"
 XINDE_API_ROOT = "https://www.xindemarinenews.com.cn/jeecgboot/xinde"
 CCGP_SEARCH_URL = "https://search.ccgp.gov.cn/bxsearch"
@@ -50,6 +51,7 @@ SMM_ASSETS = {
 
 CATEGORY_BY_CODE = {
     "SULFUR": "大宗商品",
+    "PYRITE": "大宗商品",
     "SB_CN": "小金属",
     "SB_INTL": "小金属",
     "W_CN": "小金属",
@@ -68,6 +70,10 @@ CATEGORY_ORDER = [
     "VLCC油运",
     "生物医药上游",
 ]
+ASSET_ORDER = {
+    "SULFUR": 0,
+    "PYRITE": 1,
+}
 
 
 def _get_smm_data(endpoint: str, params: dict[str, str]) -> list[dict]:
@@ -262,6 +268,60 @@ def fetch_sulfur_asset() -> dict:
         "name": "硫磺",
         "unit": "元/吨",
         "source": "生意社",
+        "category": "大宗商品",
+        "latest": series[-1],
+        "series": series,
+    }
+
+
+def fetch_pyrite_asset(max_pages: int = 10) -> dict:
+    """汇总生意社国产 45%-47% 硫铁矿的每日公开报价。"""
+    prices_by_date: dict[str, list[float]] = {}
+    source_urls_by_date: dict[str, str] = {}
+
+    for page in range(1, max_pages + 1):
+        page_url = PYRITE_LIST_URL.format(page=page)
+        soup = BeautifulSoup(_get_html(page_url), "html.parser")
+        page_row_count = 0
+        for row in soup.select("table tr"):
+            cells = [
+                cell.get_text(" ", strip=True)
+                for cell in row.find_all(["td", "th"])
+            ]
+            if len(cells) < 8 or cells[0] != "硫铁矿":
+                continue
+            price_match = re.search(r"([\d,.]+)\s*元/吨", cells[3])
+            point_date = cells[7]
+            if not price_match or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", point_date):
+                continue
+            prices_by_date.setdefault(point_date, []).append(
+                _number(price_match.group(1))
+            )
+            source_urls_by_date[point_date] = page_url
+            page_row_count += 1
+        if page_row_count == 0:
+            break
+
+    if not prices_by_date:
+        raise ValueError("生意社报价中心未找到硫铁矿报价")
+
+    series = []
+    for point_date in sorted(prices_by_date):
+        prices = prices_by_date[point_date]
+        series.append(
+            {
+                "date": point_date,
+                "price": sum(prices) / len(prices),
+                "price_low": min(prices),
+                "price_high": max(prices),
+                "source_url": source_urls_by_date[point_date],
+            }
+        )
+    return {
+        "code": "PYRITE",
+        "name": "硫铁矿",
+        "unit": "元/吨",
+        "source": "生意社报价中心（国产，硫化铁含量45%-47%）",
         "category": "大宗商品",
         "latest": series[-1],
         "series": series,
@@ -522,14 +582,18 @@ def merge_assets(existing_assets: list[dict], updates: list[dict]) -> list[dict]
         merged["latest"] = series[-1] if series else None
         assets_by_code[update["code"]] = merged
 
-    def asset_sort_key(asset: dict) -> tuple[int, str]:
+    def asset_sort_key(asset: dict) -> tuple[int, int, str]:
         category = asset.get("category", "其他")
         category_index = (
             CATEGORY_ORDER.index(category)
             if category in CATEGORY_ORDER
             else len(CATEGORY_ORDER)
         )
-        return category_index, asset["code"]
+        return (
+            category_index,
+            ASSET_ORDER.get(asset["code"], len(ASSET_ORDER)),
+            asset["code"],
+        )
 
     return sorted(assets_by_code.values(), key=asset_sort_key)
 
@@ -618,6 +682,7 @@ def main() -> int:
     if args.fetch:
         fetchers = [
             ("硫磺", {"SULFUR"}, fetch_sulfur_asset),
+            ("硫铁矿", {"PYRITE"}, fetch_pyrite_asset),
             ("国内、国外小金属", set(SMM_ASSETS), fetch_small_metal_assets),
             ("维生素 D3", {"VD3"}, fetch_vd3_asset),
             (
