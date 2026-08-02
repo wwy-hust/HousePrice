@@ -9,6 +9,7 @@ import re
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta
 from pathlib import Path
+from statistics import median
 from urllib.parse import urljoin
 
 import requests
@@ -36,6 +37,10 @@ DYE_REDUCTION_FEBRUARY_URL = (
 )
 DYE_REDUCTION_LATEST_URL = (
     "https://news.chemnet.com/toutiao/detail-75363.html"
+)
+BLOOD_PRODUCT_PRICE_URL = (
+    "http://www.gaoqing.gov.cn/gongkai/site_gqxwsjkj/"
+    "channel_6305cf96328b0c0108580897/doc_683919151427114bd64b539d.html"
 )
 FEEDTRADE_LIST_URL = "https://www.feedtrade.com.cn/additive/vitamin/index.html"
 XINDE_API_ROOT = "https://www.xindemarinenews.com.cn/jeecgboot/xinde"
@@ -276,6 +281,85 @@ REFERENCE_POINTS = {
             ("2024-07-24", 255.0),
         )
     ],
+    "BLOOD_ALBUMIN": [
+        {
+            "date": "2022-05-30",
+            "price": 377.5,
+            "price_low": 350.0,
+            "price_high": 520.0,
+            "source_url": "https://pdf.dfcfw.com/pdf/H3_AP202205301568831998_1.pdf",
+            "date_precision": "event",
+            "date_label": "2022年广东联盟集采",
+            "quote_type": "alliance_procurement_sample_median",
+            "quality_note": "证券研报整理的广东联盟集采样本中位数，仅作历史参考。",
+            "comparability_note": "固定为10g（20%×50ml），包含不同生产企业。",
+            "sample_count": 8,
+        },
+        {
+            "date": "2025-07-24",
+            "price": 369.0,
+            "price_low": 369.0,
+            "price_high": 369.0,
+            "source_url": (
+                "https://ybj.qinghai.gov.cn/20250724/"
+                "403ef4788db14e1bb386bfa5bcb82df0/"
+                "20250724403ef4788db14e1bb386bfa5bcb82df0_"
+                "35a4c60ee98b904b6ab36084526b6dae92.pdf"
+            ),
+            "date_precision": "day",
+            "date_label": "2025-07-24",
+            "quote_type": "official_listed_price",
+            "quality_note": "青海医保局价格调整表中的公开挂网价。",
+            "comparability_note": "国产人血白蛋白10g/瓶（20%，50ml），单一企业样本。",
+            "sample_count": 1,
+        },
+    ],
+    "BLOOD_IVIG": [
+        {
+            "date": "2020-12-31",
+            "price": 590.86,
+            "price_low": 541.0,
+            "price_high": 620.0,
+            "source_url": "https://www.chyxx.com/industry/202102/929959.html",
+            "date_precision": "year",
+            "date_label": "2020年公开中标样本均价",
+            "quote_type": "reported_bid_average",
+            "quality_note": "智研咨询汇总的公开竞价样本年度均价，仅作历史参考。",
+            "comparability_note": "静丙2.5g规格，不同省份和生产企业的非完整样本。",
+            "sample_count": 43,
+        },
+        {
+            "date": "2021-01-19",
+            "price": 576.33,
+            "price_low": 561.0,
+            "price_high": 586.0,
+            "source_url": "https://www.chyxx.com/industry/202102/929959.html",
+            "date_precision": "day",
+            "date_label": "2021-01-19公开中标样本均价",
+            "quote_type": "reported_bid_average",
+            "quality_note": "智研咨询汇总的3个公开中标样本均价，仅作历史参考。",
+            "comparability_note": "静丙2.5g规格，贵州地区不同生产企业样本。",
+            "sample_count": 3,
+        },
+        {
+            "date": "2026-02-12",
+            "price": 560.4,
+            "price_low": 560.4,
+            "price_high": 560.4,
+            "source_url": (
+                "http://ybj.qinghai.gov.cn/20260212/"
+                "5301c294485341d784e8aa9aa4521b1b/"
+                "202602125301c294485341d784e8aa9aa4521b1b_"
+                "18f0156694617447c8824bc6b1d94bbd1a.pdf"
+            ),
+            "date_precision": "day",
+            "date_label": "2026-02-12",
+            "quote_type": "official_listed_price",
+            "quality_note": "青海医保局广东联盟接续中选药品挂网价。",
+            "comparability_note": "静丙2.5g/瓶（5%，50ml），单一企业样本。",
+            "sample_count": 1,
+        },
+    ],
 }
 
 DEFAULT_VISIBLE_REFERENCE_DATES = {
@@ -285,6 +369,8 @@ DEFAULT_VISIBLE_REFERENCE_DATES = {
         "2026-03-05",
         "2026-07-21",
     },
+    "BLOOD_ALBUMIN": {"2025-07-24"},
+    "BLOOD_IVIG": {"2026-02-12"},
 }
 
 for code, reference_points in REFERENCE_POINTS.items():
@@ -311,6 +397,8 @@ CATEGORY_BY_CODE = {
     "W_CN": "小金属",
     "W_INTL": "小金属",
     "VD3": "饲料添加剂",
+    "BLOOD_ALBUMIN": "血液制品",
+    "BLOOD_IVIG": "血液制品",
     "TD3C": "VLCC油运",
     "TD3C_WS": "VLCC油运",
     "TD15": "VLCC油运",
@@ -323,6 +411,7 @@ CATEGORY_ORDER = [
     "小金属",
     "饲料添加剂",
     "VLCC油运",
+    "血液制品",
     "生物医药上游",
 ]
 ASSET_ORDER = {
@@ -331,6 +420,8 @@ ASSET_ORDER = {
     "ALUMINA": 2,
     "ALUMINUM": 3,
     "PHOSPHATE_ROCK": 4,
+    "BLOOD_ALBUMIN": 0,
+    "BLOOD_IVIG": 1,
 }
 
 
@@ -813,6 +904,95 @@ def fetch_dye_reduction_asset() -> dict:
         "latest": series[-1],
         "series": series,
     }
+
+
+def fetch_blood_product_assets() -> list[dict]:
+    """采集固定规格白蛋白和静丙的公开挂网价格样本。"""
+    soup = BeautifulSoup(_get_html(BLOOD_PRODUCT_PRICE_URL), "html.parser")
+    page_text = soup.get_text(" ", strip=True)
+    published_match = re.search(r"发布日期[：:]\s*(\d{4}-\d{2}-\d{2})", page_text)
+    if not published_match:
+        raise ValueError("血制品价格公示页缺少发布日期")
+    published_date = published_match.group(1)
+
+    samples = {
+        "BLOOD_ALBUMIN": [],
+        "BLOOD_IVIG": [],
+    }
+    for row in soup.select("tr"):
+        cells = [
+            cell.get_text(" ", strip=True)
+            for cell in row.find_all(["td", "th"])
+        ]
+        if len(cells) < 5:
+            continue
+        name, specification = cells[0], cells[1].replace(" ", "")
+        price_match = re.fullmatch(r"[\d,.]+", cells[-1])
+        if not price_match:
+            continue
+        price = _number(price_match.group())
+        if (
+            "人血白蛋白" in name
+            and "10g" in specification
+            and "20" in specification
+            and "50ml" in specification.lower()
+        ):
+            samples["BLOOD_ALBUMIN"].append(price)
+        elif (
+            "静注人免疫球蛋白" in name
+            and "2.5g" in specification
+            and "5" in specification
+            and "50ml" in specification.lower()
+        ):
+            samples["BLOOD_IVIG"].append(price)
+
+    configs = {
+        "BLOOD_ALBUMIN": {
+            "name": "人血白蛋白（10g/50ml公开挂网样本）",
+            "specification": "10g/瓶（20%，50ml）",
+        },
+        "BLOOD_IVIG": {
+            "name": "静丙（2.5g/50ml公开挂网样本）",
+            "specification": "2.5g/瓶（5%，50ml，pH4）",
+        },
+    }
+    assets = []
+    for code, config in configs.items():
+        prices = samples[code]
+        if not prices:
+            raise ValueError(f"价格公示页未找到{config['name']}数据")
+        points_by_date = _existing_series_by_code(code)
+        points_by_date.update(_reference_points_by_date(code))
+        points_by_date[published_date] = {
+            "date": published_date,
+            "price": median(prices),
+            "price_low": min(prices),
+            "price_high": max(prices),
+            "source_url": BLOOD_PRODUCT_PRICE_URL,
+            "point_type": "reported_observation",
+            "default_hidden": False,
+            "date_precision": "day",
+            "date_label": published_date,
+            "quote_type": "public_hospital_listed_sample_median",
+            "quality_note": "公立医院公开药品价格样本中位数，并非全国实际成交价。",
+            "comparability_note": (
+                f"统一规格为{config['specification']}，样本包含不同生产企业。"
+            ),
+            "sample_count": len(prices),
+        }
+        series = [points_by_date[key] for key in sorted(points_by_date)]
+        assets.append(
+            {
+                "code": code,
+                "name": config["name"],
+                "unit": "元/瓶",
+                "source": "政府及公立医院公开挂网/中标价格样本",
+                "category": "血液制品",
+                "latest": series[-1],
+                "series": series,
+            }
+        )
+    return assets
 
 
 def _parse_price_range(text: str) -> tuple[float, float]:
@@ -1310,6 +1490,11 @@ def main() -> int:
             ),
             ("磷矿石", {"PHOSPHATE_ROCK"}, fetch_phosphate_rock_asset),
             ("分散染料还原物", {"DYE_REDUCTION"}, fetch_dye_reduction_asset),
+            (
+                "血液制品",
+                {"BLOOD_ALBUMIN", "BLOOD_IVIG"},
+                fetch_blood_product_assets,
+            ),
             (
                 "国内、国外小金属",
                 set(SMM_ASSETS),

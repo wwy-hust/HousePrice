@@ -17,6 +17,8 @@ const ASSET_COLORS = {
     W_CN: '#475569',
     W_INTL: '#2563eb',
     VD3: '#8b5cf6',
+    BLOOD_ALBUMIN: '#dc2626',
+    BLOOD_IVIG: '#9333ea',
     TD3C: '#ef4444',
     TD3C_WS: '#f97316',
     TD15: '#3b82f6',
