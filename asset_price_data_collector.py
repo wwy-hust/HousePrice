@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from urllib.parse import urljoin
@@ -22,6 +23,9 @@ SULFUR_CHART_URL = (
 )
 SULFUR_DETAIL_URL = "https://www.100ppi.com/rawmex/detail-427.html"
 PYRITE_LIST_URL = "https://www.100ppi.com/mprice/plist-1-561-{page}.html"
+PHOSPHATE_ROCK_HISTORY_URL = (
+    "https://www.mysteel.com/oilchem/article/nwj1r6/"
+)
 FEEDTRADE_LIST_URL = "https://www.feedtrade.com.cn/additive/vitamin/index.html"
 XINDE_API_ROOT = "https://www.xindemarinenews.com.cn/jeecgboot/xinde"
 CCGP_SEARCH_URL = "https://search.ccgp.gov.cn/bxsearch"
@@ -68,6 +72,7 @@ CATEGORY_BY_CODE = {
     "PYRITE": "大宗商品",
     "ALUMINA": "大宗商品",
     "ALUMINUM": "大宗商品",
+    "PHOSPHATE_ROCK": "大宗商品",
     "SB_CN": "小金属",
     "SB_INTL": "小金属",
     "W_CN": "小金属",
@@ -91,6 +96,7 @@ ASSET_ORDER = {
     "PYRITE": 1,
     "ALUMINA": 2,
     "ALUMINUM": 3,
+    "PHOSPHATE_ROCK": 4,
 }
 
 
@@ -367,6 +373,86 @@ def fetch_pyrite_asset(max_pages: int = 10) -> dict:
         "name": "硫铁矿",
         "unit": "元/吨",
         "source": "生意社报价中心（国产，硫化铁含量45%-47%）",
+        "category": "大宗商品",
+        "latest": series[-1],
+        "series": series,
+    }
+
+
+def fetch_phosphate_rock_asset(history_pages: int = 10) -> dict:
+    """拉取隆众资讯四川马边 30% 品位磷精粉公开报价。"""
+    article_urls = []
+    for page in range(1, history_pages + 1):
+        page_url = (
+            PHOSPHATE_ROCK_HISTORY_URL
+            if page == 1
+            else f"{PHOSPHATE_ROCK_HISTORY_URL}{page}.html?keyWord="
+        )
+        list_soup = BeautifulSoup(_get_html(page_url), "html.parser")
+        page_urls = [
+            urljoin(page_url, link["href"])
+            for link in list_soup.select("a[href]")
+            if "磷矿石企业价格一览表" in link.get_text(" ", strip=True)
+        ]
+        if not page_urls:
+            break
+        article_urls.extend(page_urls)
+
+    def parse_article(article_url: str) -> tuple[str, dict] | None:
+        try:
+            article_soup = BeautifulSoup(_get_html(article_url), "html.parser")
+        except requests.RequestException:
+            return None
+        title_node = article_soup.select_one('meta[name="detailTit"]')
+        title = (
+            title_node.get("content", "")
+            if title_node
+            else article_soup.get_text(" ", strip=True)
+        )
+        date_match = re.search(r"\((\d{4})(\d{2})(\d{2})", title)
+        content_node = article_soup.select_one("#article-content, #text")
+        if not date_match or not content_node:
+            return None
+
+        content = re.sub(r"\s+", "", content_node.get_text("", strip=True))
+        price_match = re.search(
+            r"(?:四川马边.*?30%|马边瑞丰30%磷精矿)"
+            r"(?P<price>\d{3,4}(?:-\d{3,4})?)(?P=price)"
+            r"(?:[-+]?\d+(?:/[-+]?\d+)?)?县城交货价",
+            content,
+        )
+        if not price_match:
+            return None
+        price_text = price_match.group("price")
+        price_parts = [float(value) for value in price_text.split("-")]
+        price_low = min(price_parts)
+        price_high = max(price_parts)
+        point_date = "-".join(date_match.groups())
+        return (
+            point_date,
+            {
+                "date": point_date,
+                "price": sum(price_parts) / len(price_parts),
+                "price_low": price_low,
+                "price_high": price_high,
+                "source_url": article_url,
+            },
+        )
+
+    points_by_date = {}
+    with ThreadPoolExecutor(max_workers=6) as executor:
+        for parsed in executor.map(parse_article, dict.fromkeys(article_urls)):
+            if parsed:
+                points_by_date[parsed[0]] = parsed[1]
+    if not points_by_date:
+        raise ValueError("隆众资讯未找到四川马边30%品位磷精粉报价")
+
+    series = [points_by_date[key] for key in sorted(points_by_date)]
+    return {
+        "code": "PHOSPHATE_ROCK",
+        "name": "磷矿石（四川马边30%磷精粉）",
+        "unit": "元/吨",
+        "source": "隆众资讯（我的钢铁网转载）",
         "category": "大宗商品",
         "latest": series[-1],
         "series": series,
@@ -730,6 +816,7 @@ def main() -> int:
             ("硫铁矿", {"PYRITE"}, fetch_pyrite_asset),
             ("氧化铝", {"ALUMINA"}, fetch_alumina_asset),
             ("电解铝", {"ALUMINUM"}, fetch_aluminum_asset),
+            ("磷矿石", {"PHOSPHATE_ROCK"}, fetch_phosphate_rock_asset),
             ("国内、国外小金属", set(SMM_ASSETS), fetch_small_metal_assets),
             ("维生素 D3", {"VD3"}, fetch_vd3_asset),
             (

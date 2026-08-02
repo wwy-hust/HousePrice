@@ -8,6 +8,7 @@ const ASSET_COLORS = {
     PYRITE: '#ca8a04',
     ALUMINA: '#64748b',
     ALUMINUM: '#0ea5e9',
+    PHOSPHATE_ROCK: '#84cc16',
     SB_CN: '#b45309',
     SB_INTL: '#0f766e',
     W_CN: '#475569',
