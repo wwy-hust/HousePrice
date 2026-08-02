@@ -81,6 +81,65 @@ VITAMIN_ASSETS = {
         "pattern": r"^K3(?:[（(].*MSB.*)?$",
     },
 }
+SWEETENER_ASSETS = {
+    "ALLULOSE": {
+        "name": "D-阿洛酮糖（食品级，报道市场价）",
+        "price_list_id": None,
+        "specification": None,
+        "quote_method": None,
+        "source": "公开行业报道（非连续市场报价）",
+    },
+    "SUCRALOSE": {
+        "name": "三氯蔗糖（99%）",
+        "price_list_id": 4012,
+        "specification": "99%",
+        "quote_method": "出厂价",
+    },
+    "ERYTHRITOL": {
+        "name": "赤藓糖醇（食品级）",
+        "price_list_id": 1087,
+        "specification": "食品级",
+        "quote_method": "市场价",
+    },
+    "ACESULFAME_K": {
+        "name": "安赛蜜（食品级）",
+        "price_list_id": 17586,
+        "specification": "食品级",
+        "quote_method": "市场价",
+    },
+    "ASPARTAME": {
+        "name": "阿斯巴甜（国产，98.0%-102.0%）",
+        "price_list_id": 9378,
+        "specification": "98.0 % ~ 102.0%",
+        "quote_method": "市场价",
+    },
+    "CYCLAMATE": {
+        "name": "甜蜜素（食品级，99%）",
+        "price_list_id": None,
+        "specification": None,
+        "quote_method": None,
+        "source": "公开行业报道及供应商批量报价（非连续市场报价）",
+    },
+    "SACCHARIN_SODIUM": {
+        "name": "糖精钠（食品级）",
+        "price_list_id": 9483,
+        "specification": "食品级",
+        "quote_method": "市场价",
+        "min_price": 20000,
+    },
+    "STEVIA_GLYCOSIDE": {
+        "name": "甜菊糖苷（食品级SG90%）",
+        "price_list_id": 3608,
+        "specification": "食品级甜菊糖苷SG90%",
+        "quote_method": "市场价",
+    },
+    "XYLITOL": {
+        "name": "木糖醇（食品级）",
+        "price_list_id": 1125,
+        "specification": "食品级",
+        "quote_method": "市场价",
+    },
+}
 XINDE_API_ROOT = "https://www.xindemarinenews.com.cn/jeecgboot/xinde"
 CCGP_SEARCH_URL = "https://search.ccgp.gov.cn/bxsearch"
 SMM_API_URL = "https://platform.smm.cn/aggdatacenter/user/v1/agg_data"
@@ -122,6 +181,101 @@ SMM_ALUMINUM_ASSETS = {
 }
 
 REFERENCE_POINTS = {
+    "ALLULOSE": [
+        {
+            "date": "2025-12-31",
+            "price": 17000.0,
+            "price_low": None,
+            "price_high": None,
+            "source_url": (
+                "https://finance.sina.com.cn/wm/2026-04-09/"
+                "doc-inhtwhra2177770.shtml"
+            ),
+            "date_precision": "year",
+            "date_label": "2025年",
+            "quote_type": "implied_average_selling_price",
+            "quality_note": (
+                "报道根据百龙创园2025年阿洛酮糖销量和营业收入测算，"
+                "属于年度隐含均价，并非市场现货日价。"
+            ),
+            "comparability_note": (
+                "企业产品结构可能同时包含不同形态和规格；"
+                "阿洛酮糖在中国法规中属于新食品原料。"
+            ),
+        },
+        {
+            "date": "2026-01-20",
+            "price": 22000.0,
+            "price_low": 20000.0,
+            "price_high": 24000.0,
+            "source_url": "https://www.huxiu.com/article/4827937.html",
+            "date_precision": "day",
+            "date_label": "2026-01-20",
+            "quote_type": "reported_market_range",
+            "quality_note": (
+                "FBIF报道援引中大恒源数据的国内市场价格区间，"
+                "不是连续报价或统一成交指数。"
+            ),
+            "comparability_note": (
+                "报道未区分液体、晶体等具体形态；"
+                "阿洛酮糖在中国法规中属于新食品原料。"
+            ),
+        },
+    ],
+    "ASPARTAME": [
+        {
+            "date": "2023-07-10",
+            "price": 100000.0,
+            "price_low": None,
+            "price_high": None,
+            "source_url": "https://www.yntw.com/2023/07/25574.html",
+            "date_precision": "day",
+            "date_label": "2023-07-10",
+            "quote_type": "reported_supplier_price",
+            "quality_note": "北京商报调查报道中的生产商报价，并非连续市场指数。",
+            "comparability_note": "报道未披露品牌和具体纯度，仅作为行业历史参考。",
+        },
+    ],
+    "CYCLAMATE": [
+        {
+            "date": "2023-07-10",
+            "price": 24000.0,
+            "price_low": None,
+            "price_high": None,
+            "source_url": "https://www.yntw.com/2023/07/25574.html",
+            "date_precision": "day",
+            "date_label": "2023-07-10",
+            "quote_type": "reported_supplier_price",
+            "quality_note": "北京商报调查报道中的生产商报价，并非连续市场指数。",
+            "comparability_note": "报道未披露品牌和具体纯度，仅作为行业历史参考。",
+        },
+        {
+            "date": "2026-07-02",
+            "price": 14000.0,
+            "price_low": 13000.0,
+            "price_high": 15000.0,
+            "source_url": "https://www.chemicalbook.com/SupplyInfo_483886.htm",
+            "date_precision": "day",
+            "date_label": "2026-07-02",
+            "quote_type": "supplier_tiered_offer",
+            "quality_note": "ChemicalBook供应商页面的食品级99%阶梯报价中点。",
+            "comparability_note": "1公斤与25公斤包装报价，不等同于吨级市场成交价。",
+        },
+    ],
+    "STEVIA_GLYCOSIDE": [
+        {
+            "date": "2023-07-10",
+            "price": 110000.0,
+            "price_low": None,
+            "price_high": None,
+            "source_url": "https://www.yntw.com/2023/07/25574.html",
+            "date_precision": "day",
+            "date_label": "2023-07-10",
+            "quote_type": "reported_supplier_price",
+            "quality_note": "北京商报调查报道中的生产商报价，并非连续市场指数。",
+            "comparability_note": "报道未披露糖苷纯度，不能与当前SG90%报价直接等同。",
+        },
+    ],
     "PYRITE": [
         {
             "date": "2022-07-31",
@@ -401,6 +555,8 @@ REFERENCE_POINTS = {
 }
 
 DEFAULT_VISIBLE_REFERENCE_DATES = {
+    "ALLULOSE": {"2026-01-20"},
+    "CYCLAMATE": {"2026-07-02"},
     "DYE_REDUCTION": {
         "2025-12-31",
         "2026-02-11",
@@ -443,6 +599,15 @@ CATEGORY_BY_CODE = {
     "VIT_B6": "维生素",
     "VIT_B12": "维生素",
     "VIT_K3": "维生素",
+    "ALLULOSE": "食品添加剂",
+    "SUCRALOSE": "食品添加剂",
+    "ERYTHRITOL": "食品添加剂",
+    "ACESULFAME_K": "食品添加剂",
+    "ASPARTAME": "食品添加剂",
+    "CYCLAMATE": "食品添加剂",
+    "SACCHARIN_SODIUM": "食品添加剂",
+    "STEVIA_GLYCOSIDE": "食品添加剂",
+    "XYLITOL": "食品添加剂",
     "BLOOD_ALBUMIN": "血液制品",
     "BLOOD_IVIG": "血液制品",
     "TD3C": "VLCC油运",
@@ -456,6 +621,7 @@ CATEGORY_ORDER = [
     "化工中间体",
     "小金属",
     "维生素",
+    "食品添加剂",
     "VLCC油运",
     "血液制品",
     "生物医药上游",
@@ -477,6 +643,15 @@ ASSET_ORDER = {
     "VIT_B6": 6,
     "VIT_B12": 7,
     "VIT_K3": 8,
+    "ALLULOSE": 0,
+    "SUCRALOSE": 1,
+    "ERYTHRITOL": 2,
+    "ACESULFAME_K": 3,
+    "ASPARTAME": 4,
+    "CYCLAMATE": 5,
+    "SACCHARIN_SODIUM": 6,
+    "STEVIA_GLYCOSIDE": 7,
+    "XYLITOL": 8,
 }
 
 
@@ -1057,6 +1232,100 @@ def _parse_price_range(text: str) -> tuple[float, float]:
     return tuple(float(value.replace(",", "")) for value in match.groups())
 
 
+def fetch_sweetener_assets(max_pages: int = 60) -> list[dict]:
+    """采集固定规格甜味剂报价，并合并可核验的报道参考点。"""
+    assets = []
+    for code, config in SWEETENER_ASSETS.items():
+        price_list_id = config["price_list_id"]
+        points_by_date = _existing_series_by_code(code)
+        points_by_date.update(_reference_points_by_date(code))
+        if price_list_id is None:
+            if not points_by_date:
+                raise ValueError(f"未找到{config['name']}公开报价")
+            series = [points_by_date[key] for key in sorted(points_by_date)]
+            assets.append(
+                {
+                    "code": code,
+                    "name": config["name"],
+                    "unit": "元/吨",
+                    "source": config["source"],
+                    "category": "食品添加剂",
+                    "latest": series[-1],
+                    "series": series,
+                }
+            )
+            continue
+        samples_by_date: dict[str, list[tuple[float, str]]] = {}
+        for page in range(1, max_pages + 1):
+            page_url = (
+                "https://chem.100ppi.com/price/"
+                f"plist-{price_list_id}-{page}.html"
+            )
+            soup = BeautifulSoup(_get_html(page_url), "html.parser")
+            rows = soup.select("table tr")
+            if len(rows) <= 1:
+                break
+            for row in rows[1:]:
+                cells = [
+                    cell.get_text(" ", strip=True)
+                    for cell in row.find_all(["td", "th"])
+                ]
+                if len(cells) < 5:
+                    continue
+                _, specification, quote, _, point_date = cells[:5]
+                if (
+                    specification != config["specification"]
+                    or config["quote_method"] not in quote
+                    or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", point_date)
+                ):
+                    continue
+                price_match = re.search(
+                    r"([\d,.]+)\s*元/(吨|公斤|千克)",
+                    quote,
+                )
+                if not price_match:
+                    continue
+                price = _number(price_match.group(1))
+                if price_match.group(2) != "吨":
+                    price *= 1000
+                if (
+                    price < config.get("min_price", 0)
+                    or price > config.get("max_price", float("inf"))
+                ):
+                    continue
+                samples_by_date.setdefault(point_date, []).append(
+                    (price, page_url)
+                )
+
+        for point_date, samples in samples_by_date.items():
+            prices = [sample[0] for sample in samples]
+            points_by_date[point_date] = {
+                "date": point_date,
+                "price": median(prices),
+                "price_low": min(prices),
+                "price_high": max(prices),
+                "source_url": samples[0][1],
+            }
+        if not points_by_date:
+            raise ValueError(f"生意社未找到{config['name']}报价")
+        series = [points_by_date[key] for key in sorted(points_by_date)]
+        assets.append(
+            {
+                "code": code,
+                "name": config["name"],
+                "unit": "元/吨",
+                "source": (
+                    f"生意社报价中心（{config['specification']}，"
+                    f"{config['quote_method']}）"
+                ),
+                "category": "食品添加剂",
+                "latest": series[-1],
+                "series": series,
+            }
+        )
+    return assets
+
+
 def fetch_vitamin_assets(max_pages: int = 60) -> list[dict]:
     """遍历同一行情归档，一次拉取多种饲料级维生素报价。"""
     points_by_code = {
@@ -1595,6 +1864,11 @@ def main() -> int:
                 "维生素",
                 set(VITAMIN_ASSETS),
                 fetch_vitamin_assets,
+            ),
+            (
+                "食品添加剂",
+                set(SWEETENER_ASSETS),
+                fetch_sweetener_assets,
             ),
             (
                 "VLCC 油运",

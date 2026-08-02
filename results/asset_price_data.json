@@ -1,7 +1,7 @@
 {
   "data_type": "关注资产价格",
-  "generated_at": "2026-08-03T03:44:45+08:00",
-  "source_updated_at": "2026-08-03T03:44:45+08:00",
+  "generated_at": "2026-08-03T04:00:22+08:00",
+  "source_updated_at": "2026-08-03T04:00:22+08:00",
   "categories": [
     {
       "name": "大宗商品",
@@ -40,6 +40,20 @@
         "VIT_B6",
         "VIT_B12",
         "VIT_K3"
+      ]
+    },
+    {
+      "name": "食品添加剂",
+      "asset_codes": [
+        "ALLULOSE",
+        "SUCRALOSE",
+        "ERYTHRITOL",
+        "ACESULFAME_K",
+        "ASPARTAME",
+        "CYCLAMATE",
+        "SACCHARIN_SODIUM",
+        "STEVIA_GLYCOSIDE",
+        "XYLITOL"
       ]
     },
     {
@@ -112612,6 +112626,1347 @@
           "price_low": 75.0,
           "price_high": 80.0,
           "source_url": "https://www.feedtrade.com.cn/additive/vitamin/2026-07-31/2187343.html"
+        }
+      ]
+    },
+    {
+      "code": "ALLULOSE",
+      "name": "D-阿洛酮糖（食品级，报道市场价）",
+      "unit": "元/吨",
+      "source": "公开行业报道（非连续市场报价）",
+      "category": "食品添加剂",
+      "latest": {
+        "date": "2026-01-20",
+        "price": 22000.0,
+        "price_low": 20000.0,
+        "price_high": 24000.0,
+        "source_url": "https://www.huxiu.com/article/4827937.html",
+        "date_precision": "day",
+        "date_label": "2026-01-20",
+        "quote_type": "reported_market_range",
+        "quality_note": "FBIF报道援引中大恒源数据的国内市场价格区间，不是连续报价或统一成交指数。",
+        "comparability_note": "报道未区分液体、晶体等具体形态；阿洛酮糖在中国法规中属于新食品原料。",
+        "point_type": "reported_observation",
+        "default_hidden": false
+      },
+      "series": [
+        {
+          "date": "2025-12-31",
+          "price": 17000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://finance.sina.com.cn/wm/2026-04-09/doc-inhtwhra2177770.shtml",
+          "date_precision": "year",
+          "date_label": "2025年",
+          "quote_type": "implied_average_selling_price",
+          "quality_note": "报道根据百龙创园2025年阿洛酮糖销量和营业收入测算，属于年度隐含均价，并非市场现货日价。",
+          "comparability_note": "企业产品结构可能同时包含不同形态和规格；阿洛酮糖在中国法规中属于新食品原料。",
+          "point_type": "reported_reference",
+          "default_hidden": true
+        },
+        {
+          "date": "2026-01-20",
+          "price": 22000.0,
+          "price_low": 20000.0,
+          "price_high": 24000.0,
+          "source_url": "https://www.huxiu.com/article/4827937.html",
+          "date_precision": "day",
+          "date_label": "2026-01-20",
+          "quote_type": "reported_market_range",
+          "quality_note": "FBIF报道援引中大恒源数据的国内市场价格区间，不是连续报价或统一成交指数。",
+          "comparability_note": "报道未区分液体、晶体等具体形态；阿洛酮糖在中国法规中属于新食品原料。",
+          "point_type": "reported_observation",
+          "default_hidden": false
+        }
+      ]
+    },
+    {
+      "code": "SUCRALOSE",
+      "name": "三氯蔗糖（99%）",
+      "unit": "元/吨",
+      "source": "生意社报价中心（99%，出厂价）",
+      "category": "食品添加剂",
+      "latest": {
+        "date": "2026-07-31",
+        "price": 105000.0,
+        "price_low": 105000.0,
+        "price_high": 105000.0,
+        "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+      },
+      "series": [
+        {
+          "date": "2026-05-06",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-07",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-08",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-09",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-11",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-12",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-13",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-14",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-18",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-19",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-20",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-21",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-22",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-25",
+          "price": 135000.0,
+          "price_low": 135000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-4.html"
+        },
+        {
+          "date": "2026-05-26",
+          "price": 120000.0,
+          "price_low": 105000.0,
+          "price_high": 135000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-05-27",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-05-28",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-01",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-02",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-03",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-04",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-05",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-10",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-12",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-15",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-16",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-17",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-18",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-22",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-23",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-24",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-3.html"
+        },
+        {
+          "date": "2026-06-25",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-06-29",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-06-30",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-07-01",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-07-03",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-07-06",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-07-07",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-07-08",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-07-09",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-07-13",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-07-14",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-2.html"
+        },
+        {
+          "date": "2026-07-15",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        },
+        {
+          "date": "2026-07-16",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        },
+        {
+          "date": "2026-07-17",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        },
+        {
+          "date": "2026-07-20",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        },
+        {
+          "date": "2026-07-21",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        },
+        {
+          "date": "2026-07-22",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        },
+        {
+          "date": "2026-07-23",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        },
+        {
+          "date": "2026-07-24",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        },
+        {
+          "date": "2026-07-27",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        },
+        {
+          "date": "2026-07-28",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        },
+        {
+          "date": "2026-07-30",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        },
+        {
+          "date": "2026-07-31",
+          "price": 105000.0,
+          "price_low": 105000.0,
+          "price_high": 105000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-4012-1.html"
+        }
+      ]
+    },
+    {
+      "code": "ERYTHRITOL",
+      "name": "赤藓糖醇（食品级）",
+      "unit": "元/吨",
+      "source": "生意社报价中心（食品级，市场价）",
+      "category": "食品添加剂",
+      "latest": {
+        "date": "2026-07-31",
+        "price": 10000.0,
+        "price_low": 10000.0,
+        "price_high": 10000.0,
+        "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+      },
+      "series": [
+        {
+          "date": "2026-07-06",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-2.html"
+        },
+        {
+          "date": "2026-07-07",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-08",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-09",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-11",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-12",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-13",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-14",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-15",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-16",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-17",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-18",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-19",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-20",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-22",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-25",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-27",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        },
+        {
+          "date": "2026-07-31",
+          "price": 10000.0,
+          "price_low": 10000.0,
+          "price_high": 10000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1087-1.html"
+        }
+      ]
+    },
+    {
+      "code": "ACESULFAME_K",
+      "name": "安赛蜜（食品级）",
+      "unit": "元/吨",
+      "source": "生意社报价中心（食品级，市场价）",
+      "category": "食品添加剂",
+      "latest": {
+        "date": "2026-07-31",
+        "price": 75000.0,
+        "price_low": 75000.0,
+        "price_high": 75000.0,
+        "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+      },
+      "series": [
+        {
+          "date": "2026-07-06",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-07",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-08",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-09",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-11",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-12",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-13",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-14",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-15",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-16",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-17",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-18",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-19",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-20",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-22",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-25",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-27",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        },
+        {
+          "date": "2026-07-31",
+          "price": 75000.0,
+          "price_low": 75000.0,
+          "price_high": 75000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-17586-1.html"
+        }
+      ]
+    },
+    {
+      "code": "ASPARTAME",
+      "name": "阿斯巴甜（国产，98.0%-102.0%）",
+      "unit": "元/吨",
+      "source": "生意社报价中心（98.0 % ~ 102.0%，市场价）",
+      "category": "食品添加剂",
+      "latest": {
+        "date": "2026-07-31",
+        "price": 80000.0,
+        "price_low": 80000.0,
+        "price_high": 80000.0,
+        "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+      },
+      "series": [
+        {
+          "date": "2023-07-10",
+          "price": 100000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.yntw.com/2023/07/25574.html",
+          "date_precision": "day",
+          "date_label": "2023-07-10",
+          "quote_type": "reported_supplier_price",
+          "quality_note": "北京商报调查报道中的生产商报价，并非连续市场指数。",
+          "comparability_note": "报道未披露品牌和具体纯度，仅作为行业历史参考。",
+          "point_type": "reported_reference",
+          "default_hidden": true
+        },
+        {
+          "date": "2026-07-05",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-06",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-07",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-08",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-09",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-11",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-12",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-13",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-14",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-15",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-16",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-17",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-18",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-19",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-20",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-22",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-25",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-27",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        },
+        {
+          "date": "2026-07-31",
+          "price": 80000.0,
+          "price_low": 80000.0,
+          "price_high": 80000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9378-1.html"
+        }
+      ]
+    },
+    {
+      "code": "CYCLAMATE",
+      "name": "甜蜜素（食品级，99%）",
+      "unit": "元/吨",
+      "source": "公开行业报道及供应商批量报价（非连续市场报价）",
+      "category": "食品添加剂",
+      "latest": {
+        "date": "2026-07-02",
+        "price": 14000.0,
+        "price_low": 13000.0,
+        "price_high": 15000.0,
+        "source_url": "https://www.chemicalbook.com/SupplyInfo_483886.htm",
+        "date_precision": "day",
+        "date_label": "2026-07-02",
+        "quote_type": "supplier_tiered_offer",
+        "quality_note": "ChemicalBook供应商页面的食品级99%阶梯报价中点。",
+        "comparability_note": "1公斤与25公斤包装报价，不等同于吨级市场成交价。",
+        "point_type": "reported_observation",
+        "default_hidden": false
+      },
+      "series": [
+        {
+          "date": "2023-07-10",
+          "price": 24000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.yntw.com/2023/07/25574.html",
+          "date_precision": "day",
+          "date_label": "2023-07-10",
+          "quote_type": "reported_supplier_price",
+          "quality_note": "北京商报调查报道中的生产商报价，并非连续市场指数。",
+          "comparability_note": "报道未披露品牌和具体纯度，仅作为行业历史参考。",
+          "point_type": "reported_reference",
+          "default_hidden": true
+        },
+        {
+          "date": "2026-07-02",
+          "price": 14000.0,
+          "price_low": 13000.0,
+          "price_high": 15000.0,
+          "source_url": "https://www.chemicalbook.com/SupplyInfo_483886.htm",
+          "date_precision": "day",
+          "date_label": "2026-07-02",
+          "quote_type": "supplier_tiered_offer",
+          "quality_note": "ChemicalBook供应商页面的食品级99%阶梯报价中点。",
+          "comparability_note": "1公斤与25公斤包装报价，不等同于吨级市场成交价。",
+          "point_type": "reported_observation",
+          "default_hidden": false
+        }
+      ]
+    },
+    {
+      "code": "SACCHARIN_SODIUM",
+      "name": "糖精钠（食品级）",
+      "unit": "元/吨",
+      "source": "生意社报价中心（食品级，市场价）",
+      "category": "食品添加剂",
+      "latest": {
+        "date": "2026-08-01",
+        "price": 48000.0,
+        "price_low": 48000.0,
+        "price_high": 48000.0,
+        "source_url": "https://chem.100ppi.com/price/plist-9483-1.html"
+      },
+      "series": [
+        {
+          "date": "2026-07-29",
+          "price": 48000.0,
+          "price_low": 48000.0,
+          "price_high": 48000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9483-1.html"
+        },
+        {
+          "date": "2026-07-30",
+          "price": 48000.0,
+          "price_low": 48000.0,
+          "price_high": 48000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9483-1.html"
+        },
+        {
+          "date": "2026-07-31",
+          "price": 48000.0,
+          "price_low": 48000.0,
+          "price_high": 48000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9483-1.html"
+        },
+        {
+          "date": "2026-08-01",
+          "price": 48000.0,
+          "price_low": 48000.0,
+          "price_high": 48000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-9483-1.html"
+        }
+      ]
+    },
+    {
+      "code": "STEVIA_GLYCOSIDE",
+      "name": "甜菊糖苷（食品级SG90%）",
+      "unit": "元/吨",
+      "source": "生意社报价中心（食品级甜菊糖苷SG90%，市场价）",
+      "category": "食品添加剂",
+      "latest": {
+        "date": "2026-07-31",
+        "price": 95000.0,
+        "price_low": 95000.0,
+        "price_high": 95000.0,
+        "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+      },
+      "series": [
+        {
+          "date": "2023-07-10",
+          "price": 110000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.yntw.com/2023/07/25574.html",
+          "date_precision": "day",
+          "date_label": "2023-07-10",
+          "quote_type": "reported_supplier_price",
+          "quality_note": "北京商报调查报道中的生产商报价，并非连续市场指数。",
+          "comparability_note": "报道未披露糖苷纯度，不能与当前SG90%报价直接等同。",
+          "point_type": "reported_reference",
+          "default_hidden": true
+        },
+        {
+          "date": "2026-07-05",
+          "price": 90000.0,
+          "price_low": 90000.0,
+          "price_high": 90000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-06",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-07",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-08",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-09",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-11",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-12",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-13",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-14",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-15",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-16",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-17",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-18",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-19",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-20",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-22",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-25",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-27",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        },
+        {
+          "date": "2026-07-31",
+          "price": 95000.0,
+          "price_low": 95000.0,
+          "price_high": 95000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-3608-1.html"
+        }
+      ]
+    },
+    {
+      "code": "XYLITOL",
+      "name": "木糖醇（食品级）",
+      "unit": "元/吨",
+      "source": "生意社报价中心（食品级，市场价）",
+      "category": "食品添加剂",
+      "latest": {
+        "date": "2026-07-31",
+        "price": 18000.0,
+        "price_low": 18000.0,
+        "price_high": 18000.0,
+        "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+      },
+      "series": [
+        {
+          "date": "2026-07-06",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-07",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-08",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-09",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-11",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-12",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-13",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-14",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-15",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-16",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-17",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-18",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-19",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-20",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-22",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-25",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-27",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
+        },
+        {
+          "date": "2026-07-31",
+          "price": 18000.0,
+          "price_low": 18000.0,
+          "price_high": 18000.0,
+          "source_url": "https://chem.100ppi.com/price/plist-1125-1.html"
         }
       ]
     },
