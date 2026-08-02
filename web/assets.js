@@ -1,5 +1,6 @@
 let assetData = null;
 let activeAssetCategory = '全部';
+let showReportedReferencePoints = false;
 let assetCharts = [];
 let assetBrushes = [];
 let assetUpdatePollTimer = null;
@@ -336,12 +337,31 @@ function renderFilters() {
         });
         filters.appendChild(button);
     });
+
+    const referenceToggle = document.createElement('label');
+    referenceToggle.className = 'asset-reference-toggle';
+    const referenceCheckbox = document.createElement('input');
+    referenceCheckbox.type = 'checkbox';
+    referenceCheckbox.checked = showReportedReferencePoints;
+    referenceCheckbox.addEventListener('change', () => {
+        showReportedReferencePoints = referenceCheckbox.checked;
+        renderAssets();
+    });
+    const referenceTrack = document.createElement('span');
+    referenceTrack.className = 'asset-reference-toggle-track';
+    const referenceLabel = document.createElement('span');
+    referenceLabel.textContent = '显示旧报道参考点';
+    referenceToggle.append(referenceCheckbox, referenceTrack, referenceLabel);
+    filters.appendChild(referenceToggle);
 }
 
 function getPriceChange(asset) {
-    if (!asset.series || asset.series.length < 2) return null;
-    const latest = asset.series[asset.series.length - 1].price;
-    const previous = asset.series[asset.series.length - 2].price;
+    const comparableSeries = (asset.series || []).filter(
+        point => point.point_type !== 'reported_reference'
+    );
+    if (comparableSeries.length < 2) return null;
+    const latest = comparableSeries[comparableSeries.length - 1].price;
+    const previous = comparableSeries[comparableSeries.length - 2].price;
     if (!previous) return null;
     return (latest - previous) / previous;
 }
@@ -384,10 +404,34 @@ function createAssetCard(asset, index) {
     chartContainer.className = 'asset-chart';
     const canvas = document.createElement('canvas');
     canvas.id = `assetChart-${index}`;
-    chartContainer.appendChild(canvas);
+    if (asset.series && asset.series.length) {
+        chartContainer.appendChild(canvas);
+    } else {
+        const emptyChart = document.createElement('div');
+        emptyChart.className = 'asset-chart-empty';
+        emptyChart.textContent = '报道参考点已隐藏，打开上方开关后可查看';
+        chartContainer.appendChild(emptyChart);
+    }
 
     const brushContainer = document.createElement('div');
     brushContainer.className = 'asset-brush';
+
+    const referencePoints = (asset.series || []).filter(
+        point => point.point_type === 'reported_reference'
+    );
+    const hiddenReferenceCount = asset.hiddenReferenceCount || 0;
+    const referenceNote = document.createElement('div');
+    referenceNote.className = 'asset-reference-note';
+    const visibleReferenceText = referencePoints.length
+        ? `含 ${referencePoints.length} 个报道参考点：仅来自新闻、研报或企业报价，`
+            + '不是严谨的连续行情；三角形标记与主序列不可直接等同。'
+        : '';
+    const hiddenReferenceText = hiddenReferenceCount
+        ? `另有 ${hiddenReferenceCount} 个旧报道参考点已隐藏，可使用上方开关显示。`
+        : '';
+    referenceNote.textContent = [visibleReferenceText, hiddenReferenceText]
+        .filter(Boolean)
+        .join(' ');
 
     const source = document.createElement('div');
     source.className = 'asset-source';
@@ -403,18 +447,34 @@ function createAssetCard(asset, index) {
         source.appendChild(sourceLink);
     }
 
-    card.append(header, chartContainer, brushContainer, source);
+    card.append(header, chartContainer, brushContainer);
+    if (referencePoints.length || hiddenReferenceCount) {
+        card.appendChild(referenceNote);
+    }
+    card.appendChild(source);
     return { card, canvas, brushContainer };
 }
 
 function createAssetChart(canvas, asset) {
     const color = ASSET_COLORS[asset.code] || '#667eea';
-    const mainData = asset.series.map(point => ({
+    const toChartPoint = point => ({
         x: dateTimestamp(point.date),
         y: point.price,
-    }));
+        point,
+    });
+    const mainPoints = asset.series.filter(
+        point => point.point_type !== 'reported_reference'
+    );
+    const referencePoints = asset.series.filter(
+        point => point.point_type === 'reported_reference'
+    );
+    const mainData = mainPoints.map(toChartPoint);
+    const referenceData = referencePoints.map(toChartPoint);
     const hasRange = asset.series.some(
-        point => point.price_low != null && point.price_high != null
+        point =>
+            point.point_type !== 'reported_reference'
+            && point.price_low != null
+            && point.price_high != null
     );
     const datasets = [{
         label: `${asset.name}（${asset.unit}）`,
@@ -432,12 +492,9 @@ function createAssetChart(canvas, asset) {
         datasets.push(
             {
                 label: '区间上限',
-                data: asset.series
+                data: mainPoints
                     .filter(point => point.price_high != null)
-                    .map(point => ({
-                        x: dateTimestamp(point.date),
-                        y: point.price_high,
-                    })),
+                    .map(point => ({ ...toChartPoint(point), y: point.price_high })),
                 borderColor: `${color}99`,
                 borderDash: [4, 3],
                 borderWidth: 1,
@@ -446,12 +503,9 @@ function createAssetChart(canvas, asset) {
             },
             {
                 label: '区间下限',
-                data: asset.series
+                data: mainPoints
                     .filter(point => point.price_low != null)
-                    .map(point => ({
-                        x: dateTimestamp(point.date),
-                        y: point.price_low,
-                    })),
+                    .map(point => ({ ...toChartPoint(point), y: point.price_low })),
                 borderColor: `${color}99`,
                 borderDash: [4, 3],
                 borderWidth: 1,
@@ -459,6 +513,20 @@ function createAssetChart(canvas, asset) {
                 fill: false,
             }
         );
+    }
+    if (referenceData.length) {
+        datasets.push({
+            label: '报道参考点（非连续）',
+            data: referenceData,
+            borderColor: '#b7791f',
+            backgroundColor: '#fff7ed',
+            borderWidth: 2,
+            pointStyle: 'triangle',
+            pointRadius: 5,
+            pointHoverRadius: 7,
+            showLine: false,
+            fill: false,
+        });
     }
 
     return new Chart(canvas.getContext('2d'), {
@@ -478,13 +546,31 @@ function createAssetChart(canvas, asset) {
                     samples: 600,
                 },
                 legend: {
-                    display: hasRange,
+                    display: hasRange || referenceData.length > 0,
                     labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 } },
                 },
                 tooltip: {
                     callbacks: {
+                        title: contexts => {
+                            const point = contexts[0] && contexts[0].raw.point;
+                            return point
+                                ? point.date_label || formatDate(point.date)
+                                : '';
+                        },
                         label: context =>
                             `${context.dataset.label}: ${formatNumber(context.raw.y)} ${asset.unit}`,
+                        afterLabel: context => {
+                            const point = context.raw.point;
+                            if (!point || point.point_type !== 'reported_reference') {
+                                return '';
+                            }
+                            return [
+                                `说明：${point.quality_note || '报道参考，非连续行情。'}`,
+                                point.comparability_note
+                                    ? `口径：${point.comparability_note}`
+                                    : '',
+                            ].filter(Boolean);
+                        },
                     },
                 },
             },
@@ -526,18 +612,37 @@ function renderAssets() {
     }
 
     assets.forEach((asset, index) => {
-        const { card, canvas, brushContainer } = createAssetCard(asset, index);
+        const hiddenReferencePoints = asset.series.filter(
+            point => point.default_hidden === true
+        );
+        const visibleSeries = showReportedReferencePoints
+            ? asset.series
+            : asset.series.filter(
+                point => point.default_hidden !== true
+            );
+        const visibleAsset = {
+            ...asset,
+            series: visibleSeries,
+            latest: visibleSeries[visibleSeries.length - 1] || null,
+            hiddenReferenceCount: showReportedReferencePoints
+                ? 0
+                : hiddenReferencePoints.length,
+        };
+        const { card, canvas, brushContainer } = createAssetCard(
+            visibleAsset,
+            index
+        );
         grid.appendChild(card);
-        if (asset.series.length) {
-            const chart = createAssetChart(canvas, asset);
+        if (visibleAsset.series.length) {
+            const chart = createAssetChart(canvas, visibleAsset);
             assetCharts.push(chart);
-            const dates = asset.series.map(point => point.date);
-            const values = asset.series.map(point => Number(point.price));
+            const dates = visibleAsset.series.map(point => point.date);
+            const values = visibleAsset.series.map(point => Number(point.price));
             const brush = createAssetBrush(
                 brushContainer,
                 dates,
                 values,
-                ASSET_COLORS[asset.code] || '#667eea',
+                ASSET_COLORS[visibleAsset.code] || '#667eea',
                 (startDate, endDate) => {
                     chart.options.scales.x.min = dateTimestamp(startDate);
                     chart.options.scales.x.max = dateTimestamp(endDate);
@@ -545,6 +650,8 @@ function renderAssets() {
                 }
             );
             if (brush) assetBrushes.push(brush);
+        } else {
+            brushContainer.hidden = true;
         }
     });
 }

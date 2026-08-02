@@ -19,9 +19,10 @@ HOUSE_PRICE_ROOT = Path(__file__).resolve().parent
 OUTPUT_PATH = HOUSE_PRICE_ROOT / "results" / "asset_price_data.json"
 REQUEST_HEADERS = {"User-Agent": "Mozilla/5.0 (HousePrice asset collector)"}
 MAX_HISTORY_DAYS = 3650
-SULFUR_CHART_URL = (
+SULFUR_RECENT_CHART_URL = (
     "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
 )
+SULFUR_HISTORY_URL = "https://www.100ppi.com/cindex/?f=n_graph&ppid=427"
 SULFUR_DETAIL_URL = "https://www.100ppi.com/rawmex/detail-427.html"
 PYRITE_LIST_URL = "https://www.100ppi.com/mprice/plist-1-561-{page}.html"
 PHOSPHATE_ROCK_HISTORY_URL = (
@@ -76,6 +77,227 @@ SMM_ALUMINUM_ASSETS = {
         "source_url": "https://hq.smm.cn/aluminum/category/201102250311",
     },
 }
+
+REFERENCE_POINTS = {
+    "PYRITE": [
+        {
+            "date": "2022-07-31",
+            "price": 450.0,
+            "price_low": 450.0,
+            "price_high": 450.0,
+            "source_url": "https://www.100ppi.com/news/detail-20220731-2221680.html",
+            "date_precision": "day",
+            "date_label": "2022-07-31",
+            "quote_type": "supplier_offer",
+            "quality_note": "生意社历史报价报道，属于供应商报价，并非连续市场指数。",
+            "comparability_note": "国产硫化铁含量45%-47%，与当前规格一致。",
+        },
+    ],
+    "PHOSPHATE_ROCK": [
+        {
+            "date": "2016-06-09",
+            "price": 340.0,
+            "price_low": None,
+            "price_high": None,
+            "source_url": "http://www.cnfert.com/ylgy/2016-06-09/72744.html",
+            "date_precision": "day",
+            "date_label": "2016-06-09",
+            "quote_type": "supplier_offer",
+            "quality_note": "行业报道中的企业报价，仅作为历史参考点，并非连续行情。",
+            "comparability_note": (
+                "同为四川马边30%磷精矿县城交货价，但报价企业为马边南方矿业，"
+                "当前主序列为马边瑞丰矿业，税费口径也可能不同。"
+            ),
+        },
+        {
+            "date": "2016-07-07",
+            "price": 340.0,
+            "price_low": None,
+            "price_high": None,
+            "source_url": "http://www.cnfert.com/ylgy/2016-07-07/73804.html",
+            "date_precision": "day",
+            "date_label": "2016-07-07",
+            "quote_type": "supplier_offer",
+            "quality_note": "行业报道中的企业报价，仅作为历史参考点，并非连续行情。",
+            "comparability_note": (
+                "同为四川马边30%磷矿石，但报价企业为马边南方矿业，"
+                "当前主序列为马边瑞丰矿业，交货和税费口径可能不同。"
+            ),
+        },
+    ],
+    "DYE_REDUCTION": [
+        {
+            "date": "2016-06-30",
+            "price": 33000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": "https://www.chyxx.com/industry/201608/437750.html",
+            "date_precision": "half_year",
+            "date_label": "2016年上半年",
+            "quote_type": "reported_market_price",
+            "quality_note": "行业分析报道中的阶段价格，仅作为历史参考点，并非精确日价。",
+            "comparability_note": "报道明确指向分散染料还原物。",
+        },
+        {
+            "date": "2019-04-30",
+            "price": 118000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": "https://consult.pharnexcloud.com/report/detail/114627.html",
+            "date_precision": "event",
+            "date_label": "2019年响水事件后",
+            "quote_type": "reported_historical_high",
+            "quality_note": "后续证券研报转述百川盈孚历史高点，仅作事件参考。",
+            "comparability_note": "报道指向还原物历史高点，但未披露精确交易日期。",
+        },
+        {
+            "date": "2020-01-31",
+            "price": 40000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": "https://j.eastday.com/m/1583241305010611",
+            "date_precision": "month",
+            "date_label": "2020年春节前",
+            "quote_type": "reported_market_price",
+            "quality_note": "新闻报道中的阶段价格，仅作为历史参考点，并非精确日价。",
+            "comparability_note": "报道明确指向分散染料还原物。",
+        },
+        {
+            "date": "2020-03-01",
+            "price": 100000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": "https://j.eastday.com/m/1583241305010611",
+            "date_precision": "month",
+            "date_label": "2020年3月初",
+            "quote_type": "reported_market_price",
+            "quality_note": "新闻报道称价格超过10万元/吨，图中按10万元记录下限参考。",
+            "comparability_note": "报道明确指向分散染料还原物。",
+        },
+        {
+            "date": "2021-01-01",
+            "price": 42000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": "https://www.jjchem.net/news/202103/03227038.html",
+            "date_precision": "month",
+            "date_label": "2021年1月",
+            "quote_type": "reported_offer",
+            "quality_note": "中国化工报转载中的含税报价，仅作为历史参考点。",
+            "comparability_note": "还原物含税报价，不等同于统一市场成交指数。",
+        },
+        {
+            "date": "2021-03-15",
+            "price": 48000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": "https://www.jjchem.net/news/202103/03227038.html",
+            "date_precision": "half_month",
+            "date_label": "2021年3月中旬",
+            "quote_type": "reported_offer",
+            "quality_note": "中国化工报转载中的含税报价，仅作为历史参考点。",
+            "comparability_note": "还原物含税报价，不等同于统一市场成交指数。",
+        },
+        {
+            "date": "2025-12-31",
+            "price": 25000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": DYE_REDUCTION_EARLY_URL,
+            "date_precision": "year",
+            "date_label": "2025年低位/年末",
+            "quote_type": "reported_market_price",
+            "quality_note": "报道对年内低位的回顾，仅作为历史参考点，并非精确日价。",
+            "comparability_note": "报道明确指向分散染料还原物。",
+        },
+        {
+            "date": "2026-02-11",
+            "price": 70000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": DYE_REDUCTION_FEBRUARY_URL,
+            "date_precision": "day",
+            "date_label": "2026-02-11",
+            "quote_type": "reported_market_price",
+            "quality_note": "生意社行情报道中的市场价格，并非连续报价序列。",
+            "comparability_note": "报道明确指向分散染料还原物。",
+        },
+        {
+            "date": "2026-03-05",
+            "price": 100000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": DYE_REDUCTION_EARLY_URL,
+            "date_precision": "day",
+            "date_label": "2026-03-05",
+            "quote_type": "reported_market_price",
+            "quality_note": "行业报道中的市场价格，并非连续报价序列。",
+            "comparability_note": "报道明确指向分散染料还原物。",
+        },
+        {
+            "date": "2026-07-21",
+            "price": 120000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": DYE_REDUCTION_LATEST_URL,
+            "date_precision": "day",
+            "date_label": "2026-07-21",
+            "quote_type": "reported_offer",
+            "quality_note": "企业调价函报道中的报价，并非市场成交价或连续指数。",
+            "comparability_note": "报道明确指向分散染料还原物。",
+        },
+    ],
+    "VD3": [
+        {
+            "date": point_date,
+            "price": price,
+            "price_low": None,
+            "price_high": None,
+            "source_url": (
+                "https://pdf.dfcfw.com/pdf/H3_AP202408051639134632_1.pdf"
+                "?1722851414000.pdf="
+            ),
+            "date_precision": "day",
+            "date_label": point_date,
+            "quote_type": "secondary_market_series",
+            "quality_note": "证券研究报告引用iFinD的历史节点，仅作为二手报道参考。",
+            "comparability_note": "中国饲料级维生素D3价格，报告未逐点披露具体品牌。",
+        }
+        for point_date, price in (
+            ("2016-03-01", 66.5),
+            ("2016-03-28", 187.5),
+            ("2017-05-31", 67.5),
+            ("2017-06-23", 425.0),
+            ("2018-06-04", 260.0),
+            ("2018-06-28", 625.0),
+            ("2020-02-10", 97.5),
+            ("2020-04-22", 360.0),
+            ("2024-05-23", 56.5),
+            ("2024-07-24", 255.0),
+        )
+    ],
+}
+
+DEFAULT_VISIBLE_REFERENCE_DATES = {
+    "DYE_REDUCTION": {
+        "2025-12-31",
+        "2026-02-11",
+        "2026-03-05",
+        "2026-07-21",
+    },
+}
+
+for code, reference_points in REFERENCE_POINTS.items():
+    visible_dates = DEFAULT_VISIBLE_REFERENCE_DATES.get(code, set())
+    for reference_point in reference_points:
+        reference_point["point_type"] = (
+            "reported_observation"
+            if reference_point["date"] in visible_dates
+            else "reported_reference"
+        )
+        reference_point["default_hidden"] = (
+            reference_point["date"] not in visible_dates
+        )
 
 CATEGORY_BY_CODE = {
     "SULFUR": "大宗商品",
@@ -139,15 +361,24 @@ def _fetch_smm_assets(
         config["product_id"] for config in configs.values()
     )
     today = date.today()
-    params = {
-        "product_ids": product_ids,
-        "begin_date": (today - timedelta(days=history_days)).isoformat(),
-        "end_date": today.isoformat(),
-    }
-    history_by_id = {
-        item["product_id"]: item
-        for item in _get_smm_data("history_price", params)
-    }
+    history_start = today - timedelta(days=history_days)
+    history_by_id: dict[str, dict] = {}
+    window_start = history_start
+    while window_start <= today:
+        window_end = min(window_start + timedelta(days=1094), today)
+        params = {
+            "product_ids": product_ids,
+            "begin_date": window_start.isoformat(),
+            "end_date": window_end.isoformat(),
+        }
+        for item in _get_smm_data("history_price", params):
+            product_id = item["product_id"]
+            accumulated = history_by_id.setdefault(
+                product_id,
+                {**item, "price_detail": []},
+            )
+            accumulated["price_detail"].extend(item.get("price_detail", []))
+        window_start = window_end + timedelta(days=1)
     latest_by_id = {
         item["product_id"]: item
         for item in _get_smm_data("latest_price", {"product_ids": product_ids})
@@ -281,6 +512,14 @@ def _existing_series_by_code(
     }
 
 
+def _reference_points_by_date(code: str) -> dict[str, dict]:
+    """复制已核验的报道参考点，避免抓取流程修改模块级配置。"""
+    return {
+        point["date"]: dict(point)
+        for point in REFERENCE_POINTS.get(code, [])
+    }
+
+
 def _base62(value: int) -> str:
     alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     encoded = ""
@@ -315,40 +554,77 @@ def _unpack_packer(source: str) -> str:
     return payload
 
 
-def fetch_sulfur_asset() -> dict:
-    unpacked = _unpack_packer(_get_html(SULFUR_CHART_URL))
-    dates_match = re.search(
+def fetch_sulfur_asset(history_days: int = MAX_HISTORY_DAYS) -> dict:
+    """从生意社同商品年度图拉取硫磺日度历史。"""
+    source = _get_html(SULFUR_HISTORY_URL)
+    series_matches = re.findall(
+        r"name:\s*'(?P<year>\d{4})'.*?"
+        r"data:\s*\[(?P<data>.*?)\]\s*[,}]",
+        source,
+        re.DOTALL,
+    )
+    if not series_matches:
+        raise ValueError("无法解析生意社硫磺年度价格序列")
+
+    cutoff = date.today() - timedelta(days=history_days)
+    points_by_date = {}
+    for year_text, price_data in series_matches:
+        prices = [
+            float(value.strip())
+            for value in price_data.split(",")
+            if value.strip()
+        ]
+        if not prices:
+            raise ValueError(f"生意社硫磺 {year_text} 年数据长度异常")
+        year_start = date(int(year_text), 1, 1)
+        maximum_days = (date(int(year_text) + 1, 1, 1) - year_start).days
+        if len(prices) > maximum_days:
+            raise ValueError(f"生意社硫磺 {year_text} 年数据长度异常")
+        for day_offset, price in enumerate(prices):
+            point_date = year_start + timedelta(days=day_offset)
+            if point_date < cutoff:
+                continue
+            points_by_date[point_date.isoformat()] = {
+                "date": point_date.isoformat(),
+                "price": price,
+                "price_low": None,
+                "price_high": None,
+                "source_url": SULFUR_HISTORY_URL,
+            }
+
+    recent_source = _unpack_packer(_get_html(SULFUR_RECENT_CHART_URL))
+    recent_dates = re.search(
         r"xAxis:\{.*?data:\[(?P<data>.*?)\]\},yAxis:",
-        unpacked,
+        recent_source,
         re.DOTALL,
     )
-    prices_match = re.search(
+    recent_prices = re.search(
         r"series:\[.*?data:\[(?P<data>[\d.,\s]+)\]",
-        unpacked,
+        recent_source,
         re.DOTALL,
     )
-    if not dates_match or not prices_match:
-        raise ValueError("无法解析生意社硫磺价格序列")
-
-    dates = re.findall(r"\d{4}-\d{2}-\d{2}", dates_match.group("data"))
-    prices = [
-        float(value.replace(",", ""))
-        for value in prices_match.group("data").split(",")
-        if value.strip()
-    ]
-    if not dates or len(dates) != len(prices):
-        raise ValueError("生意社硫磺价格日期与数值数量不一致")
-
-    series = [
-        {
-            "date": point_date,
-            "price": price,
-            "price_low": None,
-            "price_high": None,
-            "source_url": SULFUR_CHART_URL,
-        }
-        for point_date, price in zip(dates, prices)
-    ]
+    if recent_dates and recent_prices:
+        dates = re.findall(r"\d{4}-\d{2}-\d{2}", recent_dates.group("data"))
+        prices = [
+            float(value.replace(",", ""))
+            for value in recent_prices.group("data").split(",")
+            if value.strip()
+        ]
+        if len(dates) != len(prices):
+            raise ValueError("生意社硫磺近期价格日期与数值数量不一致")
+        for point_date, price in zip(dates, prices):
+            if date.fromisoformat(point_date) < cutoff:
+                continue
+            points_by_date[point_date] = {
+                "date": point_date,
+                "price": price,
+                "price_low": None,
+                "price_high": None,
+                "source_url": SULFUR_RECENT_CHART_URL,
+            }
+    if not points_by_date:
+        raise ValueError("生意社硫磺年度图未返回指定时间范围的数据")
+    series = [points_by_date[key] for key in sorted(points_by_date)]
     series[-1]["source_url"] = SULFUR_DETAIL_URL
     return {
         "code": "SULFUR",
@@ -392,18 +668,17 @@ def fetch_pyrite_asset(max_pages: int = 10) -> dict:
     if not prices_by_date:
         raise ValueError("生意社报价中心未找到硫铁矿报价")
 
-    series = []
+    points_by_date = _reference_points_by_date("PYRITE")
     for point_date in sorted(prices_by_date):
         prices = prices_by_date[point_date]
-        series.append(
-            {
-                "date": point_date,
-                "price": sum(prices) / len(prices),
-                "price_low": min(prices),
-                "price_high": max(prices),
-                "source_url": source_urls_by_date[point_date],
-            }
-        )
+        points_by_date[point_date] = {
+            "date": point_date,
+            "price": sum(prices) / len(prices),
+            "price_low": min(prices),
+            "price_high": max(prices),
+            "source_url": source_urls_by_date[point_date],
+        }
+    series = [points_by_date[key] for key in sorted(points_by_date)]
     return {
         "code": "PYRITE",
         "name": "硫铁矿",
@@ -418,6 +693,7 @@ def fetch_pyrite_asset(max_pages: int = 10) -> dict:
 def fetch_phosphate_rock_asset(history_pages: int = 15) -> dict:
     """拉取隆众资讯四川马边 30% 品位磷精粉公开报价。"""
     points_by_date = _existing_series_by_code("PHOSPHATE_ROCK")
+    points_by_date.update(_reference_points_by_date("PHOSPHATE_ROCK"))
     article_urls = []
     for page in range(1, history_pages + 1):
         page_url = (
@@ -527,41 +803,12 @@ def fetch_dye_reduction_asset() -> dict:
     ):
         raise ValueError("公开报道中的分散染料还原物报价格式已变化")
 
-    series = [
-        {
-            "date": "2025-12-31",
-            "price": 25000,
-            "price_low": None,
-            "price_high": None,
-            "source_url": DYE_REDUCTION_EARLY_URL,
-        },
-        {
-            "date": "2026-02-11",
-            "price": 70000,
-            "price_low": None,
-            "price_high": None,
-            "source_url": DYE_REDUCTION_FEBRUARY_URL,
-        },
-        {
-            "date": "2026-03-05",
-            "price": 100000,
-            "price_low": None,
-            "price_high": None,
-            "source_url": DYE_REDUCTION_EARLY_URL,
-        },
-        {
-            "date": "2026-07-21",
-            "price": 120000,
-            "price_low": None,
-            "price_high": None,
-            "source_url": DYE_REDUCTION_LATEST_URL,
-        },
-    ]
+    series = list(_reference_points_by_date("DYE_REDUCTION").values())
     return {
         "code": "DYE_REDUCTION",
         "name": "分散染料还原物",
         "unit": "元/吨",
-        "source": "ChemNet、生意社公开报道（非连续报价）",
+        "source": "ChemNet、生意社公开精确报价（非连续序列）",
         "category": "化工中间体",
         "latest": series[-1],
         "series": series,
@@ -578,6 +825,7 @@ def _parse_price_range(text: str) -> tuple[float, float]:
 def fetch_vd3_asset(max_pages: int = 60) -> dict:
     """遍历公开归档，拉取全部可获得的饲料级维生素 D3 报价。"""
     points_by_date = _existing_series_by_code("VD3")
+    points_by_date.update(_reference_points_by_date("VD3"))
     candidates: dict[str, str] = {}
     seen_article_urls = set()
     consecutive_empty_pages = 0
@@ -1044,7 +1292,11 @@ def main() -> int:
     fetch_returncode = 0
     if args.fetch:
         fetchers = [
-            ("硫磺", {"SULFUR"}, fetch_sulfur_asset),
+            (
+                "硫磺",
+                {"SULFUR"},
+                lambda: fetch_sulfur_asset(args.history_days),
+            ),
             ("硫铁矿", {"PYRITE"}, fetch_pyrite_asset),
             (
                 "氧化铝",
