@@ -43,6 +43,44 @@ BLOOD_PRODUCT_PRICE_URL = (
     "channel_6305cf96328b0c0108580897/doc_683919151427114bd64b539d.html"
 )
 FEEDTRADE_LIST_URL = "https://www.feedtrade.com.cn/additive/vitamin/index.html"
+VITAMIN_ASSETS = {
+    "VIT_A": {
+        "name": "维生素A（饲料级，50万IU）",
+        "pattern": r"^VA(?:[（(].*50万IU.*)?$",
+    },
+    "VD3": {
+        "name": "维生素D3（饲料级）",
+        "pattern": r"^D3$",
+    },
+    "VIT_E": {
+        "name": "维生素E（饲料级，50%）",
+        "pattern": r"^(?:50%)?VE$",
+    },
+    "VIT_C": {
+        "name": "维生素C（原粉）",
+        "pattern": r"^VC原粉$",
+    },
+    "VIT_B1": {
+        "name": "维生素B1（硝酸型）",
+        "pattern": r"^B1(?:[（(].*硝酸.*)?$",
+    },
+    "VIT_B2": {
+        "name": "维生素B2（饲料级，80%）",
+        "pattern": r"^(?:80%)?B2$",
+    },
+    "VIT_B6": {
+        "name": "维生素B6（饲料级）",
+        "pattern": r"^B6$",
+    },
+    "VIT_B12": {
+        "name": "维生素B12（饲料级）",
+        "pattern": r"^B12$",
+    },
+    "VIT_K3": {
+        "name": "维生素K3（MSB型）",
+        "pattern": r"^K3(?:[（(].*MSB.*)?$",
+    },
+}
 XINDE_API_ROOT = "https://www.xindemarinenews.com.cn/jeecgboot/xinde"
 CCGP_SEARCH_URL = "https://search.ccgp.gov.cn/bxsearch"
 SMM_API_URL = "https://platform.smm.cn/aggdatacenter/user/v1/agg_data"
@@ -396,7 +434,15 @@ CATEGORY_BY_CODE = {
     "SB_INTL": "小金属",
     "W_CN": "小金属",
     "W_INTL": "小金属",
-    "VD3": "饲料添加剂",
+    "VD3": "维生素",
+    "VIT_A": "维生素",
+    "VIT_E": "维生素",
+    "VIT_C": "维生素",
+    "VIT_B1": "维生素",
+    "VIT_B2": "维生素",
+    "VIT_B6": "维生素",
+    "VIT_B12": "维生素",
+    "VIT_K3": "维生素",
     "BLOOD_ALBUMIN": "血液制品",
     "BLOOD_IVIG": "血液制品",
     "TD3C": "VLCC油运",
@@ -409,7 +455,7 @@ CATEGORY_ORDER = [
     "大宗商品",
     "化工中间体",
     "小金属",
-    "饲料添加剂",
+    "维生素",
     "VLCC油运",
     "血液制品",
     "生物医药上游",
@@ -422,6 +468,15 @@ ASSET_ORDER = {
     "PHOSPHATE_ROCK": 4,
     "BLOOD_ALBUMIN": 0,
     "BLOOD_IVIG": 1,
+    "VIT_A": 0,
+    "VD3": 1,
+    "VIT_E": 2,
+    "VIT_C": 3,
+    "VIT_B1": 4,
+    "VIT_B2": 5,
+    "VIT_B6": 6,
+    "VIT_B12": 7,
+    "VIT_K3": 8,
 }
 
 
@@ -1002,10 +1057,13 @@ def _parse_price_range(text: str) -> tuple[float, float]:
     return tuple(float(value.replace(",", "")) for value in match.groups())
 
 
-def fetch_vd3_asset(max_pages: int = 60) -> dict:
-    """遍历公开归档，拉取全部可获得的饲料级维生素 D3 报价。"""
-    points_by_date = _existing_series_by_code("VD3")
-    points_by_date.update(_reference_points_by_date("VD3"))
+def fetch_vitamin_assets(max_pages: int = 60) -> list[dict]:
+    """遍历同一行情归档，一次拉取多种饲料级维生素报价。"""
+    points_by_code = {
+        code: _existing_series_by_code(code)
+        for code in VITAMIN_ASSETS
+    }
+    points_by_code["VD3"].update(_reference_points_by_date("VD3"))
     candidates: dict[str, str] = {}
     seen_article_urls = set()
     consecutive_empty_pages = 0
@@ -1025,7 +1083,10 @@ def fetch_vd3_asset(max_pages: int = 60) -> dict:
                 continue
             seen_article_urls.add(href)
             point_date = match.group(1)
-            if point_date not in points_by_date:
+            if any(
+                point_date not in points_by_code[code]
+                for code in VITAMIN_ASSETS
+            ):
                 candidates[point_date] = href
             page_candidates += 1
         if page_candidates == 0:
@@ -1035,53 +1096,83 @@ def fetch_vd3_asset(max_pages: int = 60) -> dict:
         else:
             consecutive_empty_pages = 0
 
-    def parse_article(item: tuple[str, str]) -> tuple[str, dict] | None:
+    def parse_article(
+        item: tuple[str, str],
+    ) -> tuple[str, dict[str, dict]] | None:
         article_date, article_url = item
         try:
             article_soup = BeautifulSoup(_get_html(article_url), "html.parser")
         except requests.RequestException:
             return None
+        article_points = {}
         for row in article_soup.select("tr"):
             cells = row.find_all(["td", "th"])
-            if not cells or cells[0].get_text(" ", strip=True).upper() != "D3":
-                continue
             if len(cells) < 3:
-                return None
+                continue
+            label = re.sub(
+                r"\s+",
+                "",
+                cells[0].get_text(" ", strip=True).upper(),
+            )
+            code = next(
+                (
+                    asset_code
+                    for asset_code, config in VITAMIN_ASSETS.items()
+                    if re.fullmatch(config["pattern"], label, re.IGNORECASE)
+                ),
+                None,
+            )
+            if not code:
+                continue
             try:
                 price_low, price_high = _parse_price_range(
                     cells[2].get_text(" ", strip=True)
                 )
             except ValueError:
-                return None
-            return (
-                article_date,
-                {
-                    "date": article_date,
-                    "price": (price_low + price_high) / 2,
-                    "price_low": price_low,
-                    "price_high": price_high,
-                    "source_url": article_url,
-                },
-            )
-        return None
+                continue
+            article_points[code] = {
+                "date": article_date,
+                "price": (price_low + price_high) / 2,
+                "price_low": price_low,
+                "price_high": price_high,
+                "source_url": article_url,
+            }
+        return (article_date, article_points) if article_points else None
 
     with ThreadPoolExecutor(max_workers=6) as executor:
         for parsed in executor.map(parse_article, candidates.items()):
             if parsed:
-                points_by_date[parsed[0]] = parsed[1]
-    if not points_by_date:
-        raise ValueError("饲料行业信息网未找到维生素 D3 报价")
+                article_date, article_points = parsed
+                for code, point in article_points.items():
+                    points_by_code[code][article_date] = point
 
-    series = [points_by_date[key] for key in sorted(points_by_date)]
-    return {
-        "code": "VD3",
-        "name": "维生素D3（饲料级）",
-        "unit": "元/公斤",
-        "source": "饲料行业信息网",
-        "category": "饲料添加剂",
-        "latest": series[-1],
-        "series": series,
-    }
+    assets = []
+    for code, config in VITAMIN_ASSETS.items():
+        points_by_date = points_by_code[code]
+        if not points_by_date:
+            raise ValueError(f"饲料行业信息网未找到{config['name']}报价")
+        series = [points_by_date[key] for key in sorted(points_by_date)]
+        assets.append(
+            {
+                "code": code,
+                "name": config["name"],
+                "unit": "元/公斤",
+                "source": "饲料行业信息网",
+                "category": "维生素",
+                "latest": series[-1],
+                "series": series,
+            }
+        )
+    return assets
+
+
+def fetch_vd3_asset(max_pages: int = 60) -> dict:
+    """兼容旧调用，仅返回维生素 D3。"""
+    return next(
+        asset
+        for asset in fetch_vitamin_assets(max_pages)
+        if asset["code"] == "VD3"
+    )
 
 
 def _number(text: str) -> float:
@@ -1500,7 +1591,11 @@ def main() -> int:
                 set(SMM_ASSETS),
                 lambda: fetch_small_metal_assets(args.history_days),
             ),
-            ("维生素 D3", {"VD3"}, fetch_vd3_asset),
+            (
+                "维生素",
+                set(VITAMIN_ASSETS),
+                fetch_vitamin_assets,
+            ),
             (
                 "VLCC 油运",
                 {"TD3C", "TD3C_WS", "TD15", "TD15_WS"},
