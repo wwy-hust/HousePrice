@@ -1,6 +1,7 @@
 let assetData = null;
 let activeAssetCategory = '全部';
 let assetCharts = [];
+let assetBrushes = [];
 let assetUpdatePollTimer = null;
 
 const ASSET_COLORS = {
@@ -9,6 +10,7 @@ const ASSET_COLORS = {
     ALUMINA: '#64748b',
     ALUMINUM: '#0ea5e9',
     PHOSPHATE_ROCK: '#84cc16',
+    DYE_REDUCTION: '#db2777',
     SB_CN: '#b45309',
     SB_INTL: '#0f766e',
     W_CN: '#475569',
@@ -20,6 +22,230 @@ const ASSET_COLORS = {
     TD15_WS: '#06b6d4',
     MONKEY: '#10b981',
 };
+
+function indexAtOrAfter(dates, target) {
+    for (let index = 0; index < dates.length; index += 1) {
+        if (dates[index] >= target) return index;
+    }
+    return dates.length - 1;
+}
+
+function dateTimestamp(value) {
+    return new Date(`${value}T00:00:00`).getTime();
+}
+
+function createAssetBrush(container, dates, values, color, onChange) {
+    if (dates.length < 2) {
+        container.hidden = true;
+        return null;
+    }
+
+    const current = document.createElement('div');
+    current.className = 'asset-brush-current';
+    const leftLabel = document.createElement('b');
+    const rightLabel = document.createElement('b');
+    current.append(leftLabel, rightLabel);
+
+    const track = document.createElement('div');
+    track.className = 'asset-brush-track';
+    const spark = document.createElement('canvas');
+    spark.className = 'asset-brush-spark';
+    const windowElement = document.createElement('div');
+    windowElement.className = 'asset-brush-window';
+    const leftHandle = document.createElement('div');
+    leftHandle.className = 'asset-brush-handle left';
+    const rightHandle = document.createElement('div');
+    rightHandle.className = 'asset-brush-handle right';
+    windowElement.append(leftHandle, rightHandle);
+    track.append(spark, windowElement);
+
+    const ticks = document.createElement('div');
+    ticks.className = 'asset-brush-ticks';
+    container.append(current, track, ticks);
+
+    const pointCount = dates.length;
+    let startIndex = 0;
+    let endIndex = pointCount - 1;
+
+    const place = (element, fraction) => {
+        element.style.left = `${fraction * 100}%`;
+        element.style.transform = fraction < 0.035
+            ? 'translateX(0)'
+            : fraction > 0.965
+                ? 'translateX(-100%)'
+                : 'translateX(-50%)';
+    };
+
+    const firstYear = Number(dates[0].slice(0, 4));
+    const lastYear = Number(dates[pointCount - 1].slice(0, 4));
+    const yearStep = lastYear - firstYear > 12 ? 2 : 1;
+    for (let year = firstYear; year <= lastYear; year += yearStep) {
+        const index = indexAtOrAfter(dates, `${year}-01-01`);
+        const tick = document.createElement('span');
+        tick.className = 'asset-brush-tick';
+        tick.textContent = year;
+        ticks.appendChild(tick);
+        place(tick, index / (pointCount - 1));
+    }
+
+    function drawSparkline() {
+        const width = track.clientWidth;
+        const height = track.clientHeight;
+        if (!width) return;
+        const ratio = window.devicePixelRatio || 1;
+        spark.width = Math.round(width * ratio);
+        spark.height = Math.round(height * ratio);
+        const context = spark.getContext('2d');
+        context.scale(ratio, ratio);
+        context.clearRect(0, 0, width, height);
+        const validValues = values.filter(value => Number.isFinite(value));
+        if (!validValues.length) return;
+        const minimum = Math.min(...validValues);
+        const maximum = Math.max(...validValues);
+        const range = maximum - minimum || 1;
+        context.beginPath();
+        let started = false;
+        values.forEach((value, index) => {
+            if (!Number.isFinite(value)) return;
+            const x = (index / (pointCount - 1)) * width;
+            const y = height - ((value - minimum) / range) * (height * 0.7)
+                - height * 0.15;
+            if (started) context.lineTo(x, y);
+            else {
+                context.moveTo(x, y);
+                started = true;
+            }
+        });
+        context.strokeStyle = `${color}88`;
+        context.lineWidth = 1.4;
+        context.stroke();
+        context.lineTo(width, height);
+        context.lineTo(0, height);
+        context.closePath();
+        context.fillStyle = `${color}12`;
+        context.fill();
+    }
+
+    function applyRange(fireChange = true) {
+        const width = track.clientWidth || 1;
+        const startFraction = startIndex / (pointCount - 1);
+        const endFraction = endIndex / (pointCount - 1);
+        windowElement.style.left = `${startFraction * width}px`;
+        windowElement.style.width = `${Math.max(
+            (endFraction - startFraction) * width,
+            12
+        )}px`;
+        leftLabel.textContent = dates[startIndex];
+        rightLabel.textContent = dates[endIndex];
+        place(leftLabel, startFraction);
+        place(rightLabel, endFraction);
+        if (fireChange) onChange(dates[startIndex], dates[endIndex]);
+    }
+
+    let dragMode = null;
+    let dragStartX = 0;
+    let initialStart = 0;
+    let initialEnd = 0;
+    const pointerX = event => {
+        const bounds = track.getBoundingClientRect();
+        const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+        return clientX - bounds.left;
+    };
+    const stopDrag = () => {
+        dragMode = null;
+        document.removeEventListener('mousemove', moveDrag);
+        document.removeEventListener('mouseup', stopDrag);
+        document.removeEventListener('touchmove', moveDrag);
+        document.removeEventListener('touchend', stopDrag);
+    };
+    const moveDrag = event => {
+        if (!dragMode) return;
+        event.preventDefault();
+        const width = track.clientWidth || 1;
+        const offset = Math.round(
+            ((pointerX(event) - dragStartX) / width) * (pointCount - 1)
+        );
+        if (dragMode === 'window') {
+            const span = initialEnd - initialStart;
+            let nextStart = initialStart + offset;
+            let nextEnd = initialEnd + offset;
+            if (nextStart < 0) {
+                nextStart = 0;
+                nextEnd = span;
+            }
+            if (nextEnd > pointCount - 1) {
+                nextEnd = pointCount - 1;
+                nextStart = pointCount - 1 - span;
+            }
+            startIndex = nextStart;
+            endIndex = nextEnd;
+        } else if (dragMode === 'left') {
+            startIndex = Math.min(
+                Math.max(0, initialStart + offset),
+                endIndex - 1
+            );
+        } else {
+            endIndex = Math.max(
+                Math.min(pointCount - 1, initialEnd + offset),
+                startIndex + 1
+            );
+        }
+        applyRange();
+    };
+    const startDrag = (event, mode) => {
+        dragMode = mode;
+        dragStartX = pointerX(event);
+        initialStart = startIndex;
+        initialEnd = endIndex;
+        event.preventDefault();
+        event.stopPropagation();
+        document.addEventListener('mousemove', moveDrag);
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('touchmove', moveDrag, { passive: false });
+        document.addEventListener('touchend', stopDrag);
+    };
+
+    windowElement.addEventListener(
+        'mousedown',
+        event => startDrag(event, 'window')
+    );
+    windowElement.addEventListener(
+        'touchstart',
+        event => startDrag(event, 'window'),
+        { passive: false }
+    );
+    leftHandle.addEventListener(
+        'mousedown',
+        event => startDrag(event, 'left')
+    );
+    leftHandle.addEventListener(
+        'touchstart',
+        event => startDrag(event, 'left'),
+        { passive: false }
+    );
+    rightHandle.addEventListener(
+        'mousedown',
+        event => startDrag(event, 'right')
+    );
+    rightHandle.addEventListener(
+        'touchstart',
+        event => startDrag(event, 'right'),
+        { passive: false }
+    );
+
+    const brush = {
+        redraw() {
+            drawSparkline();
+            applyRange(false);
+        },
+        destroy: stopDrag,
+    };
+    requestAnimationFrame(() => {
+        drawSparkline();
+        applyRange();
+    });
+    return brush;
+}
 
 function formatNumber(value, maximumFractionDigits = 2) {
     if (value == null || Number.isNaN(Number(value))) return '-';
@@ -160,6 +386,9 @@ function createAssetCard(asset, index) {
     canvas.id = `assetChart-${index}`;
     chartContainer.appendChild(canvas);
 
+    const brushContainer = document.createElement('div');
+    brushContainer.className = 'asset-brush';
+
     const source = document.createElement('div');
     source.className = 'asset-source';
     const sourceName = document.createElement('span');
@@ -174,13 +403,16 @@ function createAssetCard(asset, index) {
         source.appendChild(sourceLink);
     }
 
-    card.append(header, chartContainer, source);
-    return { card, canvas };
+    card.append(header, chartContainer, brushContainer, source);
+    return { card, canvas, brushContainer };
 }
 
 function createAssetChart(canvas, asset) {
     const color = ASSET_COLORS[asset.code] || '#667eea';
-    const mainData = asset.series.map(point => ({ x: point.date, y: point.price }));
+    const mainData = asset.series.map(point => ({
+        x: dateTimestamp(point.date),
+        y: point.price,
+    }));
     const hasRange = asset.series.some(
         point => point.price_low != null && point.price_high != null
     );
@@ -202,7 +434,10 @@ function createAssetChart(canvas, asset) {
                 label: '区间上限',
                 data: asset.series
                     .filter(point => point.price_high != null)
-                    .map(point => ({ x: point.date, y: point.price_high })),
+                    .map(point => ({
+                        x: dateTimestamp(point.date),
+                        y: point.price_high,
+                    })),
                 borderColor: `${color}99`,
                 borderDash: [4, 3],
                 borderWidth: 1,
@@ -213,7 +448,10 @@ function createAssetChart(canvas, asset) {
                 label: '区间下限',
                 data: asset.series
                     .filter(point => point.price_low != null)
-                    .map(point => ({ x: point.date, y: point.price_low })),
+                    .map(point => ({
+                        x: dateTimestamp(point.date),
+                        y: point.price_low,
+                    })),
                 borderColor: `${color}99`,
                 borderDash: [4, 3],
                 borderWidth: 1,
@@ -227,10 +465,18 @@ function createAssetChart(canvas, asset) {
         type: 'line',
         data: { datasets },
         options: {
+            animation: false,
+            parsing: false,
+            normalized: true,
             responsive: true,
             maintainAspectRatio: false,
             interaction: { mode: 'index', intersect: false },
             plugins: {
+                decimation: {
+                    enabled: mainData.length > 600,
+                    algorithm: 'lttb',
+                    samples: 600,
+                },
                 legend: {
                     display: hasRange,
                     labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 } },
@@ -261,7 +507,9 @@ function createAssetChart(canvas, asset) {
 
 function renderAssets() {
     assetCharts.forEach(chart => chart.destroy());
+    assetBrushes.forEach(brush => brush.destroy());
     assetCharts = [];
+    assetBrushes = [];
 
     const grid = document.getElementById('assetGrid');
     const assets = (assetData.assets || []).filter(
@@ -278,10 +526,25 @@ function renderAssets() {
     }
 
     assets.forEach((asset, index) => {
-        const { card, canvas } = createAssetCard(asset, index);
+        const { card, canvas, brushContainer } = createAssetCard(asset, index);
         grid.appendChild(card);
         if (asset.series.length) {
-            assetCharts.push(createAssetChart(canvas, asset));
+            const chart = createAssetChart(canvas, asset);
+            assetCharts.push(chart);
+            const dates = asset.series.map(point => point.date);
+            const values = asset.series.map(point => Number(point.price));
+            const brush = createAssetBrush(
+                brushContainer,
+                dates,
+                values,
+                ASSET_COLORS[asset.code] || '#667eea',
+                (startDate, endDate) => {
+                    chart.options.scales.x.min = dateTimestamp(startDate);
+                    chart.options.scales.x.max = dateTimestamp(endDate);
+                    chart.update('none');
+                }
+            );
+            if (brush) assetBrushes.push(brush);
         }
     });
 }
@@ -399,4 +662,8 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('assetGrid').innerHTML =
             `<div class="asset-empty">资产价格数据加载失败：${error.message}</div>`;
     });
+});
+
+window.addEventListener('resize', () => {
+    assetBrushes.forEach(brush => brush.redraw());
 });
