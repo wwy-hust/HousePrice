@@ -38,6 +38,18 @@ DYE_REDUCTION_FEBRUARY_URL = (
 DYE_REDUCTION_LATEST_URL = (
     "https://news.chemnet.com/toutiao/detail-75363.html"
 )
+DISPERSE_DYE_PRICE_URL = "https://www.baiinfo.com/ranliao/fensanranliao"
+DYE_INTERMEDIATE_PRICE_URL = (
+    "https://www.baiinfo.com/ranliao/ranliaozhongjianti"
+)
+DISPERSE_DYE_FEBRUARY_URL = (
+    "https://caifuhao.eastmoney.com/news/20260224235602945871070"
+)
+DISPERSE_DYE_MARCH_URL = (
+    "https://www.mysteel.com/oilchem/a/26032009/23E99288DEBBF89E.html"
+)
+H_ACID_APRIL_URL = "https://www.cls.cn/detail/2344564"
+H_ACID_JULY_URL = "https://stock.10jqka.com.cn/20260731/c678587184.shtml"
 BLOOD_PRODUCT_PRICE_URL = (
     "http://www.gaoqing.gov.cn/gongkai/site_gqxwsjkj/"
     "channel_6305cf96328b0c0108580897/doc_683919151427114bd64b539d.html"
@@ -444,6 +456,82 @@ REFERENCE_POINTS = {
             "comparability_note": "报道明确指向分散染料还原物。",
         },
     ],
+    "DISPERSE_BLACK": [
+        {
+            "date": "2026-01-01",
+            "price": 16000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": DISPERSE_DYE_FEBRUARY_URL,
+            "date_precision": "month",
+            "date_label": "2026年初",
+            "quote_type": "reported_factory_offer",
+            "quality_note": "行业报道回顾的年初出厂报价，仅作为历史参考点。",
+            "comparability_note": "分散黑ECT 300%，与主序列市场均价口径存在差异。",
+        },
+        {
+            "date": "2026-02-24",
+            "price": 25000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": DISPERSE_DYE_FEBRUARY_URL,
+            "date_precision": "day",
+            "date_label": "2026-02-24",
+            "quote_type": "reported_factory_offer",
+            "quality_note": "行业报道中的龙头企业出厂报价，并非市场成交均价。",
+            "comparability_note": "分散黑ECT 300%，与主序列规格一致、报价口径不同。",
+        },
+        {
+            "date": "2026-03-20",
+            "price": 25000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": DISPERSE_DYE_MARCH_URL,
+            "date_precision": "day",
+            "date_label": "2026-03-20",
+            "quote_type": "reported_market_price",
+            "quality_note": "隆众资讯报道的浙江主流商谈价格，仅作为历史参考点。",
+            "comparability_note": "分散黑ECT/ECO 300%，现款自提。",
+        },
+    ],
+    "H_ACID": [
+        {
+            "date": "2026-01-01",
+            "price": 40000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": H_ACID_APRIL_URL,
+            "date_precision": "month",
+            "date_label": "2026年初",
+            "quote_type": "reported_market_price",
+            "quality_note": "行业报道回顾的年初市场价格，仅作为历史参考点。",
+            "comparability_note": "H酸市场参考价，未披露逐笔成交样本。",
+        },
+        {
+            "date": "2026-04-14",
+            "price": 65000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": H_ACID_APRIL_URL,
+            "date_precision": "day",
+            "date_label": "2026-04-14",
+            "quote_type": "reported_market_average",
+            "quality_note": "财联社转述百川盈孚市场参考价，仅作为历史参考点。",
+            "comparability_note": "H酸市场均价口径。",
+        },
+        {
+            "date": "2026-07-28",
+            "price": 80000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": H_ACID_JULY_URL,
+            "date_precision": "day",
+            "date_label": "2026-07-28",
+            "quote_type": "reported_market_average",
+            "quality_note": "证券行业报道转述百川盈孚行业均价，仅作为历史参考点。",
+            "comparability_note": "H酸行业均价，与主序列市场均价口径接近。",
+        },
+    ],
     "VD3": [
         {
             "date": point_date,
@@ -563,6 +651,8 @@ DEFAULT_VISIBLE_REFERENCE_DATES = {
         "2026-03-05",
         "2026-07-21",
     },
+    "DISPERSE_BLACK": {"2026-02-24", "2026-03-20"},
+    "H_ACID": {"2026-04-14", "2026-07-28"},
     "BLOOD_ALBUMIN": {"2025-07-24"},
     "BLOOD_IVIG": {"2026-02-12"},
 }
@@ -585,7 +675,9 @@ CATEGORY_BY_CODE = {
     "ALUMINA": "大宗商品",
     "ALUMINUM": "大宗商品",
     "PHOSPHATE_ROCK": "大宗商品",
-    "DYE_REDUCTION": "化工中间体",
+    "DISPERSE_BLACK": "分散染料",
+    "DYE_REDUCTION": "中间体",
+    "H_ACID": "中间体",
     "SB_CN": "小金属",
     "SB_INTL": "小金属",
     "W_CN": "小金属",
@@ -618,7 +710,8 @@ CATEGORY_BY_CODE = {
 }
 CATEGORY_ORDER = [
     "大宗商品",
-    "化工中间体",
+    "分散染料",
+    "中间体",
     "小金属",
     "维生素",
     "食品添加剂",
@@ -632,6 +725,9 @@ ASSET_ORDER = {
     "ALUMINA": 2,
     "ALUMINUM": 3,
     "PHOSPHATE_ROCK": 4,
+    "DISPERSE_BLACK": 0,
+    "DYE_REDUCTION": 0,
+    "H_ACID": 1,
     "BLOOD_ALBUMIN": 0,
     "BLOOD_IVIG": 1,
     "VIT_A": 0,
@@ -1130,10 +1226,115 @@ def fetch_dye_reduction_asset() -> dict:
         "name": "分散染料还原物",
         "unit": "元/吨",
         "source": "ChemNet、生意社公开精确报价（非连续序列）",
-        "category": "化工中间体",
+        "category": "中间体",
         "latest": series[-1],
         "series": series,
     }
+
+
+def _baiinfo_report_date(text: str, month: str, day: str) -> str:
+    """从百川盈孚公开页的价格标题确定最新行情年份。"""
+    dated_title = re.search(
+        rf"(\d{{4}})年0?{int(month)}月0?{int(day)}日百川盈孚",
+        text,
+    )
+    year = int(dated_title.group(1)) if dated_title else date.today().year
+    return date(year, int(month), int(day)).isoformat()
+
+
+def fetch_dye_chain_assets() -> list[dict]:
+    """采集分散黑ECT 300%与H酸的公开市场均价。"""
+    disperse_text = BeautifulSoup(
+        _get_html(DISPERSE_DYE_PRICE_URL),
+        "html.parser",
+    ).get_text(" ", strip=True)
+    disperse_match = re.search(
+        r"(\d{1,2})月(\d{1,2})日，江浙地区分散染料.*?"
+        r"分散黑市场均价为([\d.]+)元/公斤.*?"
+        r"分散黑ECT\s*300%市场主流价格在"
+        r"([\d.]+)\s*[-—–至]\s*([\d.]+)元/公斤",
+        disperse_text,
+    )
+    if not disperse_match:
+        raise ValueError("百川盈孚未找到分散黑ECT 300%最新市场均价")
+    month, day, price, price_low, price_high = disperse_match.groups()
+    disperse_date = _baiinfo_report_date(disperse_text, month, day)
+    disperse_points = _existing_series_by_code("DISPERSE_BLACK")
+    disperse_points.update(_reference_points_by_date("DISPERSE_BLACK"))
+    disperse_points[disperse_date] = {
+        "date": disperse_date,
+        "price": _number(price) * 1000,
+        "price_low": _number(price_low) * 1000,
+        "price_high": _number(price_high) * 1000,
+        "source_url": DISPERSE_DYE_PRICE_URL,
+        "point_type": "market_observation",
+        "default_hidden": False,
+        "date_precision": "day",
+        "date_label": disperse_date,
+        "quote_type": "market_average",
+        "quality_note": "百川盈孚公开页面披露的江浙市场均价。",
+        "comparability_note": "分散黑ECT 300%，现款自提；元/公斤已换算为元/吨。",
+    }
+
+    intermediate_text = BeautifulSoup(
+        _get_html(DYE_INTERMEDIATE_PRICE_URL),
+        "html.parser",
+    ).get_text(" ", strip=True)
+    h_acid_match = re.search(
+        r"(\d{1,2})月(\d{1,2})日，国内H酸市场.*?"
+        r"市场均价([\d.]+)元/吨.*?"
+        r"主流报价区间(?:仍为)?([\d.]+)\s*[-—–至]\s*([\d.]+)元/吨",
+        intermediate_text,
+    )
+    if not h_acid_match:
+        raise ValueError("百川盈孚未找到H酸最新市场均价")
+    month, day, price, price_low, price_high = h_acid_match.groups()
+    h_acid_date = _baiinfo_report_date(intermediate_text, month, day)
+    h_acid_points = _existing_series_by_code("H_ACID")
+    h_acid_points.update(_reference_points_by_date("H_ACID"))
+    h_acid_points[h_acid_date] = {
+        "date": h_acid_date,
+        "price": _number(price),
+        "price_low": _number(price_low),
+        "price_high": _number(price_high),
+        "source_url": DYE_INTERMEDIATE_PRICE_URL,
+        "point_type": "market_observation",
+        "default_hidden": False,
+        "date_precision": "day",
+        "date_label": h_acid_date,
+        "quote_type": "market_average",
+        "quality_note": "百川盈孚公开页面披露的国内市场均价。",
+        "comparability_note": "H酸市场均价，报价区间可能包含不同地区和企业。",
+    }
+
+    assets = []
+    for code, name, category, points in (
+        (
+            "DISPERSE_BLACK",
+            "分散黑ECT 300%",
+            "分散染料",
+            disperse_points,
+        ),
+        (
+            "H_ACID",
+            "H酸",
+            "中间体",
+            h_acid_points,
+        ),
+    ):
+        series = [points[key] for key in sorted(points)]
+        assets.append(
+            {
+                "code": code,
+                "name": name,
+                "unit": "元/吨",
+                "source": "百川盈孚公开市场行情",
+                "category": category,
+                "latest": series[-1],
+                "series": series,
+            }
+        )
+    return assets
 
 
 def fetch_blood_product_assets() -> list[dict]:
@@ -1849,6 +2050,11 @@ def main() -> int:
                 lambda: fetch_aluminum_asset(args.history_days),
             ),
             ("磷矿石", {"PHOSPHATE_ROCK"}, fetch_phosphate_rock_asset),
+            (
+                "分散染料与H酸",
+                {"DISPERSE_BLACK", "H_ACID"},
+                fetch_dye_chain_assets,
+            ),
             ("分散染料还原物", {"DYE_REDUCTION"}, fetch_dye_reduction_asset),
             (
                 "血液制品",
