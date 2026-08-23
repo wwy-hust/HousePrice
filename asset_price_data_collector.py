@@ -768,6 +768,15 @@ def _get_smm_data(endpoint: str, params: dict[str, str]) -> list[dict]:
     return payload["data"]
 
 
+def _is_positive_price(value: object) -> bool:
+    """价格必须是大于零的数值，排除接口缺失值占位符。"""
+    return (
+        isinstance(value, (int, float))
+        and not isinstance(value, bool)
+        and value > 0
+    )
+
+
 def _fetch_smm_assets(
     configs: dict[str, dict[str, str]],
     category: str,
@@ -818,16 +827,28 @@ def _fetch_smm_assets(
                 "source_url": config["source_url"],
             }
             for point in history.get("price_detail", [])
-            if point.get("renew_date") and point.get("average") is not None
+            if point.get("renew_date")
+            and _is_positive_price(point.get("average"))
         }
-        latest_date = latest["renew_date"]
-        points_by_date[latest_date] = {
-            "date": latest_date,
-            "price": latest["average"],
-            "price_low": latest.get("low"),
-            "price_high": latest.get("high"),
-            "source_url": config["source_url"],
-        }
+        if _is_positive_price(latest.get("average")):
+            latest_date = latest["renew_date"]
+            points_by_date[latest_date] = {
+                "date": latest_date,
+                "price": latest["average"],
+                "price_low": (
+                    latest.get("low")
+                    if _is_positive_price(latest.get("low"))
+                    else None
+                ),
+                "price_high": (
+                    latest.get("high")
+                    if _is_positive_price(latest.get("high"))
+                    else None
+                ),
+                "source_url": config["source_url"],
+            }
+        if not points_by_date:
+            raise RuntimeError(f"上海有色网未返回 {config['name']} 有效价格")
         series = [points_by_date[key] for key in sorted(points_by_date)]
         assets.append(
             {
@@ -1902,6 +1923,36 @@ def load_existing_payload(output_path: Path = OUTPUT_PATH) -> dict:
     return json.loads(output_path.read_text(encoding="utf-8"))
 
 
+def sanitize_assets(assets: list[dict]) -> tuple[list[dict], int]:
+    """剔除非正价格点，并以最后一个有效点重算最新价格。"""
+    cleaned_assets = []
+    removed_count = 0
+    for asset in assets:
+        cleaned_series = []
+        for point in asset.get("series", []):
+            if not _is_positive_price(point.get("price")):
+                removed_count += 1
+                continue
+            cleaned_point = dict(point)
+            for bound in ("price_low", "price_high"):
+                if (
+                    bound in cleaned_point
+                    and cleaned_point[bound] is not None
+                    and not _is_positive_price(cleaned_point[bound])
+                ):
+                    cleaned_point[bound] = None
+            cleaned_series.append(cleaned_point)
+        if not cleaned_series:
+            continue
+        cleaned_asset = {
+            **asset,
+            "latest": cleaned_series[-1],
+            "series": cleaned_series,
+        }
+        cleaned_assets.append(cleaned_asset)
+    return cleaned_assets, removed_count
+
+
 def merge_assets(existing_assets: list[dict], updates: list[dict]) -> list[dict]:
     assets_by_code = {asset["code"]: asset for asset in existing_assets}
     for update in updates:
@@ -1940,6 +1991,9 @@ def merge_assets(existing_assets: list[dict], updates: list[dict]) -> list[dict]
 
 
 def export_json(assets: list[dict], output_path: Path = OUTPUT_PATH) -> int:
+    assets, removed_count = sanitize_assets(assets)
+    if removed_count:
+        print(f"[WARN] 已剔除 {removed_count} 条非正价格记录。", flush=True)
     categories = [
         {
             "name": category,
