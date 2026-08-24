@@ -10,6 +10,25 @@ const ASSET_COLORS = {
     PYRITE: '#ca8a04',
     ALUMINA: '#64748b',
     ALUMINUM: '#0ea5e9',
+    GOLD: '#d4a017',
+    SILVER: '#94a3b8',
+    COPPER: '#c2410c',
+    TIN: '#78716c',
+    NICKEL: '#14b8a6',
+    COAL: '#334155',
+    COKING_COAL: '#78350f',
+    CRUDE_OIL: '#18181b',
+    BRENT_CRUDE: '#2563eb',
+    CORN: '#eab308',
+    SOYBEAN: '#65a30d',
+    WHEAT: '#d97706',
+    SUGAR: '#ec4899',
+    COTTON: '#64748b',
+    LIVE_HOG: '#f97316',
+    COFFEE: '#78350f',
+    COCOA: '#92400e',
+    PALM_OIL: '#16a34a',
+    NATURAL_RUBBER: '#0f766e',
     PHOSPHATE_ROCK: '#84cc16',
     DISPERSE_BLACK: '#4f46e5',
     DISPERSE_BLUE_60: '#06b6d4',
@@ -19,6 +38,9 @@ const ASSET_COLORS = {
     SB_INTL: '#0f766e',
     W_CN: '#475569',
     W_INTL: '#2563eb',
+    IN_CN: '#6366f1',
+    RE_CN: '#be123c',
+    GE_CN: '#9333ea',
     VIT_A: '#e11d48',
     VD3: '#8b5cf6',
     VIT_E: '#059669',
@@ -45,6 +67,13 @@ const ASSET_COLORS = {
     TD15_WS: '#06b6d4',
     PDCI: '#8b5cf6',
     MONKEY: '#10b981',
+};
+
+const ASSET_PRIORITY = {
+    GOLD: 0,
+    SILVER: 1,
+    COPPER: 2,
+    ALUMINUM: 3,
 };
 
 function indexAtOrAfter(dates, target) {
@@ -621,9 +650,16 @@ function renderAssets() {
     assetBrushes = [];
 
     const grid = document.getElementById('assetGrid');
-    const assets = (assetData.assets || []).filter(
-        asset => activeAssetCategory === '全部' || asset.category === activeAssetCategory
-    );
+    const assets = (assetData.assets || [])
+        .filter(
+            asset => activeAssetCategory === '全部'
+                || asset.category === activeAssetCategory
+        )
+        .sort(
+            (left, right) =>
+                (ASSET_PRIORITY[left.code] ?? Number.MAX_SAFE_INTEGER)
+                - (ASSET_PRIORITY[right.code] ?? Number.MAX_SAFE_INTEGER)
+        );
     grid.replaceChildren();
 
     if (!assets.length) {

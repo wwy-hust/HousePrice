@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import csv
+import io
 import json
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -26,6 +28,96 @@ SULFUR_RECENT_CHART_URL = (
 )
 SULFUR_HISTORY_URL = "https://www.100ppi.com/cindex/?f=n_graph&ppid=427"
 SULFUR_DETAIL_URL = "https://www.100ppi.com/rawmex/detail-427.html"
+ENERGY_ASSETS = {
+    "COAL": {
+        "ppid": "369",
+        "name": "煤炭（动力煤）",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/n-list-369.html",
+    },
+    "COKING_COAL": {
+        "ppid": "1121",
+        "name": "焦煤（北方炼焦煤）",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-1121.html",
+    },
+    "CRUDE_OIL": {
+        "ppid": "1036",
+        "name": "原油（WTI）",
+        "unit": "美元/桶",
+        "source_url": "https://www.100ppi.com/cindex/list-1036.html",
+    },
+    "BRENT_CRUDE": {
+        "ppid": "1127",
+        "name": "布伦特原油（Brent）",
+        "unit": "美元/桶",
+        "source_url": "https://www.100ppi.com/cindex/list-1127.html",
+    },
+}
+AGRICULTURAL_ASSETS = {
+    "CORN": {
+        "ppid": "274",
+        "name": "玉米",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-274.html",
+    },
+    "SOYBEAN": {
+        "ppid": "769",
+        "name": "大豆",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-769.html",
+    },
+    "WHEAT": {
+        "ppid": "349",
+        "name": "小麦",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-349.html",
+    },
+    "SUGAR": {
+        "ppid": "564",
+        "name": "白糖",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-564.html",
+    },
+    "COTTON": {
+        "ppid": "344",
+        "name": "皮棉",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-344.html",
+    },
+    "LIVE_HOG": {
+        "ppid": "936",
+        "name": "生猪",
+        "unit": "元/公斤",
+        "source_url": "https://www.100ppi.com/cindex/list-936.html",
+    },
+    "PALM_OIL": {
+        "ppid": "820",
+        "name": "棕榈油",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-820.html",
+    },
+    "NATURAL_RUBBER": {
+        "ppid": "586",
+        "name": "天然橡胶",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-586.html",
+    },
+}
+FRED_AGRICULTURAL_ASSETS = {
+    "COFFEE": {
+        "series_id": "PCOFFOTMUSDM",
+        "name": "咖啡（其他温和型阿拉比卡）",
+        "unit": "美分/磅",
+        "source_url": "https://fred.stlouisfed.org/series/PCOFFOTMUSDM",
+    },
+    "COCOA": {
+        "series_id": "PCOCOUSDM",
+        "name": "可可",
+        "unit": "美元/吨",
+        "source_url": "https://fred.stlouisfed.org/series/PCOCOUSDM",
+    },
+}
 PYRITE_LIST_URL = "https://www.100ppi.com/mprice/plist-1-561-{page}.html"
 PHOSPHATE_ROCK_HISTORY_URL = (
     "https://www.mysteel.com/oilchem/article/nwj1r6/"
@@ -200,6 +292,21 @@ SMM_ASSETS = {
         "name": "仲钨酸铵（国外，鹿特丹CIF）",
         "source_url": "https://hq.smm.cn/tungsten/category/202511260001",
     },
+    "IN_CN": {
+        "product_id": "201102250360",
+        "name": "金属铟（精铟）",
+        "source_url": "https://hq.smm.cn/in-ge-ga/category/201102250360",
+    },
+    "RE_CN": {
+        "product_id": "202601050006",
+        "name": "金属铼（铼粒）",
+        "source_url": "https://hq.smm.cn/other-minor-metals/category/202601050006",
+    },
+    "GE_CN": {
+        "product_id": "201102250090",
+        "name": "金属锗（锗锭）",
+        "source_url": "https://hq.smm.cn/in-ge-ga/category/201102250090",
+    },
 }
 SMM_ALUMINA_ASSETS = {
     "ALUMINA": {
@@ -213,6 +320,33 @@ SMM_ALUMINUM_ASSETS = {
         "product_id": "201102250311",
         "name": "电解铝（SMM A00铝）",
         "source_url": "https://hq.smm.cn/aluminum/category/201102250311",
+    },
+}
+SMM_ADDITIONAL_METAL_ASSETS = {
+    "GOLD": {
+        "product_id": "201102250443",
+        "name": "黄金（金99）",
+        "source_url": "https://hq.smm.cn/precious-metals/category/201102250443",
+    },
+    "SILVER": {
+        "product_id": "201102250392",
+        "name": "白银（1#银）",
+        "source_url": "https://hq.smm.cn/precious-metals/category/201102250392",
+    },
+    "COPPER": {
+        "product_id": "201102250376",
+        "name": "铜（SMM 1#电解铜）",
+        "source_url": "https://hq.smm.cn/copper/category/201102250376",
+    },
+    "TIN": {
+        "product_id": "201102250140",
+        "name": "锡（SMM 1#锡）",
+        "source_url": "https://hq.smm.cn/tin/category/201102250140",
+    },
+    "NICKEL": {
+        "product_id": "201102250239",
+        "name": "金属镍（SMM 1#电解镍）",
+        "source_url": "https://hq.smm.cn/nickel/category/201102250239",
     },
 }
 
@@ -726,19 +860,41 @@ for code, reference_points in REFERENCE_POINTS.items():
         )
 
 CATEGORY_BY_CODE = {
-    "SULFUR": "大宗商品",
-    "PYRITE": "大宗商品",
-    "ALUMINA": "大宗商品",
-    "ALUMINUM": "大宗商品",
-    "PHOSPHATE_ROCK": "大宗商品",
-    "DISPERSE_BLACK": "分散染料",
-    "DISPERSE_BLUE_60": "分散染料",
-    "DYE_REDUCTION": "中间体",
-    "H_ACID": "分散染料",
-    "SB_CN": "小金属",
-    "SB_INTL": "小金属",
-    "W_CN": "小金属",
-    "W_INTL": "小金属",
+    "SULFUR": "有色金属大宗",
+    "PYRITE": "有色金属大宗",
+    "ALUMINA": "有色金属大宗",
+    "PHOSPHATE_ROCK": "有色金属大宗",
+    "GOLD": "有色金属大宗",
+    "SILVER": "有色金属大宗",
+    "COPPER": "有色金属大宗",
+    "ALUMINUM": "有色金属大宗",
+    "TIN": "有色金属大宗",
+    "NICKEL": "有色金属大宗",
+    "DISPERSE_BLACK": "分散染料及中间体",
+    "DISPERSE_BLUE_60": "分散染料及中间体",
+    "DYE_REDUCTION": "分散染料及中间体",
+    "H_ACID": "分散染料及中间体",
+    "SB_CN": "有色金属小金属",
+    "SB_INTL": "有色金属小金属",
+    "W_CN": "有色金属小金属",
+    "W_INTL": "有色金属小金属",
+    "IN_CN": "有色金属小金属",
+    "RE_CN": "有色金属小金属",
+    "GE_CN": "有色金属小金属",
+    "COAL": "能源",
+    "COKING_COAL": "能源",
+    "CRUDE_OIL": "能源",
+    "BRENT_CRUDE": "能源",
+    "CORN": "农产品",
+    "SOYBEAN": "农产品",
+    "WHEAT": "农产品",
+    "SUGAR": "农产品",
+    "COTTON": "农产品",
+    "LIVE_HOG": "农产品",
+    "COFFEE": "农产品",
+    "COCOA": "农产品",
+    "PALM_OIL": "农产品",
+    "NATURAL_RUBBER": "农产品",
     "VD3": "维生素",
     "VIT_A": "维生素",
     "VIT_E": "维生素",
@@ -767,10 +923,11 @@ CATEGORY_BY_CODE = {
     "MONKEY": "生物医药上游",
 }
 CATEGORY_ORDER = [
-    "大宗商品",
-    "分散染料",
-    "中间体",
-    "小金属",
+    "有色金属大宗",
+    "有色金属小金属",
+    "能源",
+    "农产品",
+    "分散染料及中间体",
     "维生素",
     "食品添加剂",
     "航运",
@@ -778,15 +935,41 @@ CATEGORY_ORDER = [
     "生物医药上游",
 ]
 ASSET_ORDER = {
-    "SULFUR": 0,
-    "PYRITE": 1,
-    "ALUMINA": 2,
+    "GOLD": 0,
+    "SILVER": 1,
+    "COPPER": 2,
     "ALUMINUM": 3,
-    "PHOSPHATE_ROCK": 4,
+    "SULFUR": 4,
+    "PYRITE": 5,
+    "ALUMINA": 6,
+    "PHOSPHATE_ROCK": 7,
+    "TIN": 8,
+    "NICKEL": 9,
+    "SB_CN": 0,
+    "SB_INTL": 1,
+    "W_CN": 2,
+    "W_INTL": 3,
+    "IN_CN": 4,
+    "RE_CN": 5,
+    "GE_CN": 6,
+    "COAL": 0,
+    "COKING_COAL": 1,
+    "CRUDE_OIL": 2,
+    "BRENT_CRUDE": 3,
+    "CORN": 0,
+    "SOYBEAN": 1,
+    "WHEAT": 2,
+    "SUGAR": 3,
+    "COTTON": 4,
+    "LIVE_HOG": 5,
+    "COFFEE": 6,
+    "COCOA": 7,
+    "PALM_OIL": 8,
+    "NATURAL_RUBBER": 9,
     "DISPERSE_BLACK": 0,
     "DISPERSE_BLUE_60": 1,
     "H_ACID": 2,
-    "DYE_REDUCTION": 0,
+    "DYE_REDUCTION": 3,
     "BLOOD_ALBUMIN": 0,
     "BLOOD_IVIG": 1,
     "VIT_A": 0,
@@ -929,15 +1112,15 @@ def _fetch_smm_assets(
 
 
 def fetch_small_metal_assets(history_days: int = MAX_HISTORY_DAYS) -> list[dict]:
-    """拉取国内和国外小金属价格，并转换为前端通用资产结构。"""
-    return _fetch_smm_assets(SMM_ASSETS, "小金属", history_days)
+    """拉取锑、钨、铟、铼、锗价格，并转换为前端通用资产结构。"""
+    return _fetch_smm_assets(SMM_ASSETS, "有色金属小金属", history_days)
 
 
 def fetch_alumina_asset(history_days: int = MAX_HISTORY_DAYS) -> dict:
     """拉取 SMM 氧化铝全国加权指数。"""
     return _fetch_smm_assets(
         SMM_ALUMINA_ASSETS,
-        "大宗商品",
+        "有色金属大宗",
         history_days,
     )[0]
 
@@ -946,9 +1129,20 @@ def fetch_aluminum_asset(history_days: int = MAX_HISTORY_DAYS) -> dict:
     """拉取 SMM A00 电解铝仓库自提指导价。"""
     return _fetch_smm_assets(
         SMM_ALUMINUM_ASSETS,
-        "大宗商品",
+        "有色金属大宗",
         history_days,
     )[0]
+
+
+def fetch_additional_metal_assets(
+    history_days: int = MAX_HISTORY_DAYS,
+) -> list[dict]:
+    """拉取 SMM 黄金、白银、铜、锡和镍价格。"""
+    return _fetch_smm_assets(
+        SMM_ADDITIONAL_METAL_ASSETS,
+        "有色金属大宗",
+        history_days,
+    )
 
 
 def fetch_antimony_assets(history_days: int = MAX_HISTORY_DAYS) -> list[dict]:
@@ -1056,6 +1250,138 @@ def _unpack_packer(source: str) -> str:
     return payload
 
 
+def _fetch_100ppi_annual_assets(
+    configs: dict[str, dict[str, str]],
+    category: str,
+    history_days: int = MAX_HISTORY_DAYS,
+) -> list[dict]:
+    """从生意社年度价格图拉取一组商品的日度历史。"""
+    cutoff = date.today() - timedelta(days=history_days)
+    assets = []
+    for code, config in configs.items():
+        history_url = (
+            "https://www.100ppi.com/cindex/"
+            f"?f=n_graph&ppid={config['ppid']}"
+        )
+        source = _get_html(history_url)
+        series_matches = re.findall(
+            r"name:\s*'(?P<year>\d{4})'.*?"
+            r"data:\s*\[(?P<data>.*?)\]\s*[,}]",
+            source,
+            re.DOTALL,
+        )
+        if not series_matches:
+            raise ValueError(f"无法解析生意社{config['name']}年度价格序列")
+
+        points_by_date = {}
+        for year_text, price_data in series_matches:
+            prices = [
+                float(value.strip())
+                for value in price_data.split(",")
+                if value.strip()
+            ]
+            year_start = date(int(year_text), 1, 1)
+            maximum_days = (date(int(year_text) + 1, 1, 1) - year_start).days
+            if not prices or len(prices) > maximum_days:
+                raise ValueError(
+                    f"生意社{config['name']} {year_text}年数据长度异常"
+                )
+            for day_offset, price in enumerate(prices):
+                point_date = year_start + timedelta(days=day_offset)
+                if point_date < cutoff or not _is_positive_price(price):
+                    continue
+                points_by_date[point_date.isoformat()] = {
+                    "date": point_date.isoformat(),
+                    "price": price,
+                    "price_low": None,
+                    "price_high": None,
+                    "source_url": history_url,
+                }
+
+        if not points_by_date:
+            raise ValueError(f"生意社未返回{config['name']}有效价格")
+        series = [points_by_date[key] for key in sorted(points_by_date)]
+        series[-1]["source_url"] = config["source_url"]
+        assets.append(
+            {
+                "code": code,
+                "name": config["name"],
+                "unit": config["unit"],
+                "source": "生意社",
+                "category": category,
+                "latest": series[-1],
+                "series": series,
+            }
+        )
+    return assets
+
+
+def fetch_energy_assets(history_days: int = MAX_HISTORY_DAYS) -> list[dict]:
+    """拉取煤炭、焦煤、WTI和Brent原油日度历史。"""
+    return _fetch_100ppi_annual_assets(ENERGY_ASSETS, "能源", history_days)
+
+
+def fetch_agricultural_assets(history_days: int = MAX_HISTORY_DAYS) -> list[dict]:
+    """拉取常用农产品的国内日度价格历史。"""
+    return _fetch_100ppi_annual_assets(
+        AGRICULTURAL_ASSETS,
+        "农产品",
+        history_days,
+    )
+
+
+def fetch_fred_agricultural_assets(
+    history_days: int = MAX_HISTORY_DAYS,
+) -> list[dict]:
+    """从 FRED 拉取咖啡和可可的全球月度基准价格。"""
+    series_ids = ",".join(
+        config["series_id"] for config in FRED_AGRICULTURAL_ASSETS.values()
+    )
+    response = requests.get(
+        "https://fred.stlouisfed.org/graph/fredgraph.csv",
+        params={"id": series_ids},
+        headers=REQUEST_HEADERS,
+        timeout=30,
+    )
+    response.raise_for_status()
+    rows = list(csv.DictReader(io.StringIO(response.text)))
+    cutoff = date.today() - timedelta(days=history_days)
+    assets = []
+    for code, config in FRED_AGRICULTURAL_ASSETS.items():
+        points = []
+        for row in rows:
+            point_date = date.fromisoformat(row["observation_date"])
+            value = row.get(config["series_id"])
+            if point_date < cutoff or not value or value == ".":
+                continue
+            price = float(value)
+            if not _is_positive_price(price):
+                continue
+            points.append(
+                {
+                    "date": point_date.isoformat(),
+                    "price": round(price, 5),
+                    "price_low": None,
+                    "price_high": None,
+                    "source_url": config["source_url"],
+                }
+            )
+        if not points:
+            raise ValueError(f"FRED 未返回{config['name']}有效价格")
+        assets.append(
+            {
+                "code": code,
+                "name": config["name"],
+                "unit": config["unit"],
+                "source": "FRED（国际货币基金组织）",
+                "category": "农产品",
+                "latest": points[-1],
+                "series": points,
+            }
+        )
+    return assets
+
+
 def fetch_sulfur_asset(history_days: int = MAX_HISTORY_DAYS) -> dict:
     """从生意社同商品年度图拉取硫磺日度历史。"""
     source = _get_html(SULFUR_HISTORY_URL)
@@ -1133,7 +1459,7 @@ def fetch_sulfur_asset(history_days: int = MAX_HISTORY_DAYS) -> dict:
         "name": "硫磺",
         "unit": "元/吨",
         "source": "生意社",
-        "category": "大宗商品",
+        "category": "有色金属大宗",
         "latest": series[-1],
         "series": series,
     }
@@ -1186,7 +1512,7 @@ def fetch_pyrite_asset(max_pages: int = 10) -> dict:
         "name": "硫铁矿",
         "unit": "元/吨",
         "source": "生意社报价中心（国产，硫化铁含量45%-47%）",
-        "category": "大宗商品",
+        "category": "有色金属大宗",
         "latest": series[-1],
         "series": series,
     }
@@ -1274,7 +1600,7 @@ def fetch_phosphate_rock_asset(history_pages: int = 15) -> dict:
         "name": "磷矿石（四川马边30%磷精粉）",
         "unit": "元/吨",
         "source": "隆众资讯（我的钢铁网转载）",
-        "category": "大宗商品",
+        "category": "有色金属大宗",
         "latest": series[-1],
         "series": series,
     }
@@ -1311,7 +1637,7 @@ def fetch_dye_reduction_asset() -> dict:
         "name": "分散染料还原物",
         "unit": "元/吨",
         "source": "ChemNet、生意社公开精确报价（非连续序列）",
-        "category": "中间体",
+        "category": "分散染料及中间体",
         "latest": series[-1],
         "series": series,
     }
@@ -1397,13 +1723,13 @@ def fetch_dye_chain_assets() -> list[dict]:
         (
             "DISPERSE_BLACK",
             "分散黑ECT 300%",
-            "分散染料",
+            "分散染料及中间体",
             disperse_points,
         ),
         (
             "H_ACID",
             "H酸",
-            "分散染料",
+            "分散染料及中间体",
             h_acid_points,
         ),
     ):
@@ -1488,7 +1814,7 @@ def fetch_disperse_blue_60_asset() -> dict:
         "name": "分散翠蓝 S-GL 200%（C.I.分散蓝60）",
         "unit": "元/吨",
         "source": f"染化交易市场（{len(samples)}家供应商挂牌价样本）",
-        "category": "分散染料",
+        "category": "分散染料及中间体",
         "latest": series[-1],
         "series": series,
     }
@@ -2225,23 +2551,27 @@ def update_small_metals_only(
     output_path: Path = OUTPUT_PATH,
     history_days: int = MAX_HISTORY_DAYS,
 ) -> int:
-    """单独刷新现有 JSON 中的小金属价格。"""
+    """兼容旧命令：单独刷新现有 JSON 中的全部金属价格。"""
     if not output_path.exists():
         raise FileNotFoundError(f"资产价格 JSON 不存在：{output_path}")
 
     payload = load_existing_payload(output_path)
-    small_metal_assets = fetch_small_metal_assets(history_days)
-    assets = merge_assets(payload.get("assets", []), small_metal_assets)
+    metal_assets = [
+        *fetch_small_metal_assets(history_days),
+        fetch_aluminum_asset(history_days),
+        *fetch_additional_metal_assets(history_days),
+    ]
+    assets = merge_assets(payload.get("assets", []), metal_assets)
     export_json(assets, output_path)
     print(
-        "已单独刷新小金属价格："
+        "已单独刷新金属价格："
         + "、".join(
             f"{asset['name']} {len(asset['series'])} 条"
-            for asset in small_metal_assets
+            for asset in metal_assets
         ),
         flush=True,
     )
-    return len(small_metal_assets)
+    return len(metal_assets)
 
 
 def main() -> int:
@@ -2254,12 +2584,12 @@ def main() -> int:
     parser.add_argument(
         "--fetch-antimony-only",
         action="store_true",
-        help="兼容旧命令：仅刷新现有 JSON 中的小金属价格",
+        help="兼容旧命令：仅刷新现有 JSON 中的全部金属价格",
     )
     parser.add_argument(
         "--fetch-small-metals-only",
         action="store_true",
-        help="仅刷新现有 JSON 中的国内、国外小金属价格",
+        help="仅刷新现有 JSON 中的全部金属价格",
     )
     parser.add_argument(
         "--history-days",
@@ -2304,6 +2634,11 @@ def main() -> int:
                 {"ALUMINUM"},
                 lambda: fetch_aluminum_asset(args.history_days),
             ),
+            (
+                "黄金、白银、铜、锡、金属镍",
+                set(SMM_ADDITIONAL_METAL_ASSETS),
+                lambda: fetch_additional_metal_assets(args.history_days),
+            ),
             ("磷矿石", {"PHOSPHATE_ROCK"}, fetch_phosphate_rock_asset),
             (
                 "分散染料与H酸",
@@ -2322,9 +2657,24 @@ def main() -> int:
                 fetch_blood_product_assets,
             ),
             (
-                "国内、国外小金属",
+                "锑、钨、铟、铼、锗",
                 set(SMM_ASSETS),
                 lambda: fetch_small_metal_assets(args.history_days),
+            ),
+            (
+                "煤炭、焦煤、WTI原油、布伦特原油",
+                set(ENERGY_ASSETS),
+                lambda: fetch_energy_assets(args.history_days),
+            ),
+            (
+                "玉米、大豆、小麦、白糖、皮棉、生猪、棕榈油、天然橡胶",
+                set(AGRICULTURAL_ASSETS),
+                lambda: fetch_agricultural_assets(args.history_days),
+            ),
+            (
+                "咖啡、可可",
+                set(FRED_AGRICULTURAL_ASSETS),
+                lambda: fetch_fred_agricultural_assets(args.history_days),
             ),
             (
                 "维生素",
