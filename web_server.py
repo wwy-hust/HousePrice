@@ -23,6 +23,24 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
+def start_python_subprocess(script, *args, cwd):
+    """以 UTF-8 启动采集脚本，并容忍第三方库输出的异常字符。"""
+    env = os.environ.copy()
+    env['PYTHONIOENCODING'] = 'utf-8'
+    env['PYTHONUTF8'] = '1'
+    return subprocess.Popen(
+        [sys.executable, script, *args],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        encoding='utf-8',
+        errors='replace',
+        cwd=cwd,
+        env=env,
+    )
+
+
 # 全局更新任务状态
 update_status = {
     'running': False,
@@ -183,14 +201,7 @@ def run_update_task():
         })
 
     try:
-        import sys
-        proc = subprocess.Popen(
-            [sys.executable, script, '--auto-collect'],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            cwd=base_path,
-        )
+        proc = start_python_subprocess(script, '--auto-collect', cwd=base_path)
 
         last_line = ''
         for line in proc.stdout:
@@ -248,13 +259,7 @@ def run_asset_update_task():
         })
 
     try:
-        proc = subprocess.Popen(
-            [sys.executable, script, '--fetch'],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            cwd=base_path,
-        )
+        proc = start_python_subprocess(script, '--fetch', cwd=base_path)
 
         last_line = ''
         for line in proc.stdout:
@@ -316,13 +321,7 @@ def run_asset_returns_update_task():
         })
 
     try:
-        proc = subprocess.Popen(
-            [sys.executable, script],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            cwd=base_path,
-        )
+        proc = start_python_subprocess(script, cwd=base_path)
 
         last_line = ''
         for line in proc.stdout:
@@ -384,13 +383,7 @@ def run_retail_update_task():
         })
 
     try:
-        proc = subprocess.Popen(
-            [sys.executable, script],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            cwd=base_path,
-        )
+        proc = start_python_subprocess(script, cwd=base_path)
 
         last_line = ''
         for line in proc.stdout:
@@ -452,13 +445,7 @@ def run_industry_update_task():
         })
 
     try:
-        proc = subprocess.Popen(
-            [sys.executable, script],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            cwd=base_path,
-        )
+        proc = start_python_subprocess(script, cwd=base_path)
 
         last_line = ''
         for line in proc.stdout:

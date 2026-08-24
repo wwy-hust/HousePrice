@@ -15,6 +15,15 @@ import sys
 import subprocess
 from urllib.parse import urljoin, urlparse
 
+
+def configure_console_output():
+    """避免不同平台的控制台编码因个别字符导致脚本崩溃。"""
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            reconfigure(errors="replace")
+
+
 class HousePriceURLUpdater:
     def __init__(self, csv_file_path="HousePriceURL.csv"):
         self.csv_file_path = csv_file_path
@@ -638,9 +647,9 @@ class HousePriceURLUpdater:
                 
                 if success:
                     success_count += 1
-                    print(f"✅ 采集成功 ({success_count}/{total_count})")
+                    print(f"[成功] 采集成功 ({success_count}/{total_count})")
                 else:
-                    print(f"❌ 采集失败")
+                    print("[失败] 采集失败")
                 
                 # 添加延迟避免请求过快
                 if i < total_count:
@@ -670,7 +679,7 @@ class HousePriceURLUpdater:
             processor = BatchProcessor()
             processor.process_all()
             
-            print("✅ 数据处理完成！JSON文件已更新。")
+            print("[成功] 数据处理完成！JSON文件已更新。")
             return True
             
         except ImportError as e:
@@ -717,28 +726,29 @@ class HousePriceURLUpdater:
                 process_success = self.process_data_to_json()
                 
                 if process_success:
-                    print("\n🎉 完整流程执行成功！")
-                    print("- ✅ URL更新完成")
-                    print("- ✅ 数据采集完成") 
-                    print("- ✅ JSON文件更新完成")
+                    print("\n[成功] 完整流程执行成功！")
+                    print("- [成功] URL更新完成")
+                    print("- [成功] 数据采集完成")
+                    print("- [成功] JSON文件更新完成")
                 else:
-                    print("\n⚠️  部分流程完成:")
-                    print("- ✅ URL更新完成")
-                    print("- ✅ 数据采集完成")
-                    print("- ❌ JSON处理失败")
+                    print("\n[警告] 部分流程完成:")
+                    print("- [成功] URL更新完成")
+                    print("- [成功] 数据采集完成")
+                    print("- [失败] JSON处理失败")
             else:
-                print("\n⚠️  数据采集失败，跳过JSON处理")
+                print("\n[警告] 数据采集失败，跳过JSON处理")
         elif new_records:
-            print(f"\n✅ 发现 {len(new_records)} 个新记录，已更新到CSV文件")
+            print(f"\n[成功] 发现 {len(new_records)} 个新记录，已更新到CSV文件")
             print("提示: 使用 --auto-collect 参数可自动执行数据采集")
         else:
-            print("\n✅ 无新数据，流程完成")
+            print("\n[成功] 无新数据，流程完成")
         
         print("=" * 50)
         print("更新完成!")
 
 def main():
-    import sys
+    configure_console_output()
+
     # 检查是否有 --auto-collect 参数
     auto_collect = '--auto-collect' in sys.argv or '-a' in sys.argv
     

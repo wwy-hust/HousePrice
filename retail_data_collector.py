@@ -10,6 +10,15 @@ import json, os, re, sys, time
 from datetime import datetime
 from collections import OrderedDict
 
+
+def configure_console_output():
+    """避免 Windows GBK 控制台因日志中的 Unicode 字符而中断采集。"""
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            reconfigure(errors="replace")
+
+
 try:
     import akshare as ak
     import pandas as pd
@@ -168,6 +177,14 @@ def collect_retail_data(output_dir: str = "results"):
     # === 1. 总量数据 (AKShare 全量历史) ===
     print("\n[1/4] 获取社零总额全量历史数据 (AKShare)...")
     df = ak.macro_china_consumer_goods_retail()
+    required_columns = {
+        '月份', '当月', '同比增长', '环比增长', '累计', '累计-同比增长'
+    }
+    missing_columns = required_columns.difference(df.columns)
+    if missing_columns:
+        raise ValueError(
+            f"AKShare 返回数据缺少字段: {', '.join(sorted(missing_columns))}"
+        )
     df = df.sort_values('月份').reset_index(drop=True)
     
     total_records = []
@@ -185,6 +202,8 @@ def collect_retail_data(output_dir: str = "results"):
         })
     # 按日期排序
     total_records.sort(key=lambda x: x['date'])
+    if not total_records:
+        raise ValueError("AKShare 未返回可用的社零月度数据")
     print(f"   获取 {len(total_records)} 个月度记录 ({total_records[0]['date']} ~ {total_records[-1]['date']})")
 
     # === 2. 分品类数据 ===
@@ -242,17 +261,29 @@ def collect_retail_data(output_dir: str = "results"):
     }
 
     output_file = os.path.join(output_dir, "retail_data.json")
-    with open(output_file, 'w', encoding='utf-8') as f:
+    temporary_file = f"{output_file}.tmp"
+    with open(temporary_file, 'w', encoding='utf-8') as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
+        f.write('\n')
+    os.replace(temporary_file, output_file)
 
     size = os.path.getsize(output_file)
     print(f"\n✅ 数据已保存: {output_file} ({size:,} bytes)")
     latest = total_records[-1]
     print(f"\n📊 最新数据 ({latest['date']}):")
-    print(f"   社零总额: {latest['value']:,.0f} 亿元, 同比 {latest['yoy']:+.1f}%")
+    value_text = (
+        f"{latest['value']:,.0f} 亿元"
+        if latest['value'] is not None else "暂无"
+    )
+    yoy_text = (
+        f"{latest['yoy']:+.1f}%"
+        if latest['yoy'] is not None else "暂无"
+    )
+    print(f"   社零总额: {value_text}, 同比 {yoy_text}")
 
 
 def main():
+    configure_console_output()
     output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
     collect_retail_data(output_dir)
     print("\n🎉 采集完成！")

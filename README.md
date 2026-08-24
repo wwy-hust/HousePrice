@@ -155,6 +155,28 @@ python data_collector.py
 python city_price_processor.py
 ```
 
+### 本地一键启动
+
+**macOS / Linux**
+```bash
+./local_run.sh
+# 自动清理 8001 端口、启动服务并打开浏览器
+# 访问 http://localhost:8001
+```
+
+**Windows**
+```bat
+:: 首次运行前先安装依赖
+pip install -r requirements.txt
+
+:: 双击 local_run.bat，或在 PowerShell/CMD 中运行
+local_run.bat
+:: 自动清理 8001 端口、启动服务并打开浏览器
+:: 访问 http://localhost:8001
+```
+
+> 提示：`local_run.bat` 默认使用 `python` 命令，请确保已加入系统 PATH（可用 `python --version` 验证）。如使用 Python 启动器，可将脚本中的 `python` 改为 `py`；如需修改端口，编辑脚本中的 `set PORT=8001`。
+
 ### Docker开发
 ```bash
 # 构建镜像
