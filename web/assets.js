@@ -43,6 +43,7 @@ const ASSET_COLORS = {
     TD3C_WS: '#f97316',
     TD15: '#3b82f6',
     TD15_WS: '#06b6d4',
+    PDCI: '#8b5cf6',
     MONKEY: '#10b981',
 };
 

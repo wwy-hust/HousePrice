@@ -173,6 +173,9 @@ SWEETENER_ASSETS = {
     },
 }
 XINDE_API_ROOT = "https://www.xindemarinenews.com.cn/jeecgboot/xinde"
+CNFIN_CHART_API_URL = "https://api.cnfin.com/roll/charts/getContent"
+PDCI_INDEX_URL = "https://indices.cnfin.com/3318271/index.html?idx=4"
+PDCI_CHART_ID = "12549"
 CCGP_SEARCH_URL = "https://search.ccgp.gov.cn/bxsearch"
 SMM_API_URL = "https://platform.smm.cn/aggdatacenter/user/v1/agg_data"
 SMM_ASSETS = {
@@ -755,10 +758,11 @@ CATEGORY_BY_CODE = {
     "XYLITOL": "食品添加剂",
     "BLOOD_ALBUMIN": "血液制品",
     "BLOOD_IVIG": "血液制品",
-    "TD3C": "VLCC油运",
-    "TD3C_WS": "VLCC油运",
-    "TD15": "VLCC油运",
-    "TD15_WS": "VLCC油运",
+    "TD3C": "航运",
+    "TD3C_WS": "航运",
+    "TD15": "航运",
+    "TD15_WS": "航运",
+    "PDCI": "航运",
     "MONKEY": "生物医药上游",
 }
 CATEGORY_ORDER = [
@@ -768,7 +772,7 @@ CATEGORY_ORDER = [
     "小金属",
     "维生素",
     "食品添加剂",
-    "VLCC油运",
+    "航运",
     "血液制品",
     "生物医药上游",
 ]
@@ -802,6 +806,11 @@ ASSET_ORDER = {
     "SACCHARIN_SODIUM": 6,
     "STEVIA_GLYCOSIDE": 7,
     "XYLITOL": 8,
+    "TD3C": 0,
+    "TD3C_WS": 1,
+    "TD15": 2,
+    "TD15_WS": 3,
+    "PDCI": 4,
 }
 
 
@@ -1919,12 +1928,64 @@ def fetch_vlcc_assets(max_pages: int = 60) -> list[dict]:
                     "name": name,
                     "unit": unit,
                     "source": "波罗的海交易所（信德海事网转载）",
-                    "category": "VLCC油运",
+                    "category": "航运",
                     "latest": series[-1],
                     "series": series,
                 }
             )
     return assets
+
+
+def fetch_pdci_asset() -> dict:
+    """从新华指数官方图表接口拉取 PDCI 综合指数历史。"""
+    response = requests.post(
+        CNFIN_CHART_API_URL,
+        data={"ids": PDCI_CHART_ID, "type": "1"},
+        headers={**REQUEST_HEADERS, "Referer": PDCI_INDEX_URL},
+        timeout=20,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    if payload.get("status") != 1:
+        raise ValueError(f"新华指数接口返回异常：{payload.get('msg', '未知错误')}")
+
+    charts = payload.get("data", {}).get("list", [])
+    if not charts:
+        raise ValueError("新华指数接口未返回 PDCI 图表")
+    chart = json.loads(charts[0]["modelCode"])
+    dates = chart.get("xAxis", {}).get("data", [])
+    values = (chart.get("series") or [{}])[0].get("data", [])
+    if not dates or len(dates) != len(values):
+        raise ValueError("PDCI 图表日期与指数值不匹配")
+
+    points_by_date = _existing_series_by_code("PDCI")
+    for raw_date, raw_value in zip(dates, values):
+        value = raw_value.get("value") if isinstance(raw_value, dict) else raw_value
+        try:
+            price = _number(str(value))
+            point_date = datetime.strptime(raw_date, "%Y/%m/%d").strftime("%Y-%m-%d")
+        except (TypeError, ValueError):
+            continue
+        points_by_date[point_date] = {
+            "date": point_date,
+            "price": price,
+            "price_low": None,
+            "price_high": None,
+            "source_url": PDCI_INDEX_URL,
+        }
+
+    series = [points_by_date[key] for key in sorted(points_by_date)]
+    if not series:
+        raise ValueError("无法从新华指数图表解析 PDCI 运价")
+    return {
+        "code": "PDCI",
+        "name": "新华·泛亚航运中国内贸集装箱运价综合指数（PDCI）",
+        "unit": "点",
+        "source": "新华指数、泛亚航运",
+        "category": "航运",
+        "latest": series[-1],
+        "series": series,
+    }
 
 
 def fetch_monkey_asset(
@@ -2046,7 +2107,12 @@ def fetch_monkey_asset(
 def load_existing_payload(output_path: Path = OUTPUT_PATH) -> dict:
     if not output_path.exists():
         return {"assets": []}
-    return json.loads(output_path.read_text(encoding="utf-8"))
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    for asset in payload.get("assets", []):
+        category = CATEGORY_BY_CODE.get(asset.get("code"))
+        if category:
+            asset["category"] = category
+    return payload
 
 
 def sanitize_assets(assets: list[dict]) -> tuple[list[dict], int]:
@@ -2262,10 +2328,11 @@ def main() -> int:
                 fetch_sweetener_assets,
             ),
             (
-                "VLCC 油运",
+                "航运（VLCC）",
                 {"TD3C", "TD3C_WS", "TD15", "TD15_WS"},
                 fetch_vlcc_assets,
             ),
+            ("PDCI 运价", {"PDCI"}, fetch_pdci_asset),
             (
                 "实验猴",
                 {"MONKEY"},

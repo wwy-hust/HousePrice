@@ -1,7 +1,7 @@
 {
   "data_type": "关注资产价格",
-  "generated_at": "2026-08-24T10:55:48+08:00",
-  "source_updated_at": "2026-08-24T10:55:48+08:00",
+  "generated_at": "2026-08-24T20:24:45+08:00",
+  "source_updated_at": "2026-08-24T20:24:45+08:00",
   "categories": [
     {
       "name": "大宗商品",
@@ -65,12 +65,13 @@
       ]
     },
     {
-      "name": "VLCC油运",
+      "name": "航运",
       "asset_codes": [
+        "TD3C",
+        "TD3C_WS",
         "TD15",
         "TD15_WS",
-        "TD3C",
-        "TD3C_WS"
+        "PDCI"
       ]
     },
     {
@@ -116864,743 +116865,11 @@
       ]
     },
     {
-      "code": "TD15",
-      "name": "TD15航线日租金（西非→中国VLCC）",
-      "unit": "美元/天",
-      "source": "波罗的海交易所（信德海事网转载）",
-      "category": "VLCC油运",
-      "latest": {
-        "date": "2026-07-10",
-        "price": 145826.0,
-        "price_low": null,
-        "price_high": null,
-        "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
-      },
-      "series": [
-        {
-          "date": "2024-10-25",
-          "price": 41447.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=56996"
-        },
-        {
-          "date": "2024-11-01",
-          "price": 33451.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=57083"
-        },
-        {
-          "date": "2024-11-08",
-          "price": 29004.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=57172"
-        },
-        {
-          "date": "2024-12-06",
-          "price": 29104.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=57552"
-        },
-        {
-          "date": "2024-12-20",
-          "price": 26600.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=57790"
-        },
-        {
-          "date": "2025-01-17",
-          "price": 56375.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58085"
-        },
-        {
-          "date": "2025-01-31",
-          "price": 39968.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58303"
-        },
-        {
-          "date": "2025-02-07",
-          "price": 48618.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58369"
-        },
-        {
-          "date": "2025-02-14",
-          "price": 40000.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58460"
-        },
-        {
-          "date": "2025-02-21",
-          "price": 46032.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58549"
-        },
-        {
-          "date": "2025-02-28",
-          "price": 40610.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58657"
-        },
-        {
-          "date": "2025-03-07",
-          "price": 40633.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58743"
-        },
-        {
-          "date": "2025-03-14",
-          "price": 41173.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58890"
-        },
-        {
-          "date": "2025-04-04",
-          "price": 39906.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59183"
-        },
-        {
-          "date": "2025-04-25",
-          "price": 55010.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59344"
-        },
-        {
-          "date": "2025-05-02",
-          "price": 51690.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59413"
-        },
-        {
-          "date": "2025-05-09",
-          "price": 41547.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59543"
-        },
-        {
-          "date": "2025-05-23",
-          "price": 42278.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59708"
-        },
-        {
-          "date": "2025-06-06",
-          "price": 29631.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59958"
-        },
-        {
-          "date": "2025-06-20",
-          "price": 50000.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60173"
-        },
-        {
-          "date": "2025-06-27",
-          "price": 41319.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60289"
-        },
-        {
-          "date": "2025-07-11",
-          "price": 33249.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60509"
-        },
-        {
-          "date": "2025-07-18",
-          "price": 33525.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60610"
-        },
-        {
-          "date": "2025-07-25",
-          "price": 28863.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60741"
-        },
-        {
-          "date": "2025-08-01",
-          "price": 27549.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60806"
-        },
-        {
-          "date": "2025-08-08",
-          "price": 37398.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60867"
-        },
-        {
-          "date": "2025-08-29",
-          "price": 47382.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61151"
-        },
-        {
-          "date": "2025-09-12",
-          "price": 80878.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61299"
-        },
-        {
-          "date": "2025-09-19",
-          "price": 85511.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61425"
-        },
-        {
-          "date": "2025-09-26",
-          "price": 81034.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61533"
-        },
-        {
-          "date": "2025-10-03",
-          "price": 65910.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61638"
-        },
-        {
-          "date": "2025-10-10",
-          "price": 64220.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61661"
-        },
-        {
-          "date": "2025-10-17",
-          "price": 82482.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61770"
-        },
-        {
-          "date": "2025-10-24",
-          "price": 73487.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61820"
-        },
-        {
-          "date": "2025-11-07",
-          "price": 97502.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61942"
-        },
-        {
-          "date": "2025-11-21",
-          "price": 131252.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62005"
-        },
-        {
-          "date": "2025-11-28",
-          "price": 117300.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62065"
-        },
-        {
-          "date": "2025-12-12",
-          "price": 117074.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62235"
-        },
-        {
-          "date": "2026-01-16",
-          "price": 96700.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62576"
-        },
-        {
-          "date": "2026-01-23",
-          "price": 101263.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62654"
-        },
-        {
-          "date": "2026-01-30",
-          "price": 79500.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62757"
-        },
-        {
-          "date": "2026-02-06",
-          "price": 107200.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62838"
-        },
-        {
-          "date": "2026-02-20",
-          "price": 130650.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63003"
-        },
-        {
-          "date": "2026-02-27",
-          "price": 174600.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63049"
-        },
-        {
-          "date": "2026-03-06",
-          "price": 242782.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63125"
-        },
-        {
-          "date": "2026-03-27",
-          "price": 130000.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63306"
-        },
-        {
-          "date": "2026-04-24",
-          "price": 109200.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63548"
-        },
-        {
-          "date": "2026-05-15",
-          "price": 104500.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63684"
-        },
-        {
-          "date": "2026-06-12",
-          "price": 89358.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63828"
-        },
-        {
-          "date": "2026-07-10",
-          "price": 145826.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
-        }
-      ]
-    },
-    {
-      "code": "TD15_WS",
-      "name": "TD15运价WS（西非→中国VLCC）",
-      "unit": "WS点数",
-      "source": "波罗的海交易所（信德海事网转载）",
-      "category": "VLCC油运",
-      "latest": {
-        "date": "2026-07-10",
-        "price": 168.25,
-        "price_low": null,
-        "price_high": null,
-        "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
-      },
-      "series": [
-        {
-          "date": "2024-10-25",
-          "price": 62.83,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=56996"
-        },
-        {
-          "date": "2024-11-01",
-          "price": 54.39,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=57083"
-        },
-        {
-          "date": "2024-11-08",
-          "price": 50.78,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=57172"
-        },
-        {
-          "date": "2024-12-06",
-          "price": 49.39,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=57552"
-        },
-        {
-          "date": "2024-12-20",
-          "price": 46.5,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=57790"
-        },
-        {
-          "date": "2025-01-17",
-          "price": 76.56,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58085"
-        },
-        {
-          "date": "2025-01-31",
-          "price": 61.44,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58303"
-        },
-        {
-          "date": "2025-02-07",
-          "price": 68.44,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58369"
-        },
-        {
-          "date": "2025-02-14",
-          "price": 62.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58460"
-        },
-        {
-          "date": "2025-02-21",
-          "price": 66.19,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58549"
-        },
-        {
-          "date": "2025-02-28",
-          "price": 59.83,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58657"
-        },
-        {
-          "date": "2025-03-07",
-          "price": 58.5,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58743"
-        },
-        {
-          "date": "2025-03-14",
-          "price": 59.63,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=58890"
-        },
-        {
-          "date": "2025-04-04",
-          "price": 59.75,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59183"
-        },
-        {
-          "date": "2025-04-25",
-          "price": 68.41,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59344"
-        },
-        {
-          "date": "2025-05-02",
-          "price": 67.13,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59413"
-        },
-        {
-          "date": "2025-05-09",
-          "price": 61.69,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59543"
-        },
-        {
-          "date": "2025-05-23",
-          "price": 61.94,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59708"
-        },
-        {
-          "date": "2025-06-06",
-          "price": 48.63,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=59958"
-        },
-        {
-          "date": "2025-06-20",
-          "price": 68.81,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60173"
-        },
-        {
-          "date": "2025-06-27",
-          "price": 60.13,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60289"
-        },
-        {
-          "date": "2025-07-11",
-          "price": 53.25,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60509"
-        },
-        {
-          "date": "2025-07-18",
-          "price": 53.06,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60610"
-        },
-        {
-          "date": "2025-07-25",
-          "price": 48.5,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60741"
-        },
-        {
-          "date": "2025-08-01",
-          "price": 47.63,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60806"
-        },
-        {
-          "date": "2025-08-08",
-          "price": 56.31,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=60867"
-        },
-        {
-          "date": "2025-08-29",
-          "price": 64.81,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61151"
-        },
-        {
-          "date": "2025-09-12",
-          "price": 92.81,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61299"
-        },
-        {
-          "date": "2025-09-19",
-          "price": 97.13,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61425"
-        },
-        {
-          "date": "2025-09-26",
-          "price": 93.13,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61533"
-        },
-        {
-          "date": "2025-10-03",
-          "price": 80.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61638"
-        },
-        {
-          "date": "2025-10-10",
-          "price": 78.31,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61661"
-        },
-        {
-          "date": "2025-10-17",
-          "price": 92.81,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61770"
-        },
-        {
-          "date": "2025-10-24",
-          "price": 85.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61820"
-        },
-        {
-          "date": "2025-11-07",
-          "price": 106.5,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=61942"
-        },
-        {
-          "date": "2025-11-21",
-          "price": 119.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62005"
-        },
-        {
-          "date": "2025-11-28",
-          "price": 119.25,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62065"
-        },
-        {
-          "date": "2025-12-12",
-          "price": 113.5,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62235"
-        },
-        {
-          "date": "2026-01-16",
-          "price": 113.19,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62576"
-        },
-        {
-          "date": "2026-01-23",
-          "price": 117.31,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62654"
-        },
-        {
-          "date": "2026-01-30",
-          "price": 98.25,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62757"
-        },
-        {
-          "date": "2026-02-06",
-          "price": 124.25,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=62838"
-        },
-        {
-          "date": "2026-02-20",
-          "price": 146.38,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63003"
-        },
-        {
-          "date": "2026-02-27",
-          "price": 188.13,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63049"
-        },
-        {
-          "date": "2026-03-06",
-          "price": 258.44,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63125"
-        },
-        {
-          "date": "2026-03-27",
-          "price": 163.0,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63306"
-        },
-        {
-          "date": "2026-04-24",
-          "price": 137.31,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63548"
-        },
-        {
-          "date": "2026-05-15",
-          "price": 138.69,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63684"
-        },
-        {
-          "date": "2026-06-12",
-          "price": 120.44,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=63828"
-        },
-        {
-          "date": "2026-07-10",
-          "price": 168.25,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
-        }
-      ]
-    },
-    {
       "code": "TD3C",
       "name": "TD3C航线日租金（中东湾→中国VLCC）",
       "unit": "美元/天",
       "source": "波罗的海交易所（信德海事网转载）",
-      "category": "VLCC油运",
+      "category": "航运",
       "latest": {
         "date": "2026-07-10",
         "price": 344250.0,
@@ -117966,7 +117235,7 @@
       "name": "TD3C运价WS（中东湾→中国VLCC）",
       "unit": "WS点数",
       "source": "波罗的海交易所（信德海事网转载）",
-      "category": "VLCC油运",
+      "category": "航运",
       "latest": {
         "date": "2026-07-10",
         "price": 345.0,
@@ -118317,6 +117586,4849 @@
           "price_low": null,
           "price_high": null,
           "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+        }
+      ]
+    },
+    {
+      "code": "TD15",
+      "name": "TD15航线日租金（西非→中国VLCC）",
+      "unit": "美元/天",
+      "source": "波罗的海交易所（信德海事网转载）",
+      "category": "航运",
+      "latest": {
+        "date": "2026-07-10",
+        "price": 145826.0,
+        "price_low": null,
+        "price_high": null,
+        "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+      },
+      "series": [
+        {
+          "date": "2024-10-25",
+          "price": 41447.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=56996"
+        },
+        {
+          "date": "2024-11-01",
+          "price": 33451.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=57083"
+        },
+        {
+          "date": "2024-11-08",
+          "price": 29004.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=57172"
+        },
+        {
+          "date": "2024-12-06",
+          "price": 29104.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=57552"
+        },
+        {
+          "date": "2024-12-20",
+          "price": 26600.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=57790"
+        },
+        {
+          "date": "2025-01-17",
+          "price": 56375.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58085"
+        },
+        {
+          "date": "2025-01-31",
+          "price": 39968.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58303"
+        },
+        {
+          "date": "2025-02-07",
+          "price": 48618.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58369"
+        },
+        {
+          "date": "2025-02-14",
+          "price": 40000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58460"
+        },
+        {
+          "date": "2025-02-21",
+          "price": 46032.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58549"
+        },
+        {
+          "date": "2025-02-28",
+          "price": 40610.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58657"
+        },
+        {
+          "date": "2025-03-07",
+          "price": 40633.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58743"
+        },
+        {
+          "date": "2025-03-14",
+          "price": 41173.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58890"
+        },
+        {
+          "date": "2025-04-04",
+          "price": 39906.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59183"
+        },
+        {
+          "date": "2025-04-25",
+          "price": 55010.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59344"
+        },
+        {
+          "date": "2025-05-02",
+          "price": 51690.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59413"
+        },
+        {
+          "date": "2025-05-09",
+          "price": 41547.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59543"
+        },
+        {
+          "date": "2025-05-23",
+          "price": 42278.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59708"
+        },
+        {
+          "date": "2025-06-06",
+          "price": 29631.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59958"
+        },
+        {
+          "date": "2025-06-20",
+          "price": 50000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60173"
+        },
+        {
+          "date": "2025-06-27",
+          "price": 41319.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60289"
+        },
+        {
+          "date": "2025-07-11",
+          "price": 33249.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60509"
+        },
+        {
+          "date": "2025-07-18",
+          "price": 33525.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60610"
+        },
+        {
+          "date": "2025-07-25",
+          "price": 28863.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60741"
+        },
+        {
+          "date": "2025-08-01",
+          "price": 27549.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60806"
+        },
+        {
+          "date": "2025-08-08",
+          "price": 37398.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60867"
+        },
+        {
+          "date": "2025-08-29",
+          "price": 47382.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61151"
+        },
+        {
+          "date": "2025-09-12",
+          "price": 80878.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61299"
+        },
+        {
+          "date": "2025-09-19",
+          "price": 85511.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61425"
+        },
+        {
+          "date": "2025-09-26",
+          "price": 81034.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61533"
+        },
+        {
+          "date": "2025-10-03",
+          "price": 65910.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61638"
+        },
+        {
+          "date": "2025-10-10",
+          "price": 64220.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61661"
+        },
+        {
+          "date": "2025-10-17",
+          "price": 82482.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61770"
+        },
+        {
+          "date": "2025-10-24",
+          "price": 73487.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61820"
+        },
+        {
+          "date": "2025-11-07",
+          "price": 97502.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61942"
+        },
+        {
+          "date": "2025-11-21",
+          "price": 131252.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62005"
+        },
+        {
+          "date": "2025-11-28",
+          "price": 117300.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62065"
+        },
+        {
+          "date": "2025-12-12",
+          "price": 117074.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62235"
+        },
+        {
+          "date": "2026-01-16",
+          "price": 96700.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62576"
+        },
+        {
+          "date": "2026-01-23",
+          "price": 101263.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62654"
+        },
+        {
+          "date": "2026-01-30",
+          "price": 79500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62757"
+        },
+        {
+          "date": "2026-02-06",
+          "price": 107200.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62838"
+        },
+        {
+          "date": "2026-02-20",
+          "price": 130650.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63003"
+        },
+        {
+          "date": "2026-02-27",
+          "price": 174600.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63049"
+        },
+        {
+          "date": "2026-03-06",
+          "price": 242782.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63125"
+        },
+        {
+          "date": "2026-03-27",
+          "price": 130000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63306"
+        },
+        {
+          "date": "2026-04-24",
+          "price": 109200.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63548"
+        },
+        {
+          "date": "2026-05-15",
+          "price": 104500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63684"
+        },
+        {
+          "date": "2026-06-12",
+          "price": 89358.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63828"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 145826.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+        }
+      ]
+    },
+    {
+      "code": "TD15_WS",
+      "name": "TD15运价WS（西非→中国VLCC）",
+      "unit": "WS点数",
+      "source": "波罗的海交易所（信德海事网转载）",
+      "category": "航运",
+      "latest": {
+        "date": "2026-07-10",
+        "price": 168.25,
+        "price_low": null,
+        "price_high": null,
+        "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+      },
+      "series": [
+        {
+          "date": "2024-10-25",
+          "price": 62.83,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=56996"
+        },
+        {
+          "date": "2024-11-01",
+          "price": 54.39,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=57083"
+        },
+        {
+          "date": "2024-11-08",
+          "price": 50.78,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=57172"
+        },
+        {
+          "date": "2024-12-06",
+          "price": 49.39,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=57552"
+        },
+        {
+          "date": "2024-12-20",
+          "price": 46.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=57790"
+        },
+        {
+          "date": "2025-01-17",
+          "price": 76.56,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58085"
+        },
+        {
+          "date": "2025-01-31",
+          "price": 61.44,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58303"
+        },
+        {
+          "date": "2025-02-07",
+          "price": 68.44,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58369"
+        },
+        {
+          "date": "2025-02-14",
+          "price": 62.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58460"
+        },
+        {
+          "date": "2025-02-21",
+          "price": 66.19,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58549"
+        },
+        {
+          "date": "2025-02-28",
+          "price": 59.83,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58657"
+        },
+        {
+          "date": "2025-03-07",
+          "price": 58.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58743"
+        },
+        {
+          "date": "2025-03-14",
+          "price": 59.63,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=58890"
+        },
+        {
+          "date": "2025-04-04",
+          "price": 59.75,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59183"
+        },
+        {
+          "date": "2025-04-25",
+          "price": 68.41,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59344"
+        },
+        {
+          "date": "2025-05-02",
+          "price": 67.13,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59413"
+        },
+        {
+          "date": "2025-05-09",
+          "price": 61.69,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59543"
+        },
+        {
+          "date": "2025-05-23",
+          "price": 61.94,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59708"
+        },
+        {
+          "date": "2025-06-06",
+          "price": 48.63,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=59958"
+        },
+        {
+          "date": "2025-06-20",
+          "price": 68.81,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60173"
+        },
+        {
+          "date": "2025-06-27",
+          "price": 60.13,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60289"
+        },
+        {
+          "date": "2025-07-11",
+          "price": 53.25,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60509"
+        },
+        {
+          "date": "2025-07-18",
+          "price": 53.06,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60610"
+        },
+        {
+          "date": "2025-07-25",
+          "price": 48.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60741"
+        },
+        {
+          "date": "2025-08-01",
+          "price": 47.63,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60806"
+        },
+        {
+          "date": "2025-08-08",
+          "price": 56.31,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=60867"
+        },
+        {
+          "date": "2025-08-29",
+          "price": 64.81,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61151"
+        },
+        {
+          "date": "2025-09-12",
+          "price": 92.81,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61299"
+        },
+        {
+          "date": "2025-09-19",
+          "price": 97.13,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61425"
+        },
+        {
+          "date": "2025-09-26",
+          "price": 93.13,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61533"
+        },
+        {
+          "date": "2025-10-03",
+          "price": 80.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61638"
+        },
+        {
+          "date": "2025-10-10",
+          "price": 78.31,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61661"
+        },
+        {
+          "date": "2025-10-17",
+          "price": 92.81,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61770"
+        },
+        {
+          "date": "2025-10-24",
+          "price": 85.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61820"
+        },
+        {
+          "date": "2025-11-07",
+          "price": 106.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=61942"
+        },
+        {
+          "date": "2025-11-21",
+          "price": 119.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62005"
+        },
+        {
+          "date": "2025-11-28",
+          "price": 119.25,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62065"
+        },
+        {
+          "date": "2025-12-12",
+          "price": 113.5,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62235"
+        },
+        {
+          "date": "2026-01-16",
+          "price": 113.19,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62576"
+        },
+        {
+          "date": "2026-01-23",
+          "price": 117.31,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62654"
+        },
+        {
+          "date": "2026-01-30",
+          "price": 98.25,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62757"
+        },
+        {
+          "date": "2026-02-06",
+          "price": 124.25,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=62838"
+        },
+        {
+          "date": "2026-02-20",
+          "price": 146.38,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63003"
+        },
+        {
+          "date": "2026-02-27",
+          "price": 188.13,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63049"
+        },
+        {
+          "date": "2026-03-06",
+          "price": 258.44,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63125"
+        },
+        {
+          "date": "2026-03-27",
+          "price": 163.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63306"
+        },
+        {
+          "date": "2026-04-24",
+          "price": 137.31,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63548"
+        },
+        {
+          "date": "2026-05-15",
+          "price": 138.69,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63684"
+        },
+        {
+          "date": "2026-06-12",
+          "price": 120.44,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=63828"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 168.25,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.xindemarinenews.com.cn/article?id=2076589186927955968"
+        }
+      ]
+    },
+    {
+      "code": "PDCI",
+      "name": "新华·泛亚航运中国内贸集装箱运价综合指数（PDCI）",
+      "unit": "点",
+      "source": "新华指数、泛亚航运",
+      "category": "航运",
+      "latest": {
+        "date": "2026-08-14",
+        "price": 968.0,
+        "price_low": null,
+        "price_high": null,
+        "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+      },
+      "series": [
+        {
+          "date": "2015-06-05",
+          "price": 1000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-06-12",
+          "price": 1022.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-06-19",
+          "price": 1090.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-06-26",
+          "price": 1012.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-07-03",
+          "price": 1043.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-07-10",
+          "price": 1049.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-07-17",
+          "price": 1033.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-07-24",
+          "price": 988.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-07-31",
+          "price": 1028.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-08-07",
+          "price": 980.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-08-14",
+          "price": 939.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-08-21",
+          "price": 1004.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-08-28",
+          "price": 989.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-09-04",
+          "price": 943.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-09-11",
+          "price": 961.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-09-18",
+          "price": 1009.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-09-25",
+          "price": 1003.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-10-02",
+          "price": 1032.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-10-09",
+          "price": 1016.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-10-16",
+          "price": 1014.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-10-23",
+          "price": 1017.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-10-30",
+          "price": 1017.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-11-06",
+          "price": 1032.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-11-13",
+          "price": 1073.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-11-20",
+          "price": 1105.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-11-27",
+          "price": 1049.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-12-04",
+          "price": 1186.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-12-11",
+          "price": 1175.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-12-18",
+          "price": 1213.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2015-12-25",
+          "price": 1145.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-01-01",
+          "price": 1139.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-01-08",
+          "price": 1116.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-01-15",
+          "price": 1056.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-01-22",
+          "price": 1068.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-01-29",
+          "price": 1136.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-02-05",
+          "price": 1124.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-02-12",
+          "price": 1148.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-02-19",
+          "price": 1005.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-02-26",
+          "price": 1028.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-03-04",
+          "price": 1111.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-03-11",
+          "price": 1097.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-03-18",
+          "price": 1171.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-03-25",
+          "price": 1121.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-04-01",
+          "price": 1140.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-04-08",
+          "price": 1189.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-04-15",
+          "price": 1140.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-04-22",
+          "price": 1139.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-04-29",
+          "price": 1120.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-05-06",
+          "price": 1100.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-05-13",
+          "price": 1123.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-05-20",
+          "price": 992.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-05-27",
+          "price": 1052.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-06-03",
+          "price": 969.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-06-10",
+          "price": 1031.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-06-18",
+          "price": 977.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-06-25",
+          "price": 894.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-07-01",
+          "price": 927.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-07-08",
+          "price": 970.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-07-15",
+          "price": 969.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-07-22",
+          "price": 1045.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-07-29",
+          "price": 995.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-08-05",
+          "price": 985.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-08-12",
+          "price": 1000.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-08-19",
+          "price": 1073.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-08-26",
+          "price": 1068.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-09-02",
+          "price": 1055.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-09-09",
+          "price": 1075.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-09-16",
+          "price": 997.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-09-23",
+          "price": 1036.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-09-30",
+          "price": 1049.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-10-07",
+          "price": 1064.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-10-14",
+          "price": 1036.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-10-21",
+          "price": 1088.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-10-28",
+          "price": 1081.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-11-04",
+          "price": 1101.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-11-11",
+          "price": 1147.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-11-18",
+          "price": 1244.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-11-25",
+          "price": 1327.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-12-02",
+          "price": 1500.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-12-09",
+          "price": 1639.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-12-16",
+          "price": 1650.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-12-23",
+          "price": 1653.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2016-12-30",
+          "price": 1611.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-01-06",
+          "price": 1495.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-01-13",
+          "price": 1434.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-01-20",
+          "price": 1457.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-01-27",
+          "price": 1517.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-02-03",
+          "price": 1420.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-02-10",
+          "price": 1378.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-02-17",
+          "price": 1316.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-02-24",
+          "price": 1383.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-03-03",
+          "price": 1416.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-03-10",
+          "price": 1422.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-03-17",
+          "price": 1423.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-03-24",
+          "price": 1506.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-03-31",
+          "price": 1469.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-04-07",
+          "price": 1368.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-04-14",
+          "price": 1264.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-04-21",
+          "price": 1113.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-04-28",
+          "price": 1037.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-05-05",
+          "price": 977.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-05-12",
+          "price": 973.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-05-19",
+          "price": 945.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-05-26",
+          "price": 945.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-06-02",
+          "price": 903.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-06-09",
+          "price": 856.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-06-16",
+          "price": 830.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-06-23",
+          "price": 834.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-06-30",
+          "price": 843.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-07-07",
+          "price": 881.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-07-14",
+          "price": 961.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-07-21",
+          "price": 990.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-07-28",
+          "price": 1102.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-08-04",
+          "price": 1109.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-08-11",
+          "price": 1070.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-08-18",
+          "price": 1031.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-08-25",
+          "price": 1033.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-09-01",
+          "price": 1049.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-09-08",
+          "price": 1044.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-09-15",
+          "price": 1023.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-09-22",
+          "price": 1067.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-09-29",
+          "price": 1137.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-10-06",
+          "price": 1165.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-10-13",
+          "price": 1171.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-10-20",
+          "price": 1175.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-10-27",
+          "price": 1156.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-11-03",
+          "price": 1323.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-11-10",
+          "price": 1525.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-11-17",
+          "price": 1699.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-11-24",
+          "price": 1773.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-12-01",
+          "price": 1738.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-12-08",
+          "price": 1582.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-12-15",
+          "price": 1539.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-12-22",
+          "price": 1494.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2017-12-29",
+          "price": 1483.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-01-05",
+          "price": 1428.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-01-12",
+          "price": 1364.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-01-19",
+          "price": 1268.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-01-26",
+          "price": 1192.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-02-02",
+          "price": 1117.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-02-09",
+          "price": 1082.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-02-16",
+          "price": 1029.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-02-23",
+          "price": 1033.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-03-02",
+          "price": 1098.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-03-09",
+          "price": 1124.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-03-16",
+          "price": 1174.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-03-23",
+          "price": 1214.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-03-30",
+          "price": 1212.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-04-06",
+          "price": 1215.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-04-13",
+          "price": 1214.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-04-20",
+          "price": 1255.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-04-27",
+          "price": 1209.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-05-04",
+          "price": 1176.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-05-11",
+          "price": 1154.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-05-18",
+          "price": 1085.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-05-25",
+          "price": 1076.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-06-01",
+          "price": 1074.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-06-08",
+          "price": 1034.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-06-15",
+          "price": 1007.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-06-22",
+          "price": 1016.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-06-29",
+          "price": 1025.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-07-06",
+          "price": 1090.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-07-13",
+          "price": 1171.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-07-20",
+          "price": 1258.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-07-27",
+          "price": 1305.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-08-03",
+          "price": 1258.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-08-10",
+          "price": 1288.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-08-17",
+          "price": 1228.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-08-24",
+          "price": 1229.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-08-31",
+          "price": 1230.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-09-07",
+          "price": 1253.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-09-14",
+          "price": 1289.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-09-21",
+          "price": 1328.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-09-28",
+          "price": 1405.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-10-05",
+          "price": 1391.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-10-12",
+          "price": 1382.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-10-19",
+          "price": 1389.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-10-26",
+          "price": 1414.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-11-02",
+          "price": 1481.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-11-09",
+          "price": 1475.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-11-16",
+          "price": 1475.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-11-23",
+          "price": 1486.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-11-30",
+          "price": 1448.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-12-07",
+          "price": 1412.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-12-14",
+          "price": 1346.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-12-21",
+          "price": 1325.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2018-12-28",
+          "price": 1308.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-01-04",
+          "price": 1277.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-01-11",
+          "price": 1246.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-01-18",
+          "price": 1207.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-01-25",
+          "price": 1207.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-02-01",
+          "price": 1199.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-02-08",
+          "price": 1172.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-02-15",
+          "price": 1150.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-02-22",
+          "price": 1143.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-03-01",
+          "price": 1200.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-03-08",
+          "price": 1190.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-03-15",
+          "price": 1190.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-03-22",
+          "price": 1223.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-03-29",
+          "price": 1212.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-04-05",
+          "price": 1212.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-04-12",
+          "price": 1272.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-04-19",
+          "price": 1264.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-04-26",
+          "price": 1277.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-05-03",
+          "price": 1190.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-05-10",
+          "price": 1228.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-05-17",
+          "price": 1193.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-05-24",
+          "price": 1189.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-05-31",
+          "price": 1164.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-06-07",
+          "price": 1187.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-06-14",
+          "price": 1152.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-06-21",
+          "price": 1099.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-06-28",
+          "price": 1089.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-07-05",
+          "price": 1063.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-07-12",
+          "price": 1040.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-07-19",
+          "price": 1031.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-07-26",
+          "price": 1013.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-08-02",
+          "price": 1078.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-08-09",
+          "price": 1105.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-08-16",
+          "price": 1189.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-08-23",
+          "price": 1267.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-08-30",
+          "price": 1262.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-09-06",
+          "price": 1342.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-09-13",
+          "price": 1354.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-09-20",
+          "price": 1326.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-09-27",
+          "price": 1252.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-10-04",
+          "price": 1256.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-10-11",
+          "price": 1273.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-10-18",
+          "price": 1232.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-10-24",
+          "price": 1245.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-11-01",
+          "price": 1271.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-11-08",
+          "price": 1283.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-11-15",
+          "price": 1313.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-11-22",
+          "price": 1293.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-11-29",
+          "price": 1353.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-12-06",
+          "price": 1321.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-12-13",
+          "price": 1386.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-12-20",
+          "price": 1408.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2019-12-27",
+          "price": 1428.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-01-03",
+          "price": 1427.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-01-10",
+          "price": 1379.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-01-17",
+          "price": 1341.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-01-24",
+          "price": 1266.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-01-31",
+          "price": 1304.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-02-07",
+          "price": 1259.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-02-14",
+          "price": 1293.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-02-21",
+          "price": 1348.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-02-28",
+          "price": 1323.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-03-06",
+          "price": 1293.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-03-13",
+          "price": 1256.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-03-20",
+          "price": 1161.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-03-27",
+          "price": 1088.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-04-03",
+          "price": 1034.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-04-10",
+          "price": 1015.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-04-17",
+          "price": 993.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-04-24",
+          "price": 991.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-05-01",
+          "price": 996.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-05-08",
+          "price": 992.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-05-15",
+          "price": 987.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-05-22",
+          "price": 969.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-05-29",
+          "price": 925.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-06-05",
+          "price": 878.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-06-12",
+          "price": 873.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-06-19",
+          "price": 865.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-06-26",
+          "price": 871.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-07-03",
+          "price": 902.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-07-10",
+          "price": 910.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-07-17",
+          "price": 989.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-07-24",
+          "price": 1039.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-07-31",
+          "price": 1103.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-08-07",
+          "price": 1112.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-08-14",
+          "price": 1129.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-08-21",
+          "price": 1158.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-08-28",
+          "price": 1159.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-09-04",
+          "price": 1259.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-09-11",
+          "price": 1257.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-09-18",
+          "price": 1266.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-09-25",
+          "price": 1324.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-10-02",
+          "price": 1333.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-10-09",
+          "price": 1363.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-10-16",
+          "price": 1405.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-10-23",
+          "price": 1417.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-10-30",
+          "price": 1439.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-11-06",
+          "price": 1445.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-11-13",
+          "price": 1457.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-11-20",
+          "price": 1444.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-11-27",
+          "price": 1472.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-12-04",
+          "price": 1472.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-12-11",
+          "price": 1537.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-12-18",
+          "price": 1552.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2020-12-25",
+          "price": 1546.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-01-01",
+          "price": 1525.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-01-08",
+          "price": 1467.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-01-15",
+          "price": 1450.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-01-22",
+          "price": 1366.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-01-29",
+          "price": 1310.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-02-05",
+          "price": 1266.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-02-12",
+          "price": 1259.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-02-19",
+          "price": 1226.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-02-26",
+          "price": 1243.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-03-05",
+          "price": 1224.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-03-12",
+          "price": 1220.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-03-19",
+          "price": 1191.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-03-26",
+          "price": 1180.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-04-02",
+          "price": 1125.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-04-09",
+          "price": 1144.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-04-16",
+          "price": 1150.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-04-23",
+          "price": 1198.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-04-30",
+          "price": 1240.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-05-07",
+          "price": 1294.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-05-14",
+          "price": 1401.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-05-21",
+          "price": 1405.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-05-28",
+          "price": 1482.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-06-04",
+          "price": 1527.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-06-11",
+          "price": 1536.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-06-18",
+          "price": 1510.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-06-25",
+          "price": 1508.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-07-02",
+          "price": 1496.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-07-09",
+          "price": 1442.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-07-16",
+          "price": 1391.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-07-23",
+          "price": 1374.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-07-30",
+          "price": 1333.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-08-06",
+          "price": 1410.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-08-13",
+          "price": 1448.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-08-20",
+          "price": 1498.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-08-27",
+          "price": 1600.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-09-03",
+          "price": 1619.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-09-10",
+          "price": 1679.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-09-17",
+          "price": 1698.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-09-24",
+          "price": 1690.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-10-01",
+          "price": 1601.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-10-08",
+          "price": 1540.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-10-15",
+          "price": 1494.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-10-22",
+          "price": 1481.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-10-29",
+          "price": 1518.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-11-05",
+          "price": 1592.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-11-12",
+          "price": 1657.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-11-19",
+          "price": 1726.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-11-26",
+          "price": 1751.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-12-03",
+          "price": 1820.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-12-10",
+          "price": 1851.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-12-17",
+          "price": 1877.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-12-24",
+          "price": 1928.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2021-12-31",
+          "price": 1877.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-01-07",
+          "price": 1816.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-01-14",
+          "price": 1756.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-01-21",
+          "price": 1700.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-01-28",
+          "price": 1729.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-02-04",
+          "price": 1703.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-02-11",
+          "price": 1652.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-02-18",
+          "price": 1630.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-02-25",
+          "price": 1677.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-03-04",
+          "price": 1671.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-03-11",
+          "price": 1767.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-03-18",
+          "price": 1793.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-03-25",
+          "price": 1731.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-04-01",
+          "price": 1712.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-04-08",
+          "price": 1658.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-04-15",
+          "price": 1667.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-04-22",
+          "price": 1571.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-04-29",
+          "price": 1590.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-05-06",
+          "price": 1541.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-05-13",
+          "price": 1616.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-05-20",
+          "price": 1625.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-05-27",
+          "price": 1658.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-06-03",
+          "price": 1689.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-06-10",
+          "price": 1677.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-06-17",
+          "price": 1692.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-06-24",
+          "price": 1661.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-07-01",
+          "price": 1663.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-07-08",
+          "price": 1628.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-07-15",
+          "price": 1629.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-07-22",
+          "price": 1553.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-07-29",
+          "price": 1559.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-08-05",
+          "price": 1530.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-08-12",
+          "price": 1513.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-08-19",
+          "price": 1531.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-08-26",
+          "price": 1537.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-09-02",
+          "price": 1525.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-09-09",
+          "price": 1520.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-09-16",
+          "price": 1572.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-09-23",
+          "price": 1570.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-09-30",
+          "price": 1608.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-10-07",
+          "price": 1633.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-10-14",
+          "price": 1608.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-10-21",
+          "price": 1653.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-10-28",
+          "price": 1651.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-11-04",
+          "price": 1711.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-11-11",
+          "price": 1749.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-11-18",
+          "price": 1796.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-11-25",
+          "price": 1825.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-12-02",
+          "price": 1807.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-12-09",
+          "price": 1755.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-12-16",
+          "price": 1775.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-12-23",
+          "price": 1742.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2022-12-30",
+          "price": 1672.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-01-06",
+          "price": 1616.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-01-13",
+          "price": 1608.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-01-20",
+          "price": 1536.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-01-27",
+          "price": 1484.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-02-03",
+          "price": 1477.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-02-10",
+          "price": 1535.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-02-17",
+          "price": 1493.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-02-24",
+          "price": 1544.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-03-03",
+          "price": 1553.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-03-10",
+          "price": 1569.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-03-17",
+          "price": 1575.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-03-24",
+          "price": 1529.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-03-31",
+          "price": 1491.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-04-07",
+          "price": 1515.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-04-14",
+          "price": 1418.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-04-21",
+          "price": 1309.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-04-28",
+          "price": 1284.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-05-05",
+          "price": 1214.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-05-12",
+          "price": 1204.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-05-19",
+          "price": 1158.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-05-26",
+          "price": 1141.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-06-02",
+          "price": 1124.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-06-09",
+          "price": 1109.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-06-16",
+          "price": 1082.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-06-23",
+          "price": 1098.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-06-30",
+          "price": 1049.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-07-07",
+          "price": 1041.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-07-14",
+          "price": 1020.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-07-21",
+          "price": 1013.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-07-28",
+          "price": 993.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-08-04",
+          "price": 980.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-08-11",
+          "price": 1014.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-08-18",
+          "price": 1048.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-08-25",
+          "price": 1123.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-09-01",
+          "price": 1159.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-09-08",
+          "price": 1189.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-09-15",
+          "price": 1220.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-09-22",
+          "price": 1242.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-09-29",
+          "price": 1239.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-10-06",
+          "price": 1202.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-10-13",
+          "price": 1169.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-10-20",
+          "price": 1176.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-10-27",
+          "price": 1180.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-11-03",
+          "price": 1181.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-11-10",
+          "price": 1192.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-11-17",
+          "price": 1206.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-11-24",
+          "price": 1240.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-12-01",
+          "price": 1221.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-12-08",
+          "price": 1199.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-12-15",
+          "price": 1148.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-12-22",
+          "price": 1152.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2023-12-29",
+          "price": 1126.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-01-05",
+          "price": 1063.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-01-12",
+          "price": 1141.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-01-19",
+          "price": 1132.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-01-26",
+          "price": 1166.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-02-02",
+          "price": 1133.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-02-09",
+          "price": 1102.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-02-16",
+          "price": 1035.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-02-23",
+          "price": 1064.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-03-01",
+          "price": 1096.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-03-08",
+          "price": 1141.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-03-15",
+          "price": 1169.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-03-22",
+          "price": 1208.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-03-29",
+          "price": 1196.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-04-05",
+          "price": 1211.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-04-12",
+          "price": 1193.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-04-19",
+          "price": 1176.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-04-26",
+          "price": 1164.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-05-03",
+          "price": 1100.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-05-10",
+          "price": 1079.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-05-17",
+          "price": 1004.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-05-24",
+          "price": 986.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-05-31",
+          "price": 958.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-06-07",
+          "price": 914.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-06-14",
+          "price": 890.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-06-21",
+          "price": 890.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-06-28",
+          "price": 876.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-07-05",
+          "price": 911.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-07-12",
+          "price": 979.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-07-19",
+          "price": 999.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-07-26",
+          "price": 999.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-08-02",
+          "price": 1010.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-08-09",
+          "price": 990.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-08-16",
+          "price": 941.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-08-23",
+          "price": 941.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-08-30",
+          "price": 924.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-09-06",
+          "price": 932.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-09-13",
+          "price": 941.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-09-20",
+          "price": 916.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-09-27",
+          "price": 967.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-10-04",
+          "price": 999.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-10-11",
+          "price": 1036.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-10-18",
+          "price": 1081.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-10-25",
+          "price": 1154.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-11-01",
+          "price": 1209.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-11-08",
+          "price": 1320.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-11-15",
+          "price": 1441.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-11-22",
+          "price": 1439.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-11-29",
+          "price": 1467.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-12-06",
+          "price": 1442.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-12-13",
+          "price": 1413.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-12-20",
+          "price": 1364.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2024-12-27",
+          "price": 1372.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-01-03",
+          "price": 1351.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-01-10",
+          "price": 1335.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-01-17",
+          "price": 1260.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-01-24",
+          "price": 1278.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-01-31",
+          "price": 1177.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-02-07",
+          "price": 1158.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-02-14",
+          "price": 1124.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-02-21",
+          "price": 1179.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-02-28",
+          "price": 1190.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-03-07",
+          "price": 1236.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-03-14",
+          "price": 1248.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-03-21",
+          "price": 1239.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-03-28",
+          "price": 1242.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-04-04",
+          "price": 1225.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-04-11",
+          "price": 1190.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-04-18",
+          "price": 1198.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-04-25",
+          "price": 1199.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-05-02",
+          "price": 1172.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-05-09",
+          "price": 1163.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-05-16",
+          "price": 1147.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-05-23",
+          "price": 1171.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-05-30",
+          "price": 1147.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-06-06",
+          "price": 1124.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-06-13",
+          "price": 1125.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-06-20",
+          "price": 1105.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-06-27",
+          "price": 1087.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-07-04",
+          "price": 1061.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-07-11",
+          "price": 1027.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-07-18",
+          "price": 1038.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-07-25",
+          "price": 1053.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-08-01",
+          "price": 1050.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-08-08",
+          "price": 1068.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-08-15",
+          "price": 1091.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-08-22",
+          "price": 1080.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-08-29",
+          "price": 1078.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-09-05",
+          "price": 1059.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-09-12",
+          "price": 1046.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-09-19",
+          "price": 1040.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-09-26",
+          "price": 1020.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-10-03",
+          "price": 1036.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-10-10",
+          "price": 1109.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-10-17",
+          "price": 1084.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-10-24",
+          "price": 1181.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-10-31",
+          "price": 1216.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-11-07",
+          "price": 1225.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-11-14",
+          "price": 1271.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-11-21",
+          "price": 1287.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-11-28",
+          "price": 1336.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-12-05",
+          "price": 1308.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-12-12",
+          "price": 1342.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-12-19",
+          "price": 1331.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2025-12-26",
+          "price": 1342.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-01-02",
+          "price": 1337.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-01-09",
+          "price": 1281.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-01-16",
+          "price": 1243.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-01-23",
+          "price": 1256.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-01-30",
+          "price": 1195.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-02-06",
+          "price": 1185.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-02-13",
+          "price": 1242.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-02-20",
+          "price": 1173.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-02-27",
+          "price": 1134.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-03-06",
+          "price": 1179.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-03-13",
+          "price": 1198.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-03-20",
+          "price": 1219.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-03-27",
+          "price": 1236.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-04-03",
+          "price": 1204.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-04-10",
+          "price": 1148.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-04-17",
+          "price": 1120.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-04-24",
+          "price": 1057.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-05-01",
+          "price": 1006.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-05-08",
+          "price": 981.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-05-15",
+          "price": 947.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-05-22",
+          "price": 990.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 988.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-06-05",
+          "price": 983.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-06-12",
+          "price": 974.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-06-19",
+          "price": 985.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-06-26",
+          "price": 970.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-07-03",
+          "price": 944.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-07-10",
+          "price": 950.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-07-17",
+          "price": 946.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-07-24",
+          "price": 955.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-07-31",
+          "price": 973.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-08-07",
+          "price": 967.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
+        },
+        {
+          "date": "2026-08-14",
+          "price": 968.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://indices.cnfin.com/3318271/index.html?idx=4"
         }
       ]
     },
