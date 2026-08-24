@@ -123,6 +123,12 @@ def build_fetchers(payload: dict) -> dict[str, Callable[[int], tuple[float, str]
         "star50": lambda year: calculate_frame_return(
             ak.stock_zh_index_daily("sh000688"), year
         ),
+        "hsi": lambda year: calculate_frame_return(
+            ak.stock_hk_index_daily_sina("HSI"), year
+        ),
+        "hstech": lambda year: calculate_frame_return(
+            ak.stock_hk_index_daily_sina("HSTECH"), year
+        ),
         "nasdaq": lambda year: calculate_frame_return(
             ak.stock_us_daily(".IXIC", ""), year
         ),

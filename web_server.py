@@ -367,15 +367,26 @@ def _push_retail_log(line):
 
 
 def run_retail_update_task():
-    """在后台线程中更新社零数据。"""
+    """在后台线程中依次更新社零分项 XLS 和页面数据。"""
     base_path = os.path.dirname(os.path.abspath(__file__))
-    script = os.path.join(base_path, 'retail_data_collector.py')
+    scripts = [
+        (
+            'category',
+            '正在抓取国家统计局分项 XLS 数据...',
+            os.path.join(base_path, 'scrape_retail_urls.py'),
+        ),
+        (
+            'fetching',
+            '正在汇总社零总量与分项数据...',
+            os.path.join(base_path, 'retail_data_collector.py'),
+        ),
+    ]
 
     with retail_update_lock:
         retail_update_status.update({
             'running': True,
             'logs': ['正在启动社零数据更新任务...'],
-            'step': 'fetching',
+            'step': 'category',
             'success': None,
             'error': '',
             'start_time': time.time(),
@@ -383,34 +394,33 @@ def run_retail_update_task():
         })
 
     try:
-        proc = start_python_subprocess(script, cwd=base_path)
-
         last_line = ''
-        for line in proc.stdout:
-            line = line.rstrip()
-            if line:
-                last_line = line
-                _push_retail_log(line)
-                logger.info(f'[retail-update] {line}')
+        for step, message, script in scripts:
+            with retail_update_lock:
+                retail_update_status['step'] = step
+                retail_update_status['logs'].append(message)
 
-        proc.wait()
-        success = proc.returncode == 0
+            proc = start_python_subprocess(script, cwd=base_path)
+            for line in proc.stdout:
+                line = line.rstrip()
+                if line:
+                    last_line = line
+                    _push_retail_log(line)
+                    logger.info(f'[retail-update] {line}')
+
+            proc.wait()
+            if proc.returncode != 0:
+                raise RuntimeError(
+                    f'{os.path.basename(script)} 退出码: {proc.returncode}'
+                    f'，最后输出: {last_line}'
+                )
 
         with retail_update_lock:
             retail_update_status['running'] = False
-            retail_update_status['success'] = success
+            retail_update_status['success'] = True
             retail_update_status['end_time'] = time.time()
-            if success:
-                retail_update_status['step'] = 'done'
-                retail_update_status['logs'].append('社零数据更新完成！')
-            else:
-                retail_update_status['step'] = 'error'
-                retail_update_status['error'] = (
-                    f'脚本退出码: {proc.returncode}，最后输出: {last_line}'
-                )
-                retail_update_status['logs'].append(
-                    f'更新失败：{retail_update_status["error"]}'
-                )
+            retail_update_status['step'] = 'done'
+            retail_update_status['logs'].append('社零总量与分项数据更新完成！')
 
     except Exception as e:
         with retail_update_lock:

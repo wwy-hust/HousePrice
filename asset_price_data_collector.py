@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from statistics import median
@@ -20,6 +20,7 @@ HOUSE_PRICE_ROOT = Path(__file__).resolve().parent
 OUTPUT_PATH = HOUSE_PRICE_ROOT / "results" / "asset_price_data.json"
 REQUEST_HEADERS = {"User-Agent": "Mozilla/5.0 (HousePrice asset collector)"}
 MAX_HISTORY_DAYS = 3650
+DEFAULT_FETCH_WORKERS = 6
 SULFUR_RECENT_CHART_URL = (
     "https://www.100ppi.com/graph/cindex.php?f=graph_ppid_ave&ppid=427"
 )
@@ -2266,9 +2267,17 @@ def main() -> int:
         default=MAX_HISTORY_DAYS,
         help=f"历史回溯天数，最多 {MAX_HISTORY_DAYS} 天（约10年）",
     )
+    parser.add_argument(
+        "--max-workers",
+        type=int,
+        default=DEFAULT_FETCH_WORKERS,
+        help=f"并行拉取线程数，默认 {DEFAULT_FETCH_WORKERS}",
+    )
     args = parser.parse_args()
     if not 1 <= args.history_days <= MAX_HISTORY_DAYS:
         parser.error(f"--history-days 必须在 1 到 {MAX_HISTORY_DAYS} 之间")
+    if args.max_workers < 1:
+        parser.error("--max-workers 必须大于等于 1")
 
     if args.fetch_antimony_only or args.fetch_small_metals_only:
         update_small_metals_only(history_days=args.history_days)
@@ -2340,26 +2349,34 @@ def main() -> int:
             ),
         ]
         existing_codes = {asset.get("code") for asset in assets}
-        for label, expected_codes, fetcher in fetchers:
-            try:
-                result = fetcher()
-                updates = result if isinstance(result, list) else [result]
-                assets = merge_assets(assets, updates)
-                print(f"已拉取{label}价格。", flush=True)
-            except (
-                requests.RequestException,
-                json.JSONDecodeError,
-                RuntimeError,
-                KeyError,
-                TypeError,
-                ValueError,
-            ) as error:
-                print(
-                    f"[WARN] {label}价格拉取失败，将保留上次数据：{error}",
-                    flush=True,
-                )
-                if not expected_codes.issubset(existing_codes):
-                    fetch_returncode = 1
+        worker_count = min(args.max_workers, len(fetchers))
+        print(f"使用 {worker_count} 个线程并行拉取资产价格。", flush=True)
+        with ThreadPoolExecutor(max_workers=worker_count) as executor:
+            future_to_fetcher = {
+                executor.submit(fetcher): (label, expected_codes)
+                for label, expected_codes, fetcher in fetchers
+            }
+            for future in as_completed(future_to_fetcher):
+                label, expected_codes = future_to_fetcher[future]
+                try:
+                    result = future.result()
+                    updates = result if isinstance(result, list) else [result]
+                    assets = merge_assets(assets, updates)
+                    print(f"已拉取{label}价格。", flush=True)
+                except (
+                    requests.RequestException,
+                    json.JSONDecodeError,
+                    RuntimeError,
+                    KeyError,
+                    TypeError,
+                    ValueError,
+                ) as error:
+                    print(
+                        f"[WARN] {label}价格拉取失败，将保留上次数据：{error}",
+                        flush=True,
+                    )
+                    if not expected_codes.issubset(existing_codes):
+                        fetch_returncode = 1
 
     asset_count = export_json(assets)
 

@@ -1,6 +1,6 @@
 {
   "data_type": "社会消费品零售总额",
-  "generated_at": "2026-08-25T05:46:38.086155",
+  "generated_at": "2026-08-25T06:22:07.062165",
   "data_source": "国家统计局 / AKShare",
   "categories_groups": {
     "必选消费": [
@@ -5159,6 +5159,81 @@
       "date": "2026-05",
       "category": "粮油食品",
       "yoy": 1.9
+    },
+    {
+      "date": "2026-07",
+      "category": "饮料",
+      "yoy": 3.5
+    },
+    {
+      "date": "2026-07",
+      "category": "烟酒",
+      "yoy": 6.0
+    },
+    {
+      "date": "2026-07",
+      "category": "服装鞋帽",
+      "yoy": -1.0
+    },
+    {
+      "date": "2026-07",
+      "category": "化妆品",
+      "yoy": 6.8
+    },
+    {
+      "date": "2026-07",
+      "category": "金银珠宝",
+      "yoy": -10.1
+    },
+    {
+      "date": "2026-07",
+      "category": "日用品",
+      "yoy": 1.8
+    },
+    {
+      "date": "2026-07",
+      "category": "体育娱乐",
+      "yoy": -10.6
+    },
+    {
+      "date": "2026-07",
+      "category": "家用电器",
+      "yoy": -1.9
+    },
+    {
+      "date": "2026-07",
+      "category": "中西药品",
+      "yoy": 6.7
+    },
+    {
+      "date": "2026-07",
+      "category": "文化办公",
+      "yoy": 7.4
+    },
+    {
+      "date": "2026-07",
+      "category": "家具",
+      "yoy": -8.8
+    },
+    {
+      "date": "2026-07",
+      "category": "通讯器材",
+      "yoy": 20.4
+    },
+    {
+      "date": "2026-07",
+      "category": "石油制品",
+      "yoy": -7.6
+    },
+    {
+      "date": "2026-07",
+      "category": "汽车",
+      "yoy": -17.0
+    },
+    {
+      "date": "2026-07",
+      "category": "建筑装潢",
+      "yoy": -14.2
     }
   ],
   "urban_rural": [
@@ -9070,6 +9145,7 @@
     "2026-02": "https://www.stats.gov.cn/sj/zxfb/202603/t20260316_1962786.html",
     "2026-03": "https://www.stats.gov.cn/sj/zxfb/202604/t20260416_1963325.html",
     "2026-04": "https://www.stats.gov.cn/sj/zxfb/202605/t20260518_1963727.html",
-    "2026-05": "https://www.stats.gov.cn/sj/zxfb/202606/t20260616_1963949.html"
+    "2026-05": "https://www.stats.gov.cn/sj/zxfb/202606/t20260616_1963949.html",
+    "2026-07": "https://www.stats.gov.cn/sj/zxfb/202608/t20260817_1965052.html"
   }
 }
