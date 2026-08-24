@@ -1,7 +1,7 @@
 {
   "data_type": "关注资产价格",
-  "generated_at": "2026-08-24T06:42:37+08:00",
-  "source_updated_at": "2026-08-24T06:42:37+08:00",
+  "generated_at": "2026-08-24T10:55:48+08:00",
+  "source_updated_at": "2026-08-24T10:55:48+08:00",
   "categories": [
     {
       "name": "大宗商品",
@@ -16,14 +16,15 @@
     {
       "name": "分散染料",
       "asset_codes": [
-        "DISPERSE_BLACK"
+        "DISPERSE_BLACK",
+        "DISPERSE_BLUE_60",
+        "H_ACID"
       ]
     },
     {
       "name": "中间体",
       "asset_codes": [
-        "DYE_REDUCTION",
-        "H_ACID"
+        "DYE_REDUCTION"
       ]
     },
     {
@@ -62589,6 +62590,166 @@
       ]
     },
     {
+      "code": "DISPERSE_BLUE_60",
+      "name": "分散翠蓝 S-GL 200%（C.I.分散蓝60）",
+      "unit": "元/吨",
+      "source": "染化交易市场（3家供应商挂牌价样本）",
+      "category": "分散染料",
+      "latest": {
+        "date": "2026-08-24",
+        "price": 160000.0,
+        "price_low": 95000.0,
+        "price_high": 250000.0,
+        "source_url": "https://dyeschem.dazpin.com/wp/detail-100221-10006270.html",
+        "point_type": "listing_observation",
+        "default_hidden": false,
+        "date_precision": "day",
+        "date_label": "采集于 2026-08-24",
+        "quote_type": "supplier_listing_sample_median",
+        "sample_count": 3,
+        "quality_note": "染化交易市场3家供应商公开挂牌价的中位数，并非市场成交价。",
+        "comparability_note": "同为分散翠蓝 S-GL 200%，品牌、染色深度等参数可能不同；源页面未披露原始挂牌日期。元/公斤已换算为元/吨。"
+      },
+      "series": [
+        {
+          "date": "2015-01-04",
+          "price": 165000,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "http://finance.china.com.cn/roll/20150106/2888965.shtml",
+          "date_precision": "day",
+          "date_label": "2015-01-04",
+          "quote_type": "reported_factory_offer",
+          "quality_note": "行业报道披露的企业出厂报价，仅作为历史参考点。",
+          "comparability_note": "分散翠蓝S-GL（60#）报价，报道未进一步披露品牌、强度及成交条件。",
+          "point_type": "reported_reference",
+          "default_hidden": true
+        },
+        {
+          "date": "2023-01-18",
+          "price": 85000,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "http://caijing.3bf.cc/caijing/20230118/18130790.html",
+          "date_precision": "day",
+          "date_label": "2023-01-18",
+          "quote_type": "reported_factory_offer",
+          "quality_note": "行业报道中的厂家报价，仅作为历史参考点。",
+          "comparability_note": "分散翠蓝S-GL 60# 200%，与当前品种规格接近；85元/公斤已换算为元/吨。",
+          "point_type": "reported_reference",
+          "default_hidden": true
+        },
+        {
+          "date": "2026-08-24",
+          "price": 160000.0,
+          "price_low": 95000.0,
+          "price_high": 250000.0,
+          "source_url": "https://dyeschem.dazpin.com/wp/detail-100221-10006270.html",
+          "point_type": "listing_observation",
+          "default_hidden": false,
+          "date_precision": "day",
+          "date_label": "采集于 2026-08-24",
+          "quote_type": "supplier_listing_sample_median",
+          "sample_count": 3,
+          "quality_note": "染化交易市场3家供应商公开挂牌价的中位数，并非市场成交价。",
+          "comparability_note": "同为分散翠蓝 S-GL 200%，品牌、染色深度等参数可能不同；源页面未披露原始挂牌日期。元/公斤已换算为元/吨。"
+        }
+      ]
+    },
+    {
+      "code": "H_ACID",
+      "name": "H酸",
+      "unit": "元/吨",
+      "source": "百川盈孚公开市场行情",
+      "category": "分散染料",
+      "latest": {
+        "date": "2026-08-21",
+        "price": 80000.0,
+        "price_low": 60000.0,
+        "price_high": 100000.0,
+        "source_url": "https://www.baiinfo.com/ranliao/ranliaozhongjianti",
+        "point_type": "market_observation",
+        "default_hidden": false,
+        "date_precision": "day",
+        "date_label": "2026-08-21",
+        "quote_type": "market_average",
+        "quality_note": "百川盈孚公开页面披露的国内市场均价。",
+        "comparability_note": "H酸市场均价，报价区间可能包含不同地区和企业。"
+      },
+      "series": [
+        {
+          "date": "2026-01-01",
+          "price": 40000,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.cls.cn/detail/2344564",
+          "date_precision": "month",
+          "date_label": "2026年初",
+          "quote_type": "reported_market_price",
+          "quality_note": "行业报道回顾的年初市场价格，仅作为历史参考点。",
+          "comparability_note": "H酸市场参考价，未披露逐笔成交样本。",
+          "point_type": "reported_reference",
+          "default_hidden": true
+        },
+        {
+          "date": "2026-04-14",
+          "price": 65000,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.cls.cn/detail/2344564",
+          "date_precision": "day",
+          "date_label": "2026-04-14",
+          "quote_type": "reported_market_average",
+          "quality_note": "财联社转述百川盈孚市场参考价，仅作为历史参考点。",
+          "comparability_note": "H酸市场均价口径。",
+          "point_type": "reported_observation",
+          "default_hidden": false
+        },
+        {
+          "date": "2026-07-28",
+          "price": 80000,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://stock.10jqka.com.cn/20260731/c678587184.shtml",
+          "date_precision": "day",
+          "date_label": "2026-07-28",
+          "quote_type": "reported_market_average",
+          "quality_note": "证券行业报道转述百川盈孚行业均价，仅作为历史参考点。",
+          "comparability_note": "H酸行业均价，与主序列市场均价口径接近。",
+          "point_type": "reported_observation",
+          "default_hidden": false
+        },
+        {
+          "date": "2026-08-17",
+          "price": 80000.0,
+          "price_low": 60000.0,
+          "price_high": 100000.0,
+          "source_url": "https://www.baiinfo.com/ranliao/ranliaozhongjianti",
+          "point_type": "market_observation",
+          "default_hidden": false,
+          "date_precision": "day",
+          "date_label": "2026-08-17",
+          "quote_type": "market_average",
+          "quality_note": "百川盈孚公开页面披露的国内市场均价。",
+          "comparability_note": "H酸市场均价，报价区间可能包含不同地区和企业。"
+        },
+        {
+          "date": "2026-08-21",
+          "price": 80000.0,
+          "price_low": 60000.0,
+          "price_high": 100000.0,
+          "source_url": "https://www.baiinfo.com/ranliao/ranliaozhongjianti",
+          "point_type": "market_observation",
+          "default_hidden": false,
+          "date_precision": "day",
+          "date_label": "2026-08-21",
+          "quote_type": "market_average",
+          "quality_note": "百川盈孚公开页面披露的国内市场均价。",
+          "comparability_note": "H酸市场均价，报价区间可能包含不同地区和企业。"
+        }
+      ]
+    },
+    {
       "code": "DYE_REDUCTION",
       "name": "分散染料还原物",
       "unit": "元/吨",
@@ -62748,99 +62909,6 @@
           "comparability_note": "报道明确指向分散染料还原物。",
           "point_type": "reported_observation",
           "default_hidden": false
-        }
-      ]
-    },
-    {
-      "code": "H_ACID",
-      "name": "H酸",
-      "unit": "元/吨",
-      "source": "百川盈孚公开市场行情",
-      "category": "中间体",
-      "latest": {
-        "date": "2026-08-21",
-        "price": 80000.0,
-        "price_low": 60000.0,
-        "price_high": 100000.0,
-        "source_url": "https://www.baiinfo.com/ranliao/ranliaozhongjianti",
-        "point_type": "market_observation",
-        "default_hidden": false,
-        "date_precision": "day",
-        "date_label": "2026-08-21",
-        "quote_type": "market_average",
-        "quality_note": "百川盈孚公开页面披露的国内市场均价。",
-        "comparability_note": "H酸市场均价，报价区间可能包含不同地区和企业。"
-      },
-      "series": [
-        {
-          "date": "2026-01-01",
-          "price": 40000,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.cls.cn/detail/2344564",
-          "date_precision": "month",
-          "date_label": "2026年初",
-          "quote_type": "reported_market_price",
-          "quality_note": "行业报道回顾的年初市场价格，仅作为历史参考点。",
-          "comparability_note": "H酸市场参考价，未披露逐笔成交样本。",
-          "point_type": "reported_reference",
-          "default_hidden": true
-        },
-        {
-          "date": "2026-04-14",
-          "price": 65000,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://www.cls.cn/detail/2344564",
-          "date_precision": "day",
-          "date_label": "2026-04-14",
-          "quote_type": "reported_market_average",
-          "quality_note": "财联社转述百川盈孚市场参考价，仅作为历史参考点。",
-          "comparability_note": "H酸市场均价口径。",
-          "point_type": "reported_observation",
-          "default_hidden": false
-        },
-        {
-          "date": "2026-07-28",
-          "price": 80000,
-          "price_low": null,
-          "price_high": null,
-          "source_url": "https://stock.10jqka.com.cn/20260731/c678587184.shtml",
-          "date_precision": "day",
-          "date_label": "2026-07-28",
-          "quote_type": "reported_market_average",
-          "quality_note": "证券行业报道转述百川盈孚行业均价，仅作为历史参考点。",
-          "comparability_note": "H酸行业均价，与主序列市场均价口径接近。",
-          "point_type": "reported_observation",
-          "default_hidden": false
-        },
-        {
-          "date": "2026-08-17",
-          "price": 80000.0,
-          "price_low": 60000.0,
-          "price_high": 100000.0,
-          "source_url": "https://www.baiinfo.com/ranliao/ranliaozhongjianti",
-          "point_type": "market_observation",
-          "default_hidden": false,
-          "date_precision": "day",
-          "date_label": "2026-08-17",
-          "quote_type": "market_average",
-          "quality_note": "百川盈孚公开页面披露的国内市场均价。",
-          "comparability_note": "H酸市场均价，报价区间可能包含不同地区和企业。"
-        },
-        {
-          "date": "2026-08-21",
-          "price": 80000.0,
-          "price_low": 60000.0,
-          "price_high": 100000.0,
-          "source_url": "https://www.baiinfo.com/ranliao/ranliaozhongjianti",
-          "point_type": "market_observation",
-          "default_hidden": false,
-          "date_precision": "day",
-          "date_label": "2026-08-21",
-          "quote_type": "market_average",
-          "quality_note": "百川盈孚公开页面披露的国内市场均价。",
-          "comparability_note": "H酸市场均价，报价区间可能包含不同地区和企业。"
         }
       ]
     },

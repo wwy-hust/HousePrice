@@ -12,6 +12,7 @@ const ASSET_COLORS = {
     ALUMINUM: '#0ea5e9',
     PHOSPHATE_ROCK: '#84cc16',
     DISPERSE_BLACK: '#4f46e5',
+    DISPERSE_BLUE_60: '#06b6d4',
     DYE_REDUCTION: '#db2777',
     H_ACID: '#dc2626',
     SB_CN: '#b45309',

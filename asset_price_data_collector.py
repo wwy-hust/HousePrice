@@ -39,6 +39,26 @@ DYE_REDUCTION_LATEST_URL = (
     "https://news.chemnet.com/toutiao/detail-75363.html"
 )
 DISPERSE_DYE_PRICE_URL = "https://www.baiinfo.com/ranliao/fensanranliao"
+DISPERSE_BLUE_60_LISTINGS = (
+    (
+        "维昂",
+        "https://dyeschem.dazpin.com/wp/detail-100221-10006270.html",
+    ),
+    (
+        "鑫妍",
+        "https://dyeschem.dazpin.com/wp/detail-100234-10006545.html",
+    ),
+    (
+        "华纺",
+        "https://dyeschem.dazpin.com/wp/detail-100210-10006051.html",
+    ),
+)
+DISPERSE_BLUE_60_2015_URL = (
+    "http://finance.china.com.cn/roll/20150106/2888965.shtml"
+)
+DISPERSE_BLUE_60_2023_URL = (
+    "http://caijing.3bf.cc/caijing/20230118/18130790.html"
+)
 DYE_INTERMEDIATE_PRICE_URL = (
     "https://www.baiinfo.com/ranliao/ranliaozhongjianti"
 )
@@ -494,6 +514,38 @@ REFERENCE_POINTS = {
             "comparability_note": "分散黑ECT/ECO 300%，现款自提。",
         },
     ],
+    "DISPERSE_BLUE_60": [
+        {
+            "date": "2015-01-04",
+            "price": 165000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": DISPERSE_BLUE_60_2015_URL,
+            "date_precision": "day",
+            "date_label": "2015-01-04",
+            "quote_type": "reported_factory_offer",
+            "quality_note": "行业报道披露的企业出厂报价，仅作为历史参考点。",
+            "comparability_note": (
+                "分散翠蓝S-GL（60#）报价，报道未进一步披露品牌、"
+                "强度及成交条件。"
+            ),
+        },
+        {
+            "date": "2023-01-18",
+            "price": 85000,
+            "price_low": None,
+            "price_high": None,
+            "source_url": DISPERSE_BLUE_60_2023_URL,
+            "date_precision": "day",
+            "date_label": "2023-01-18",
+            "quote_type": "reported_factory_offer",
+            "quality_note": "行业报道中的厂家报价，仅作为历史参考点。",
+            "comparability_note": (
+                "分散翠蓝S-GL 60# 200%，与当前品种规格接近；"
+                "85元/公斤已换算为元/吨。"
+            ),
+        },
+    ],
     "H_ACID": [
         {
             "date": "2026-01-01",
@@ -676,8 +728,9 @@ CATEGORY_BY_CODE = {
     "ALUMINUM": "大宗商品",
     "PHOSPHATE_ROCK": "大宗商品",
     "DISPERSE_BLACK": "分散染料",
+    "DISPERSE_BLUE_60": "分散染料",
     "DYE_REDUCTION": "中间体",
-    "H_ACID": "中间体",
+    "H_ACID": "分散染料",
     "SB_CN": "小金属",
     "SB_INTL": "小金属",
     "W_CN": "小金属",
@@ -726,8 +779,9 @@ ASSET_ORDER = {
     "ALUMINUM": 3,
     "PHOSPHATE_ROCK": 4,
     "DISPERSE_BLACK": 0,
+    "DISPERSE_BLUE_60": 1,
+    "H_ACID": 2,
     "DYE_REDUCTION": 0,
-    "H_ACID": 1,
     "BLOOD_ALBUMIN": 0,
     "BLOOD_IVIG": 1,
     "VIT_A": 0,
@@ -1339,7 +1393,7 @@ def fetch_dye_chain_assets() -> list[dict]:
         (
             "H_ACID",
             "H酸",
-            "中间体",
+            "分散染料",
             h_acid_points,
         ),
     ):
@@ -1356,6 +1410,78 @@ def fetch_dye_chain_assets() -> list[dict]:
             }
         )
     return assets
+
+
+def fetch_disperse_blue_60_asset() -> dict:
+    """采集分散翠蓝 S-GL 200%供应商公开挂牌价样本。"""
+    samples = []
+    for brand, url in DISPERSE_BLUE_60_LISTINGS:
+        try:
+            text = BeautifulSoup(_get_html(url), "html.parser").get_text(
+                " ",
+                strip=True,
+            )
+        except requests.RequestException:
+            continue
+        normalized_text = re.sub(r"\s+", "", text).lower()
+        has_matching_specification = (
+            ("分散翠蓝s-gl200%" in normalized_text)
+            or ("分散翠兰s-gl200%" in normalized_text)
+        )
+        if not has_matching_specification or "千克" not in text:
+            continue
+        price_match = re.search(
+            r"价\s*格[：:]\s*[¥￥]\s*([\d,.]+)\s*元",
+            text,
+        )
+        if not price_match:
+            continue
+        samples.append(
+            {
+                "brand": brand,
+                "price": _number(price_match.group(1)) * 1000,
+                "source_url": url,
+            }
+        )
+
+    if len(samples) < 2:
+        raise ValueError("分散翠蓝 S-GL 200%有效挂牌价样本不足2个")
+
+    prices = [sample["price"] for sample in samples]
+    observation_date = date.today().isoformat()
+    points = _existing_series_by_code("DISPERSE_BLUE_60")
+    points.update(_reference_points_by_date("DISPERSE_BLUE_60"))
+    points[observation_date] = {
+        "date": observation_date,
+        "price": median(prices),
+        "price_low": min(prices),
+        "price_high": max(prices),
+        "source_url": samples[0]["source_url"],
+        "point_type": "listing_observation",
+        "default_hidden": False,
+        "date_precision": "day",
+        "date_label": f"采集于 {observation_date}",
+        "quote_type": "supplier_listing_sample_median",
+        "sample_count": len(samples),
+        "quality_note": (
+            f"染化交易市场{len(samples)}家供应商公开挂牌价的中位数，"
+            "并非市场成交价。"
+        ),
+        "comparability_note": (
+            "同为分散翠蓝 S-GL 200%，品牌、染色深度等参数可能不同；"
+            "源页面未披露原始挂牌日期。元/公斤已换算为元/吨。"
+        ),
+    }
+    series = [points[key] for key in sorted(points)]
+    return {
+        "code": "DISPERSE_BLUE_60",
+        "name": "分散翠蓝 S-GL 200%（C.I.分散蓝60）",
+        "unit": "元/吨",
+        "source": f"染化交易市场（{len(samples)}家供应商挂牌价样本）",
+        "category": "分散染料",
+        "latest": series[-1],
+        "series": series,
+    }
 
 
 def fetch_blood_product_assets() -> list[dict]:
@@ -2108,6 +2234,11 @@ def main() -> int:
                 "分散染料与H酸",
                 {"DISPERSE_BLACK", "H_ACID"},
                 fetch_dye_chain_assets,
+            ),
+            (
+                "分散翠蓝",
+                {"DISPERSE_BLUE_60"},
+                fetch_disperse_blue_60_asset,
             ),
             ("分散染料还原物", {"DYE_REDUCTION"}, fetch_dye_reduction_asset),
             (
