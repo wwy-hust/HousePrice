@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import calendar
 import csv
 import io
 import json
@@ -16,6 +17,7 @@ from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
+from Crypto.Cipher import AES
 
 
 HOUSE_PRICE_ROOT = Path(__file__).resolve().parent
@@ -269,6 +271,9 @@ XINDE_API_ROOT = "https://www.xindemarinenews.com.cn/jeecgboot/xinde"
 CNFIN_CHART_API_URL = "https://api.cnfin.com/roll/charts/getContent"
 PDCI_INDEX_URL = "https://indices.cnfin.com/3318271/index.html?idx=4"
 PDCI_CHART_ID = "12549"
+CLARKSON_NEWBUILDING_PRICE_URL = (
+    "http://asiasis.com/news/news_en_jisu1.php"
+)
 CCGP_SEARCH_URL = "https://search.ccgp.gov.cn/bxsearch"
 SMM_API_URL = "https://platform.smm.cn/aggdatacenter/user/v1/agg_data"
 SMM_ASSETS = {
@@ -920,6 +925,7 @@ CATEGORY_BY_CODE = {
     "TD15": "航运",
     "TD15_WS": "航运",
     "PDCI": "航运",
+    "CLARKSON_NBPI": "航运",
     "MONKEY": "生物医药上游",
 }
 CATEGORY_ORDER = [
@@ -995,6 +1001,7 @@ ASSET_ORDER = {
     "TD15": 2,
     "TD15_WS": 3,
     "PDCI": 4,
+    "CLARKSON_NBPI": 5,
 }
 
 
@@ -2315,6 +2322,124 @@ def fetch_pdci_asset() -> dict:
     }
 
 
+def _asiasis_session() -> requests.Session:
+    """创建可读取 ASIASIS 公共数据页的会话。"""
+    session = requests.Session()
+    response = session.get(
+        CLARKSON_NEWBUILDING_PRICE_URL,
+        headers=REQUEST_HEADERS,
+        timeout=20,
+    )
+    response.raise_for_status()
+    if "toNumbers" not in response.text or "CUPID" not in response.text:
+        return session
+
+    challenge_values = re.findall(
+        r'toNumbers\("([0-9a-fA-F]+)"\)',
+        response.text,
+    )
+    if len(challenge_values) < 3:
+        raise ValueError("无法解析 ASIASIS 页面访问校验")
+    key, iv, encrypted = (bytes.fromhex(value) for value in challenge_values[:3])
+    cookie = AES.new(key, AES.MODE_CBC, iv).decrypt(encrypted).hex()
+    session.cookies.set("CUPID", cookie)
+    return session
+
+
+def _previous_month(month: str, offset: int = 1) -> str:
+    year, month_number = (int(part) for part in month.split("-"))
+    absolute_month = year * 12 + month_number - 1 - offset
+    return f"{absolute_month // 12:04d}-{absolute_month % 12 + 1:02d}"
+
+
+def _parse_clarkson_newbuilding_rows(content: bytes) -> dict[str, dict]:
+    points = {}
+    soup = BeautifulSoup(content, "html.parser")
+    for row in soup.find_all("tr"):
+        cells = [
+            cell.get_text(" ", strip=True)
+            for cell in row.find_all(["th", "td"])
+        ]
+        if len(cells) < 2 or not re.fullmatch(r"\d{4}-\d{2}", cells[0]):
+            continue
+        try:
+            year, month = (int(part) for part in cells[0].split("-"))
+            price = _number(cells[1])
+        except (TypeError, ValueError):
+            continue
+        point_date = date(
+            year,
+            month,
+            calendar.monthrange(year, month)[1],
+        ).isoformat()
+        points[point_date] = {
+            "date": point_date,
+            "price": price,
+            "price_low": None,
+            "price_high": None,
+            "source_url": CLARKSON_NEWBUILDING_PRICE_URL,
+        }
+    return points
+
+
+def fetch_clarkson_newbuilding_price_asset(
+    history_days: int = MAX_HISTORY_DAYS,
+) -> dict:
+    """从 ASIASIS 公共表格拉取克拉克森新造船价格指数月度历史。"""
+    cutoff = date.today() - timedelta(days=history_days)
+    points_by_date = _existing_series_by_code("CLARKSON_NBPI")
+    session = _asiasis_session()
+
+    response = session.get(
+        CLARKSON_NEWBUILDING_PRICE_URL,
+        params={"ckattempt": "1"},
+        headers=REQUEST_HEADERS,
+        timeout=20,
+    )
+    response.raise_for_status()
+    page_points = _parse_clarkson_newbuilding_rows(response.content)
+    if not page_points:
+        raise ValueError("ASIASIS 页面未返回克拉克森新造船价格指数")
+
+    while page_points:
+        points_by_date.update(
+            {
+                point_date: point
+                for point_date, point in page_points.items()
+                if date.fromisoformat(point_date) >= cutoff
+            }
+        )
+        earliest_date = min(page_points)
+        if date.fromisoformat(earliest_date) < cutoff:
+            break
+        target_month = _previous_month(earliest_date[:7])
+        response = session.get(
+            CLARKSON_NEWBUILDING_PRICE_URL,
+            params={"tsearch": target_month},
+            headers=REQUEST_HEADERS,
+            timeout=20,
+        )
+        response.raise_for_status()
+        page_points = _parse_clarkson_newbuilding_rows(response.content)
+
+    series = [
+        points_by_date[key]
+        for key in sorted(points_by_date)
+        if date.fromisoformat(key) >= cutoff
+    ]
+    if not series:
+        raise ValueError("无法解析克拉克森新造船价格指数")
+    return {
+        "code": "CLARKSON_NBPI",
+        "name": "克拉克森新造船价格指数",
+        "unit": "点",
+        "source": "Clarksons（ASIASIS 汇总）",
+        "category": "航运",
+        "latest": series[-1],
+        "series": series,
+    }
+
+
 def fetch_monkey_asset(
     history_days: int = MAX_HISTORY_DAYS,
     max_pages: int = 20,
@@ -2692,6 +2817,13 @@ def main() -> int:
                 fetch_vlcc_assets,
             ),
             ("PDCI 运价", {"PDCI"}, fetch_pdci_asset),
+            (
+                "克拉克森新造船价格指数",
+                {"CLARKSON_NBPI"},
+                lambda: fetch_clarkson_newbuilding_price_asset(
+                    args.history_days
+                ),
+            ),
             (
                 "实验猴",
                 {"MONKEY"},
