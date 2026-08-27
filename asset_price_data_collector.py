@@ -30,6 +30,7 @@ SULFUR_RECENT_CHART_URL = (
 )
 SULFUR_HISTORY_URL = "https://www.100ppi.com/cindex/?f=n_graph&ppid=427"
 SULFUR_DETAIL_URL = "https://www.100ppi.com/rawmex/detail-427.html"
+ARGON_MARKET_URL = "https://www.mysteel.com/hot/1659268.html"
 ENERGY_ASSETS = {
     "COAL": {
         "ppid": "369",
@@ -890,6 +891,7 @@ CATEGORY_BY_CODE = {
     "COKING_COAL": "能源",
     "CRUDE_OIL": "能源",
     "BRENT_CRUDE": "能源",
+    "ARGON": "工业气体",
     "CORN": "农产品",
     "SOYBEAN": "农产品",
     "WHEAT": "农产品",
@@ -932,6 +934,7 @@ CATEGORY_ORDER = [
     "有色金属大宗",
     "有色金属小金属",
     "能源",
+    "工业气体",
     "农产品",
     "分散染料及中间体",
     "维生素",
@@ -962,6 +965,7 @@ ASSET_ORDER = {
     "COKING_COAL": 1,
     "CRUDE_OIL": 2,
     "BRENT_CRUDE": 3,
+    "ARGON": 0,
     "CORN": 0,
     "SOYBEAN": 1,
     "WHEAT": 2,
@@ -1326,6 +1330,72 @@ def _fetch_100ppi_annual_assets(
 def fetch_energy_assets(history_days: int = MAX_HISTORY_DAYS) -> list[dict]:
     """拉取煤炭、焦煤、WTI和Brent原油日度历史。"""
     return _fetch_100ppi_annual_assets(ENERGY_ASSETS, "能源", history_days)
+
+
+def fetch_argon_asset() -> dict:
+    """拉取我的钢铁网公开页面中的华东液氩主流报价。"""
+    source = _get_html(ARGON_MARKET_URL)
+    soup = BeautifulSoup(source, "html.parser")
+    updated_match = re.search(
+        r"更新时间[：:]?\s*(\d{4})-(\d{2})-(\d{2})",
+        soup.get_text(" ", strip=True),
+    )
+    if not updated_match:
+        raise ValueError("液氩行情页缺少更新时间")
+    page_date = date(*(int(value) for value in updated_match.groups()))
+
+    points_by_date = {}
+    for item in soup.select("li.item-market"):
+        title_node = item.select_one("p.tit")
+        if not title_node:
+            continue
+        title = title_node.get_text(" ", strip=True)
+        title_match = re.search(
+            r"(\d{1,2})月(\d{1,2})日华东市场液氩价格行情",
+            title,
+        )
+        if not title_match:
+            continue
+        month, day = (int(value) for value in title_match.groups())
+        year = page_date.year - (1 if month > page_date.month else 0)
+        point_date = date(year, month, day)
+        ranges = [
+            (float(low), float(high))
+            for low, high in re.findall(
+                r"(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)元/吨",
+                item.get_text(" ", strip=True),
+            )
+        ]
+        if not ranges:
+            continue
+        price_low = min(low for low, _ in ranges)
+        price_high = max(high for _, high in ranges)
+        link = title_node.find("a", href=True)
+        source_url = (
+            urljoin(ARGON_MARKET_URL, link["href"])
+            if link
+            else ARGON_MARKET_URL
+        )
+        points_by_date[point_date.isoformat()] = {
+            "date": point_date.isoformat(),
+            "price": round((price_low + price_high) / 2, 2),
+            "price_low": price_low,
+            "price_high": price_high,
+            "source_url": source_url,
+        }
+    if not points_by_date:
+        raise ValueError("我的钢铁网未返回有效的华东液氩报价")
+    series = [points_by_date[key] for key in sorted(points_by_date)]
+    return {
+        "code": "ARGON",
+        "name": "液氩（华东市场）",
+        "unit": "元/吨",
+        "source": "我的钢铁网",
+        "category": "工业气体",
+        "quality_note": "华东各省市公开主流报价的整体区间及区间中点。",
+        "latest": series[-1],
+        "series": series,
+    }
 
 
 def fetch_agricultural_assets(history_days: int = MAX_HISTORY_DAYS) -> list[dict]:
@@ -2791,6 +2861,7 @@ def main() -> int:
                 set(ENERGY_ASSETS),
                 lambda: fetch_energy_assets(args.history_days),
             ),
+            ("液氩", {"ARGON"}, fetch_argon_asset),
             (
                 "玉米、大豆、小麦、白糖、皮棉、生猪、棕榈油、天然橡胶",
                 set(AGRICULTURAL_ASSETS),
