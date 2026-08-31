@@ -107,6 +107,26 @@ AGRICULTURAL_ASSETS = {
         "source_url": "https://www.100ppi.com/cindex/list-586.html",
     },
 }
+POLYESTER_FILAMENT_ASSETS = {
+    "POLYESTER_POY": {
+        "ppid": "1006",
+        "name": "涤纶长丝（POY）",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-1006.html",
+    },
+    "POLYESTER_FDY": {
+        "ppid": "1005",
+        "name": "涤纶长丝（FDY）",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-1005.html",
+    },
+    "POLYESTER_DTY": {
+        "ppid": "1007",
+        "name": "涤纶长丝（DTY）",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-1007.html",
+    },
+}
 FRED_AGRICULTURAL_ASSETS = {
     "COFFEE": {
         "series_id": "PCOFFOTMUSDM",
@@ -902,6 +922,9 @@ CATEGORY_BY_CODE = {
     "COCOA": "农产品",
     "PALM_OIL": "农产品",
     "NATURAL_RUBBER": "农产品",
+    "POLYESTER_POY": "化纤",
+    "POLYESTER_FDY": "化纤",
+    "POLYESTER_DTY": "化纤",
     "VD3": "维生素",
     "VIT_A": "维生素",
     "VIT_E": "维生素",
@@ -936,6 +959,7 @@ CATEGORY_ORDER = [
     "能源",
     "工业气体",
     "农产品",
+    "化纤",
     "分散染料及中间体",
     "维生素",
     "食品添加剂",
@@ -976,6 +1000,9 @@ ASSET_ORDER = {
     "COCOA": 7,
     "PALM_OIL": 8,
     "NATURAL_RUBBER": 9,
+    "POLYESTER_POY": 0,
+    "POLYESTER_FDY": 1,
+    "POLYESTER_DTY": 2,
     "DISPERSE_BLACK": 0,
     "DISPERSE_BLUE_60": 1,
     "H_ACID": 2,
@@ -1403,6 +1430,17 @@ def fetch_agricultural_assets(history_days: int = MAX_HISTORY_DAYS) -> list[dict
     return _fetch_100ppi_annual_assets(
         AGRICULTURAL_ASSETS,
         "农产品",
+        history_days,
+    )
+
+
+def fetch_polyester_filament_assets(
+    history_days: int = MAX_HISTORY_DAYS,
+) -> list[dict]:
+    """拉取涤纶长丝 POY、FDY、DTY 日度基准价。"""
+    return _fetch_100ppi_annual_assets(
+        POLYESTER_FILAMENT_ASSETS,
+        "化纤",
         history_days,
     )
 
@@ -2866,6 +2904,11 @@ def main() -> int:
                 "玉米、大豆、小麦、白糖、皮棉、生猪、棕榈油、天然橡胶",
                 set(AGRICULTURAL_ASSETS),
                 lambda: fetch_agricultural_assets(args.history_days),
+            ),
+            (
+                "涤纶长丝（POY、FDY、DTY）",
+                set(POLYESTER_FILAMENT_ASSETS),
+                lambda: fetch_polyester_filament_assets(args.history_days),
             ),
             (
                 "咖啡、可可",
