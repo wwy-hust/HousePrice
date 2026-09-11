@@ -141,6 +141,34 @@ FRED_AGRICULTURAL_ASSETS = {
         "source_url": "https://fred.stlouisfed.org/series/PCOCOUSDM",
     },
 }
+SEMICONDUCTOR_ASSETS = {
+    "SEMICONDUCTOR_WAFER_PPI": {
+        "series_id": "WPU117847",
+        "name": "半导体硅片等部件生产者价格指数（美国）",
+        "unit": "指数（2005年6月=100）",
+        "source_url": "https://data.bls.gov/timeseries/WPU117847",
+    },
+}
+SEMICONDUCTOR_WAFER_PPI_RECENT_POINTS = {
+    "2025-02-01": 76.999,
+    "2025-03-01": 78.247,
+    "2025-04-01": 78.250,
+    "2025-05-01": 76.688,
+    "2025-06-01": 76.772,
+    "2025-07-01": 77.399,
+    "2025-08-01": 74.895,
+    "2025-09-01": 75.234,
+    "2025-10-01": 75.234,
+    "2025-11-01": 75.267,
+    "2025-12-01": 75.316,
+    "2026-01-01": 75.655,
+    "2026-02-01": 75.698,
+    "2026-03-01": 75.680,
+    "2026-04-01": 76.429,
+    "2026-05-01": 73.920,
+    "2026-06-01": 70.993,
+    "2026-07-01": 70.963,
+}
 PYRITE_LIST_URL = "https://www.100ppi.com/mprice/plist-1-561-{page}.html"
 PHOSPHATE_ROCK_HISTORY_URL = (
     "https://www.mysteel.com/oilchem/article/nwj1r6/"
@@ -911,6 +939,8 @@ CATEGORY_BY_CODE = {
     "COKING_COAL": "能源",
     "CRUDE_OIL": "能源",
     "BRENT_CRUDE": "能源",
+    "PV_WAFER_N_INDEX": "光伏",
+    "SEMICONDUCTOR_WAFER_PPI": "半导体",
     "ARGON": "工业气体",
     "CORN": "农产品",
     "SOYBEAN": "农产品",
@@ -957,6 +987,8 @@ CATEGORY_ORDER = [
     "有色金属大宗",
     "有色金属小金属",
     "能源",
+    "光伏",
+    "半导体",
     "工业气体",
     "农产品",
     "化纤",
@@ -989,6 +1021,8 @@ ASSET_ORDER = {
     "COKING_COAL": 1,
     "CRUDE_OIL": 2,
     "BRENT_CRUDE": 3,
+    "PV_WAFER_N_INDEX": 0,
+    "SEMICONDUCTOR_WAFER_PPI": 0,
     "ARGON": 0,
     "CORN": 0,
     "SOYBEAN": 1,
@@ -1495,6 +1529,69 @@ def fetch_fred_agricultural_assets(
             }
         )
     return assets
+
+
+def fetch_semiconductor_wafer_price_asset(
+    history_days: int = MAX_HISTORY_DAYS,
+) -> dict:
+    """经 DBnomics 拉取 BLS 的半导体部件月度生产者价格指数。"""
+    config = SEMICONDUCTOR_ASSETS["SEMICONDUCTOR_WAFER_PPI"]
+    cutoff = date.today() - timedelta(days=history_days)
+    response = requests.get(
+        "https://api.db.nomics.world/v22/series/BLS/wp/"
+        f"{config['series_id']}",
+        params={"observations": "1"},
+        headers=REQUEST_HEADERS,
+        timeout=30,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    documents = payload.get("series", {}).get("docs", [])
+    if not documents:
+        raise RuntimeError("DBnomics 未返回美国半导体价格指数")
+    document = documents[0]
+    points_by_date = {}
+    for period, value in zip(
+        document.get("period", []),
+        document.get("value", []),
+    ):
+        if not re.fullmatch(r"\d{4}-\d{2}", period) or value is None:
+            continue
+        point_date = date.fromisoformat(f"{period}-01")
+        if point_date < cutoff:
+            continue
+        price = float(value)
+        if not _is_positive_price(price):
+            continue
+        points_by_date[point_date.isoformat()] = {
+            "date": point_date.isoformat(),
+            "price": round(price, 5),
+            "price_low": None,
+            "price_high": None,
+            "source_url": config["source_url"],
+        }
+    for point_date, price in SEMICONDUCTOR_WAFER_PPI_RECENT_POINTS.items():
+        if date.fromisoformat(point_date) < cutoff:
+            continue
+        points_by_date[point_date] = {
+            "date": point_date,
+            "price": price,
+            "price_low": None,
+            "price_high": None,
+            "source_url": config["source_url"],
+        }
+    points = [points_by_date[key] for key in sorted(points_by_date)]
+    if not points:
+        raise ValueError("美国劳工统计局未返回半导体硅片等部件价格指数")
+    return {
+        "code": "SEMICONDUCTOR_WAFER_PPI",
+        "name": config["name"],
+        "unit": config["unit"],
+        "source": "美国劳工统计局（BLS）",
+        "category": "半导体",
+        "latest": points[-1],
+        "series": points,
+    }
 
 
 def fetch_sulfur_asset(history_days: int = MAX_HISTORY_DAYS) -> dict:
@@ -2914,6 +3011,13 @@ def main() -> int:
                 "咖啡、可可",
                 set(FRED_AGRICULTURAL_ASSETS),
                 lambda: fetch_fred_agricultural_assets(args.history_days),
+            ),
+            (
+                "半导体硅片等部件生产者价格指数",
+                set(SEMICONDUCTOR_ASSETS),
+                lambda: fetch_semiconductor_wafer_price_asset(
+                    args.history_days
+                ),
             ),
             (
                 "维生素",

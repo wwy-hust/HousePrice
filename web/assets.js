@@ -19,6 +19,7 @@ const ASSET_COLORS = {
     COKING_COAL: '#78350f',
     CRUDE_OIL: '#18181b',
     BRENT_CRUDE: '#2563eb',
+    SEMICONDUCTOR_WAFER_PPI: '#6366f1',
     ARGON: '#38bdf8',
     CORN: '#eab308',
     SOYBEAN: '#65a30d',
