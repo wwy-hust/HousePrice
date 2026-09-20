@@ -346,6 +346,11 @@ SMM_ASSETS = {
         "name": "仲钨酸铵（国外，鹿特丹CIF）",
         "source_url": "https://hq.smm.cn/tungsten/category/202511260001",
     },
+    "W_CONCENTRATE_65": {
+        "product_id": "201308090016",
+        "name": "黑钨精矿（WO3≥65%）",
+        "source_url": "https://hq.smm.cn/tungsten/category/201308090016",
+    },
     "IN_CN": {
         "product_id": "201102250360",
         "name": "金属铟（精铟）",
@@ -932,6 +937,7 @@ CATEGORY_BY_CODE = {
     "SB_INTL": "有色金属小金属",
     "W_CN": "有色金属小金属",
     "W_INTL": "有色金属小金属",
+    "W_CONCENTRATE_65": "有色金属小金属",
     "IN_CN": "有色金属小金属",
     "RE_CN": "有色金属小金属",
     "GE_CN": "有色金属小金属",
@@ -1014,9 +1020,10 @@ ASSET_ORDER = {
     "SB_INTL": 1,
     "W_CN": 2,
     "W_INTL": 3,
-    "IN_CN": 4,
-    "RE_CN": 5,
-    "GE_CN": 6,
+    "W_CONCENTRATE_65": 4,
+    "IN_CN": 5,
+    "RE_CN": 6,
+    "GE_CN": 7,
     "COAL": 0,
     "COKING_COAL": 1,
     "CRUDE_OIL": 2,
@@ -1184,7 +1191,7 @@ def _fetch_smm_assets(
 
 
 def fetch_small_metal_assets(history_days: int = MAX_HISTORY_DAYS) -> list[dict]:
-    """拉取锑、钨、铟、铼、锗价格，并转换为前端通用资产结构。"""
+    """拉取锑、钨及黑钨精矿、铟、铼、锗价格，并转换为前端通用资产结构。"""
     return _fetch_smm_assets(SMM_ASSETS, "有色金属小金属", history_days)
 
 
@@ -2987,7 +2994,7 @@ def main() -> int:
                 fetch_blood_product_assets,
             ),
             (
-                "锑、钨、铟、铼、锗",
+                "锑、钨、黑钨精矿、铟、铼、锗",
                 set(SMM_ASSETS),
                 lambda: fetch_small_metal_assets(args.history_days),
             ),

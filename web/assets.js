@@ -43,6 +43,7 @@ const ASSET_COLORS = {
     SB_INTL: '#0f766e',
     W_CN: '#475569',
     W_INTL: '#2563eb',
+    W_CONCENTRATE_65: '#92400e',
     IN_CN: '#6366f1',
     RE_CN: '#be123c',
     GE_CN: '#9333ea',
