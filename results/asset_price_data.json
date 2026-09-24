@@ -1,8 +1,14 @@
 {
   "data_type": "关注资产价格",
-  "generated_at": "2026-09-20T17:05:36+08:00",
-  "source_updated_at": "2026-09-20T17:05:36+08:00",
+  "generated_at": "2026-09-24T17:42:41+08:00",
+  "source_updated_at": "2026-09-24T17:42:41+08:00",
   "categories": [
+    {
+      "name": "纤维素新材料",
+      "asset_codes": [
+        "NITROCELLULOSE"
+      ]
+    },
     {
       "name": "有色金属大宗",
       "asset_codes": [
@@ -144,6 +150,71 @@
     }
   ],
   "assets": [
+    {
+      "code": "NITROCELLULOSE",
+      "name": "硝化棉（北化股份主营）",
+      "unit": "元/吨",
+      "source": "北化股份公开披露、行业报道及中国海关数据",
+      "category": "纤维素新材料",
+      "latest": {
+        "date": "2026-06-30",
+        "price": 47700.0,
+        "price_low": null,
+        "price_high": null,
+        "source_url": "https://www.9fzt.com/detail/sz_002246_10_839674548426.html",
+        "date_precision": "half_year",
+        "date_label": "2026年上半年（中国出口均价）",
+        "quote_type": "reported_export_average",
+        "quality_note": "证券研究报道根据中国海关数据计算的上半年出口均价。",
+        "comparability_note": "中国行业出口均价，并非北化股份单家公司售价；出口产品结构与国内民用级市场不同。",
+        "point_type": "reported_observation",
+        "default_hidden": false
+      },
+      "series": [
+        {
+          "date": "2025-06-30",
+          "price": 36500.0,
+          "price_low": 35000.0,
+          "price_high": 38000.0,
+          "source_url": "https://www.hzeyun.com/research/2605837.html",
+          "date_precision": "month",
+          "date_label": "2025年6月（国内民用级）",
+          "quote_type": "reported_market_range",
+          "quality_note": "买化塑研究院监测的华东民用级市场价格区间中点。",
+          "comparability_note": "国内民用级市场参考价，不等同于北化股份实际成交价、军用品价格或出口价格。",
+          "point_type": "reported_observation",
+          "default_hidden": false
+        },
+        {
+          "date": "2025-12-31",
+          "price": 24990.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.9fzt.com/detail/sz_002246_9_24abcc02306c972f18a45dcf40e111fd.html",
+          "date_precision": "year",
+          "date_label": "2025年（北化股份全年均价）",
+          "quote_type": "company_annual_average",
+          "quality_note": "北化股份投资者关系活动记录披露的2025年度产品平均价格。",
+          "comparability_note": "公司口径包含棉液及不同牌号、军民品和销售区域，属于全年综合均价，不能与单一时点市场价直接比较。",
+          "point_type": "reported_observation",
+          "default_hidden": false
+        },
+        {
+          "date": "2026-06-30",
+          "price": 47700.0,
+          "price_low": null,
+          "price_high": null,
+          "source_url": "https://www.9fzt.com/detail/sz_002246_10_839674548426.html",
+          "date_precision": "half_year",
+          "date_label": "2026年上半年（中国出口均价）",
+          "quote_type": "reported_export_average",
+          "quality_note": "证券研究报道根据中国海关数据计算的上半年出口均价。",
+          "comparability_note": "中国行业出口均价，并非北化股份单家公司售价；出口产品结构与国内民用级市场不同。",
+          "point_type": "reported_observation",
+          "default_hidden": false
+        }
+      ]
+    },
     {
       "code": "GOLD",
       "name": "黄金（金99）",

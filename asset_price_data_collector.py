@@ -410,6 +410,59 @@ SMM_ADDITIONAL_METAL_ASSETS = {
 }
 
 REFERENCE_POINTS = {
+    "NITROCELLULOSE": [
+        {
+            "date": "2025-06-30",
+            "price": 36500.0,
+            "price_low": 35000.0,
+            "price_high": 38000.0,
+            "source_url": "https://www.hzeyun.com/research/2605837.html",
+            "date_precision": "month",
+            "date_label": "2025年6月（国内民用级）",
+            "quote_type": "reported_market_range",
+            "quality_note": "买化塑研究院监测的华东民用级市场价格区间中点。",
+            "comparability_note": (
+                "国内民用级市场参考价，不等同于北化股份实际成交价、"
+                "军用品价格或出口价格。"
+            ),
+        },
+        {
+            "date": "2025-12-31",
+            "price": 24990.0,
+            "price_low": None,
+            "price_high": None,
+            "source_url": (
+                "https://www.9fzt.com/detail/sz_002246_9_"
+                "24abcc02306c972f18a45dcf40e111fd.html"
+            ),
+            "date_precision": "year",
+            "date_label": "2025年（北化股份全年均价）",
+            "quote_type": "company_annual_average",
+            "quality_note": "北化股份投资者关系活动记录披露的2025年度产品平均价格。",
+            "comparability_note": (
+                "公司口径包含棉液及不同牌号、军民品和销售区域，"
+                "属于全年综合均价，不能与单一时点市场价直接比较。"
+            ),
+        },
+        {
+            "date": "2026-06-30",
+            "price": 47700.0,
+            "price_low": None,
+            "price_high": None,
+            "source_url": (
+                "https://www.9fzt.com/detail/sz_002246_10_"
+                "839674548426.html"
+            ),
+            "date_precision": "half_year",
+            "date_label": "2026年上半年（中国出口均价）",
+            "quote_type": "reported_export_average",
+            "quality_note": "证券研究报道根据中国海关数据计算的上半年出口均价。",
+            "comparability_note": (
+                "中国行业出口均价，并非北化股份单家公司售价；"
+                "出口产品结构与国内民用级市场不同。"
+            ),
+        },
+    ],
     "ALLULOSE": [
         {
             "date": "2025-12-31",
@@ -892,6 +945,11 @@ REFERENCE_POINTS = {
 }
 
 DEFAULT_VISIBLE_REFERENCE_DATES = {
+    "NITROCELLULOSE": {
+        "2025-06-30",
+        "2025-12-31",
+        "2026-06-30",
+    },
     "ALLULOSE": {"2026-01-20"},
     "CYCLAMATE": {"2026-07-02"},
     "DYE_REDUCTION": {
@@ -919,6 +977,7 @@ for code, reference_points in REFERENCE_POINTS.items():
         )
 
 CATEGORY_BY_CODE = {
+    "NITROCELLULOSE": "纤维素新材料",
     "SULFUR": "有色金属大宗",
     "PYRITE": "有色金属大宗",
     "ALUMINA": "有色金属大宗",
@@ -990,6 +1049,7 @@ CATEGORY_BY_CODE = {
     "MONKEY": "生物医药上游",
 }
 CATEGORY_ORDER = [
+    "纤维素新材料",
     "有色金属大宗",
     "有色金属小金属",
     "能源",
@@ -1006,6 +1066,7 @@ CATEGORY_ORDER = [
     "生物医药上游",
 ]
 ASSET_ORDER = {
+    "NITROCELLULOSE": 0,
     "GOLD": 0,
     "SILVER": 1,
     "COPPER": 2,
@@ -1292,6 +1353,21 @@ def _reference_points_by_date(code: str) -> dict[str, dict]:
     return {
         point["date"]: dict(point)
         for point in REFERENCE_POINTS.get(code, [])
+    }
+
+
+def fetch_nitrocellulose_asset() -> dict:
+    """生成北化股份主营硝化棉的公开报道价格参考序列。"""
+    points = _reference_points_by_date("NITROCELLULOSE")
+    series = [points[key] for key in sorted(points)]
+    return {
+        "code": "NITROCELLULOSE",
+        "name": "硝化棉（北化股份主营）",
+        "unit": "元/吨",
+        "source": "北化股份公开披露、行业报道及中国海关数据",
+        "category": "纤维素新材料",
+        "latest": series[-1],
+        "series": series,
     }
 
 
@@ -2955,6 +3031,11 @@ def main() -> int:
     fetch_returncode = 0
     if args.fetch:
         fetchers = [
+            (
+                "北化股份主营硝化棉",
+                {"NITROCELLULOSE"},
+                fetch_nitrocellulose_asset,
+            ),
             (
                 "硫磺",
                 {"SULFUR"},

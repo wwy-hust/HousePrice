@@ -6,6 +6,7 @@ let assetBrushes = [];
 let assetUpdatePollTimer = null;
 
 const ASSET_COLORS = {
+    NITROCELLULOSE: '#2563eb',
     SULFUR: '#f59e0b',
     PYRITE: '#ca8a04',
     ALUMINA: '#64748b',
