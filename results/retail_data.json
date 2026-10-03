@@ -1,6 +1,6 @@
 {
   "data_type": "社会消费品零售总额",
-  "generated_at": "2026-09-16T20:44:43.174998",
+  "generated_at": "2026-10-03T09:57:55.346362",
   "data_source": "国家统计局 / AKShare",
   "categories_groups": {
     "必选消费": [
@@ -1695,10 +1695,10 @@
     },
     {
       "date": "2026-08",
-      "value": 39824.0,
+      "value": 39824.4,
       "yoy": 0.4,
-      "mom": 2.05446629,
-      "cumulative": 327569.0,
+      "mom": 2.05549135,
+      "cumulative": 327568.8,
       "cumulative_yoy": 1.1
     }
   ],
