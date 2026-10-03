@@ -1,7 +1,7 @@
 {
   "data_type": "关注资产价格",
-  "generated_at": "2026-10-03T10:04:26+08:00",
-  "source_updated_at": "2026-10-03T10:04:26+08:00",
+  "generated_at": "2026-10-03T19:11:26+08:00",
+  "source_updated_at": "2026-10-03T19:11:26+08:00",
   "categories": [
     {
       "name": "纤维素新材料",
@@ -85,6 +85,14 @@
         "POLYESTER_POY",
         "POLYESTER_FDY",
         "POLYESTER_DTY"
+      ]
+    },
+    {
+      "name": "色母粒",
+      "asset_codes": [
+        "MASTERBATCH",
+        "MASTERBATCH_BLACK",
+        "MASTERBATCH_WHITE"
       ]
     },
     {
@@ -628112,6 +628120,2014 @@
           "price_low": null,
           "price_high": null,
           "source_url": "https://www.100ppi.com/cindex/list-1007.html"
+        }
+      ]
+    },
+    {
+      "code": "MASTERBATCH",
+      "name": "色母粒（山东）",
+      "unit": "元/吨",
+      "source": "隆众资讯山东塑料母粒市场快讯（我的钢铁网转载，现汇参考价）",
+      "category": "色母粒",
+      "latest": {
+        "date": "2026-09-28",
+        "price": 16750.0,
+        "price_low": 13500.0,
+        "price_high": 20000.0,
+        "source_url": "https://www.mysteel.com/oilchem/a/26092811/CC85154A709AC5AF.html"
+      },
+      "series": [
+        {
+          "date": "2024-12-16",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/24121613/376D45492B2E14DC.html"
+        },
+        {
+          "date": "2024-12-20",
+          "price": 17000.0,
+          "price_low": 14000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/24122018/1206F8AE0837DB69.html"
+        },
+        {
+          "date": "2024-12-23",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/24122310/DE9C91F1C99C2A93.html"
+        },
+        {
+          "date": "2024-12-30",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/24123011/CF63874D5B471A56.html"
+        },
+        {
+          "date": "2025-01-06",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25010611/EAC567F366E4A421.html"
+        },
+        {
+          "date": "2025-01-13",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25011311/3F29D9D736EDB8BA.html"
+        },
+        {
+          "date": "2025-01-20",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25012010/24E8AE59A0FD1BE4.html"
+        },
+        {
+          "date": "2025-01-27",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25012709/C26E453CD7862D68.html"
+        },
+        {
+          "date": "2025-02-05",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25020509/076977F1009B1228.html"
+        },
+        {
+          "date": "2025-02-10",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25021011/F7D332A285723E63.html"
+        },
+        {
+          "date": "2025-02-17",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25021711/25B386BC7AE1ABC3.html"
+        },
+        {
+          "date": "2025-02-24",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25022413/B492AAAF9F3D54F3.html"
+        },
+        {
+          "date": "2025-03-03",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25030310/3AB8D7AB3C96165A.html"
+        },
+        {
+          "date": "2025-03-10",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25031008/92CFFB26D6921B92.html"
+        },
+        {
+          "date": "2025-03-17",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25031710/2712B72B4B8B10BB.html"
+        },
+        {
+          "date": "2025-03-24",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25032410/DFE122FF2576C30F.html"
+        },
+        {
+          "date": "2025-03-31",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25033113/1BF887AD1B8EEB31.html"
+        },
+        {
+          "date": "2025-04-07",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25040710/7B572DB3F483EE5A.html"
+        },
+        {
+          "date": "2025-04-15",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25041508/DE1345BF0E379430.html"
+        },
+        {
+          "date": "2025-04-21",
+          "price": 16150.0,
+          "price_low": 12800.0,
+          "price_high": 19500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25042108/20CB0D3C5B2A06FD.html"
+        },
+        {
+          "date": "2025-04-28",
+          "price": 16150.0,
+          "price_low": 12800.0,
+          "price_high": 19500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25042811/5B6BFC05A5D7730C.html"
+        },
+        {
+          "date": "2025-05-06",
+          "price": 15950.0,
+          "price_low": 12600.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25050611/8EF1C490D6E6F94D.html"
+        },
+        {
+          "date": "2025-05-12",
+          "price": 15950.0,
+          "price_low": 12600.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25051211/BC23728F50AC424D.html"
+        },
+        {
+          "date": "2025-05-19",
+          "price": 15950.0,
+          "price_low": 12600.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25051911/052D82B371301B60.html"
+        },
+        {
+          "date": "2025-05-26",
+          "price": 15950.0,
+          "price_low": 12600.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25052609/BB069F47E5B704EE.html"
+        },
+        {
+          "date": "2025-06-03",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25060310/FC7998292017E3F5.html"
+        },
+        {
+          "date": "2025-06-09",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25060910/41D68A460DC44AD3.html"
+        },
+        {
+          "date": "2025-06-16",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25061610/38C67BD9FF73A110.html"
+        },
+        {
+          "date": "2025-06-23",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25062310/C6B88A0C88BC02E9.html"
+        },
+        {
+          "date": "2025-06-30",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25063011/B5AF2CBBEBDFC36E.html"
+        },
+        {
+          "date": "2025-07-07",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25070711/E034B683AE0F68DC.html"
+        },
+        {
+          "date": "2025-07-14",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25071409/5A34BB2630A6AD24.html"
+        },
+        {
+          "date": "2025-07-21",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25072111/03E34A8954D94BB3.html"
+        },
+        {
+          "date": "2025-07-28",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25072811/A91199F2E9D6D38F.html"
+        },
+        {
+          "date": "2025-08-04",
+          "price": 15850.0,
+          "price_low": 12500.0,
+          "price_high": 19200.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25080410/03187D90EE5C0EBF.html"
+        },
+        {
+          "date": "2025-08-11",
+          "price": 15850.0,
+          "price_low": 12500.0,
+          "price_high": 19200.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25081109/D225FBE21FFE1D0F.html"
+        },
+        {
+          "date": "2025-08-18",
+          "price": 15850.0,
+          "price_low": 12500.0,
+          "price_high": 19200.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25081811/C4A0FCEEA2159AC6.html"
+        },
+        {
+          "date": "2025-08-25",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25082509/45597453482F9851.html"
+        },
+        {
+          "date": "2025-09-01",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25090108/4D5BB9B89EBE1102.html"
+        },
+        {
+          "date": "2025-09-08",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25090810/DF8A8B489CFF6AC8.html"
+        },
+        {
+          "date": "2025-09-15",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25091509/A3004690CE3B6A76.html"
+        },
+        {
+          "date": "2025-09-22",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25092209/2233C4AD130F6847.html"
+        },
+        {
+          "date": "2025-09-29",
+          "price": 15900.0,
+          "price_low": 12500.0,
+          "price_high": 19300.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25092910/338121ED5B1FEB17.html"
+        },
+        {
+          "date": "2025-10-09",
+          "price": 15500.0,
+          "price_low": 12000.0,
+          "price_high": 19000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25100908/16B6E79D66BC602C.html"
+        },
+        {
+          "date": "2025-10-13",
+          "price": 15500.0,
+          "price_low": 12000.0,
+          "price_high": 19000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25101309/D30C9DBD00B78E24.html"
+        },
+        {
+          "date": "2025-10-20",
+          "price": 15500.0,
+          "price_low": 12000.0,
+          "price_high": 19000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25102009/74F07803FB42FE66.html"
+        },
+        {
+          "date": "2025-10-27",
+          "price": 15500.0,
+          "price_low": 12000.0,
+          "price_high": 19000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25102712/AAF343ECD43040F9.html"
+        },
+        {
+          "date": "2025-11-03",
+          "price": 15500.0,
+          "price_low": 12000.0,
+          "price_high": 19000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25110310/75F6EC42A8DEDBB2.html"
+        },
+        {
+          "date": "2025-11-10",
+          "price": 15500.0,
+          "price_low": 12000.0,
+          "price_high": 19000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25111010/7280D74F9E2BB8DB.html"
+        },
+        {
+          "date": "2025-11-17",
+          "price": 15500.0,
+          "price_low": 12000.0,
+          "price_high": 19000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25111711/89E6053AD589931B.html"
+        },
+        {
+          "date": "2025-11-24",
+          "price": 15500.0,
+          "price_low": 12000.0,
+          "price_high": 19000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25112410/A35B3A3218DC8E1B.html"
+        },
+        {
+          "date": "2025-12-01",
+          "price": 15500.0,
+          "price_low": 12000.0,
+          "price_high": 19000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25120110/69500816ACF1DFB0.html"
+        },
+        {
+          "date": "2025-12-08",
+          "price": 15500.0,
+          "price_low": 12000.0,
+          "price_high": 19000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25120808/C30174D9BABFFA3E.html"
+        },
+        {
+          "date": "2025-12-15",
+          "price": 15100.0,
+          "price_low": 11700.0,
+          "price_high": 18500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25121509/3C5BD152870D8C14.html"
+        },
+        {
+          "date": "2025-12-22",
+          "price": 15100.0,
+          "price_low": 11700.0,
+          "price_high": 18500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25122211/D748293B3BA1A780.html"
+        },
+        {
+          "date": "2025-12-29",
+          "price": 15100.0,
+          "price_low": 11700.0,
+          "price_high": 18500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25122910/ECEF9ABF28C65225.html"
+        },
+        {
+          "date": "2026-01-05",
+          "price": 15100.0,
+          "price_low": 11700.0,
+          "price_high": 18500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26010509/BA328B580CB8B198.html"
+        },
+        {
+          "date": "2026-01-12",
+          "price": 15100.0,
+          "price_low": 11700.0,
+          "price_high": 18500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26011209/843C77CDC29F8600.html"
+        },
+        {
+          "date": "2026-01-19",
+          "price": 15250.0,
+          "price_low": 11800.0,
+          "price_high": 18700.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26011910/7EB7E8B6D787AE03.html"
+        },
+        {
+          "date": "2026-01-26",
+          "price": 15150.0,
+          "price_low": 11800.0,
+          "price_high": 18500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26012611/023E2061EA89EA4F.html"
+        },
+        {
+          "date": "2026-02-02",
+          "price": 15150.0,
+          "price_low": 11800.0,
+          "price_high": 18500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26020211/044BA77DE3B1FC1A.html"
+        },
+        {
+          "date": "2026-02-09",
+          "price": 15150.0,
+          "price_low": 11800.0,
+          "price_high": 18500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26020910/CDA4A51CA4CEF424.html"
+        },
+        {
+          "date": "2026-02-24",
+          "price": 15150.0,
+          "price_low": 11800.0,
+          "price_high": 18500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26022408/C467D4CBF0885298.html"
+        },
+        {
+          "date": "2026-03-02",
+          "price": 15150.0,
+          "price_low": 11800.0,
+          "price_high": 18500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26030208/F76C4A9269ABF9C0.html"
+        },
+        {
+          "date": "2026-03-09",
+          "price": 16250.0,
+          "price_low": 12500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26030910/4A48CDAF99F67972.html"
+        },
+        {
+          "date": "2026-03-16",
+          "price": 16400.0,
+          "price_low": 12800.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26031609/F8E6285A05EFA164.html"
+        },
+        {
+          "date": "2026-03-23",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26032310/4733F28AC666471E.html"
+        },
+        {
+          "date": "2026-03-30",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26033009/4AB92C966C69A80A.html"
+        },
+        {
+          "date": "2026-04-07",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26040712/A58C8F1B030F3BE5.html"
+        },
+        {
+          "date": "2026-04-13",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26041309/80105EC832F3D50E.html"
+        },
+        {
+          "date": "2026-04-20",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26042008/D809627439739995.html"
+        },
+        {
+          "date": "2026-04-27",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26042711/5EC5B67325EDF946.html"
+        },
+        {
+          "date": "2026-05-06",
+          "price": 17100.0,
+          "price_low": 13700.0,
+          "price_high": 20500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26050613/8A89B29929BEADAB.html"
+        },
+        {
+          "date": "2026-05-11",
+          "price": 17100.0,
+          "price_low": 13700.0,
+          "price_high": 20500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26051111/45B8C4CEC669FE78.html"
+        },
+        {
+          "date": "2026-05-18",
+          "price": 17100.0,
+          "price_low": 13700.0,
+          "price_high": 20500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26051811/E2C3812CCEF2DE70.html"
+        },
+        {
+          "date": "2026-05-25",
+          "price": 17100.0,
+          "price_low": 13700.0,
+          "price_high": 20500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26052509/FF889E61D651B187.html"
+        },
+        {
+          "date": "2026-06-01",
+          "price": 17100.0,
+          "price_low": 13700.0,
+          "price_high": 20500.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26060112/8B3952A3E3A3AD1A.html"
+        },
+        {
+          "date": "2026-06-08",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26060808/C72928D48878CA2A.html"
+        },
+        {
+          "date": "2026-06-15",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26061514/33D751F5AFCF6690.html"
+        },
+        {
+          "date": "2026-06-22",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26062213/8863D15AD4CF600F.html"
+        },
+        {
+          "date": "2026-06-29",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26062913/4CDEF5042646BBC8.html"
+        },
+        {
+          "date": "2026-07-06",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26070614/6E58157D1829F6BA.html"
+        },
+        {
+          "date": "2026-07-13",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26071311/997B55DEAC755D9C.html"
+        },
+        {
+          "date": "2026-07-20",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26072013/2D585F1EB4E3E8A5.html"
+        },
+        {
+          "date": "2026-07-27",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26072713/E76880D64DA98727.html"
+        },
+        {
+          "date": "2026-08-03",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26080313/188FC2E5BE72A40F.html"
+        },
+        {
+          "date": "2026-08-10",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26081011/FCC9B2170DB9730F.html"
+        },
+        {
+          "date": "2026-08-17",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26081711/9584164FEADB122C.html"
+        },
+        {
+          "date": "2026-08-24",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26082413/A1DC03A5A503AD47.html"
+        },
+        {
+          "date": "2026-08-31",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26083114/4329E6AB417096C7.html"
+        },
+        {
+          "date": "2026-09-07",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26090716/77C132D3E21D36DF.html"
+        },
+        {
+          "date": "2026-09-14",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26091413/9B988C6D3C160FC0.html"
+        },
+        {
+          "date": "2026-09-21",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26092115/C7BE8861F1E58EB6.html"
+        },
+        {
+          "date": "2026-09-28",
+          "price": 16750.0,
+          "price_low": 13500.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26092811/CC85154A709AC5AF.html"
+        }
+      ]
+    },
+    {
+      "code": "MASTERBATCH_BLACK",
+      "name": "黑色母粒（华东）",
+      "unit": "元/吨",
+      "source": "隆众资讯华东塑料母粒市场快讯（我的钢铁网转载，现汇参考价）",
+      "category": "色母粒",
+      "latest": {
+        "date": "2026-09-28",
+        "price": 17250.0,
+        "price_low": 13500.0,
+        "price_high": 21000.0,
+        "source_url": "https://www.mysteel.com/oilchem/a/26092814/4C41C44C4FB4E01F.html"
+      },
+      "series": [
+        {
+          "date": "2024-12-16",
+          "price": 9000.0,
+          "price_low": 9000.0,
+          "price_high": 9000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/24121611/67BA0B71B2EF1711.html"
+        },
+        {
+          "date": "2024-12-23",
+          "price": 9000.0,
+          "price_low": 9000.0,
+          "price_high": 9000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/24122314/3375CF356B439A30.html"
+        },
+        {
+          "date": "2024-12-30",
+          "price": 9000.0,
+          "price_low": 9000.0,
+          "price_high": 9000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/24123011/EE45F5B73B62A009.html"
+        },
+        {
+          "date": "2025-01-06",
+          "price": 9000.0,
+          "price_low": 9000.0,
+          "price_high": 9000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25010611/27EF75856EDDB451.html"
+        },
+        {
+          "date": "2025-01-13",
+          "price": 9000.0,
+          "price_low": 9000.0,
+          "price_high": 9000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25011311/44C82F2491E652CA.html"
+        },
+        {
+          "date": "2025-01-20",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25012014/4E479AF0B254375F.html"
+        },
+        {
+          "date": "2025-01-27",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25012709/277F8D322EAD7CB2.html"
+        },
+        {
+          "date": "2025-02-05",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25020511/C4FAD1510ECFD4ED.html"
+        },
+        {
+          "date": "2025-02-10",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25021014/4144215369AC4DAA.html"
+        },
+        {
+          "date": "2025-02-17",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25021714/431DA36F8958A936.html"
+        },
+        {
+          "date": "2025-02-24",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25022411/3F0514FBF6D28B05.html"
+        },
+        {
+          "date": "2025-03-04",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25030414/E10290286FD2DA45.html"
+        },
+        {
+          "date": "2025-03-10",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25031014/1258E4F2330C63CB.html"
+        },
+        {
+          "date": "2025-03-17",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25031711/F56B630770913DB3.html"
+        },
+        {
+          "date": "2025-03-25",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25032517/49919F8ECA838A80.html"
+        },
+        {
+          "date": "2025-03-31",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25033114/98399BA141A97CF0.html"
+        },
+        {
+          "date": "2025-04-07",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25040716/306A826E4A6F4780.html"
+        },
+        {
+          "date": "2025-04-14",
+          "price": 10500.0,
+          "price_low": 9000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25041417/0BA6AFE4A209CED8.html"
+        },
+        {
+          "date": "2025-04-22",
+          "price": 17500.0,
+          "price_low": 15000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25042216/B115ED6DF51922FC.html"
+        },
+        {
+          "date": "2025-04-28",
+          "price": 17500.0,
+          "price_low": 15000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25042812/F3132DEA7FA3D38A.html"
+        },
+        {
+          "date": "2025-05-06",
+          "price": 17500.0,
+          "price_low": 15000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25050616/68D125439648E4E2.html"
+        },
+        {
+          "date": "2025-05-12",
+          "price": 17500.0,
+          "price_low": 15000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25051216/4648DF0418F0F49A.html"
+        },
+        {
+          "date": "2025-05-20",
+          "price": 17500.0,
+          "price_low": 15000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25052010/1E208E335059D9F7.html"
+        },
+        {
+          "date": "2025-05-26",
+          "price": 17000.0,
+          "price_low": 14000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25052616/4AC14B6A4248FCA4.html"
+        },
+        {
+          "date": "2025-06-03",
+          "price": 17000.0,
+          "price_low": 14000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25060316/E8968A280630B633.html"
+        },
+        {
+          "date": "2025-06-11",
+          "price": 17000.0,
+          "price_low": 14000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25061114/5A87750A5C2D7F00.html"
+        },
+        {
+          "date": "2025-06-16",
+          "price": 17000.0,
+          "price_low": 14000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25061614/B5E3F922777AC3DD.html"
+        },
+        {
+          "date": "2025-06-23",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25062314/BFDEEE521C7292CA.html"
+        },
+        {
+          "date": "2025-07-01",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25070110/B37B5FB637A04598.html"
+        },
+        {
+          "date": "2025-07-07",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25070717/BF4AA396B257BDDF.html"
+        },
+        {
+          "date": "2025-07-14",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25071417/304064E4A55FD3B1.html"
+        },
+        {
+          "date": "2025-07-21",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25072114/FC58D5098ECA0C1A.html"
+        },
+        {
+          "date": "2025-07-28",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25072817/D69AE6BA6CC11C49.html"
+        },
+        {
+          "date": "2025-08-05",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25080516/F880D1682C5A47FD.html"
+        },
+        {
+          "date": "2025-08-12",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25081215/1BFF372B22E4FAAF.html"
+        },
+        {
+          "date": "2025-08-20",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25082015/2C8D8D1353CC6FFE.html"
+        },
+        {
+          "date": "2025-08-26",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25082615/07191F08CD4BE19A.html"
+        },
+        {
+          "date": "2025-09-02",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25090211/E82601B6CF98ED4E.html"
+        },
+        {
+          "date": "2025-09-08",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25090814/19499C5E0AEEB753.html"
+        },
+        {
+          "date": "2025-09-16",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25091616/85F9E41590815FDB.html"
+        },
+        {
+          "date": "2025-09-22",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25092215/4211DFAEFB25BCB7.html"
+        },
+        {
+          "date": "2025-09-29",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25092913/600D46D2165153C6.html"
+        },
+        {
+          "date": "2025-10-09",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25100914/4B476E7544D2D303.html"
+        },
+        {
+          "date": "2025-10-13",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25101311/20F1CF849DCDAF76.html"
+        },
+        {
+          "date": "2025-10-20",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25102017/59476E8D2FFCC7CF.html"
+        },
+        {
+          "date": "2025-10-29",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25102912/FA41E2C203A77A43.html"
+        },
+        {
+          "date": "2025-11-04",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25110411/C4F119DCF7FC0B3F.html"
+        },
+        {
+          "date": "2025-11-10",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25111017/FCCED2FDE2BADC81.html"
+        },
+        {
+          "date": "2025-11-17",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25111715/FAE30A69C99EAEE5.html"
+        },
+        {
+          "date": "2025-11-25",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25112514/D88956CD4B6F50BD.html"
+        },
+        {
+          "date": "2025-12-01",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25120117/1CBB07F5BDDF8835.html"
+        },
+        {
+          "date": "2025-12-08",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25120816/010EB670D2BE624A.html"
+        },
+        {
+          "date": "2025-12-15",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25121516/B7B7FEEC3D218FB1.html"
+        },
+        {
+          "date": "2025-12-22",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25122217/339F7D8C5104E5FE.html"
+        },
+        {
+          "date": "2025-12-29",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25122917/1422C65E84EC3596.html"
+        },
+        {
+          "date": "2026-01-05",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26010514/290CB14E901DCC99.html"
+        },
+        {
+          "date": "2026-01-12",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26011215/344357B14DC49B19.html"
+        },
+        {
+          "date": "2026-01-19",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26011912/A7BB6215DAED3D3E.html"
+        },
+        {
+          "date": "2026-01-26",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26012617/412A6E0C972257AB.html"
+        },
+        {
+          "date": "2026-02-02",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26020211/87BA196B495FD242.html"
+        },
+        {
+          "date": "2026-02-09",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26020917/20CC8B26423EB54C.html"
+        },
+        {
+          "date": "2026-02-24",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26022415/720D8794A3B75A34.html"
+        },
+        {
+          "date": "2026-03-02",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26030215/13DD254F9770F421.html"
+        },
+        {
+          "date": "2026-03-09",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26030915/85270E946D5171FD.html"
+        },
+        {
+          "date": "2026-03-16",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26031611/0FAD7AFCC05DDF7F.html"
+        },
+        {
+          "date": "2026-03-23",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26032314/E0E47BF77A754926.html"
+        },
+        {
+          "date": "2026-03-30",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26033011/B0D610C96135389A.html"
+        },
+        {
+          "date": "2026-04-07",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26040715/ACE6764F52FAD901.html"
+        },
+        {
+          "date": "2026-04-13",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26041311/79BEB475A93136D6.html"
+        },
+        {
+          "date": "2026-04-20",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26042010/B9B46ADE5BBB7BD1.html"
+        },
+        {
+          "date": "2026-04-27",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26042711/63E24ADB080CCEF6.html"
+        },
+        {
+          "date": "2026-05-06",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26050611/75644CF6DD6C9720.html"
+        },
+        {
+          "date": "2026-05-11",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26051112/9016E6E5C7EEC41F.html"
+        },
+        {
+          "date": "2026-05-18",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26051814/7194EF24C9420CD8.html"
+        },
+        {
+          "date": "2026-05-25",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26052515/B715A49EE4BF0337.html"
+        },
+        {
+          "date": "2026-06-01",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26060111/9B053D1D69C74D06.html"
+        },
+        {
+          "date": "2026-06-08",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26060811/E9C2963029F3B177.html"
+        },
+        {
+          "date": "2026-06-15",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26061515/9666E05B9DCD0322.html"
+        },
+        {
+          "date": "2026-06-22",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26062213/777BBDC968D4B72D.html"
+        },
+        {
+          "date": "2026-06-29",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26062911/5309E98AFD9CDDCC.html"
+        },
+        {
+          "date": "2026-07-06",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26070611/2E3D916D8D6C6FEB.html"
+        },
+        {
+          "date": "2026-07-13",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26071311/530C8F68EA33FE8B.html"
+        },
+        {
+          "date": "2026-07-20",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26072014/1B098F50E5B982E3.html"
+        },
+        {
+          "date": "2026-07-27",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26072713/C51C9F5095697BC0.html"
+        },
+        {
+          "date": "2026-08-03",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26080313/DFF0775632BF5A75.html"
+        },
+        {
+          "date": "2026-08-10",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26081011/70B0D6ACE33A26C2.html"
+        },
+        {
+          "date": "2026-08-17",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26081713/709820115559781D.html"
+        },
+        {
+          "date": "2026-08-24",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26082413/9439355EFB4D1CD2.html"
+        },
+        {
+          "date": "2026-08-31",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26083114/BBF949434F88D9CB.html"
+        },
+        {
+          "date": "2026-09-07",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26090716/FC2CB0ACD864883C.html"
+        },
+        {
+          "date": "2026-09-14",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26091413/C424184C590FDD04.html"
+        },
+        {
+          "date": "2026-09-21",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26092115/8B56EE16D56693A2.html"
+        },
+        {
+          "date": "2026-09-28",
+          "price": 17250.0,
+          "price_low": 13500.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26092814/4C41C44C4FB4E01F.html"
+        }
+      ]
+    },
+    {
+      "code": "MASTERBATCH_WHITE",
+      "name": "白色母粒（华东）",
+      "unit": "元/吨",
+      "source": "隆众资讯华东塑料母粒市场快讯（我的钢铁网转载，现汇参考价）",
+      "category": "色母粒",
+      "latest": {
+        "date": "2026-09-28",
+        "price": 17000.0,
+        "price_low": 13000.0,
+        "price_high": 21000.0,
+        "source_url": "https://www.mysteel.com/oilchem/a/26092814/4C41C44C4FB4E01F.html"
+      },
+      "series": [
+        {
+          "date": "2024-12-16",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/24121611/67BA0B71B2EF1711.html"
+        },
+        {
+          "date": "2024-12-23",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/24122314/3375CF356B439A30.html"
+        },
+        {
+          "date": "2024-12-30",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/24123011/EE45F5B73B62A009.html"
+        },
+        {
+          "date": "2025-01-06",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25010611/27EF75856EDDB451.html"
+        },
+        {
+          "date": "2025-01-13",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25011311/44C82F2491E652CA.html"
+        },
+        {
+          "date": "2025-01-20",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25012014/4E479AF0B254375F.html"
+        },
+        {
+          "date": "2025-01-27",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25012709/277F8D322EAD7CB2.html"
+        },
+        {
+          "date": "2025-02-05",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25020511/C4FAD1510ECFD4ED.html"
+        },
+        {
+          "date": "2025-02-10",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25021014/4144215369AC4DAA.html"
+        },
+        {
+          "date": "2025-02-17",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25021714/431DA36F8958A936.html"
+        },
+        {
+          "date": "2025-02-24",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25022411/3F0514FBF6D28B05.html"
+        },
+        {
+          "date": "2025-03-04",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25030414/E10290286FD2DA45.html"
+        },
+        {
+          "date": "2025-03-10",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25031014/1258E4F2330C63CB.html"
+        },
+        {
+          "date": "2025-03-17",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25031711/F56B630770913DB3.html"
+        },
+        {
+          "date": "2025-03-25",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25032517/49919F8ECA838A80.html"
+        },
+        {
+          "date": "2025-03-31",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25033114/98399BA141A97CF0.html"
+        },
+        {
+          "date": "2025-04-07",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25040716/306A826E4A6F4780.html"
+        },
+        {
+          "date": "2025-04-14",
+          "price": 12000.0,
+          "price_low": 12000.0,
+          "price_high": 12000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25041417/0BA6AFE4A209CED8.html"
+        },
+        {
+          "date": "2025-04-22",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25042216/B115ED6DF51922FC.html"
+        },
+        {
+          "date": "2025-04-28",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25042812/F3132DEA7FA3D38A.html"
+        },
+        {
+          "date": "2025-05-06",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25050616/68D125439648E4E2.html"
+        },
+        {
+          "date": "2025-05-12",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25051216/4648DF0418F0F49A.html"
+        },
+        {
+          "date": "2025-05-20",
+          "price": 16500.0,
+          "price_low": 13000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25052010/1E208E335059D9F7.html"
+        },
+        {
+          "date": "2025-05-26",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25052616/4AC14B6A4248FCA4.html"
+        },
+        {
+          "date": "2025-06-03",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25060316/E8968A280630B633.html"
+        },
+        {
+          "date": "2025-06-11",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25061114/5A87750A5C2D7F00.html"
+        },
+        {
+          "date": "2025-06-16",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25061614/B5E3F922777AC3DD.html"
+        },
+        {
+          "date": "2025-06-23",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25062314/BFDEEE521C7292CA.html"
+        },
+        {
+          "date": "2025-07-01",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25070110/B37B5FB637A04598.html"
+        },
+        {
+          "date": "2025-07-07",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25070717/BF4AA396B257BDDF.html"
+        },
+        {
+          "date": "2025-07-14",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25071417/304064E4A55FD3B1.html"
+        },
+        {
+          "date": "2025-07-21",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25072114/FC58D5098ECA0C1A.html"
+        },
+        {
+          "date": "2025-07-28",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25072817/D69AE6BA6CC11C49.html"
+        },
+        {
+          "date": "2025-08-05",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25080516/F880D1682C5A47FD.html"
+        },
+        {
+          "date": "2025-08-12",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25081215/1BFF372B22E4FAAF.html"
+        },
+        {
+          "date": "2025-08-20",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25082015/2C8D8D1353CC6FFE.html"
+        },
+        {
+          "date": "2025-08-26",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25082615/07191F08CD4BE19A.html"
+        },
+        {
+          "date": "2025-09-02",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25090211/E82601B6CF98ED4E.html"
+        },
+        {
+          "date": "2025-09-08",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25090814/19499C5E0AEEB753.html"
+        },
+        {
+          "date": "2025-09-16",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25091616/85F9E41590815FDB.html"
+        },
+        {
+          "date": "2025-09-22",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25092215/4211DFAEFB25BCB7.html"
+        },
+        {
+          "date": "2025-09-29",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25092913/600D46D2165153C6.html"
+        },
+        {
+          "date": "2025-10-09",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25100914/4B476E7544D2D303.html"
+        },
+        {
+          "date": "2025-10-13",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25101311/20F1CF849DCDAF76.html"
+        },
+        {
+          "date": "2025-10-20",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25102017/59476E8D2FFCC7CF.html"
+        },
+        {
+          "date": "2025-10-29",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25102912/FA41E2C203A77A43.html"
+        },
+        {
+          "date": "2025-11-04",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25110411/C4F119DCF7FC0B3F.html"
+        },
+        {
+          "date": "2025-11-10",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25111017/FCCED2FDE2BADC81.html"
+        },
+        {
+          "date": "2025-11-17",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25111715/FAE30A69C99EAEE5.html"
+        },
+        {
+          "date": "2025-11-25",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25112514/D88956CD4B6F50BD.html"
+        },
+        {
+          "date": "2025-12-01",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25120117/1CBB07F5BDDF8835.html"
+        },
+        {
+          "date": "2025-12-08",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25120816/010EB670D2BE624A.html"
+        },
+        {
+          "date": "2025-12-15",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25121516/B7B7FEEC3D218FB1.html"
+        },
+        {
+          "date": "2025-12-22",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25122217/339F7D8C5104E5FE.html"
+        },
+        {
+          "date": "2025-12-29",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/25122917/1422C65E84EC3596.html"
+        },
+        {
+          "date": "2026-01-05",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26010514/290CB14E901DCC99.html"
+        },
+        {
+          "date": "2026-01-12",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26011215/344357B14DC49B19.html"
+        },
+        {
+          "date": "2026-01-19",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26011912/A7BB6215DAED3D3E.html"
+        },
+        {
+          "date": "2026-01-26",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26012617/412A6E0C972257AB.html"
+        },
+        {
+          "date": "2026-02-02",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26020211/87BA196B495FD242.html"
+        },
+        {
+          "date": "2026-02-09",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26020917/20CC8B26423EB54C.html"
+        },
+        {
+          "date": "2026-02-24",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26022415/720D8794A3B75A34.html"
+        },
+        {
+          "date": "2026-03-02",
+          "price": 16000.0,
+          "price_low": 12000.0,
+          "price_high": 20000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26030215/13DD254F9770F421.html"
+        },
+        {
+          "date": "2026-03-09",
+          "price": 16900.0,
+          "price_low": 12800.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26030915/85270E946D5171FD.html"
+        },
+        {
+          "date": "2026-03-16",
+          "price": 16900.0,
+          "price_low": 12800.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26031611/0FAD7AFCC05DDF7F.html"
+        },
+        {
+          "date": "2026-03-23",
+          "price": 16900.0,
+          "price_low": 12800.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26032314/E0E47BF77A754926.html"
+        },
+        {
+          "date": "2026-03-30",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26033011/B0D610C96135389A.html"
+        },
+        {
+          "date": "2026-04-07",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26040715/ACE6764F52FAD901.html"
+        },
+        {
+          "date": "2026-04-13",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26041311/79BEB475A93136D6.html"
+        },
+        {
+          "date": "2026-04-20",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26042010/B9B46ADE5BBB7BD1.html"
+        },
+        {
+          "date": "2026-04-27",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26042711/63E24ADB080CCEF6.html"
+        },
+        {
+          "date": "2026-05-06",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26050611/75644CF6DD6C9720.html"
+        },
+        {
+          "date": "2026-05-11",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26051112/9016E6E5C7EEC41F.html"
+        },
+        {
+          "date": "2026-05-18",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26051814/7194EF24C9420CD8.html"
+        },
+        {
+          "date": "2026-05-25",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26052515/B715A49EE4BF0337.html"
+        },
+        {
+          "date": "2026-06-01",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26060111/9B053D1D69C74D06.html"
+        },
+        {
+          "date": "2026-06-08",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26060811/E9C2963029F3B177.html"
+        },
+        {
+          "date": "2026-06-15",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26061515/9666E05B9DCD0322.html"
+        },
+        {
+          "date": "2026-06-22",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26062213/777BBDC968D4B72D.html"
+        },
+        {
+          "date": "2026-06-29",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26062911/5309E98AFD9CDDCC.html"
+        },
+        {
+          "date": "2026-07-06",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26070611/2E3D916D8D6C6FEB.html"
+        },
+        {
+          "date": "2026-07-13",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26071311/530C8F68EA33FE8B.html"
+        },
+        {
+          "date": "2026-07-20",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26072014/1B098F50E5B982E3.html"
+        },
+        {
+          "date": "2026-07-27",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26072713/C51C9F5095697BC0.html"
+        },
+        {
+          "date": "2026-08-03",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26080313/DFF0775632BF5A75.html"
+        },
+        {
+          "date": "2026-08-10",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26081011/70B0D6ACE33A26C2.html"
+        },
+        {
+          "date": "2026-08-17",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26081713/709820115559781D.html"
+        },
+        {
+          "date": "2026-08-24",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26082413/9439355EFB4D1CD2.html"
+        },
+        {
+          "date": "2026-08-31",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26083114/BBF949434F88D9CB.html"
+        },
+        {
+          "date": "2026-09-07",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26090716/FC2CB0ACD864883C.html"
+        },
+        {
+          "date": "2026-09-14",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26091413/C424184C590FDD04.html"
+        },
+        {
+          "date": "2026-09-21",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26092115/8B56EE16D56693A2.html"
+        },
+        {
+          "date": "2026-09-28",
+          "price": 17000.0,
+          "price_low": 13000.0,
+          "price_high": 21000.0,
+          "source_url": "https://www.mysteel.com/oilchem/a/26092814/4C41C44C4FB4E01F.html"
         }
       ]
     },

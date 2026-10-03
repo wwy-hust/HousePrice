@@ -173,6 +173,24 @@ PYRITE_LIST_URL = "https://www.100ppi.com/mprice/plist-1-561-{page}.html"
 PHOSPHATE_ROCK_HISTORY_URL = (
     "https://www.mysteel.com/oilchem/article/nwj1r6/"
 )
+MASTERBATCH_LIST_URL = "https://m.mysteel.com/oilchem/suliao/article/cpailr/"
+MASTERBATCH_ASSETS = {
+    "MASTERBATCH": {
+        "region": "山东",
+        "label": "色母粒",
+        "name": "色母粒（山东）",
+    },
+    "MASTERBATCH_BLACK": {
+        "region": "华东",
+        "label": "黑色母粒",
+        "name": "黑色母粒（华东）",
+    },
+    "MASTERBATCH_WHITE": {
+        "region": "华东",
+        "label": "白色母粒",
+        "name": "白色母粒（华东）",
+    },
+}
 DYE_REDUCTION_EARLY_URL = (
     "https://news.chemnet.com/toutiao/detail-53508.html"
 )
@@ -1020,6 +1038,9 @@ CATEGORY_BY_CODE = {
     "POLYESTER_POY": "化纤",
     "POLYESTER_FDY": "化纤",
     "POLYESTER_DTY": "化纤",
+    "MASTERBATCH": "色母粒",
+    "MASTERBATCH_BLACK": "色母粒",
+    "MASTERBATCH_WHITE": "色母粒",
     "VD3": "维生素",
     "VIT_A": "维生素",
     "VIT_E": "维生素",
@@ -1058,6 +1079,7 @@ CATEGORY_ORDER = [
     "工业气体",
     "农产品",
     "化纤",
+    "色母粒",
     "分散染料及中间体",
     "维生素",
     "食品添加剂",
@@ -1105,6 +1127,9 @@ ASSET_ORDER = {
     "POLYESTER_POY": 0,
     "POLYESTER_FDY": 1,
     "POLYESTER_DTY": 2,
+    "MASTERBATCH": 0,
+    "MASTERBATCH_BLACK": 1,
+    "MASTERBATCH_WHITE": 2,
     "DISPERSE_BLACK": 0,
     "DISPERSE_BLUE_60": 1,
     "H_ACID": 2,
@@ -1899,6 +1924,160 @@ def fetch_phosphate_rock_asset(history_pages: int = 15) -> dict:
         "latest": series[-1],
         "series": series,
     }
+
+
+def fetch_masterbatch_assets(
+    history_days: int = MAX_HISTORY_DAYS,
+    max_pages: int = 600,
+) -> list[dict]:
+    """拉取隆众资讯山东色母粒及华东黑色、白色母粒周度现汇参考价。"""
+    cutoff = (date.today() - timedelta(days=history_days)).isoformat()
+    points_by_code = {
+        code: _existing_series_by_code(code) for code in MASTERBATCH_ASSETS
+    }
+    codes_by_region = {}
+    for code, config in MASTERBATCH_ASSETS.items():
+        codes_by_region.setdefault(config["region"], []).append(code)
+    known_dates = set.intersection(
+        *(set(points) for points in points_by_code.values())
+    )
+    earliest_known = min(known_dates, default="")
+
+    def article_links(page_url: str) -> dict[str, tuple[str, str]]:
+        soup = BeautifulSoup(_get_html(page_url), "html.parser")
+        links = {}
+        for link in soup.select("a[href]"):
+            title_match = re.search(
+                r"(\S{2})塑料母粒市场快讯",
+                link.get_text(" ", strip=True),
+            )
+            url_match = re.search(
+                r"/oilchem/a/(\d{2})(\d{2})(\d{2})\d{2}/",
+                link["href"],
+            )
+            if title_match and url_match:
+                year, month, day = url_match.groups()
+                links[urljoin(page_url, link["href"])] = (
+                    title_match.group(1),
+                    f"20{year}-{month}-{day}",
+                )
+        return links
+
+    def should_crawl(article_date: str) -> bool:
+        if article_date < cutoff:
+            return False
+        return article_date not in known_dates or article_date <= earliest_known
+
+    def safe_links(url: str) -> dict[str, tuple[str, str]]:
+        try:
+            return article_links(url)
+        except requests.RequestException:
+            return {}
+
+    # 手机版栏目页只保留近三个月，更早的周报沿文章页“相关文章”逐层回溯。
+    articles = article_links(MASTERBATCH_LIST_URL)
+    visited = set()
+    frontier = [
+        url for url, (_, article_date) in articles.items()
+        if should_crawl(article_date)
+    ]
+    with ThreadPoolExecutor(max_workers=6) as executor:
+        while frontier and len(visited) < max_pages:
+            frontier = frontier[: max_pages - len(visited)]
+            visited.update(frontier)
+            next_frontier = []
+            for links in executor.map(safe_links, frontier):
+                for url, info in links.items():
+                    if url in articles:
+                        continue
+                    articles[url] = info
+                    if should_crawl(info[1]):
+                        next_frontier.append(url)
+            frontier = [url for url in next_frontier if url not in visited]
+
+        targets = [
+            (url, region, article_date)
+            for url, (region, article_date) in articles.items()
+            if region in codes_by_region
+            and article_date >= cutoff
+            and any(
+                article_date not in points_by_code[code]
+                for code in codes_by_region[region]
+            )
+        ]
+
+        def parse_article(
+            target: tuple[str, str, str],
+        ) -> list[tuple[str, dict]]:
+            mobile_url, region, article_date = target
+            # 手机版正文为空；电脑版正文可能被隐藏，但摘要仍包含报价表开头。
+            article_url = mobile_url.replace(
+                "//m.mysteel.com", "//www.mysteel.com"
+            ).replace("_abc.html", ".html")
+            try:
+                soup = BeautifulSoup(_get_html(article_url), "html.parser")
+            except requests.RequestException:
+                return []
+            description = soup.select_one('meta[name="description"]')
+            content = soup.select_one("#article-content, #text")
+            text = re.sub(
+                r"\s+",
+                "",
+                (description.get("content", "") if description else "")
+                + (content.get_text("", strip=True) if content else ""),
+            )
+            parsed = []
+            for code in codes_by_region[region]:
+                price_match = re.search(
+                    rf"(?<![黑白彩]){MASTERBATCH_ASSETS[code]['label']}"
+                    r"(?P<low>\d{4,6})(?:-(?P<high>\d{4,6}))?",
+                    text,
+                )
+                if not price_match:
+                    continue
+                price_low = float(price_match.group("low"))
+                price_high = float(price_match.group("high") or price_low)
+                parsed.append(
+                    (
+                        code,
+                        {
+                            "date": article_date,
+                            "price": (price_low + price_high) / 2,
+                            "price_low": price_low,
+                            "price_high": price_high,
+                            "source_url": article_url,
+                        },
+                    )
+                )
+            return parsed
+
+        for parsed in executor.map(parse_article, targets):
+            for code, point in parsed:
+                points_by_code[code][point["date"]] = point
+
+    assets = []
+    for code, config in MASTERBATCH_ASSETS.items():
+        points = points_by_code[code]
+        if not points:
+            continue
+        series = [points[key] for key in sorted(points)]
+        assets.append(
+            {
+                "code": code,
+                "name": config["name"],
+                "unit": "元/吨",
+                "source": (
+                    f"隆众资讯{config['region']}塑料母粒市场快讯"
+                    "（我的钢铁网转载，现汇参考价）"
+                ),
+                "category": "色母粒",
+                "latest": series[-1],
+                "series": series,
+            }
+        )
+    if not assets:
+        raise ValueError("隆众资讯未找到色母粒报价")
+    return assets
 
 
 def fetch_dye_reduction_asset() -> dict:
@@ -3094,6 +3273,11 @@ def main() -> int:
                 "涤纶长丝（POY、FDY、DTY）",
                 set(POLYESTER_FILAMENT_ASSETS),
                 lambda: fetch_polyester_filament_assets(args.history_days),
+            ),
+            (
+                "色母粒（山东色母粒、华东黑色/白色母粒）",
+                set(MASTERBATCH_ASSETS),
+                lambda: fetch_masterbatch_assets(args.history_days),
             ),
             (
                 "咖啡、可可",
