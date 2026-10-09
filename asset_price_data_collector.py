@@ -9,6 +9,7 @@ import csv
 import io
 import json
 import re
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -125,6 +126,68 @@ POLYESTER_FILAMENT_ASSETS = {
         "name": "涤纶长丝（DTY）",
         "unit": "元/吨",
         "source_url": "https://www.100ppi.com/cindex/list-1007.html",
+    },
+}
+CARBON_FIBER_LIST_URL = "https://m.mysteel.com/oilchem/article/ko760b/"
+CARBON_FIBER_SEED_URLS = (
+    "https://m.mysteel.com/oilchem/a/25101717/091FEEE13AE3A502_abc.html",
+    "https://m.mysteel.com/oilchem/a/25102914/612F9113B1AA6190_abc.html",
+    "https://m.mysteel.com/oilchem/a/25110611/80B22E1E44326C4F_abc.html",
+    "https://m.mysteel.com/oilchem/a/25112614/E118E84AFF99D33A_abc.html",
+    "https://m.mysteel.com/oilchem/a/25120515/8709B704555C116D_abc.html",
+    "https://m.mysteel.com/oilchem/a/25121215/FC0DFB23F2670E8E_abc.html",
+    "https://m.mysteel.com/oilchem/a/25122615/8F51F66F0AF3F811_abc.html",
+)
+CARBON_FIBER_MOBILE_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
+        "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 "
+        "Mobile/15E148 Safari/604.1"
+    )
+}
+CARBON_FIBER_ASSETS = {
+    "CF_T300_12K_JL": {
+        "region": "吉林",
+        "spec": "T30012K",
+        "name": "碳纤维 T300 12K（吉林，含税送到）",
+    },
+    "CF_T300_25K_JL": {
+        "region": "吉林",
+        "spec": "T30025K",
+        "name": "碳纤维 T300 25K（吉林，含税送到）",
+    },
+    "CF_T300_12K_SH": {
+        "region": "上海",
+        "spec": "T30012K",
+        "name": "碳纤维 T300 12K（上海，含税送到）",
+    },
+    "CF_T700_12K_SD": {
+        "region": "山东",
+        "spec": "T70012K",
+        "name": "碳纤维 T700 12K（山东，含税出厂）",
+    },
+}
+CARBON_FIBER_REGIONS = {"吉林", "上海", "山东", "江苏", "河北"}
+CARBON_FIBER_SUMMARY_PATTERN = re.compile(
+    r"吉林T30012K(?P<jl12>\d+)(?:[+-]\d+)?含税送到"
+    r"T30025K(?P<jl25>\d+)(?:[+-]\d+)?含税送到"
+    r"上海T30012K(?P<sh12>\d+)(?:[+-]\d+)?含税送到"
+    r"(?:T30024K(?P<sh24>\d+)(?:[+-]\d+)?含税送到)?"
+    r"(?:T30048K(?P<sh48>\d+)(?:[+-]\d+)?含税送到)?"
+    r"山东T70012K(?P<sd>\d+)(?:[+-]\d+)?含税出厂"
+)
+CARBON_FIBER_SUMMARY_KEYS = {
+    "jl12": ("吉林", "T30012K"),
+    "jl25": ("吉林", "T30025K"),
+    "sh12": ("上海", "T30012K"),
+    "sd": ("山东", "T70012K"),
+}
+ORGANOSILICON_ASSETS = {
+    "ORGANOSILICON_DMC": {
+        "ppid": "751",
+        "name": "有机硅（DMC）",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-751.html",
     },
 }
 FRED_AGRICULTURAL_ASSETS = {
@@ -1038,6 +1101,11 @@ CATEGORY_BY_CODE = {
     "POLYESTER_POY": "化纤",
     "POLYESTER_FDY": "化纤",
     "POLYESTER_DTY": "化纤",
+    "CF_T300_12K_JL": "碳纤维",
+    "CF_T300_25K_JL": "碳纤维",
+    "CF_T300_12K_SH": "碳纤维",
+    "CF_T700_12K_SD": "碳纤维",
+    "ORGANOSILICON_DMC": "有机硅",
     "MASTERBATCH": "色母粒",
     "MASTERBATCH_BLACK": "色母粒",
     "MASTERBATCH_WHITE": "色母粒",
@@ -1079,6 +1147,8 @@ CATEGORY_ORDER = [
     "工业气体",
     "农产品",
     "化纤",
+    "碳纤维",
+    "有机硅",
     "色母粒",
     "分散染料及中间体",
     "维生素",
@@ -1127,6 +1197,11 @@ ASSET_ORDER = {
     "POLYESTER_POY": 0,
     "POLYESTER_FDY": 1,
     "POLYESTER_DTY": 2,
+    "CF_T300_12K_JL": 0,
+    "CF_T300_25K_JL": 1,
+    "CF_T300_12K_SH": 2,
+    "CF_T700_12K_SD": 3,
+    "ORGANOSILICON_DMC": 0,
     "MASTERBATCH": 0,
     "MASTERBATCH_BLACK": 1,
     "MASTERBATCH_WHITE": 2,
@@ -1583,6 +1658,263 @@ def fetch_polyester_filament_assets(
     return _fetch_100ppi_annual_assets(
         POLYESTER_FILAMENT_ASSETS,
         "化纤",
+        history_days,
+    )
+
+
+def _carbon_fiber_mobile_url(url: str) -> str:
+    if url.startswith("//"):
+        url = f"https:{url}"
+    mobile_url = url.replace("//www.mysteel.com", "//m.mysteel.com")
+    if mobile_url.endswith(".html") and not mobile_url.endswith("_abc.html"):
+        mobile_url = f"{mobile_url[:-5]}_abc.html"
+    return mobile_url.split("?")[0]
+
+
+def _carbon_fiber_desktop_url(url: str) -> str:
+    if url.startswith("//"):
+        url = f"https:{url}"
+    return (
+        url.replace("//m.mysteel.com", "//www.mysteel.com")
+        .replace("_abc.html", ".html")
+        .split("?")[0]
+    )
+
+
+def _carbon_fiber_article_date(url: str) -> str | None:
+    match = re.search(r"/oilchem/a/(\d{2})(\d{2})(\d{2})\d{2}/", url)
+    if not match:
+        return None
+    year, month, day = (int(part) for part in match.groups())
+    return date(2000 + year, month, day).isoformat()
+
+
+def _decode_carbon_fiber_summary_price(token: str) -> float | None:
+    """公开摘要会把价格和涨跌粘在一起，例如 95 元与涨跌 0 显示成 950。"""
+    if not token.isdigit():
+        return None
+    if len(token) >= 3:
+        price = int(token[:-1])
+        if 40 <= price <= 400:
+            return float(price)
+    price = int(token)
+    if 40 <= price <= 400:
+        return float(price)
+    return None
+
+
+def _parse_carbon_fiber_table(table) -> dict[tuple[str, str], float]:
+    quotes = {}
+    region = None
+    for row in table.select("tr"):
+        cells = [
+            cell.get_text(" ", strip=True)
+            for cell in row.select("th, td")
+        ]
+        if not cells or cells[0] == "品名":
+            continue
+        index = 1 if cells[0] == "碳纤维" else 0
+        if index < len(cells) and cells[index] in CARBON_FIBER_REGIONS:
+            region = cells[index]
+            index += 1
+        if region is None or index >= len(cells):
+            continue
+        spec = re.sub(r"\s+", "", cells[index]).upper()
+        if not re.fullmatch(r"T\d+K", spec):
+            continue
+        price_text = cells[index + 1] if index + 1 < len(cells) else ""
+        if not re.fullmatch(r"\d+(?:\.\d+)?", price_text):
+            continue
+        price = float(price_text)
+        if not 40 <= price <= 400:
+            continue
+        quotes[(region, spec)] = price
+    return quotes
+
+
+def _parse_carbon_fiber_summary(text: str) -> dict[tuple[str, str], float]:
+    match = CARBON_FIBER_SUMMARY_PATTERN.search(re.sub(r"\s+", "", text))
+    if not match:
+        return {}
+    quotes = {}
+    for group, key in CARBON_FIBER_SUMMARY_KEYS.items():
+        token = match.group(group)
+        if not token:
+            continue
+        price = _decode_carbon_fiber_summary_price(token)
+        if price is not None:
+            quotes[key] = price
+    return quotes
+
+
+def _parse_carbon_fiber_quotes(html: str) -> dict[tuple[str, str], float]:
+    soup = BeautifulSoup(html, "html.parser")
+    table = soup.select_one("table")
+    if table and "规格" in table.get_text(" ", strip=True):
+        quotes = _parse_carbon_fiber_table(table)
+        if quotes:
+            return quotes
+    text = soup.get_text("", strip=True)
+    description = soup.select_one('meta[name="description"]')
+    if description:
+        text += description.get("content", "")
+    content = soup.select_one("#article-content, #text")
+    if content:
+        text += content.get_text("", strip=True)
+    return _parse_carbon_fiber_summary(text)
+
+
+def _carbon_fiber_market_links(html: str, base_url: str) -> list[str]:
+    soup = BeautifulSoup(html, "html.parser")
+    links = []
+    for anchor in soup.select("a[href]"):
+        title = re.sub(r"\s+", "", anchor.get_text("", strip=True))
+        if "国内碳纤维价格行情" not in title:
+            continue
+        href = urljoin(base_url, anchor["href"])
+        if "/oilchem/a/" not in href:
+            continue
+        links.append(_carbon_fiber_mobile_url(href))
+    return links
+
+
+def _get_carbon_fiber_html(session: requests.Session, url: str) -> str:
+    last_error: Exception | None = None
+    for attempt in range(4):
+        try:
+            response = session.get(
+                url,
+                headers=CARBON_FIBER_MOBILE_HEADERS,
+                timeout=20,
+            )
+        except requests.RequestException as error:
+            last_error = error
+            time.sleep(0.8 * (attempt + 1))
+            continue
+        if response.status_code in {429, 451, 503}:
+            last_error = requests.HTTPError(
+                f"{response.status_code} {url}"
+            )
+            time.sleep(1.2 * (attempt + 1))
+            continue
+        response.raise_for_status()
+        if response.encoding in {None, "ISO-8859-1"}:
+            response.encoding = response.apparent_encoding or "utf-8"
+        return response.text
+    raise last_error or RuntimeError(f"碳纤维页面请求失败：{url}")
+
+
+def fetch_carbon_fiber_assets(
+    history_days: int = MAX_HISTORY_DAYS,
+    max_pages: int = 500,
+) -> list[dict]:
+    """拉取隆众资讯国内碳纤维分规格现汇含税价。"""
+    cutoff = (date.today() - timedelta(days=history_days)).isoformat()
+    session = requests.Session()
+    queue = [
+        _carbon_fiber_mobile_url(url)
+        for url in (CARBON_FIBER_LIST_URL, *CARBON_FIBER_SEED_URLS)
+    ]
+    seen = set()
+    quotes_by_date: dict[str, dict[tuple[str, str], float]] = {}
+    source_by_date = {}
+
+    while queue and len(seen) < max_pages:
+        batch = []
+        while queue and len(batch) < 4 and len(seen) + len(batch) < max_pages:
+            url = queue.pop()
+            if url in seen:
+                continue
+            seen.add(url)
+            batch.append(url)
+        if not batch:
+            break
+
+        def load_page(url: str) -> tuple[str, str | None, list[str], dict]:
+            try:
+                html = _get_carbon_fiber_html(session, url)
+            except (requests.RequestException, RuntimeError):
+                return url, None, [], {}
+            links = _carbon_fiber_market_links(html, url)
+            article_date = _carbon_fiber_article_date(url)
+            quotes = {}
+            if article_date and article_date >= cutoff:
+                quotes = _parse_carbon_fiber_quotes(html)
+                if not quotes:
+                    desktop_url = _carbon_fiber_desktop_url(url)
+                    try:
+                        desktop_html = _get_html(desktop_url)
+                    except requests.RequestException:
+                        desktop_html = ""
+                    quotes = _parse_carbon_fiber_quotes(desktop_html)
+            return url, article_date, links, quotes
+
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            for url, article_date, links, quotes in executor.map(
+                load_page,
+                batch,
+            ):
+                for link in links:
+                    article_link_date = _carbon_fiber_article_date(link)
+                    if (
+                        link not in seen
+                        and article_link_date
+                        and article_link_date >= cutoff
+                    ):
+                        queue.append(link)
+                if article_date and quotes:
+                    quotes_by_date[article_date] = quotes
+                    source_by_date[article_date] = _carbon_fiber_desktop_url(
+                        url
+                    )
+
+    points_by_code = {
+        code: _existing_series_by_code(code) for code in CARBON_FIBER_ASSETS
+    }
+    for article_date, quotes in quotes_by_date.items():
+        source_url = source_by_date[article_date]
+        for code, config in CARBON_FIBER_ASSETS.items():
+            price = quotes.get((config["region"], config["spec"]))
+            if price is None:
+                continue
+            points_by_code[code][article_date] = {
+                "date": article_date,
+                "price": price,
+                "price_low": None,
+                "price_high": None,
+                "source_url": source_url,
+            }
+
+    assets = []
+    for code, config in CARBON_FIBER_ASSETS.items():
+        points = points_by_code[code]
+        if not points:
+            continue
+        series = [points[key] for key in sorted(points)]
+        assets.append(
+            {
+                "code": code,
+                "name": config["name"],
+                "unit": "元/公斤",
+                "source": "隆众资讯国内碳纤维价格行情（我的钢铁网转载，现汇含税）",
+                "category": "碳纤维",
+                "latest": series[-1],
+                "series": series,
+            }
+        )
+    if len(assets) != len(CARBON_FIBER_ASSETS):
+        found = "、".join(asset["code"] for asset in assets) or "无"
+        raise ValueError(f"碳纤维报价不完整，仅得到：{found}")
+    return assets
+
+
+def fetch_organosilicon_assets(
+    history_days: int = MAX_HISTORY_DAYS,
+) -> list[dict]:
+    """拉取有机硅 DMC 日度基准价。"""
+    return _fetch_100ppi_annual_assets(
+        ORGANOSILICON_ASSETS,
+        "有机硅",
         history_days,
     )
 
@@ -3273,6 +3605,16 @@ def main() -> int:
                 "涤纶长丝（POY、FDY、DTY）",
                 set(POLYESTER_FILAMENT_ASSETS),
                 lambda: fetch_polyester_filament_assets(args.history_days),
+            ),
+            (
+                "碳纤维（T300、T700）",
+                set(CARBON_FIBER_ASSETS),
+                lambda: fetch_carbon_fiber_assets(args.history_days),
+            ),
+            (
+                "有机硅（DMC）",
+                set(ORGANOSILICON_ASSETS),
+                lambda: fetch_organosilicon_assets(args.history_days),
             ),
             (
                 "色母粒（山东色母粒、华东黑色/白色母粒）",
