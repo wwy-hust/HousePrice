@@ -232,7 +232,14 @@ SEMICONDUCTOR_WAFER_PPI_RECENT_POINTS = {
     "2026-06-01": 70.993,
     "2026-07-01": 70.963,
 }
-PYRITE_LIST_URL = "https://www.100ppi.com/mprice/plist-1-561-{page}.html"
+PYRITE_MOBILE_URL = "https://m.mysteel.com/oilchem/article/5dd9b9/"
+PYRITE_LIST_API = "https://api.mysteel.com/publishd/page/pageListData"
+PYRITE_PRODUCERS = (
+    ("云浮", "云浮云硫"),
+    ("大宝山", "大宝山"),
+    ("江西铜业", "江铜"),
+    ("江铜", "江铜"),
+)
 PHOSPHATE_ROCK_HISTORY_URL = (
     "https://www.mysteel.com/oilchem/article/nwj1r6/"
 )
@@ -637,20 +644,6 @@ REFERENCE_POINTS = {
             "quote_type": "reported_supplier_price",
             "quality_note": "北京商报调查报道中的生产商报价，并非连续市场指数。",
             "comparability_note": "报道未披露糖苷纯度，不能与当前SG90%报价直接等同。",
-        },
-    ],
-    "PYRITE": [
-        {
-            "date": "2022-07-31",
-            "price": 450.0,
-            "price_low": 450.0,
-            "price_high": 450.0,
-            "source_url": "https://www.100ppi.com/news/detail-20220731-2221680.html",
-            "date_precision": "day",
-            "date_label": "2022-07-31",
-            "quote_type": "supplier_offer",
-            "quality_note": "生意社历史报价报道，属于供应商报价，并非连续市场指数。",
-            "comparability_note": "国产硫化铁含量45%-47%，与当前规格一致。",
         },
     ],
     "PHOSPHATE_ROCK": [
@@ -2117,53 +2110,236 @@ def fetch_sulfur_asset(history_days: int = MAX_HISTORY_DAYS) -> dict:
     }
 
 
-def fetch_pyrite_asset(max_pages: int = 10) -> dict:
-    """汇总生意社国产 45%-47% 硫铁矿的每日公开报价。"""
-    prices_by_date: dict[str, list[float]] = {}
-    source_urls_by_date: dict[str, str] = {}
+def _pyrite_standard_prices(text: str) -> list[float]:
+    """提取正文里按含硫 35% 标硫口径给出的报价。"""
+    compact = re.sub(r"\s+", "", text).replace("％", "%")
+    marker = re.search(r"(?:折35%标吨|35%标硫|35%标吨)", compact)
+    if not marker:
+        return []
+    head = compact[marker.start() :].split("年产能", 1)[0]
+    prices = [
+        float(value)
+        for value in re.findall(
+            r"(?:报价|报)[^0-9]{0,12}(\d{3,4}(?:\.\d+)?)元/吨",
+            head,
+        )
+    ]
+    prices.extend(
+        float(value)
+        for value in re.findall(
+            r"出厂(?:报价)?(\d{3,4}(?:\.\d+)?)元/吨",
+            head,
+        )
+    )
+    prices.extend(
+        float(value)
+        for value in re.findall(
+            r"标吨[^0-9]{0,8}(\d{3,4}(?:\.\d+)?)元/吨",
+            head,
+        )
+    )
+    for low, high in re.findall(r"(\d{3,4})-(\d{3,4})元/吨", head):
+        prices.extend((float(low), float(high)))
+    unique: list[float] = []
+    for price in prices:
+        if 180 <= price <= 4000 and price not in unique:
+            unique.append(price)
+    return unique
 
-    for page in range(1, max_pages + 1):
-        page_url = PYRITE_LIST_URL.format(page=page)
-        soup = BeautifulSoup(_get_html(page_url), "html.parser")
-        page_row_count = 0
-        for row in soup.select("table tr"):
-            cells = [
-                cell.get_text(" ", strip=True)
-                for cell in row.find_all(["td", "th"])
-            ]
-            if len(cells) < 8 or cells[0] != "硫铁矿":
+
+def _pyrite_producer(title: str) -> str | None:
+    for keyword, producer in PYRITE_PRODUCERS:
+        if keyword in title:
+            return producer
+    return None
+
+
+def _pyrite_desktop_url(url: str) -> str:
+    if url.startswith("//"):
+        url = "https:" + url
+    return url.replace(
+        "https://m.mysteel.com/oilchem/a/",
+        "https://www.mysteel.com/oilchem/a/",
+    ).replace("_abc.html", ".html")
+
+
+def _pyrite_mobile_url(url: str) -> str:
+    desktop = _pyrite_desktop_url(url)
+    return desktop.replace(
+        "https://www.mysteel.com/oilchem/a/",
+        "https://m.mysteel.com/oilchem/a/",
+    ).replace(".html", "_abc.html")
+
+
+def _read_pyrite_article(
+    mobile_url: str,
+    headers: dict[str, str],
+) -> tuple[tuple[str, str, float, str] | None, list[str]]:
+    """读取一篇报价，并返回文末链到的更早报道。"""
+    try:
+        response = requests.get(mobile_url, headers=headers, timeout=20)
+        response.raise_for_status()
+    except requests.RequestException:
+        return None, []
+    if response.encoding == "ISO-8859-1":
+        response.encoding = response.apparent_encoding
+    if "安全验证" in response.text[:800]:
+        return None, []
+    soup = BeautifulSoup(response.text, "html.parser")
+    related: list[str] = []
+    for item in soup.select("li.item"):
+        link = item.find("a", href=True)
+        if not link or "/oilchem/a/" not in link["href"]:
+            continue
+        if _pyrite_producer(link.get_text(" ", strip=True)) is None:
+            continue
+        related.append(_pyrite_mobile_url(link["href"]))
+
+    description = soup.select_one('meta[name="Description"], meta[name="description"]')
+    content_node = soup.select_one("#article-content, #text")
+    text = " ".join(
+        part
+        for part in (
+            description.get("content", "") if description else "",
+            content_node.get_text(" ", strip=True) if content_node else "",
+        )
+        if part
+    )
+    source = soup.select_one("span.source")
+    date_match = re.search(
+        r"(20\d{2}-\d{2}-\d{2})",
+        source.get_text(" ", strip=True) if source else "",
+    )
+    title_node = soup.select_one('meta[name="detailTit"]')
+    producer = _pyrite_producer(
+        title_node.get("content", "") if title_node else ""
+    )
+    prices = _pyrite_standard_prices(text)
+    if not producer or not date_match or not prices:
+        return None, related
+    return (
+        (
+            date_match.group(1),
+            producer,
+            sum(prices) / len(prices),
+            _pyrite_desktop_url(mobile_url),
+        ),
+        related,
+    )
+
+
+def fetch_pyrite_asset(history_days: int = MAX_HISTORY_DAYS) -> dict:
+    """汇总隆众资讯云浮、大宝山、江铜的 35% 标硫公开报价。"""
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
+            "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 "
+            "Mobile/15E148 Safari/604.1"
+        ),
+        "Referer": PYRITE_MOBILE_URL,
+        "Origin": "https://m.mysteel.com",
+    }
+    session = requests.Session()
+    page = session.get(PYRITE_MOBILE_URL, headers=headers, timeout=25)
+    page.raise_for_status()
+    page.encoding = page.apparent_encoding or "utf-8"
+    start_match = re.search(r'start-time="([^"]+)"', page.text)
+    end_match = re.search(r'end-time="([^"]+)"', page.text)
+    if not start_match or not end_match:
+        raise ValueError("隆众资讯硫铁矿栏目未返回可查询的时间范围")
+
+    articles: list[tuple[str, str, str]] = []
+    seen_urls: set[str] = set()
+    for page_num in range(1, 21):
+        response = session.post(
+            PYRITE_LIST_API,
+            headers={**headers, "Content-Type": "application/json"},
+            json={
+                "listPageId": "5dd9b9",
+                "keyWord": "",
+                "pageNum": page_num,
+                "pageSize": 60,
+                "startTime": start_match.group(1),
+                "endTime": end_match.group(1),
+            },
+            timeout=30,
+        )
+        response.raise_for_status()
+        rows = (response.json().get("response") or {}).get("datas") or []
+        for row in rows:
+            title = row.get("title") or ""
+            producer = _pyrite_producer(title)
+            point_date = row.get("time7") or ""
+            source_url = row.get("url") or ""
+            if (
+                not producer
+                or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", point_date)
+                or source_url in seen_urls
+            ):
                 continue
-            price_match = re.search(r"([\d,.]+)\s*元/吨", cells[3])
-            point_date = cells[7]
-            if not price_match or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", point_date):
-                continue
-            prices_by_date.setdefault(point_date, []).append(
-                _number(price_match.group(1))
-            )
-            source_urls_by_date[point_date] = page_url
-            page_row_count += 1
-        if page_row_count == 0:
+            seen_urls.add(source_url)
+            articles.append((point_date, producer, source_url))
+        if len(rows) < 60:
             break
 
-    if not prices_by_date:
-        raise ValueError("生意社报价中心未找到硫铁矿报价")
+    if not articles:
+        raise ValueError("隆众资讯硫铁矿栏目未找到云浮、大宝山或江铜报价")
 
-    points_by_date = _reference_points_by_date("PYRITE")
-    for point_date in sorted(prices_by_date):
-        prices = prices_by_date[point_date]
+    frontier = {_pyrite_mobile_url(article_url) for _, _, article_url in articles}
+    seen: set[str] = set()
+    quotes_by_date: dict[str, list[tuple[str, float, str]]] = {}
+    while frontier and len(seen) < 6000:
+        batch = [url for url in frontier if url not in seen][:48]
+        if not batch:
+            break
+        frontier.difference_update(batch)
+        with ThreadPoolExecutor(max_workers=6) as executor:
+            parsed = list(
+                executor.map(
+                    lambda mobile_url: _read_pyrite_article(mobile_url, headers),
+                    batch,
+                )
+            )
+        for mobile_url, (quote, related) in zip(batch, parsed):
+            seen.add(mobile_url)
+            if quote:
+                point_date, producer, price, article_url = quote
+                quotes_by_date.setdefault(point_date, []).append(
+                    (producer, price, article_url)
+                )
+            frontier.update(link for link in related if link not in seen)
+        print(
+            f"硫铁矿已读取 {len(seen)} 篇，报价日 {len(quotes_by_date)}，"
+            f"待访问 {len(frontier)}",
+            flush=True,
+        )
+
+    cutoff = date.today() - timedelta(days=history_days)
+    latest_by_producer: dict[str, float] = {}
+    points_by_date: dict[str, dict] = {}
+    for point_date in sorted(quotes_by_date):
+        source_url = ""
+        for producer, price, article_url in quotes_by_date[point_date]:
+            latest_by_producer[producer] = price
+            source_url = article_url
+        if date.fromisoformat(point_date) < cutoff or not latest_by_producer:
+            continue
+        values = list(latest_by_producer.values())
         points_by_date[point_date] = {
             "date": point_date,
-            "price": sum(prices) / len(prices),
-            "price_low": min(prices),
-            "price_high": max(prices),
-            "source_url": source_urls_by_date[point_date],
+            "price": round(sum(values) / len(values), 2),
+            "price_low": round(min(values), 2),
+            "price_high": round(max(values), 2),
+            "source_url": source_url,
         }
+    if not points_by_date:
+        raise ValueError("隆众资讯未解析到 35% 标硫报价")
     series = [points_by_date[key] for key in sorted(points_by_date)]
     return {
         "code": "PYRITE",
-        "name": "硫铁矿",
+        "name": "硫铁矿（35%硫标）",
         "unit": "元/吨",
-        "source": "生意社报价中心（国产，硫化铁含量45%-47%）",
+        "source": "隆众资讯（35%标硫，云浮云硫、大宝山、江铜公开报价均值）",
         "category": "有色金属大宗",
         "latest": series[-1],
         "series": series,
@@ -3552,7 +3728,11 @@ def main() -> int:
                 {"SULFUR"},
                 lambda: fetch_sulfur_asset(args.history_days),
             ),
-            ("硫铁矿", {"PYRITE"}, fetch_pyrite_asset),
+            (
+                "硫铁矿",
+                {"PYRITE"},
+                lambda: fetch_pyrite_asset(args.history_days),
+            ),
             (
                 "氧化铝",
                 {"ALUMINA"},
