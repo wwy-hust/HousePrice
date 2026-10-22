@@ -190,6 +190,40 @@ ORGANOSILICON_ASSETS = {
         "source_url": "https://www.100ppi.com/cindex/list-751.html",
     },
 }
+REFRIGERANT_ASSETS = {
+    "REFRIGERANT_R22": {
+        "ppid": "1287",
+        "name": "制冷剂（R22）",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-1287.html",
+    },
+    "REFRIGERANT_R134A": {
+        "ppid": "1288",
+        "name": "制冷剂（R134a）",
+        "unit": "元/吨",
+        "source_url": "https://www.100ppi.com/cindex/list-1288.html",
+    },
+}
+REFRIGERANT_REVIEW_LIST = (
+    "https://nenghua.mysteel.com/list/article/"
+    "pa8726a0408050603,210201,210202,210203,210204,210205,"
+    "210206,210207,210208,210209aaaaa{page}.html"
+)
+REFRIGERANT_MARKET_PAGE = "https://m.mysteel.com/oilchem/article/es1060/"
+REFRIGERANT_MARKET_ASSETS = {
+    "REFRIGERANT_R32": {
+        "spec": "R32",
+        "name": "制冷剂（R32，华东出厂）",
+    },
+    "REFRIGERANT_R125": {
+        "spec": "R125",
+        "name": "制冷剂（R125，华东出厂）",
+    },
+    "REFRIGERANT_R134A_EC": {
+        "spec": "R134A",
+        "name": "制冷剂（R134a，华东出厂）",
+    },
+}
 FRED_AGRICULTURAL_ASSETS = {
     "COFFEE": {
         "series_id": "PCOFFOTMUSDM",
@@ -1099,6 +1133,11 @@ CATEGORY_BY_CODE = {
     "CF_T300_12K_SH": "碳纤维",
     "CF_T700_12K_SD": "碳纤维",
     "ORGANOSILICON_DMC": "有机硅",
+    "REFRIGERANT_R22": "制冷剂",
+    "REFRIGERANT_R32": "制冷剂",
+    "REFRIGERANT_R125": "制冷剂",
+    "REFRIGERANT_R134A": "制冷剂",
+    "REFRIGERANT_R134A_EC": "制冷剂",
     "MASTERBATCH": "色母粒",
     "MASTERBATCH_BLACK": "色母粒",
     "MASTERBATCH_WHITE": "色母粒",
@@ -1142,6 +1181,7 @@ CATEGORY_ORDER = [
     "化纤",
     "碳纤维",
     "有机硅",
+    "制冷剂",
     "色母粒",
     "分散染料及中间体",
     "维生素",
@@ -1195,6 +1235,11 @@ ASSET_ORDER = {
     "CF_T300_12K_SH": 2,
     "CF_T700_12K_SD": 3,
     "ORGANOSILICON_DMC": 0,
+    "REFRIGERANT_R32": 0,
+    "REFRIGERANT_R125": 1,
+    "REFRIGERANT_R134A_EC": 2,
+    "REFRIGERANT_R134A": 3,
+    "REFRIGERANT_R22": 4,
     "MASTERBATCH": 0,
     "MASTERBATCH_BLACK": 1,
     "MASTERBATCH_WHITE": 2,
@@ -1523,18 +1568,18 @@ def _fetch_100ppi_annual_assets(
 
         points_by_date = {}
         for year_text, price_data in series_matches:
-            prices = [
-                float(value.strip())
-                for value in price_data.split(",")
-                if value.strip()
-            ]
+            slots = [value.strip() for value in price_data.split(",")]
             year_start = date(int(year_text), 1, 1)
             maximum_days = (date(int(year_text) + 1, 1, 1) - year_start).days
-            if not prices or len(prices) > maximum_days:
+            prices = [value for value in slots if value]
+            if not prices or len(slots) > maximum_days + 2:
                 raise ValueError(
                     f"生意社{config['name']} {year_text}年数据长度异常"
                 )
-            for day_offset, price in enumerate(prices):
+            for day_offset, value in enumerate(slots):
+                if day_offset >= maximum_days or not value:
+                    continue
+                price = float(value)
                 point_date = year_start + timedelta(days=day_offset)
                 if point_date < cutoff or not _is_positive_price(price):
                     continue
@@ -1910,6 +1955,265 @@ def fetch_organosilicon_assets(
         "有机硅",
         history_days,
     )
+
+
+def _refrigerant_article_date(url: str, title: str) -> date | None:
+    """日评标题里的日期是报价日；早间提示只用链接里的发布日期。"""
+    titled = re.search(r"（(20\d{2})(\d{2})(\d{2})）", title)
+    if titled:
+        year, month, day = (int(part) for part in titled.groups())
+        return date(year, month, day)
+    linked = re.search(r"/a/(\d{2})(\d{2})(\d{2})\d{2}/", url)
+    if not linked:
+        return None
+    year, month, day = (int(part) for part in linked.groups())
+    return date(2000 + year, month, day)
+
+
+def _refrigerant_header_date(text: str, fallback: date) -> date | None:
+    full = re.fullmatch(r"(\d{4})/(\d{1,2})/(\d{1,2})", text)
+    if full:
+        year, month, day = (int(part) for part in full.groups())
+        return date(year, month, day)
+    short = re.fullmatch(r"(\d{1,2})月(\d{1,2})日", text)
+    if not short:
+        return None
+    month, day = (int(part) for part in short.groups())
+    candidate = date(fallback.year, month, day)
+    if candidate > fallback + timedelta(days=3):
+        return date(fallback.year - 1, month, day)
+    return candidate
+
+
+def _refrigerant_table_quotes(
+    table,
+    fallback_date: date,
+) -> tuple[date, dict[str, tuple[float, float]]] | None:
+    """读取华东出厂价表最后一列，返回报价日和各型号的低高价。"""
+    header_dates = []
+    quotes: dict[str, tuple[float, float]] = {}
+    specs = {
+        config["spec"]: code
+        for code, config in REFRIGERANT_MARKET_ASSETS.items()
+    }
+    for row_index, row in enumerate(table.select("tr")):
+        cells = [
+            re.sub(r"\s+", "", cell.get_text("", strip=True))
+            for cell in row.select("th, td")
+        ]
+        if row_index == 0:
+            for cell in cells:
+                header_date = _refrigerant_header_date(cell, fallback_date)
+                if header_date:
+                    header_dates.append(header_date)
+            continue
+        spec = next((cell.upper() for cell in cells if cell.upper() in specs), None)
+        if spec is None:
+            continue
+        ranges = []
+        for cell in cells:
+            match = re.fullmatch(r"(\d{4,6})-(\d{4,6})", cell)
+            if not match:
+                continue
+            low, high = (float(match.group(1)), float(match.group(2)))
+            if low > high:
+                low, high = high, low
+            if 8000 <= low <= high <= 200000:
+                ranges.append((low, high))
+        if ranges:
+            quotes[spec] = ranges[-1]
+    if not quotes:
+        return None
+    quote_date = header_dates[-1] if header_dates else fallback_date
+    if abs((quote_date - fallback_date).days) > 7:
+        return None
+    return quote_date, quotes
+
+
+def _refrigerant_review_links() -> list[str]:
+    links = []
+    seen = set()
+    for page in range(1, 16):
+        url = REFRIGERANT_REVIEW_LIST.format(page=page)
+        soup = BeautifulSoup(_get_html(url), "html.parser")
+        found = 0
+        for anchor in soup.select("a[href]"):
+            title = re.sub(r"\s+", "", anchor.get_text("", strip=True))
+            if not title.startswith("[制冷剂日评]"):
+                continue
+            href = urljoin(url, anchor["href"])
+            if "/a/" not in href or href in seen:
+                continue
+            seen.add(href)
+            links.append(href)
+            found += 1
+        if found == 0:
+            break
+    return links
+
+
+def _refrigerant_market_api_links() -> list[str]:
+    """补充栏目接口里仍公开全文的早间提示和日评。"""
+    page = requests.get(
+        REFRIGERANT_MARKET_PAGE,
+        headers=CARBON_FIBER_MOBILE_HEADERS,
+        timeout=20,
+    )
+    page.raise_for_status()
+    page.encoding = page.apparent_encoding or "utf-8"
+    start = re.search(r'start-time="([^"]+)"', page.text)
+    end = re.search(r'end-time="([^"]+)"', page.text)
+    if not start or not end:
+        return []
+    links = []
+    seen = set()
+    for page_num in range(1, 12):
+        response = requests.post(
+            PYRITE_LIST_API,
+            headers={
+                **CARBON_FIBER_MOBILE_HEADERS,
+                "Content-Type": "application/json",
+                "Origin": "https://m.mysteel.com",
+                "Referer": REFRIGERANT_MARKET_PAGE,
+            },
+            json={
+                "listPageId": "es1060",
+                "keyWord": "",
+                "pageNum": page_num,
+                "pageSize": 60,
+                "startTime": start.group(1),
+                "endTime": end.group(1),
+            },
+            timeout=30,
+        )
+        response.raise_for_status()
+        rows = (response.json().get("response") or {}).get("datas") or []
+        for row in rows:
+            title = row.get("title") or ""
+            source_url = row.get("url") or ""
+            if "日评" not in title and "早间提示" not in title:
+                continue
+            if "/a/" not in source_url or source_url in seen:
+                continue
+            seen.add(source_url)
+            links.append(source_url)
+        if len(rows) < 60:
+            break
+    return links
+
+
+def _read_refrigerant_market_article(
+    url: str,
+) -> tuple[str, dict[str, tuple[float, float]], str] | None:
+    try:
+        response = requests.get(url, headers=REQUEST_HEADERS, timeout=20)
+        response.raise_for_status()
+    except requests.RequestException:
+        return None
+    if response.encoding in {None, "ISO-8859-1"}:
+        response.encoding = response.apparent_encoding or "utf-8"
+    soup = BeautifulSoup(response.text, "html.parser")
+    title_node = soup.select_one("h1")
+    title = title_node.get_text(" ", strip=True) if title_node else ""
+    fallback_date = _refrigerant_article_date(url, title)
+    content = soup.select_one("#article-content, .content-main")
+    if fallback_date is None or content is None:
+        return None
+    parsed = None
+    for table in content.select("table"):
+        parsed = _refrigerant_table_quotes(table, fallback_date)
+        if parsed:
+            break
+    if parsed is None:
+        return None
+    quote_date, quotes = parsed
+    desktop_url = (
+        url.replace("//m.mysteel.com", "//www.mysteel.com")
+        .replace("_abc.html", ".html")
+        .split("?")[0]
+    )
+    return quote_date.isoformat(), quotes, desktop_url
+
+
+def fetch_refrigerant_market_assets(
+    history_days: int = MAX_HISTORY_DAYS,
+) -> list[dict]:
+    """拉取隆众资讯公开的 R32、R125、R134a 华东出厂价。"""
+    cutoff = (date.today() - timedelta(days=history_days)).isoformat()
+    links = []
+    seen = set()
+    for link in [*_refrigerant_review_links(), *_refrigerant_market_api_links()]:
+        if link not in seen:
+            seen.add(link)
+            links.append(link)
+    if not links:
+        raise ValueError("未找到隆众制冷剂日评")
+
+    points_by_code = {
+        code: _existing_series_by_code(code)
+        for code in REFRIGERANT_MARKET_ASSETS
+    }
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        for parsed in executor.map(_read_refrigerant_market_article, links):
+            if not parsed:
+                continue
+            quote_date, quotes, source_url = parsed
+            if quote_date < cutoff:
+                continue
+            for spec, (low, high) in quotes.items():
+                code = next(
+                    (
+                        asset_code
+                        for asset_code, config in REFRIGERANT_MARKET_ASSETS.items()
+                        if config["spec"] == spec
+                    ),
+                    None,
+                )
+                if code is None:
+                    continue
+                points_by_code[code][quote_date] = {
+                    "date": quote_date,
+                    "price": (low + high) / 2,
+                    "price_low": low,
+                    "price_high": high,
+                    "source_url": source_url,
+                }
+
+    assets = []
+    for code, config in REFRIGERANT_MARKET_ASSETS.items():
+        points = {
+            day: point
+            for day, point in points_by_code[code].items()
+            if day >= cutoff
+        }
+        if not points:
+            raise ValueError(f"隆众未返回{config['name']}有效价格")
+        series = [points[key] for key in sorted(points)]
+        assets.append(
+            {
+                "code": code,
+                "name": config["name"],
+                "unit": "元/吨",
+                "source": "隆众资讯华东市场主流出厂参考价（散水，含税）",
+                "category": "制冷剂",
+                "latest": series[-1],
+                "series": series,
+            }
+        )
+    return assets
+
+
+def fetch_refrigerant_assets(
+    history_days: int = MAX_HISTORY_DAYS,
+) -> list[dict]:
+    """拉取制冷剂基准价，以及 R32、R125、R134a 华东出厂价。"""
+    assets = _fetch_100ppi_annual_assets(
+        REFRIGERANT_ASSETS,
+        "制冷剂",
+        history_days,
+    )
+    assets.extend(fetch_refrigerant_market_assets(history_days))
+    return assets
 
 
 def fetch_fred_agricultural_assets(
@@ -3795,6 +4099,11 @@ def main() -> int:
                 "有机硅（DMC）",
                 set(ORGANOSILICON_ASSETS),
                 lambda: fetch_organosilicon_assets(args.history_days),
+            ),
+            (
+                "制冷剂（R32、R125、R134a、R22）",
+                set(REFRIGERANT_ASSETS) | set(REFRIGERANT_MARKET_ASSETS),
+                lambda: fetch_refrigerant_assets(args.history_days),
             ),
             (
                 "色母粒（山东色母粒、华东黑色/白色母粒）",
